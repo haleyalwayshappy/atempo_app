@@ -83,6 +83,7 @@ class _BottomNavigationBarExampleState
                 IconButton(
                   onPressed: (){
                     print("버튼 누름");
+                    // flutterToast();
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                       content: Text("로그인 성공"),
                     ));
@@ -129,16 +130,15 @@ class _BottomNavigationBarExampleState
 }
 
 
-// void flutterToast(){
-//
-//   Fluttertoast.showToast(
-//       msg: "음악재생!!",
-//       toastLength: Toast.LENGTH_SHORT,
-//       gravity: ToastGravity.TOP,
-//       timeInSecForIosWeb: 1,
-//       backgroundColor: Colors.red,
-//       textColor: Colors.white,
-//       fontSize: 16.0
-//   );
-//
-// }
+// 토스트 패키지 1
+void flutterToast(){
+  Fluttertoast.showToast(
+      msg: "음악재생!!",
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.black12,
+      textColor: Colors.white,
+      fontSize: 16.0
+  );
+}
