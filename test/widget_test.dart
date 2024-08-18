@@ -8,13 +8,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:atempo_app/home_screen.dart';
+import 'package:atempo_app/main_screen.dart';
 
 
 Future<void> main() async {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const HomeScreen());
+    await tester.pumpWidget(const MainScreen());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
