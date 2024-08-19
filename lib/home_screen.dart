@@ -1,3 +1,4 @@
+import 'package:atempo_app/floating_button.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget{
@@ -5,12 +6,8 @@ class HomeScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children:[
-        ListTile(
-          textColor: Colors.black,
-        )
-      ],
+    return Container(
+      child: FloatingButton(),
     );
   }
 }

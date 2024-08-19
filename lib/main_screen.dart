@@ -3,6 +3,9 @@ import 'package:atempo_app/home_screen.dart';
 import 'package:atempo_app/music_main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:radial_button/widget/circle_floating_button.dart';
+
+import 'floating_button.dart';
 
 
 /// Flutter code sample for [BottomNavigationBar].
@@ -72,22 +75,19 @@ class _MainScreen extends State<MainScreen> {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            _screens.elementAt(_selectedIndex),
-          ],
-        ),
+      body: Container(
+          child:_screens.elementAt(_selectedIndex),
 
       ),
+
 
       // 플로팅 버튼
-      floatingActionButton: const FloatingActionButton(
-        onPressed: flutterToast,
-        backgroundColor: Colors.green,
-        child: Icon(Icons.add),
+      // floatingActionButton: const FloatingActionButton(
+      //   onPressed: flutterToast,
+      //   backgroundColor: Colors.green,
+      //   child: Icon(Icons.add),
+      // ),
 
-      ),
 
 
       bottomNavigationBar: BottomNavigationBar(
