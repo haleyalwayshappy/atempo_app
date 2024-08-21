@@ -1,7 +1,7 @@
-import 'package:atempo_app/floating_button.dart';
+import 'package:atempo_app/frame/floating_button.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget{
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override

@@ -1,35 +1,33 @@
-import 'package:atempo_app/diary_main_screen.dart';
+import 'package:atempo_app/diary/diary_main_screen.dart';
 import 'package:atempo_app/home_screen.dart';
-import 'package:atempo_app/music_main_screen.dart';
+import 'package:atempo_app/music/music_main_screen.dart';
+import 'package:atempo_app/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:radial_button/widget/circle_floating_button.dart';
-
-import 'floating_button.dart';
 
 /// Flutter code sample for [BottomNavigationBar].
 
-void main() => runApp(const MainScreenApp());
+void main() => runApp(const FrameScreenApp());
 
-class MainScreenApp extends StatelessWidget {
-  const MainScreenApp({super.key});
+class FrameScreenApp extends StatelessWidget {
+  const FrameScreenApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MainScreen(),
+      home: FrameScreen(),
     );
   }
 }
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+class FrameScreen extends StatefulWidget {
+  const FrameScreen({super.key});
 
   @override
-  State<MainScreen> createState() => _MainScreen();
+  State<FrameScreen> createState() => _MainScreen();
 }
 
-class _MainScreen extends State<MainScreen> {
+class _MainScreen extends State<FrameScreen> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
@@ -49,31 +47,7 @@ class _MainScreen extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: false,
-        title: Transform(
-          transform: Matrix4.translationValues(16.0, 0.0, 0.0),
-          child: const Text(
-            'a Tempo',
-            style: TextStyle(color: Colors.black),
-          ),
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
-        actions: [
-          IconButton(
-            padding: const EdgeInsets.only(right: 16.0),
-            icon: const Icon(
-              Icons.person,
-              color: Colors.black,
-              size: 32,
-            ),
-            onPressed: () {
-              print("마이페이지 버튼누름");
-            },
-          ),
-        ],
-      ),
+      backgroundColor: Palette.backgroundDeepPurple,
       body: Container(
         child: _screens.elementAt(_selectedIndex),
       ),
@@ -88,7 +62,7 @@ class _MainScreen extends State<MainScreen> {
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        backgroundColor: Colors.black,
+        backgroundColor: Palette.backgroundDeepPurple,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
@@ -113,7 +87,8 @@ class _MainScreen extends State<MainScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.green[800],
+        unselectedItemColor: Palette.fontWhite,
+        selectedItemColor: Palette.selectedItem,
         onTap: _onItemTapped,
       ),
     );
