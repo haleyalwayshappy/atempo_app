@@ -2,7 +2,7 @@
  
 ![header](https://capsule-render.vercel.app/api?type=rect&color=timeGradient&height=240&section=header&text=💖a%20Tempo💖&fontSize=60)
 
-``` a Tempo == 본디, 빠르기로 ```<br> 
+``` a Tempo == 본디,빠르기로 ```<br> 
 감정에 따라 나의 마음이 조급해지기도, 늘어지기도하는 나의 상태<br>어떤것에 쫓기는 삶에서 벗어나 나의 템포를 찾아가는 과정을 함께하는 어플입니다.
 <br><br>
 차분한 음악을 들으며 나의 감정을 편안하게 만들 수 있고😌<br>
