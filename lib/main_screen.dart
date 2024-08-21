@@ -7,7 +7,6 @@ import 'package:radial_button/widget/circle_floating_button.dart';
 
 import 'floating_button.dart';
 
-
 /// Flutter code sample for [BottomNavigationBar].
 
 void main() => runApp(const MainScreenApp());
@@ -27,16 +26,15 @@ class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
   @override
-  State<MainScreen> createState() =>
-      _MainScreen();
+  State<MainScreen> createState() => _MainScreen();
 }
 
 class _MainScreen extends State<MainScreen> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
-  final List<Widget> _screens =[
+  final List<Widget> _screens = [
     MusicMainScreen(),
     HomeScreen(),
     DiaryMainScreen(),
@@ -54,20 +52,21 @@ class _MainScreen extends State<MainScreen> {
       appBar: AppBar(
         centerTitle: false,
         title: Transform(
-          transform: Matrix4.translationValues(16.0,0.0,0.0),
-          child: const Text('a Tempo',
-          style: TextStyle(color: Colors.black),
+          transform: Matrix4.translationValues(16.0, 0.0, 0.0),
+          child: const Text(
+            'a Tempo',
+            style: TextStyle(color: Colors.black),
           ),
         ),
-        backgroundColor: Colors.transparent ,
-
+        backgroundColor: Colors.transparent,
         elevation: 0.0,
         actions: [
-          IconButton(padding: const EdgeInsets.only(right: 16.0),
+          IconButton(
+            padding: const EdgeInsets.only(right: 16.0),
             icon: const Icon(
-            Icons.person,
-            color: Colors.black,
-            size: 32,
+              Icons.person,
+              color: Colors.black,
+              size: 32,
             ),
             onPressed: () {
               print("마이페이지 버튼누름");
@@ -76,10 +75,8 @@ class _MainScreen extends State<MainScreen> {
         ],
       ),
       body: Container(
-          child:_screens.elementAt(_selectedIndex),
-
+        child: _screens.elementAt(_selectedIndex),
       ),
-
 
       // 플로팅 버튼
       // floatingActionButton: const FloatingActionButton(
@@ -88,34 +85,32 @@ class _MainScreen extends State<MainScreen> {
       //   child: Icon(Icons.add),
       // ),
 
-
-
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
+        backgroundColor: Colors.black,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
               Icons.queue_music_rounded,
-              size:32,
+              size: 32,
             ),
             label: 'music',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              size:32,),
+              size: 32,
+            ),
             label: 'home',
           ),
-
           BottomNavigationBarItem(
             icon: Icon(
               Icons.calendar_month,
-              size:32,
+              size: 32,
             ),
             label: 'diary',
           ),
-
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.green[800],
@@ -125,9 +120,8 @@ class _MainScreen extends State<MainScreen> {
   }
 }
 
-
 // 토스트 패키지 1
-void flutterToast(){
+void flutterToast() {
   Fluttertoast.showToast(
       msg: "음악재생!!",
       toastLength: Toast.LENGTH_SHORT,
@@ -135,6 +129,5 @@ void flutterToast(){
       timeInSecForIosWeb: 1,
       backgroundColor: Colors.black12,
       textColor: Colors.white,
-      fontSize: 16.0
-  );
+      fontSize: 16.0);
 }
