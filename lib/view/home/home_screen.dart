@@ -7,7 +7,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: FloatingButton(),
+      child: Text("홈 스크린"),
     );
   }
 }
+g

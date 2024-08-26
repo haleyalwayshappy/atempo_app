@@ -1,5 +1,5 @@
 import 'package:atempo_app/diary/diary_main_screen.dart';
-import 'package:atempo_app/home_screen.dart';
+import 'package:atempo_app/home/home_screen.dart';
 import 'package:atempo_app/music/music_main_screen.dart';
 import 'package:atempo_app/theme/colors.dart';
 import 'package:flutter/material.dart';
