@@ -1,9 +1,11 @@
-import 'package:atempo_app/diary/diary_main_screen.dart';
-import 'package:atempo_app/home/home_screen.dart';
-import 'package:atempo_app/music/music_main_screen.dart';
+
 import 'package:atempo_app/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+
+import 'diary/diary_main_screen.dart';
+import 'home/home_screen.dart';
+import 'music/music_main_screen.dart';
 
 /// Flutter code sample for [BottomNavigationBar].
 
@@ -47,7 +49,7 @@ class _MainScreen extends State<FrameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Palette.backgroundDeepPurple,
+      backgroundColor: Palette.realWhite,
       body: Container(
         child: _screens.elementAt(_selectedIndex),
       ),
@@ -62,7 +64,6 @@ class _MainScreen extends State<FrameScreen> {
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        backgroundColor: Palette.backgroundDeepPurple,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
@@ -87,7 +88,7 @@ class _MainScreen extends State<FrameScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        unselectedItemColor: Palette.fontWhite,
+        unselectedItemColor: Palette.deepPurple,
         selectedItemColor: Palette.selectedItem,
         onTap: _onItemTapped,
       ),

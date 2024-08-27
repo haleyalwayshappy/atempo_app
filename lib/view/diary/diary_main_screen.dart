@@ -11,7 +11,7 @@ class DiaryMainScreen extends StatelessWidget {
         "diary screen ㅇㅣ다!!!!!1",
         style: TextStyle(
           fontSize: 24,
-          color: Palette.fontWhite,
+          color: Palette.deepPurple,
         ),
       ),
     );

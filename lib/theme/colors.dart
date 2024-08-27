@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 abstract class Palette {
-  static Color backgroundDeepPurple = Color(0xff21004A);
-  static Color fontWhite = Color(0xffffffff);
+  static Color deepPurple = Color(0xff21004A);
+  static Color realWhite = Color(0xffffffff);
   static Color selectedItem = Color(0xff95D981);
 }
 

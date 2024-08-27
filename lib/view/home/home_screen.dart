@@ -1,4 +1,3 @@
-import 'package:atempo_app/frame/floating_button.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -6,9 +5,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("홈 스크린"),
+    return Center(
+      child: Text(
+        "홈 스크린",
+        style: TextStyle(color: Colors.purple.shade400),
+      ),
     );
   }
 }
-g
