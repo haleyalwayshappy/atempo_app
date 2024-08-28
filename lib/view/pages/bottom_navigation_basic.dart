@@ -1,4 +1,4 @@
-
+import 'package:atempo_app/constants/constants.dart';
 import 'package:atempo_app/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -49,7 +49,7 @@ class _MainScreen extends State<FrameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Palette.realWhite,
+      backgroundColor: wBackgroundColor,
       body: Container(
         child: _screens.elementAt(_selectedIndex),
       ),
@@ -67,7 +67,7 @@ class _MainScreen extends State<FrameScreen> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.queue_music_rounded,
+              Icons.headphones,
               size: 32,
             ),
             label: 'music',
@@ -88,8 +88,9 @@ class _MainScreen extends State<FrameScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        unselectedItemColor: Palette.deepPurple,
-        selectedItemColor: Palette.selectedItem,
+        unselectedItemColor: wDisabledColor,
+        selectedItemColor: wPrimaryColor,
+        backgroundColor: wBackgroundColor,
         onTap: _onItemTapped,
       ),
     );
