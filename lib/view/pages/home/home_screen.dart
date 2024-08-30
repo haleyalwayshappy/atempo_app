@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
                 padding: EdgeInsets.all(8.0),
                 width: double.infinity,
                 height: 80,
-                color: Colors.yellowAccent,
+                color: Colors.blue,
                 child: Text(
                   "홈스크린 띄워라!",
                   style: TextStyle(
