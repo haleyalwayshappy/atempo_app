@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MusicListScreen extends StatelessWidget {
-  const MusicListScreen({super.key});
+  final VoidCallback onNavigateBack;
+  
+  const MusicListScreen({super.key, required this.onNavigateBack});
 
   @override
   Widget build(BuildContext context) {
@@ -9,13 +11,10 @@ class MusicListScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            Text("test"),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context); // 팝업 페이지를 띄워주고, 뒤로가기 버튼에서
-                },
-                child: Text("text")),
+            Text("음악 리스트 화면"),
+          ElevatedButton(onPressed: onNavigateBack, child: Text("back")),
           ],
+          
         ),
       ),
     );

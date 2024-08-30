@@ -9,28 +9,28 @@ import 'music/music_main_screen.dart';
 
 /// Flutter code sample for [BottomNavigationBar].
 
-void main() => runApp(const FrameScreenApp());
+void main() => runApp(const MainScreenApp());
 
-class FrameScreenApp extends StatelessWidget {
-  const FrameScreenApp({super.key});
+class MainScreenApp extends StatelessWidget {
+  const MainScreenApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: FrameScreen(),
+      home: MainScreen(),
     );
   }
 }
 
-class FrameScreen extends StatefulWidget {
-  const FrameScreen({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
   @override
-  State<FrameScreen> createState() => _MainScreen();
+  State<MainScreen> createState() => _MainScreen();
 }
 
-class _MainScreen extends State<FrameScreen> {
-  int _selectedIndex = 0;
+class _MainScreen extends State<MainScreen> {
+  int _selectedIndex = 1;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
@@ -50,15 +50,9 @@ class _MainScreen extends State<FrameScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: wBackgroundColor,
-      body: Container(
-        child: _screens.elementAt(_selectedIndex),
-      ),
-
-      // 플로팅 버튼
-      // floatingActionButton: const FloatingActionButton(
-      //   onPressed: flutterToast,
-      //   backgroundColor: Colors.green,
-      //   child: Icon(Icons.add),
+      body: _screens[_selectedIndex],
+      // body: Container(
+      //   child: _screens.elementAt(_selectedIndex),
       // ),
 
       bottomNavigationBar: BottomNavigationBar(
@@ -70,21 +64,21 @@ class _MainScreen extends State<FrameScreen> {
               Icons.headphones,
               size: 32,
             ),
-            label: 'music',
+            label: 'Music',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
               size: 32,
             ),
-            label: 'home',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(
               Icons.calendar_month,
               size: 32,
             ),
-            label: 'diary',
+            label: 'Diary',
           ),
         ],
         currentIndex: _selectedIndex,
@@ -108,3 +102,11 @@ void flutterToast() {
       textColor: Colors.white,
       fontSize: 16.0);
 }
+
+
+      // 플로팅 버튼
+      // floatingActionButton: const FloatingActionButton(
+      //   onPressed: flutterToast,
+      //   backgroundColor: Colors.green,
+      //   child: Icon(Icons.add),
+      // ),

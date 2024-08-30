@@ -1,126 +1,108 @@
+import 'package:atempo_app/constants/constants.dart';
+import 'package:atempo_app/view/pages/music/music_play_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'music_list_screen.dart';
 
-class MusicMainScreen extends StatelessWidget {
+class MusicMainScreen extends StatefulWidget {
   const MusicMainScreen({super.key});
 
   @override
+  State<MusicMainScreen> createState() => _MusicMainScreenState();
+}
+
+/// 음악 메인화면 (내부 화면 이동 처리
+class _MusicMainScreenState extends State<MusicMainScreen> {
+  int _currentScreenIndex = 0;
+
+  void _navigateTo(int index) {
+    setState(() {
+      _currentScreenIndex = index;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: MyTable(),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: wBackgroundColor,
+        centerTitle: false,
+        titleTextStyle: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.black,
+          fontSize: 24.0,
+        ),
+        title: GestureDetector(
+          onTap: () {
+            _navigateTo(0);
+          },
+          child: const Text(
+            "음악",
+            style: TextStyle(
+              color: Colors.black,
+            ),
+          ),
+        ),
+        elevation: 1.0,
+        actions: [
+          IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.person,
+                size: 28.0,
+              ))
+        ],
+      ),
+      body: IndexedStack(
+        index: _currentScreenIndex,
+        children: [
+          MusicHomeScreen(
+            onNavigateToPlay: () {
+              _navigateTo(1); // MusicPlayScreen으로 이동
+            },
+            onNavigateToList: () {
+              _navigateTo(2); // MusicListScreen으로 이동
+            },
+          ),
+          MusicPlayScreen(
+            onNavigateBack: () {
+              _navigateTo(0); // MusicHomeScreen으로 이동
+            },
+          ),
+          MusicListScreen(
+            onNavigateBack: () {
+              _navigateTo(0); // MusicHomeScreen으로 이동
+            },
+          ),
+        ],
+      ),
     );
   }
 }
 
-class MyTable extends StatelessWidget {
+class MusicHomeScreen extends StatelessWidget {
+  final VoidCallback onNavigateToPlay;
+  final VoidCallback onNavigateToList;
+
+  const MusicHomeScreen({
+    required this.onNavigateToPlay,
+    required this.onNavigateToList,
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('1x5 Table Example')),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-    ㅌ          ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const MusicListScreen(),
-                    ),
-                  );
-                },
-                child: Text("페이지 이동"),
-              ),
-              Table(
-                border: TableBorder.all(), // 테두리 추가
-                // border: TableBorder(
-                //   horizontalInside: BorderSide.none, // 내부 수평 테두리 없음
-                //   verticalInside: BorderSide.none, // 내부 수직 테두리 없음
-                //   top: BorderSide(width: 1, color: Colors.black), // 상단 테두리
-                //   bottom: BorderSide(width: 1, color: Colors.black), // 하단 테두리
-                //   left: BorderSide.none, // 왼쪽 테두리 없음
-                //   right: BorderSide.none, // 오른쪽 테두리 없음
-                // ),
-                columnWidths: {
-                  0: FixedColumnWidth(50), // 첫 번째 열
-                  1: FixedColumnWidth(50), // 두 번째 열
-                  2: FixedColumnWidth(150), // 세 번째 열 (길게)
-                  3: FixedColumnWidth(50), // 네 번째 열
-                  4: FixedColumnWidth(50), // 다섯 번째 열
-                },
-                children: [
-                  TableRow(
-                    children: [
-                      TableCell(
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          child: Text(
-                            'Cell 1',
-                            style: TextStyle(color: Colors.blue),
-                          ),
-                        ),
-                      ),
-                      TableCell(
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          child: Text('Cell 2'),
-                        ),
-                      ),
-                      TableCell(
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          child: Text('Cell 3'),
-                        ),
-                      ),
-                      TableCell(
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          child: Text('Cell 4'),
-                        ),
-                      ),
-                      TableCell(
-                        child: Container(
-                          padding: EdgeInsets.all(8),
-                          child: Text('Cell 5'),
-                        ),
-                      ),
-                    ],
-                  ),
-                  TableRow(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        child: Text(
-                          'Cell 1',
-                          style: TextStyle(color: Colors.blue),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        child: Text('Cell 2'),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        child: Text('Cell 3'),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        child: Text('Cell 4'),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        child: Text('Cell 5'),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
+    return Column(
+      children: [
+        ElevatedButton(
+          onPressed: onNavigateToPlay,
+          child: Text("재생화면으로 이동"),
         ),
-      ),
+        ElevatedButton(
+          onPressed: onNavigateToList,
+          child: Text("목록 화면으로 이동 "),
+        ),
+      ],
     );
   }
 }
