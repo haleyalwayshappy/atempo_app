@@ -1,5 +1,4 @@
 import 'package:atempo_app/constants/constants.dart';
-import 'package:atempo_app/theme/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -31,8 +30,6 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreen extends State<MainScreen> {
   int _selectedIndex = 1;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
   final List<Widget> _screens = [
     MusicMainScreen(),

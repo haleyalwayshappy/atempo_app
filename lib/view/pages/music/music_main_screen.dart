@@ -6,6 +6,7 @@ import 'music_list_screen.dart';
 
 class MusicMainScreen extends StatefulWidget {
   const MusicMainScreen({super.key});
+/* stateful 로 변경한 이유는 콜백함수를 위해서임, 버튼을 누를때 화면 상태가 변경되기 때문 */
 
   @override
   State<MusicMainScreen> createState() => _MusicMainScreenState();
@@ -13,8 +14,9 @@ class MusicMainScreen extends StatefulWidget {
 
 /// 음악 메인화면 (내부 화면 이동 처리
 class _MusicMainScreenState extends State<MusicMainScreen> {
-  int _currentScreenIndex = 0;
+  int _currentScreenIndex = 0; // 현재 페이지 위치
 
+  /// 화면 상태 변경 함수 (내부에서만 사용됨)
   void _navigateTo(int index) {
     setState(() {
       _currentScreenIndex = index;
@@ -54,9 +56,11 @@ class _MusicMainScreenState extends State<MusicMainScreen> {
         ],
       ),
       body: IndexedStack(
+        // TODO indexedStack 공부 하기
         index: _currentScreenIndex,
         children: [
           MusicHomeScreen(
+            // 뮤직 메인스크린 화면
             onNavigateToPlay: () {
               _navigateTo(1); // MusicPlayScreen으로 이동
             },
@@ -68,10 +72,16 @@ class _MusicMainScreenState extends State<MusicMainScreen> {
             onNavigateBack: () {
               _navigateTo(0); // MusicHomeScreen으로 이동
             },
+            onNavigateToList: () {
+              _navigateTo(2); // MusicListScreen으로 이동
+            },
           ),
           MusicListScreen(
             onNavigateBack: () {
               _navigateTo(0); // MusicHomeScreen으로 이동
+            },
+            onNavigateToPlay: () {
+              _navigateTo(1); // MusicPlayScreen으로 이동
             },
           ),
         ],
@@ -84,6 +94,7 @@ class MusicHomeScreen extends StatelessWidget {
   final VoidCallback onNavigateToPlay;
   final VoidCallback onNavigateToList;
 
+  /// 뮤직메인스크린 화면
   const MusicHomeScreen({
     required this.onNavigateToPlay,
     required this.onNavigateToList,
