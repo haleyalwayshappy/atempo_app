@@ -2,15 +2,21 @@ import 'package:atempo_app/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
+import '../../components/calendar_widget.dart';
 
-class DiaryMainScreen extends StatelessWidget {
+class DiaryMainScreen extends StatefulWidget {
   const DiaryMainScreen({super.key});
 
+  @override
+  State<DiaryMainScreen> createState() => _DiaryMainScreenState();
+}
+
+class _DiaryMainScreenState extends State<DiaryMainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: wBackgroundColor,
+        backgroundColor: mBackgroundColor,
         centerTitle: false,
         titleTextStyle: TextStyle(
           fontWeight: FontWeight.bold,
@@ -36,7 +42,7 @@ class DiaryMainScreen extends StatelessWidget {
               ))
         ],
       ),
-      backgroundColor: wBackgroundColor,
+      backgroundColor: mBackgroundColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -46,7 +52,7 @@ class DiaryMainScreen extends StatelessWidget {
               padding: EdgeInsets.all(4),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: wPrimaryColor, width: 4),
+                border: Border.all(color: mPrimaryColor, width: 4),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +103,8 @@ class DiaryMainScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
+            ElevatedButton(onPressed: (){}, child: Text("text")),
           ],
         ),
       ),

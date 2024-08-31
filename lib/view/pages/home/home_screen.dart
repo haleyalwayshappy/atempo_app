@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: wBackgroundColor,
+      backgroundColor: mBackgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
                 child: Text(
                   "홈스크린 띄워라!",
                   style: TextStyle(
-                    color: wFontColor,
+                    color: mFontColor,
                   ),
                 ),
               ),
@@ -103,7 +103,7 @@ class RecommendMusic extends StatelessWidget {
                   ),
                   Text(
                     musicTexts!,
-                    style: TextStyle(color: wFontColor),
+                    style: TextStyle(color: mFontColor),
                   ),
                 ],
               ),

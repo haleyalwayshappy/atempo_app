@@ -46,7 +46,7 @@ class _MainScreen extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: wBackgroundColor,
+      backgroundColor: mBackgroundColor,
       body: _screens[_selectedIndex],
       // body: Container(
       //   child: _screens.elementAt(_selectedIndex),
@@ -79,9 +79,9 @@ class _MainScreen extends State<MainScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        unselectedItemColor: wDisabledColor,
-        selectedItemColor: wPrimaryColor,
-        backgroundColor: wBackgroundColor,
+        unselectedItemColor: mDisabledColor,
+        selectedItemColor: mPrimaryColor,
+        backgroundColor: mBackgroundColor,
         onTap: _onItemTapped,
       ),
     );
@@ -99,11 +99,3 @@ void flutterToast() {
       textColor: Colors.white,
       fontSize: 16.0);
 }
-
-
-      // 플로팅 버튼
-      // floatingActionButton: const FloatingActionButton(
-      //   onPressed: flutterToast,
-      //   backgroundColor: Colors.green,
-      //   child: Icon(Icons.add),
-      // ),

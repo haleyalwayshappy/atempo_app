@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-const Color wBackgroundColor = Color(0xffffffff);
-const Color wPrimaryColor = Color(0xffa4ce74);
-const Color wSecondaryColor = Color(0xff61B15A);
-const Color wFontColor = Color(0xff333333);
-const Color wEnabledColor = Color(0xff333333);
-const Color wDisabledColor = Color(0xff808080);
-const Color wLightGrayColor = Color(0xffC4C4C4);
+const Color mBackgroundColor = Color(0xffffffff);
+const Color mPrimaryColor = Color(0xffa4ce74);
+const Color mSecondaryColor = Color(0xff61B15A);
+const Color mFontColor = Color(0xff333333);
+const Color mEnabledColor = Color(0xff333333);
+const Color mDisabledColor = Color(0xff808080);
+const Color mLightGrayColor = Color(0xffC4C4C4);
 
 const kSearchEditTextStyle = TextStyle(
   color: Colors.black,

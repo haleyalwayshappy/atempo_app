@@ -27,7 +27,7 @@ class _MusicMainScreenState extends State<MusicMainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: wBackgroundColor,
+        backgroundColor: mBackgroundColor,
         centerTitle: false,
         titleTextStyle: TextStyle(
           fontWeight: FontWeight.bold,
