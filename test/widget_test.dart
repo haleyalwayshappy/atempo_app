@@ -8,7 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:atempo_app/view/pages/bottom_navigation_basic.dart';
+import 'package:atempo_app/view/components/bottom_navigation.dart';
 
 Future<void> main() async {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {

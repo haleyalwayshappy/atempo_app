@@ -2,7 +2,6 @@ import 'package:atempo_app/theme/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
-import '../../components/calendar_widget.dart';
 
 class DiaryMainScreen extends StatefulWidget {
   const DiaryMainScreen({super.key});
@@ -105,6 +104,7 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
               ),
             ),
             ElevatedButton(onPressed: (){}, child: Text("text")),
+            ElevatedButton(onPressed: () {}, child: Text("text")),
           ],
         ),
       ),

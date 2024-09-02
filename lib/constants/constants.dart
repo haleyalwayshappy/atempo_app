@@ -21,3 +21,11 @@ const kSearchEditHintStyle = TextStyle(
   fontSize: 15.0,
   height: 1.2,
 );
+
+const Map<dynamic, dynamic> emotionText = {
+  "happy": "행복해요!",
+  "sad": "슬퍼요",
+  "angry": "화가나요",
+  "confused": "혼란스러워요",
+  "peaceful": "편안해요."
+};

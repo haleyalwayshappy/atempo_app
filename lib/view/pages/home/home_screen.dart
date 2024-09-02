@@ -1,8 +1,6 @@
 import 'package:atempo_app/constants/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../../components/custom_app_bar.dart';
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
