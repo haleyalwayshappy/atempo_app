@@ -2,7 +2,7 @@
 FLUTTER_ROOT=/Users/hongeunlee/development/flutter
 FLUTTER_APPLICATION_PATH=/Users/hongeunlee/Documents/GitHub/atempo_app
 COCOAPODS_PARALLEL_CODE_SIGN=true
-FLUTTER_TARGET=/Users/hongeunlee/Documents/GitHub/atempo_app/lib/view/pages/main.dart
+FLUTTER_TARGET=/Users/hongeunlee/Documents/GitHub/atempo_app/lib/main.dart
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=1.0.0
 FLUTTER_BUILD_NUMBER=1
