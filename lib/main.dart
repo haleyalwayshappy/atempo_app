@@ -1,4 +1,5 @@
 import 'package:atempo_app/view/pages/home/choice_emotion_screen.dart';
+import 'package:atempo_app/view/pages/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MainScreenApp());
@@ -9,7 +10,7 @@ class MainScreenApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: ChoiceEmotionScreen(),
+      home: HomeScreen(),
     );
   }
 }

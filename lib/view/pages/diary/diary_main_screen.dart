@@ -1,4 +1,4 @@
-import 'package:atempo_app/theme/colors.dart';
+import 'package:atempo_app/components/emotion_popup_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/constants.dart';
@@ -46,30 +46,7 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
         child: Column(
           children: [
             // 감정 상태창
-            Container(
-              margin: EdgeInsets.all(16),
-              padding: EdgeInsets.all(4),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: mPrimaryColor, width: 4),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 80,
-                    child: Image.asset('assets/images/icon_joy.png'),
-                  ),
-                  Text(
-                    "오늘 기분 해피이~!",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+           EmotionPopupWidget(),
             // row > datepicker / 우측에 화면 전환
             Container(
               child: Row(
