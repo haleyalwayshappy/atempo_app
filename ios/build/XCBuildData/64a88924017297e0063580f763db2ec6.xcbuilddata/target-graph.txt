@@ -1,0 +1,16 @@
+Target dependency graph (7 targets)
+Target 'Pods-RunnerTests' in project 'Pods'
+➜ Explicit dependency on target 'Pods-Runner' in project 'Pods'
+Target 'Pods-Runner' in project 'Pods'
+➜ Explicit dependency on target 'Flutter' in project 'Pods'
+➜ Explicit dependency on target 'Toast' in project 'Pods'
+➜ Explicit dependency on target 'fluttertoast' in project 'Pods'
+Target 'fluttertoast' in project 'Pods'
+➜ Explicit dependency on target 'Flutter' in project 'Pods'
+➜ Explicit dependency on target 'Toast' in project 'Pods'
+➜ Explicit dependency on target 'fluttertoast-fluttertoast_privacy' in project 'Pods'
+Target 'fluttertoast-fluttertoast_privacy' in project 'Pods' (no dependencies)
+Target 'Toast' in project 'Pods'
+➜ Explicit dependency on target 'Toast-Toast' in project 'Pods'
+Target 'Toast-Toast' in project 'Pods' (no dependencies)
+Target 'Flutter' in project 'Pods' (no dependencies)
