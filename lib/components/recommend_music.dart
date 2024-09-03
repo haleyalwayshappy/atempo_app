@@ -1,7 +1,6 @@
 import 'package:atempo_app/constants/constants.dart';
 import 'package:flutter/material.dart';
 
-
 class RecommendMusic extends StatelessWidget {
   const RecommendMusic({super.key});
 
@@ -11,29 +10,13 @@ class RecommendMusic extends StatelessWidget {
       // index : "1" , image: "
       {
         'index': '1',
-        'image': 'assets/images/maru_image.png',
+        'image': 'assets/images/maru1.jpeg',
         'text': 'Musssssic 1'
       },
-      {
-        'index': '2',
-        'image': 'assets/images/maru_image.png',
-        'text': 'Music 2'
-      },
-      {
-        'index': '3',
-        'image': 'assets/images/maru_image.png',
-        'text': 'Music 3'
-      },
-      {
-        'index': '4',
-        'image': 'assets/images/maru_image.png',
-        'text': 'Music 4'
-      },
-      {
-        'index': '5',
-        'image': 'assets/images/maru_image.png',
-        'text': 'Music 5'
-      },
+      {'index': '2', 'image': 'assets/images/maru2.jpeg', 'text': 'Music 2'},
+      {'index': '3', 'image': 'assets/images/maru3.jpeg', 'text': 'Music 3'},
+      {'index': '4', 'image': 'assets/images/maru4.jpeg', 'text': 'Music 4'},
+      {'index': '5', 'image': 'assets/images/maru1.jpeg', 'text': 'Music 5'},
     ];
 
     return Container(
@@ -50,21 +33,23 @@ class RecommendMusic extends StatelessWidget {
           return SizedBox(
             height: 120,
             width: 145,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+            child: Container(
+              margin:
+                  EdgeInsets.only(left: outlinedDouble, top: outlinedDouble),
               child: Column(
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20.0),
                     child: Image.asset(
+                      width: 120,
+                      height: 120,
                       imageRoute!,
                       fit: BoxFit.cover,
                     ),
                   ),
                   Text(
                     musicTexts!,
-                    style: TextStyle(color: mFontColor,
-                    fontSize: 18),
+                    style: TextStyle(color: mFontColor, fontSize: 18),
                   ),
                 ],
               ),

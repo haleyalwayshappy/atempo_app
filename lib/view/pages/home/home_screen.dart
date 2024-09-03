@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: false,
         backgroundColor: mBackgroundColor,
-        title: Image.asset('assets/images/icon_atempo_logo.png',width: 200),
+        title: Image.asset('assets/images/icon_atempo_logo.png', width: 160),
         actions: [
           IconButton(
               onPressed: () {},

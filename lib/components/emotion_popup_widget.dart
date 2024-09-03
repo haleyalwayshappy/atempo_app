@@ -7,8 +7,8 @@ class EmotionPopupWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      margin: EdgeInsets.all(16),
+    return Container(
+      margin: EdgeInsets.all(outlinedDouble),
       padding: EdgeInsets.all(4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),

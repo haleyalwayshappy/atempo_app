@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const Color mBackgroundColor = Color(0xffffffff);
+const Color mBackgroundColor = Color(0xfff4f9f3);
 const Color mPrimaryColor = Color(0xffa4ce74);
 const Color mSecondaryColor = Color(0xff61B15A);
 const Color mFontColor = Color(0xff333333);
@@ -29,3 +29,5 @@ const Map<dynamic, dynamic> emotionText = {
   "confused": "혼란스러워요",
   "peaceful": "편안해요."
 };
+
+const double outlinedDouble = 15.0;
