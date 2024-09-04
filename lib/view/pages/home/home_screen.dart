@@ -11,15 +11,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: false,
-        backgroundColor: mBackgroundColor,
         title: Image.asset('assets/images/icon_atempo_logo.png', width: 160),
         actions: [
           IconButton(
               onPressed: () {},
               icon: Icon(
                 Icons.person,
-                size: 28.0,
               ))
         ],
       ),

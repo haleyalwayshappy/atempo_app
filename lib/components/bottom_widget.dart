@@ -7,14 +7,14 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 /// Flutter code sample for [BottomNavigationBar].
 
-class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({super.key});
+class BottomWidget extends StatefulWidget {
+  const BottomWidget({super.key});
 
   @override
-  State<BottomNavigation> createState() => _MainScreen();
+  State<BottomWidget> createState() => _MainScreen();
 }
 
-class _MainScreen extends State<BottomNavigation> {
+class _MainScreen extends State<BottomWidget> {
   int _selectedIndex = 1;
 
   final List<Widget> _screens = [
@@ -32,12 +32,7 @@ class _MainScreen extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: mBackgroundColor,
       body: _screens[_selectedIndex],
-      // body: Container(
-      //   child: _screens.elementAt(_selectedIndex),
-      // ),
-
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -66,7 +61,7 @@ class _MainScreen extends State<BottomNavigation> {
         ],
         currentIndex: _selectedIndex,
         unselectedItemColor: mDisabledColor,
-        selectedItemColor: mPrimaryColor,
+        selectedItemColor: mEnabledColor,
         backgroundColor: mBackgroundColor,
         onTap: _onItemTapped,
       ),

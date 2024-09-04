@@ -12,7 +12,7 @@ class EmotionPopupWidget extends StatelessWidget {
       padding: EdgeInsets.all(4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: mPrimaryColor, width: 4),
+        border: Border.all(color: mSecondaryColor, width: 4),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -23,10 +23,7 @@ class EmotionPopupWidget extends StatelessWidget {
           ),
           Text(
             "오늘 기분 해피이~!",
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 24,
-            ),
+            style: mDiaryStyle,
           ),
         ],
       ),

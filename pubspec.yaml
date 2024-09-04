@@ -67,6 +67,13 @@ flutter:
     - assets/images/
 
   fonts:
+    - family: Santteut
+      fonts:
+        - asset: assets/fonts/HakgyoansimSantteutdotumL.ttf
+          weight: 600
+        - asset: assets/fonts/HakgyoansimSantteutdotumM.ttf
+          weight: 400
+
     - family: Pretendard
       fonts:
         - asset: assets/fonts/Pretendard-Thin.ttf

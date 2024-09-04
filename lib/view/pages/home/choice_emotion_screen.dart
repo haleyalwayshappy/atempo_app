@@ -22,7 +22,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
               Text(
                 "오늘 나의 기분은 어떤가요?",
                 style: TextStyle(
-                  color: mFontColor,
+                  color: mFontDarkColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),
@@ -98,7 +98,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
               Text(
                 "행복해요",
                 style: TextStyle(
-                  color: mFontColor,
+                  color: mFontDarkColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 18,
                 ),

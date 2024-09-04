@@ -49,7 +49,7 @@ class RecommendMusic extends StatelessWidget {
                   ),
                   Text(
                     musicTexts!,
-                    style: TextStyle(color: mFontColor, fontSize: 18),
+                    style: TextStyle(color: mFontDarkColor, fontSize: 18),
                   ),
                 ],
               ),

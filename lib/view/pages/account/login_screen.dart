@@ -8,7 +8,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: mBackgroundColor,
+      // backgroundColor: mPrimaryColor,
       body: Center(
         child: Column(
           children: [
@@ -46,11 +46,7 @@ class LoginScreen extends StatelessWidget {
                       child: GestureDetector(
                         child: Text(
                           "회원가입",
-                          style: TextStyle(
-                              fontFamily: "Pretendard",
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: mFontColor),
+                          style: TextStyle(fontSize: 16, color: mFontDarkColor),
                         ),
                         onTap: () {},
                       ),

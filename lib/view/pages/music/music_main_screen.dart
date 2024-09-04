@@ -29,7 +29,6 @@ class _MusicMainScreenState extends State<MusicMainScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: mBackgroundColor,
-        centerTitle: false,
         titleTextStyle: TextStyle(
           fontWeight: FontWeight.bold,
           color: Colors.black,
@@ -52,7 +51,6 @@ class _MusicMainScreenState extends State<MusicMainScreen> {
               onPressed: () {},
               icon: Icon(
                 Icons.person,
-                size: 28.0,
               ))
         ],
       ),

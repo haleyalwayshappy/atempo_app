@@ -16,20 +16,10 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: mBackgroundColor,
-        centerTitle: false,
-        titleTextStyle: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
-          fontSize: 24.0,
-        ),
         title: GestureDetector(
           onTap: () {},
           child: const Text(
             "일기",
-            style: TextStyle(
-              color: Colors.black,
-              letterSpacing: 2.5,
-            ),
           ),
         ),
         actions: [
@@ -37,16 +27,14 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
               onPressed: () {},
               icon: Icon(
                 Icons.person,
-                size: 28.0,
               ))
         ],
       ),
-      backgroundColor: mBackgroundColor,
       body: SafeArea(
         child: Column(
           children: [
             // 감정 상태창
-           EmotionPopupWidget(),
+            EmotionPopupWidget(),
             // row > datepicker / 우측에 화면 전환
             Container(
               child: Row(
@@ -80,7 +68,7 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
                 ],
               ),
             ),
-            ElevatedButton(onPressed: (){}, child: Text("text")),
+            ElevatedButton(onPressed: () {}, child: Text("text")),
             ElevatedButton(onPressed: () {}, child: Text("text")),
           ],
         ),
