@@ -1,9 +1,8 @@
-import 'package:atempo_app/constants/constants.dart';
-import 'package:atempo_app/view/pages/diary/diary_main_screen.dart';
-import 'package:atempo_app/view/pages/home/home_screen.dart';
-import 'package:atempo_app/view/pages/music/music_main_screen.dart';
+import 'package:atempo_app/utils/constants.dart';
+import 'package:atempo_app/screens/diary/diary_main_screen.dart';
+import 'package:atempo_app/screens/home/home_screen.dart';
+import 'package:atempo_app/screens/music/music_main_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 /// Flutter code sample for [BottomNavigationBar].
 

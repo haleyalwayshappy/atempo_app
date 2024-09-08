@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/constants.dart';
+import '../utils/constants.dart';
 
 class CustomButton extends StatelessWidget {
   final String buttonText; // 버튼 텍스트
@@ -16,9 +16,9 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        foregroundColor: mBackgroundColor,
-        backgroundColor: mSecondaryColor, // 텍스트 색상
-        elevation: 3, // 그림자 깊이
+        foregroundColor: mFontLightColor,
+        backgroundColor: mPrimaryColor, // 텍스트 색상
+        elevation: 2, // 그림자 깊이
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10), // 모서리 둥글기
         ),
@@ -29,6 +29,7 @@ class CustomButton extends StatelessWidget {
         child: Text(
           buttonText,
           style: TextStyle(
+            fontFamily: "Pretendard",
             fontSize: 18,
             letterSpacing: 1.4,
             fontWeight: FontWeight.bold,

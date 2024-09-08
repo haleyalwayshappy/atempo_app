@@ -1,7 +1,7 @@
-import 'package:atempo_app/components/emotion_popup_widget.dart';
+import 'package:atempo_app/widgets/emotion_popup_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants/constants.dart';
+import '../../utils/constants.dart';
 
 class DiaryMainScreen extends StatefulWidget {
   const DiaryMainScreen({super.key});

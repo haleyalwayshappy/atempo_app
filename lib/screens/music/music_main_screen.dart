@@ -1,6 +1,6 @@
-import 'package:atempo_app/components/toast.dart';
-import 'package:atempo_app/constants/constants.dart';
-import 'package:atempo_app/view/pages/music/music_play_screen.dart';
+import 'package:atempo_app/screens/music/music_play_screen.dart';
+import 'package:atempo_app/utils/constants.dart';
+import 'package:atempo_app/widgets/toast.dart';
 import 'package:flutter/material.dart';
 
 import 'music_list_screen.dart';

@@ -1,6 +1,6 @@
-import 'package:atempo_app/components/custom_button.dart';
-import 'package:atempo_app/components/toast.dart';
-import 'package:atempo_app/constants/constants.dart';
+import 'package:atempo_app/utils/constants.dart';
+import 'package:atempo_app/widgets/custom_button.dart';
+import 'package:atempo_app/widgets/toast.dart';
 import 'package:flutter/material.dart';
 
 /// TODO :  감정선택시 텍스트 필드의 값 바뀌기 > 상수에 'emotionText'사용할것.
@@ -11,7 +11,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: mBackgroundColor,
+      // backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -43,7 +43,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
                           flutterToast("버튼누름!");
                         },
                         child: Image.asset(
-                          'assets/images/icon_sad.png',
+                          'assets/images/icon/icon_sadness1.png',
                           width: 120,
                         ),
                       ),
@@ -54,7 +54,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
                       child: GestureDetector(
                         onTap: () {},
                         child: Image.asset(
-                          'assets/images/icon_joy.png',
+                          'assets/images/icon/icon_joy_y.png',
                           width: 120,
                         ),
                       ),
@@ -65,7 +65,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
                       child: GestureDetector(
                         onTap: () {},
                         child: Image.asset(
-                          'assets/images/icon_peace.png',
+                          'assets/images/icon/icon_peaceful.png',
                           width: 120,
                         ),
                       ),
@@ -76,7 +76,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
                       child: GestureDetector(
                         onTap: () {},
                         child: Image.asset(
-                          'assets/images/icon_angry.png',
+                          'assets/images/icon/icon_angry.png',
                           width: 120,
                         ),
                       ),
@@ -87,7 +87,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
                       child: GestureDetector(
                         onTap: () {},
                         child: Image.asset(
-                          'assets/images/icon_confusion.png',
+                          'assets/images/icon/icon_confuse.png',
                           width: 120,
                         ),
                       ),
@@ -116,8 +116,10 @@ class ChoiceEmotionScreen extends StatelessWidget {
               ),
               Text(
                 "선택하지않고 넘어갈래요.",
-                style: TextStyle(color: mDisabledColor),
-              )
+                style: TextStyle(
+                  color: mGrey3Color,
+                ),
+              ),
             ],
           ),
         ),

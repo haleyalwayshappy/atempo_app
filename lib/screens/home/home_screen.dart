@@ -1,8 +1,8 @@
-import 'package:atempo_app/components/emotion_popup_widget.dart';
-import 'package:atempo_app/constants/constants.dart';
+import 'package:atempo_app/utils/constants.dart';
+import 'package:atempo_app/widgets/emotion_popup_widget.dart';
+import 'package:atempo_app/widgets/recommend_music.dart';
 import 'package:flutter/material.dart';
 
-import '../../../components/recommend_music.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset('assets/images/icon_atempo_logo.png', width: 160),
+        title: Image.asset('assets/images/logo_atempo.png', width: 160),
         actions: [
           IconButton(
               onPressed: () {},

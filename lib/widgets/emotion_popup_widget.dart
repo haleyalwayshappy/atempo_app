@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/constants.dart';
+import '../utils/constants.dart';
 
 class EmotionPopupWidget extends StatelessWidget {
   const EmotionPopupWidget({super.key});
@@ -19,7 +19,7 @@ class EmotionPopupWidget extends StatelessWidget {
         children: [
           Container(
             width: 80,
-            child: Image.asset('assets/images/icon_joy.png'),
+            child: Image.asset('assets/images/icon_joy1.png'),
           ),
           Text(
             "오늘 기분 해피이~!",

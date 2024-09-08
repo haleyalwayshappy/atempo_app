@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 const Color mBackgroundColor = Color(0xfff4f9f3);
+
 const Color mPrimaryColor = Color(0xff61B15A);
 const Color mSecondaryColor = Color(0xffAFD8AC);
+
 const Color mFontDarkColor = Color(0xff0D1A0C);
 const Color mFontLightColor = Color(0xffF4FAF4);
+
+const Color mButtonColor = Color(0xff498E43);
 const Color mEnabledColor = Color(0xff2E5A2A);
 const Color mDisabledColor = Color(0xffC2C2C2);
 
@@ -49,3 +53,5 @@ const Map<dynamic, dynamic> emotionText = {
 
 /// 왼쪽오른쪽 여백 값 고정
 const double outlinedDouble = 15.0;
+
+const List<String> emailSiteList = ['gmail.com','naver.com','daum.net','hanmail.net'];

@@ -5,93 +5,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd123e6d-599b-4fe0-be62-f634cdf7667d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Pretendard-Black.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Pretendard-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Pretendard-ExtraBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Pretendard-ExtraLight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Pretendard-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Pretendard-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Pretendard-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Pretendard-SemiBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Pretendard-Thin.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/apple_btn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/email_btn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/kakao_btn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/maru1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/maru2.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/maru3.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/maru4.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/maru5.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/button/apple_login_btn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/button/email_login_btn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/button/kakao_login_btn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/icon/icon_angry.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/icon/icon_confuse.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/icon/icon_joy_p.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/icon/icon_joy_y.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/icon/icon_peaceful.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/icon/icon_sadness.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/logo_atempo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/account/login_email_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/maru_image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/apple_btn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/button_green_short.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/button/button_green_short.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/email_btn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/glossy_btn.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/button/glossy_btn.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/glossy_button.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/button/glossy_button.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/icon_angry.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/icon_atempo_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/icon_confusion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/icon_joy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/icon_peace.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/icon_sad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/icons_appbar_back.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/kakao_btn.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Generated.xcconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/flutter_export_environment.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/project.pbxproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/xcuserdata/hongeunlee.xcuserdatad/xcschemes/Flutter.xcscheme" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/xcuserdata/hongeunlee.xcuserdatad/xcschemes/Pods-Runner.xcscheme" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/xcuserdata/hongeunlee.xcuserdatad/xcschemes/Pods-RunnerTests.xcscheme" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/xcuserdata/hongeunlee.xcuserdatad/xcschemes/Toast-Toast.xcscheme" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/xcuserdata/hongeunlee.xcuserdatad/xcschemes/Toast.xcscheme" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/xcuserdata/hongeunlee.xcuserdatad/xcschemes/fluttertoast-fluttertoast_privacy.xcscheme" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/xcuserdata/hongeunlee.xcuserdatad/xcschemes/fluttertoast.xcscheme" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Pods.xcodeproj/xcuserdata/hongeunlee.xcuserdatad/xcschemes/xcschememanagement.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Flutter/Flutter.debug.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Flutter/Flutter.release.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-Info.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-acknowledgements.markdown" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-acknowledgements.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-dummy.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-Debug-input-files.xcfilelist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-Debug-output-files.xcfilelist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-Profile-input-files.xcfilelist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-Profile-output-files.xcfilelist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-Release-input-files.xcfilelist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks-Release-output-files.xcfilelist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner-umbrella.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner.modulemap" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-RunnerTests/Pods-RunnerTests-Info.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-RunnerTests/Pods-RunnerTests-acknowledgements.markdown" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-RunnerTests/Pods-RunnerTests-acknowledgements.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-RunnerTests/Pods-RunnerTests-dummy.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-RunnerTests/Pods-RunnerTests-umbrella.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-RunnerTests/Pods-RunnerTests.debug.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-RunnerTests/Pods-RunnerTests.modulemap" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-RunnerTests/Pods-RunnerTests.profile.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Toast/ResourceBundle-Toast-Toast-Info.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Toast/Toast-Info.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Toast/Toast-dummy.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Toast/Toast-prefix.pch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Toast/Toast-umbrella.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Toast/Toast.debug.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Toast/Toast.modulemap" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/Toast/Toast.release.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/fluttertoast/ResourceBundle-fluttertoast_privacy-fluttertoast-Info.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/fluttertoast/fluttertoast-Info.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/fluttertoast/fluttertoast-dummy.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/fluttertoast/fluttertoast-prefix.pch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/fluttertoast/fluttertoast-umbrella.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/fluttertoast/fluttertoast.debug.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/fluttertoast/fluttertoast.modulemap" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Target Support Files/fluttertoast/fluttertoast.release.xcconfig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Toast/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Toast/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Toast/Toast-Framework/Toast.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Toast/Toast/Resources/PrivacyInfo.xcprivacy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Toast/Toast/UIView+Toast.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Pods/Toast/Toast/UIView+Toast.m" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/components/emotion_popup_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/emotion_popup_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/components/recommend_music.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/recommend_music.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/constants/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/constants/constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/components/bottom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/bottom_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/components/calendar_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated/assets.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/components/custom_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_app_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/components/custom_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/components/emotion_popup_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/emotion_popup_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/components/recommend_music.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/recommend_music.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/components/toast.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/toast.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/constants/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/constants.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/pages/account/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/account/login_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/view/pages/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/view/pages/home/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/account/create_account_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/create_account_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/account/find_id_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/find_id_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/account/login_email_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/calendar_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/account/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/diary/diary_main_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_main_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/diary/diary_read_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_read_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/diary/diary_write_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_write_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/home/choice_emotion_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/choice_emotion_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/home/splash_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/splash_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/music/audiobook_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/audiobook_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/music/music_list_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_list_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/music/music_main_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_main_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/music/music_play_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_play_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/music/table_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/table_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/settings/mypage_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/settings/mypage_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/view/pages/settings/settings_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/settings/settings_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +109,7 @@
     "git-widget-placeholder": "main",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/hongeunlee/Documents/GitHub/atempo_app/assets/images",
+    "last_opened_file_path": "/Volumes/T7/development/atempo_app/assets/images",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
@@ -148,9 +118,11 @@
       <recent name="$PROJECT_DIR$/assets/images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets/fonts" />
+      <recent name="$PROJECT_DIR$/assets/images/button" />
+      <recent name="$PROJECT_DIR$/assets/images/icon" />
       <recent name="$PROJECT_DIR$/assets/images" />
-      <recent name="$PROJECT_DIR$/lib" />
+      <recent name="$PROJECT_DIR$/lib/utils" />
+      <recent name="$PROJECT_DIR$/lib/widgets" />
     </key>
   </component>
   <component name="RunManager">

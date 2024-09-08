@@ -1,16 +1,20 @@
-import 'package:atempo_app/components/bottom_widget.dart';
-import 'package:atempo_app/constants/constants.dart';
-import 'package:atempo_app/view/pages/account/login_screen.dart';
-import 'package:atempo_app/view/pages/diary/diary_main_screen.dart';
-import 'package:atempo_app/view/pages/home/choice_emotion_screen.dart';
-import 'package:atempo_app/view/pages/home/home_screen.dart';
+import 'package:atempo_app/screens/account/login_screen.dart';
+import 'package:atempo_app/screens/home/choice_emotion_screen.dart';
+import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
+
+import 'screens/account/login_email_screen.dart';
 
 void main() => runApp(const MainScreenApp());
 
-class MainScreenApp extends StatelessWidget {
+class MainScreenApp extends StatefulWidget {
   const MainScreenApp({super.key});
 
+  @override
+  State<MainScreenApp> createState() => _MainScreenAppState();
+}
+
+class _MainScreenAppState extends State<MainScreenApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,7 +36,7 @@ class MainScreenApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: mBackgroundColor,
       ),
-      home: BottomWidget(),
+      home: LoginEmailScreen(),
     );
   }
 }
