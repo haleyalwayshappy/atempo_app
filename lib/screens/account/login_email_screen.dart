@@ -1,3 +1,4 @@
+import 'package:atempo_app/widgets/textfield_with_title.dart';
 import 'package:flutter/material.dart';
 
 class LoginEmailScreen extends StatefulWidget {
@@ -10,12 +11,6 @@ class LoginEmailScreen extends StatefulWidget {
 class _LoginEmailScreenState extends State<LoginEmailScreen> {
   @override
   Widget build(BuildContext context) {
-    double deviceWidth = MediaQuery.of(context).size.width;
-    double deviceHeight = MediaQuery.of(context).size.height;
-
-    double widthRatio = deviceWidth / 375;
-    double heightRatio = deviceHeight / 812;
-
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -31,25 +26,22 @@ class _LoginEmailScreenState extends State<LoginEmailScreen> {
               Container(
                 height: 90,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text("이메일"),
-                  // 로그인 양식 찾기
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("hongniest",),
-                      Text("@"),
-                      Text("gmail.com"),
-                    ],
-                  ),
-                  Text("패스워드"),
-                  Text("********"),
-                ],
+              Padding(
+                padding: const EdgeInsets.only(left: 36, right: 36, bottom: 32),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    TextFieldWithTitle(
+                        labelText: '이메일', hintText: "이메일을 입력해주세요."),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    TextFieldWithTitle(
+                        labelText: '비밀번호', hintText: "비밀번호를 입력해주세요."),
+                  ],
+                ),
               ),
               IconButton(
-                padding: EdgeInsets.symmetric(vertical: 8),
                 onPressed: () {},
                 icon: Image.asset(
                   'assets/images/button/email_login_btn.png',

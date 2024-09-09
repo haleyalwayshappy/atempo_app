@@ -1,9 +1,8 @@
+import 'package:atempo_app/screens/account/login_email_screen.dart';
 import 'package:atempo_app/screens/account/login_screen.dart';
-import 'package:atempo_app/screens/home/choice_emotion_screen.dart';
 import 'package:atempo_app/utils/constants.dart';
+import 'package:atempo_app/widgets/bottom_widget.dart';
 import 'package:flutter/material.dart';
-
-import 'screens/account/login_email_screen.dart';
 
 void main() => runApp(const MainScreenApp());
 

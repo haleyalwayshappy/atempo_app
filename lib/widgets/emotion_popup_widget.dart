@@ -8,7 +8,7 @@ class EmotionPopupWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(outlinedDouble),
+      // margin: EdgeInsets.all(outlinedDouble),
       padding: EdgeInsets.all(4),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
@@ -19,7 +19,7 @@ class EmotionPopupWidget extends StatelessWidget {
         children: [
           Container(
             width: 80,
-            child: Image.asset('assets/images/icon_joy1.png'),
+            child: Image.asset('assets/images/icon/icon_joy_y.png'),
           ),
           Text(
             "오늘 기분 해피이~!",

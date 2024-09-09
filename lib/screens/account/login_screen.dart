@@ -12,6 +12,7 @@ class LoginScreen extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
+              // container - heigth값은 위아래 여백을 위해 사용함
               Container(
                 height: 150,
               ),

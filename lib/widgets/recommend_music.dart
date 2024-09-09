@@ -22,7 +22,7 @@ class RecommendMusic extends StatelessWidget {
     return Container(
       // color: Colors.purple,
       width: double.infinity,
-      height: 500,
+      height: 170,
       child: ListView.builder(
         physics: ClampingScrollPhysics(),
         scrollDirection: Axis.horizontal,
@@ -30,29 +30,24 @@ class RecommendMusic extends StatelessWidget {
         itemBuilder: (context, idx) {
           var imageRoute = musicItems[idx]['image'];
           var musicTexts = musicItems[idx]['text'];
-          return SizedBox(
-            height: 120,
-            width: 145,
-            child: Container(
-              margin:
-                  EdgeInsets.only(left: outlinedDouble, top: outlinedDouble),
-              child: Column(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0),
-                    child: Image.asset(
-                      width: 120,
-                      height: 120,
-                      imageRoute!,
-                      fit: BoxFit.cover,
-                    ),
+          return Container(
+            color: Colors.blue,
+            margin: EdgeInsets.only(left: outlinedDouble, top: outlinedDouble),
+            child: Column(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: Image.asset(
+                    width: 120,
+                    height: 120,
+                    imageRoute!,
+                    fit: BoxFit.cover,
                   ),
-                  Text(
-                    musicTexts!,
-                    style: TextStyle(color: mFontDarkColor, fontSize: 18),
-                  ),
-                ],
-              ),
+                ),
+                Text(
+                  musicTexts!,
+                ),
+              ],
             ),
           );
         },
