@@ -34,16 +34,16 @@ class _TextFieldWithTitleState extends State<TextFieldWithTitle> {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            widget.labelText,
-            style: TextStyle(
-              fontFamily: 'Pretendard',
-              fontWeight: FontWeight.w600,
-              fontSize: 18,
-              color: Colors.black,
-              letterSpacing: -0.45,
-            ),
-          ),
+          // Text(
+          //   widget.labelText,
+          //   style: TextStyle(
+          //     fontFamily: 'Pretendard',
+          //     fontWeight: FontWeight.w600,
+          //     fontSize: 18,
+          //     color: Colors.black,
+          //     letterSpacing: -0.45,
+          //   ),
+          // ),
           GestureDetector(
             onTap: () => _showCupertinoPicker(context),
             child: AbsorbPointer(

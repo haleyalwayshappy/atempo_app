@@ -16,14 +16,14 @@ class _LoginEmailScreenState extends State<LoginEmailScreen> {
         child: Center(
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 height: 70,
               ),
               Image.asset(
                 'assets/images/logo_atempo.png',
                 width: 300,
               ),
-              Container(
+              SizedBox(
                 height: 90,
               ),
               Padding(
@@ -32,7 +32,13 @@ class _LoginEmailScreenState extends State<LoginEmailScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     TextFieldWithTitle(
-                        labelText: '이메일', hintText: "이메일을 입력해주세요."),
+                      labelText: '이메일',
+                      hintText: "이메일을 입력해주세요.",
+                    ),
+                    TextFieldWithTitle(
+                      labelText: '이메일',
+                      hintText: "이메일을 입력해주세요.",
+                    ),
                     SizedBox(
                       height: 40,
                     ),
