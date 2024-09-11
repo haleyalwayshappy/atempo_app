@@ -11,7 +11,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.white,
+      backgroundColor: mBackgroundColor,
       body: SafeArea(
         child: Center(
           child: Column(
@@ -40,10 +40,10 @@ class ChoiceEmotionScreen extends StatelessWidget {
                       top: 64,
                       child: GestureDetector(
                         onTap: () {
-                          flutterToast("버튼누름!");
+                          customToastMsg("버튼누름!");
                         },
                         child: Image.asset(
-                          'assets/images/icon/icon_sadness1.png',
+                          'assets/images/icon/icon_sadness.png',
                           width: 120,
                         ),
                       ),
@@ -109,7 +109,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
               CustomButton(
                   buttonText: "확인",
                   onPressed: () {
-                    flutterToast("확인 버튼 누름");
+                    customToastMsg("확인 버튼 누름");
                   }),
               SizedBox(
                 height: 20,

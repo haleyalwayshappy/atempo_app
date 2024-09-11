@@ -61,7 +61,7 @@ class _MusicMainScreenState extends State<MusicMainScreen> {
           MusicHomeScreen(
             // 뮤직 메인스크린 화면
             onNavigateToPlay: () {
-              flutterToast("화면 이동합니다.");
+              customToastMsg("화면 이동합니다.");
               _navigateTo(1); // MusicPlayScreen으로 이동
             },
             onNavigateToList: () {
@@ -73,7 +73,7 @@ class _MusicMainScreenState extends State<MusicMainScreen> {
               _navigateTo(0); // MusicHomeScreen으로 이동
             },
             onNavigateToList: () {
-              flutterToast("화면 이동합니다.");
+              customToastMsg("화면 이동합니다.");
               _navigateTo(2); // MusicListScreen으로 이동
             },
           ),

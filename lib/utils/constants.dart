@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-const Color mBackgroundColor = Color(0xfff4f9f3);
+// const Color mBackgroundColor = Color(0xff21004A);
+
+const Color mBackgroundColor = Color(0xffFCFEFC);
+// const Color mBackgroundColor = Color(0xfff4f9f3);
 
 const Color mPrimaryColor = Color(0xff61B15A);
 const Color mSecondaryColor = Color(0xffAFD8AC);
@@ -28,6 +31,13 @@ const Color mYellowColor = Color(0xffffc933);
 const Color mDarkGreenColor = Color(0xff498E43);
 const Color mLightGreenColor = Color(0xff82C17C);
 
+// emotion color
+const Color mJoyColor = Color(0xffFFDD50);
+const Color mSadColor = Color(0xff76A7FF);
+const Color mAngryColor = Color(0xffFF8571);
+const Color mPeacefulColor = Color(0xff78FF95);
+const Color mConfusedColor = Color(0xff9F78FF);
+
 const mDiaryStyle = TextStyle(
   color: mFontDarkColor,
   fontFamily: 'Santteut',
@@ -52,7 +62,7 @@ const Map<dynamic, dynamic> emotionText = {
 };
 
 /// 왼쪽오른쪽 여백 값 고정
-const double outlinedDouble = 15.0;
+const double outlinedDouble = 16.0;
 
 const List<String> emailSiteList = [
   'gmail.com',

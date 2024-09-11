@@ -34,15 +34,21 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
               ))
         ],
       ),
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            children: [
-              // 감정 상태창
-              // EmotionPopupWidget(),
-              // row > datepicker / 우측에 화면 전환
-              Container(
-                child: Row(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(
+                left: outlinedDouble, right: outlinedDouble),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // 감정 상태창
+                EmotionPopupWidget(),
+                SizedBox(
+                  height: 8,
+                ),
+                // row > datepicker / 우측에 화면 전환
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
@@ -72,12 +78,12 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
                     ),
                   ],
                 ),
-              ),
 
-              // CalendarWidget(
-              //   title: '달력',
-              // ),
-            ],
+                // CalendarWidget(
+                //   title: '달력',
+                // ),
+              ],
+            ),
           ),
         ),
       ),
