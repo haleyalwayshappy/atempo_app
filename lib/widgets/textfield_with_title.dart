@@ -1,3 +1,4 @@
+import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -30,146 +31,48 @@ class TextFieldWithTitle extends StatefulWidget {
 class _TextFieldWithTitleState extends State<TextFieldWithTitle> {
   @override
   Widget build(BuildContext context) {
-    if (widget.isCupertinoPicker) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Text(
-          //   widget.labelText,
-          //   style: TextStyle(
-          //     fontFamily: 'Pretendard',
-          //     fontWeight: FontWeight.w600,
-          //     fontSize: 18,
-          //     color: Colors.black,
-          //     letterSpacing: -0.45,
-          //   ),
-          // ),
-          GestureDetector(
-            onTap: () => _showCupertinoPicker(context),
-            child: AbsorbPointer(
-              child: TextField(
-                autocorrect: false,
-                enableSuggestions: false,
-                controller: TextEditingController(text: widget.selectedValue),
-                decoration: InputDecoration(
-                  hintText: widget.hintText,
-                  hintStyle: TextStyle(
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 16,
-                    letterSpacing: -0.4,
-                    color: Colors.grey.shade400,
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 2),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black, width: 2),
-                  ),
-                  suffixIcon: Icon(
-                    Icons.arrow_drop_down,
-                    color: Colors.black,
-                  ),
-                ),
-                style: TextStyle(
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                  letterSpacing: -0.4,
-                ),
-              ),
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          widget.labelText,
+          style: TextStyle(
+            fontFamily: 'Pretendard',
+            fontWeight: FontWeight.w600,
+            fontSize: 18,
+            color: mFontDarkColor,
+            // letterSpacing: -0.45,
+            letterSpacing: -0.88,
           ),
-        ],
-      );
-    } else {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            widget.labelText,
-            style: TextStyle(
-              fontFamily: 'Pretendard',
-              fontWeight: FontWeight.w600,
-              fontSize: 18,
-              color: Colors.black,
-              letterSpacing: -0.45,
-            ),
+        ),
+        TextField(
+          autocorrect: false, // 자동 수정기능 비활성화
+          enableSuggestions: false, // 제안기능 비활성화
+          maxLength: widget.maxLength, // 글자수 제한
+          keyboardType: widget.keyboardType, // 키보드 타입 설정
+          cursorColor: mPrimaryColor, // 커서 색상
+          style: TextStyle(
+            fontWeight: FontWeight.w400,
+            fontSize: 16,
+            letterSpacing: -0.4,
           ),
-          TextField(
-            autocorrect: false,
-            enableSuggestions: false,
-            maxLength: widget.maxLength,
-            keyboardType: widget.keyboardType,
-            cursorColor: Colors.green,
-            style: TextStyle(
-              fontFamily: 'Pretendard',
+          decoration: InputDecoration(
+            hintText: widget.hintText,
+            hintStyle: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 16,
               letterSpacing: -0.4,
+              color: mGrey2Color,
             ),
-            decoration: InputDecoration(
-              hintText: widget.hintText,
-              hintStyle: TextStyle(
-                fontFamily: 'Pretendard',
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-                letterSpacing: -0.4,
-                color: Colors.grey.shade400,
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.black, width: 2),
-              ),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Colors.black, width: 2),
-              ),
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: mDarkGreenColor, width: 1.4),
+            ),
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.black, width: 1),
             ),
           ),
-        ],
-      );
-    }
-  }
-
-  void _showCupertinoPicker(BuildContext context) {
-    FocusScope.of(context).unfocus(); // 키보드 내리기
-    showCupertinoModalPopup(
-      context: context,
-      builder: (context) {
-        return CupertinoActionSheet(
-          actions: widget.pickerItems!.map((String item) {
-            return CupertinoActionSheetAction(
-              child: Text(
-                item,
-                style: TextStyle(
-                  fontFamily: 'Pretendard',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 16,
-                  color: Colors.black,
-                ),
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-                widget.onChanged?.call(item);
-              },
-            );
-          }).toList(),
-          cancelButton: CupertinoActionSheetAction(
-            isDestructiveAction: true,
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text(
-              '취소',
-              style: TextStyle(
-                fontFamily: 'Pretendard',
-                fontWeight: FontWeight.w500,
-                fontSize: 16,
-                color: Colors.red, // 취소 버튼의 글씨 색상
-              ),
-            ),
-          ),
-        );
-      },
+        ),
+      ],
     );
   }
 }

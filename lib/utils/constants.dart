@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/* 색상 */
 // const Color mBackgroundColor = Color(0xff21004A);
 
 const Color mBackgroundColor = Color(0xffFCFEFC);
@@ -9,6 +10,7 @@ const Color mPrimaryColor = Color(0xff61B15A);
 const Color mSecondaryColor = Color(0xffAFD8AC);
 
 const Color mFontDarkColor = Color(0xff0D1A0C);
+// const Color mFontDarkColor = Color(0xfff4faf4);
 const Color mFontLightColor = Color(0xffF4FAF4);
 
 const Color mButtonColor = Color(0xff498E43);
@@ -38,6 +40,12 @@ const Color mAngryColor = Color(0xffFF8571);
 const Color mPeacefulColor = Color(0xff78FF95);
 const Color mConfusedColor = Color(0xff9F78FF);
 
+/* */
+
+// 왼쪽오른쪽 여백 값 고정
+const double outlinedDouble = 16.0;
+
+/* */
 const mDiaryStyle = TextStyle(
   color: mFontDarkColor,
   fontFamily: 'Santteut',
@@ -53,6 +61,9 @@ const kSearchEditHintStyle = TextStyle(
   height: 1.2,
 );
 
+/* 전역 리스트*/
+
+/// 감정 선택시 텍스트 변환
 const Map<dynamic, dynamic> emotionText = {
   "happy": "행복해요!",
   "sad": "슬퍼요",
@@ -61,21 +72,10 @@ const Map<dynamic, dynamic> emotionText = {
   "peaceful": "편안해요."
 };
 
-/// 왼쪽오른쪽 여백 값 고정
-const double outlinedDouble = 16.0;
-
+/// 이메일 리스트
 const List<String> emailSiteList = [
   'gmail.com',
   'naver.com',
   'daum.net',
   'hanmail.net'
-];
-
-final List<Map<String, String>> musicItems = [
-  // index : "1" , image: "
-  {'index': '1', 'image': 'assets/images/maru1.jpeg', 'text': 'Musssssic 1'},
-  {'index': '2', 'image': 'assets/images/maru2.jpeg', 'text': 'Music 2'},
-  {'index': '3', 'image': 'assets/images/maru3.jpeg', 'text': 'Music 3'},
-  {'index': '4', 'image': 'assets/images/maru4.jpeg', 'text': 'Music 4'},
-  {'index': '5', 'image': 'assets/images/maru1.jpeg', 'text': 'Music 5'},
 ];

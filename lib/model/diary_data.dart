@@ -1,4 +1,4 @@
-import 'package:atempo_app/model/emotionData.dart';
+import 'package:atempo_app/model/emotion_data.dart';
 
 class DiaryDummyData {
   int indexNumber; // 인덱스 번호

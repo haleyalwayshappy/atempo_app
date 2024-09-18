@@ -1,3 +1,8 @@
+import 'package:atempo_app/model/diary_data.dart';
+import 'package:atempo_app/model/emotion_data.dart';
+import 'package:atempo_app/screens/diary/diary_grid_widget.dart';
+import 'package:atempo_app/screens/diary/diary_list_widget.dart';
+import 'package:atempo_app/widgets/list_widget.dart';
 import 'package:atempo_app/widgets/emotion_popup_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -12,78 +17,70 @@ class DiaryMainScreen extends StatefulWidget {
 }
 
 class _DiaryMainScreenState extends State<DiaryMainScreen> {
+  bool isGridView = true; // State variable to track view type
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: mBackgroundColor,
-        // 앱바 - 일기 텍스트 화면
         title: GestureDetector(
           onTap: () {},
-          child: const Text(
-            "일기",
-          ),
+          child: const Text("일기"),
         ),
-
-        // 마이페이지 아이콘
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.person,
-              ))
+            onPressed: () {},
+            icon: Icon(Icons.person),
+          ),
         ],
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.only(
-                left: outlinedDouble, right: outlinedDouble),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // 감정 상태창
-                EmotionPopupWidget(),
-                SizedBox(
-                  height: 8,
-                ),
-                // row > datepicker / 우측에 화면 전환
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 50,
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.arrow_back_ios_new_outlined),
-                    ),
-                    Text(
-                      "2024년 10월",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: outlinedDouble),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              EmotionPopupWidget(),
+              SizedBox(height: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.arrow_back_ios_new_outlined)),
+                      Text(
+                        "2024년 10월",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: mFontDarkColor,
+                        ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.arrow_forward_ios_outlined),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.list_outlined,
-                        size: 32,
-                      ),
-                    ),
-                  ],
-                ),
-
-                // CalendarWidget(
-                //   title: '달력',
-                // ),
-              ],
-            ),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.arrow_forward_ios_outlined)),
+                    ],
+                  ),
+                  Switch(
+                    value: isGridView,
+                    onChanged: (value) {
+                      setState(() {
+                        isGridView = value; // Update view type
+                      });
+                    },
+                  ),
+                ],
+              ),
+              Expanded(
+                child: isGridView
+                    ? DiaryGridWidget() // Render Grid View
+                    : DiaryListWidget(),
+              ),
+            ],
           ),
         ),
       ),

@@ -17,7 +17,7 @@ class EmotionPopupWidget extends StatelessWidget {
         padding: EdgeInsets.all(4),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
-          // color: mFontLightColor,
+          // color: mFontDarkColor,
           border: Border.all(color: mSecondaryColor, width: 2),
         ),
         child: Row(

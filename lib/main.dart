@@ -1,6 +1,9 @@
 import 'package:atempo_app/screens/account/login_email_screen.dart';
 import 'package:atempo_app/screens/account/login_screen.dart';
-import 'package:atempo_app/screens/diary/diary_list_screen.dart';
+import 'package:atempo_app/screens/diary/diary_grid_widget.dart';
+import 'package:atempo_app/screens/diary/diary_list_widget.dart';
+import 'package:atempo_app/screens/diary/diary_read_screen.dart';
+import 'package:atempo_app/widgets/list_widget.dart';
 import 'package:atempo_app/screens/diary/diary_main_screen.dart';
 import 'package:atempo_app/screens/home/choice_emotion_screen.dart';
 import 'package:atempo_app/screens/home/home_screen.dart';
@@ -38,7 +41,10 @@ class _MainScreenAppState extends State<MainScreenApp> {
         ),
         scaffoldBackgroundColor: mBackgroundColor,
       ),
-      home: DiaryListScreen(),
+      // home: DiaryMainScreen(),// 다이어리 메인 화면
+      // home: DiaryReadScreen(), // 다이어리 읽기 화면
+      // home: HomeScreen(), // 홈 화면
+      home: DiaryReadScreen(), // 홈 화면
     );
   }
 }

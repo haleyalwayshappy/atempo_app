@@ -16,7 +16,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        foregroundColor: mFontLightColor,
+        foregroundColor: mFontDarkColor,
         backgroundColor: mPrimaryColor, // 텍스트 색상
         elevation: 2, // 그림자 깊이
         shape: RoundedRectangleBorder(
