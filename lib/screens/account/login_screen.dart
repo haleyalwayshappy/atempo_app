@@ -1,6 +1,7 @@
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
+/// 최초 로그인 화면 (카카오톡, 애플, 이메일 로그인)
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 

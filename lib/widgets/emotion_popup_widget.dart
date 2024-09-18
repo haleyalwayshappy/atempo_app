@@ -1,5 +1,6 @@
 import 'package:atempo_app/widgets/toast.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../utils/constants.dart';
 
@@ -11,6 +12,7 @@ class EmotionPopupWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         customToastMsg("감정상태창 눌렀따아");
+        context.go('/choice_emotion');
       },
       child: Container(
         // margin: EdgeInsets.all(outlinedDouble),

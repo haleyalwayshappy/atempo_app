@@ -2,7 +2,9 @@ import 'package:atempo_app/model/diary_data.dart';
 import 'package:atempo_app/model/emotion_data.dart';
 import 'package:atempo_app/widgets/list_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+/// 일기 내용(아이콘 - 날짜) 보여주는 리스트 뷰
 class DiaryListWidget extends StatefulWidget {
   const DiaryListWidget({super.key});
 
@@ -19,21 +21,34 @@ class _DiaryListWidgetState extends State<DiaryListWidget> {
         itemBuilder: (context, index) {
           var imagePath;
           switch (dummyDiaryData[index].mainEmotion) {
-            case Emotion.joy:
+            case EmotionType.joy:
               imagePath = emotions[0].imageUrl;
-            case Emotion.sad:
+              break; // break 추가
+            case EmotionType.sad:
               imagePath = emotions[1].imageUrl;
-            case Emotion.anger:
+              break; // break 추가
+            case EmotionType.anger:
               imagePath = emotions[2].imageUrl;
-            case Emotion.peace:
+              break; // break 추가
+            case EmotionType.peace:
               imagePath = emotions[3].imageUrl;
-            case Emotion.confused:
+              break; // break 추가
+            case EmotionType.confused:
               imagePath = emotions[4].imageUrl;
+              break; // break 추가
           }
-          return ListWidget(
-            dateTime: dummyDiaryData[index].dateTime,
-            imagePath: imagePath,
-          ); // DiaryListWidget을 보여줍니다.
+          return GestureDetector(
+            onTap: () {
+              // CustomListWidget 클릭 시 DiaryReadScreen으로 이동
+              context.go(
+                  '/diary/${dummyDiaryData[index].indexNumber}'); // go_router를 사용하여 이동
+            },
+            child: CustomListWidget(
+              dateTime: dummyDiaryData[index].dateTime,
+              imagePath: imagePath,
+              index: index,
+            ),
+          );
         },
       ),
     );

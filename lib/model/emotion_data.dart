@@ -3,7 +3,7 @@
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-enum Emotion {
+enum EmotionType {
   joy,
   sad,
   anger,
@@ -11,43 +11,53 @@ enum Emotion {
   confused,
 }
 
-class EmotionData {
-  Emotion mainEmotion;
-  String imageUrl;
-  Color emotionColor;
-  // List<String> subEmotion;
-  List<String>? musicUrl;
+class Emotion {
+  EmotionType mainEmotion; // 메인감정
+  String imageUrl; // 캐릭터 이미지 경로
+  Color emotionColor; // 캐릭터와 맞는 색상
+  // List<String> subEmotion; // 변화되고 싶은 감정
+  List<String>? musicUrl; // 음악 url
 
-  EmotionData(
-      {required this.mainEmotion,
-      required this.imageUrl,
-      required this.emotionColor,
-      this.musicUrl});
+  Emotion({
+    required this.mainEmotion,
+    required this.imageUrl,
+    required this.emotionColor,
+    this.musicUrl,
+  });
 }
 
-List<EmotionData> emotions = [
-  EmotionData(
-    mainEmotion: Emotion.joy,
-    imageUrl: 'assets/images/icon/icon_joy_y.png', // 노란색
+List<Emotion> emotions = [
+  /// 기쁨이
+  Emotion(
+    mainEmotion: EmotionType.joy,
+    imageUrl: 'assets/images/icon/icon_joy_y.png',
     emotionColor: mJoyColor,
   ),
-  EmotionData(
-    mainEmotion: Emotion.sad,
+
+  /// 슬픔이
+  Emotion(
+    mainEmotion: EmotionType.sad,
     emotionColor: mSadColor, // 파란색
     imageUrl: 'assets/images/icon/icon_sadness.png',
   ),
-  EmotionData(
-    mainEmotion: Emotion.anger,
+
+  /// 짜증이
+  Emotion(
+    mainEmotion: EmotionType.anger,
     emotionColor: mAngryColor, // 빨간색
     imageUrl: 'assets/images/icon/icon_angry.png',
   ),
-  EmotionData(
-    mainEmotion: Emotion.peace,
+
+  /// 편안이
+  Emotion(
+    mainEmotion: EmotionType.peace,
     emotionColor: mPeacefulColor, // 연두색
     imageUrl: 'assets/images/icon/icon_peaceful.png',
   ),
-  EmotionData(
-    mainEmotion: Emotion.confused,
+
+  /// 혼란이
+  Emotion(
+    mainEmotion: EmotionType.confused,
     emotionColor: mConfusedColor, // 보라색
     imageUrl: 'assets/images/icon/icon_confuse.png',
   ),

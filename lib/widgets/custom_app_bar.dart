@@ -1,69 +1,50 @@
+import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({
-    Key? key,
-    this.title = "",
-    this.showBackButton = true,
-    this.titleAlignment = Alignment.center,
-    this.titleWidget,
-    this.elevation = 4.0,
-  }) : super(key: key);
-
-  final String title;
+  final String titleText;
   final bool showBackButton;
-  final AlignmentGeometry titleAlignment;
-  final Widget? titleWidget;
-  final double elevation;
+  final String backLocation;
+
+  CustomAppBar(
+      {required this.titleText,
+      this.showBackButton = false,
+      this.backLocation = '/'});
 
   @override
-  PreferredSizeWidget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return AppBar(
-      elevation: elevation,
-      backgroundColor: const Color(0xFF262E34),
-      leading: showBackButton
-          ? GestureDetector(
-              onTap: () {
-                // Get.back();
-                print("on back button 눌렀을때");
-              },
-              child: Container(
-                width: 50,
-                height: 50,
-                alignment: Alignment.center,
-                child: SvgPicture.asset(
-                  'assets/images/icons_appbar_back.svg',
-                  height: 24,
-                  width: 24,
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-            )
-          : Container(width: 50),
-      title: Container(
-        alignment: titleAlignment,
-        height: 62,
-        child: (titleWidget != null)
-            ? titleWidget
-            : Container(
-                alignment: Alignment.center,
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.w700,
-                    color: Color(0xFFBC9D6C),
-                  ),
-                ),
-              ),
+      backgroundColor: mBackgroundColor,
+      centerTitle: false,
+      title: Text(
+        titleText,
+        style: TextStyle(
+          color: mFontDarkColor,
+          fontSize: 24,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 1.1,
+        ),
       ),
+      leading: showBackButton
+          ? IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                context.go(backLocation); // go_router를 사용하여 이전 페이지로 돌아가기
+              },
+            )
+          : null, // 뒤로가기 버튼 숨기기
       actions: [
-        Container(width: 50),
+        IconButton(
+          icon: Icon(Icons.person),
+          onPressed: () {
+            // 검색 버튼 동작
+          },
+        ),
       ],
     );
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(62);
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }

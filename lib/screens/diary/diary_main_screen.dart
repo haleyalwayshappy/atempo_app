@@ -1,14 +1,11 @@
-import 'package:atempo_app/model/diary_data.dart';
-import 'package:atempo_app/model/emotion_data.dart';
 import 'package:atempo_app/screens/diary/diary_grid_widget.dart';
 import 'package:atempo_app/screens/diary/diary_list_widget.dart';
-import 'package:atempo_app/widgets/list_widget.dart';
+import 'package:atempo_app/utils/constants.dart';
+import 'package:atempo_app/widgets/custom_app_bar.dart';
 import 'package:atempo_app/widgets/emotion_popup_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
-import '../../utils/constants.dart';
-
+/// 일기 홈 화면
 class DiaryMainScreen extends StatefulWidget {
   const DiaryMainScreen({super.key});
 
@@ -22,18 +19,9 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: mBackgroundColor,
-        title: GestureDetector(
-          onTap: () {},
-          child: const Text("일기"),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.person),
-          ),
-        ],
+      appBar: CustomAppBar(
+        titleText: '일기',
+        showBackButton: false,
       ),
       body: SafeArea(
         child: Padding(
@@ -75,7 +63,7 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
                   ),
                 ],
               ),
-              Expanded(
+              Container(
                 child: isGridView
                     ? DiaryGridWidget() // Render Grid View
                     : DiaryListWidget(),

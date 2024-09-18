@@ -2,6 +2,7 @@ import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/custom_button.dart';
 import 'package:atempo_app/widgets/toast.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 /// TODO :  감정선택시 텍스트 필드의 값 바뀌기 > 상수에 'emotionText'사용할것.
 
@@ -114,10 +115,16 @@ class ChoiceEmotionScreen extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              Text(
-                "선택하지않고 넘어갈래요.",
-                style: TextStyle(
-                  color: mGrey3Color,
+              ElevatedButton(
+                onPressed: () {
+                  customToastMsg("메인으로 가는 버튼");
+                  context.go('/');
+                },
+                child: Text(
+                  "선택하지않고 넘어갈래요.",
+                  style: TextStyle(
+                    color: mGrey3Color,
+                  ),
                 ),
               ),
             ],

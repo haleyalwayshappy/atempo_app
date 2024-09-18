@@ -4,6 +4,7 @@ import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/emotion_popup_widget.dart';
 import 'package:atempo_app/widgets/recommend_box.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class HomeScreen extends StatefulWidget {

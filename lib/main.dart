@@ -1,29 +1,55 @@
 import 'package:atempo_app/screens/account/login_email_screen.dart';
 import 'package:atempo_app/screens/account/login_screen.dart';
-import 'package:atempo_app/screens/diary/diary_grid_widget.dart';
-import 'package:atempo_app/screens/diary/diary_list_widget.dart';
 import 'package:atempo_app/screens/diary/diary_read_screen.dart';
-import 'package:atempo_app/widgets/list_widget.dart';
-import 'package:atempo_app/screens/diary/diary_main_screen.dart';
 import 'package:atempo_app/screens/home/choice_emotion_screen.dart';
-import 'package:atempo_app/screens/home/home_screen.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/bottom_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-void main() => runApp(const MainScreenApp());
+void main() => runApp(MainScreenApp());
 
-class MainScreenApp extends StatefulWidget {
-  const MainScreenApp({super.key});
+class MainScreenApp extends StatelessWidget {
+  MainScreenApp({Key? key}) : super(key: key);
 
-  @override
-  State<MainScreenApp> createState() => _MainScreenAppState();
-}
+  // GoRouter 설정
+  final GoRouter _router = GoRouter(
+    routes: [
+      // 홈 화면 (바텀네비게이션)
+      GoRoute(
+        path: '/',
+        builder: (context, state) => BottomWidget(),
+      ),
 
-class _MainScreenAppState extends State<MainScreenApp> {
+      // 로그인 화면
+      GoRoute(
+        path: '/login',
+        builder: (context, state) => LoginScreen(),
+      ),
+      // 이메일 로그인 화면
+      GoRoute(
+        path: '/login_email',
+        builder: (context, state) => LoginEmailScreen(),
+      ),
+      // 감정 선택 화면
+      GoRoute(
+        path: '/choice_emotion',
+        builder: (context, state) => ChoiceEmotionScreen(),
+      ),
+      GoRoute(
+        path: '/diary/:index', // URL 파라미터로 인덱스를 받음
+        builder: (context, state) {
+          final index =
+              int.parse(state.pathParameters['index']!); // URL에서 인덱스 추출
+          return DiaryReadScreen(selectedIndex: index); // 해당 인덱스에 대한 화면 반환
+        },
+      ),
+    ],
+  );
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: _router,
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           actionsIconTheme: IconThemeData(
@@ -41,10 +67,6 @@ class _MainScreenAppState extends State<MainScreenApp> {
         ),
         scaffoldBackgroundColor: mBackgroundColor,
       ),
-      // home: DiaryMainScreen(),// 다이어리 메인 화면
-      // home: DiaryReadScreen(), // 다이어리 읽기 화면
-      // home: HomeScreen(), // 홈 화면
-      home: DiaryReadScreen(), // 홈 화면
     );
   }
 }

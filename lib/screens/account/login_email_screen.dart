@@ -1,6 +1,7 @@
 import 'package:atempo_app/widgets/textfield_with_title.dart';
 import 'package:flutter/material.dart';
 
+/// 이메일 로그인 화면
 class LoginEmailScreen extends StatefulWidget {
   const LoginEmailScreen({super.key});
 

@@ -5,24 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd123e6d-599b-4fe0-be62-f634cdf7667d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/model/music_dummydata.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/diary/diary_grid_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/diary/diary_list_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/diary/diary_write_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/widgets/list_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/model/diary_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/diary_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/emotionData.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/emotion_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_list_screen.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/emotion_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/emotion_data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/music_dummydata.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/music_dummydata.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/account/create_account_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/create_account_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/account/find_id_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/find_id_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/account/login_email_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/login_email_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_grid_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_grid_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_list_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_list_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_main_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_main_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_read_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_read_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/choice_emotion_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/choice_emotion_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/constants.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/bottom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/bottom_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_app_bar.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/emotion_popup_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/emotion_popup_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/recommend_music.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/recommend_box.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/textfield_with_title.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/textfield_with_title.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/list_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/list_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/recommend_box.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/recommend_box.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +85,7 @@
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/hongeunlee/Documents/GitHub/atempo_app",
-    "settings.editor.selected.configurable": "editor.preferences.completion",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "show.migrate.to.gradle.popup": "false"
   },
   "keyToStringList": {
@@ -128,6 +132,17 @@
       <updated>1725291241049</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
