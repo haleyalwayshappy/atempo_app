@@ -1,14 +1,14 @@
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class DiaryWriteWidget extends StatefulWidget {
+class ContentWidget extends StatefulWidget {
   final String labelText;
   final int? maxLength; // 옵셔널
   final String hintText;
   final TextInputType keyboardType;
   final ValueChanged<String?>? onChanged; // 옵셔널
 
-  const DiaryWriteWidget({
+  const ContentWidget({
     super.key,
     required this.labelText,
     this.maxLength,
@@ -18,10 +18,10 @@ class DiaryWriteWidget extends StatefulWidget {
   });
 
   @override
-  _DiaryWriteWidgetState createState() => _DiaryWriteWidgetState();
+  _ContentWidgetState createState() => _ContentWidgetState();
 }
 
-class _DiaryWriteWidgetState extends State<DiaryWriteWidget> {
+class _ContentWidgetState extends State<ContentWidget> {
   FocusNode focusNode = FocusNode(); // FocusNode 생성
 
   @override
@@ -40,54 +40,60 @@ class _DiaryWriteWidgetState extends State<DiaryWriteWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(outlinedDouble),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        border: Border.all(
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(focusNode); // Request focus on tap
+      },
+      child: Container(
+        padding: const EdgeInsets.all(outlinedDouble),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
           color: focusNode.hasFocus
-              ? mSecondaryColor
-              : Colors.black, // 포커스 상태에 따른 보더 색상
-          width: focusNode.hasFocus ? 2 : 1, // 포커스 상태에 따른 보더 두께
+              ? mLightGreenColor
+              : Colors.transparent, // Blue background when focused
+          border: focusNode.hasFocus
+              ? null
+              : Border.all(
+                  color: mPrimaryColor), // Border only when not focused
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            widget.labelText,
-            style: TextStyle(
-              fontFamily: 'Pretendard',
-              fontWeight: FontWeight.w600,
-              fontSize: 18,
-              color: mFontDarkColor,
-              letterSpacing: -0.88,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              widget.labelText,
+              style: TextStyle(
+                fontFamily: 'Pretendard',
+                fontWeight: FontWeight.w600,
+                fontSize: 18,
+                color: mFontDarkColor,
+                letterSpacing: -0.88,
+              ),
             ),
-          ),
-          TextField(
-            focusNode: focusNode, // FocusNode 연결
-            autocorrect: false, // 자동 수정기능 비활성화
-            enableSuggestions: false, // 제안기능 비활성화
-            maxLength: widget.maxLength, // 글자수 제한
-            keyboardType: widget.keyboardType, // 키보드 타입 설정
-            cursorColor: mPrimaryColor, // 커서 색상
-            style: TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 16,
-              letterSpacing: -0.4,
-            ),
-            decoration: InputDecoration(
-              hintText: widget.hintText,
-              hintStyle: TextStyle(
+            TextField(
+              focusNode: focusNode, // FocusNode 연결
+              autocorrect: false, // 자동 수정기능 비활성화
+              enableSuggestions: false, // 제안기능 비활성화
+              maxLength: widget.maxLength, // 글자수 제한
+              keyboardType: widget.keyboardType, // 키보드 타입 설정
+              cursorColor: mPrimaryColor, // 커서 색상
+              style: TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 16,
                 letterSpacing: -0.4,
-                color: mGrey2Color,
               ),
-              border: InputBorder.none, // 기본 보더 제거
+              decoration: InputDecoration(
+                hintText: widget.hintText,
+                hintStyle: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16,
+                  letterSpacing: -0.4,
+                  color: mGrey1Color,
+                ),
+                border: InputBorder.none, // 기본 보더 제거
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
