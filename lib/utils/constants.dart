@@ -50,8 +50,8 @@ const mDiaryStyle = TextStyle(
   color: mFontDarkColor,
   fontFamily: 'Santteut',
   fontWeight: FontWeight.w400,
-  fontSize: 18.0,
-  height: 1.2,
+  fontSize: 16.0,
+  letterSpacing: 1.1,
 );
 
 const kSearchEditHintStyle = TextStyle(

@@ -15,6 +15,9 @@ class DiaryReadScreen extends StatelessWidget {
     // 선택된 인덱스에 해당하는 데이터 가져오기
     DiaryDummyData selectedDiary = dummyDiaryData[selectedIndex];
     String dateTime = selectedDiary.dateTime;
+
+    print("선택된 일기 인덱스값 : ${dummyDiaryData.indexOf(selectedDiary)}");
+
     return Scaffold(
       appBar: CustomAppBar(
         titleText: dateTime,

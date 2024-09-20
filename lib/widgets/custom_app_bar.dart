@@ -21,9 +21,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         titleText,
         style: TextStyle(
           color: mFontDarkColor,
-          fontSize: 24,
+          fontSize: 20,
           fontWeight: FontWeight.w600,
-          letterSpacing: 1.1,
+          letterSpacing: 1.2,
         ),
       ),
       leading: showBackButton
@@ -38,7 +38,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
           icon: Icon(Icons.person),
           onPressed: () {
-            // 검색 버튼 동작
+            //  TODO 마이페이지
           },
         ),
       ],

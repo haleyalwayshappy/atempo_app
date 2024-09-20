@@ -13,84 +13,66 @@ class BottomWidget extends StatefulWidget {
 }
 
 class _BottomWidget extends State<BottomWidget> {
-  int _selectedIndex = 2;
-
-/*
-  final List<Widget> _screens = [
-    MusicMainScreen(),
-    HomeScreen(),
-    DiaryMainScreen(),
-  ];
-*/
+  int _selectedIndex = 1; // 0 : 음악 , 1: 홈 , 2 : 일기
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-
-/*    switch (index) {
-      case 0: // 뮤직탭
-        context.go('/');
-        break;
-      case 1: // 홈탭
-        context.go('/');
-        break;
-      case 2: // 다이어리탭
-        context.go('/');
-        break;
-    }*/
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _buildCurrentScreen(), // 화면 변경
-      bottomNavigationBar: BottomNavigationBar(
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.headphones,
-                size: 32,
+      bottomNavigationBar: Container(
+        height: 96,
+        child: BottomNavigationBar(
+            showSelectedLabels: false, // 선택된 란 텍스트 비활성화
+            showUnselectedLabels: false, // 선택되지 않은 란 텍스트 비활성화
+            /// 바텀위젯 꾸미는 코드
+            currentIndex: _selectedIndex,
+            unselectedItemColor: mDisabledColor,
+            selectedItemColor: mEnabledColor,
+            backgroundColor: mBackgroundColor,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.headphones,
+                  size: 26,
+                ),
+                label: '',
               ),
-              label: 'Music',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                size: 32,
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                  size: 26,
+                ),
+                label: '',
               ),
-              label: 'Home',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.calendar_month,
-                size: 32,
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.calendar_month,
+                  size: 26,
+                ),
+                label: '',
               ),
-              label: 'Diary',
-            ),
-          ],
-
-          /// 바텀위젯 꾸미는 코드
-          currentIndex: _selectedIndex,
-          unselectedItemColor: mDisabledColor,
-          selectedItemColor: mEnabledColor,
-          backgroundColor: mBackgroundColor,
-          onTap: (index) {
-            _onItemTapped(index);
-            switch (index) {
-              case 0: // 뮤직탭
-                context.go('/');
-                break;
-              case 1: // 홈탭
-                context.go('/');
-                break;
-              case 2: // 다이어리탭
-                context.go('/');
-                break;
-            }
-          }),
+            ],
+            onTap: (index) {
+              _onItemTapped(index);
+              switch (index) {
+                case 0: // 뮤직탭
+                  context.go('/');
+                  break;
+                case 1: // 홈탭
+                  context.go('/');
+                  break;
+                case 2: // 다이어리탭
+                  context.go('/');
+                  break;
+              }
+            }),
+      ),
     );
   }
 

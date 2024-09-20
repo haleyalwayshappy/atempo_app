@@ -1,6 +1,7 @@
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
+// 일기 상세 콘텐츠화면
 class ContentWidget extends StatefulWidget {
   final String labelText;
   final int? maxLength; // 옵셔널

@@ -1,4 +1,5 @@
 import 'package:atempo_app/model/music_dummydata.dart';
+import 'package:atempo_app/widgets/custom_app_bar.dart';
 import 'package:atempo_app/widgets/custom_calendar_widget.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/emotion_popup_widget.dart';
@@ -19,20 +20,26 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        scrolledUnderElevation: 0,
-        title: Image.asset('assets/images/logo_atempo.png', width: 160),
+        backgroundColor: mBackgroundColor,
+        centerTitle: false,
+        title: Image.asset(
+          // width: 100,
+          height: 36,
+          'assets/images/logo_atempo.png',
+        ),
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.person,
-              ))
+            icon: Icon(Icons.person),
+            onPressed: () {
+              //마이페이지 이동
+            },
+          ),
         ],
       ),
       backgroundColor: mBackgroundColor,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(outlinedDouble),
+          // padding: EdgeInsets.all(outlinedDouble),
           scrollDirection: Axis.vertical,
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -41,23 +48,29 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               EmotionPopupWidget(),
               // 음악 가로 위젯
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
+              Container(
+                // color: Colors.blue,
+                padding: const EdgeInsets.only(top: 16.0, bottom: 8, left: 28),
                 child: Text(
                   "추천콘텐츠",
                   style: TextStyle(
                     fontSize: 16,
-                    color: mSecondaryColor,
+                    color: mPrimaryColor,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               // TODO 달력 구현하기
-              RecommendBox(),
-              SizedBox(
-                height: 20,
+              Container(
+                margin: EdgeInsets.only(left: 18),
+                child: RecommendBox(),
               ),
-              TableCalendarExam(),
+
+              Container(
+                // color: Colors.blue,
+                margin: EdgeInsets.only(left: 12, right: 12),
+                child: CustomCalendarWidget(),
+              ),
             ],
           ),
         ),

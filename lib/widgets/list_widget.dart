@@ -21,7 +21,7 @@ class CustomListWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         print(dummyDiaryData[index].dateTime);
-        context.go('/diary/${dummyDiaryData[index - 1].indexNumber}');
+        context.go('/diary/${dummyDiaryData[index].indexNumber}');
       },
       child: Container(
         height: MediaQuery.of(context).size.height * 0.09, // 전체사이즈의 0.9

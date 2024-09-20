@@ -6,10 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="fd123e6d-599b-4fe0-be62-f634cdf7667d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/diary_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/diary_data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/diary/content_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/content_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_read_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_read_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_write_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/content_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/bottom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/bottom_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/calendar_widget.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_app_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_calendar_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/custom_calendar_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/emotion_popup_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/emotion_popup_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/widgets/list_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/list_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/widgets/recommend_box.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/widgets/recommend_box.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

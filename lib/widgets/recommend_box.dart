@@ -25,8 +25,8 @@ class RecommendBox extends StatelessWidget {
                 children: [
                   Container(
                     // 컨테이너 안에 데코레이션 박스에 이미지 넣음
-                    width: 100,
-                    height: 100,
+                    width: 80,
+                    height: 80,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(

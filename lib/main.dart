@@ -39,8 +39,9 @@ class MainScreenApp extends StatelessWidget {
       GoRoute(
         path: '/diary/:index', // URL 파라미터로 인덱스를 받음
         builder: (context, state) {
-          final index =
-              int.parse(state.pathParameters['index']!); // URL에서 인덱스 추출
+          var index = int.parse(state.pathParameters['index']!); // URL에서 인덱스 추출
+          print('Original Index from URL: $index'); // URL에서 추출한 인덱스 출력
+          index = index - 1;
           return DiaryReadScreen(selectedIndex: index); // 해당 인덱스에 대한 화면 반환
         },
       ),
