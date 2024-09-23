@@ -10,7 +10,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   CustomAppBar(
       {required this.titleText,
       this.showBackButton = false,
-      this.backLocation = '/'});
+      this.backLocation = '/home'});
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +28,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       leading: showBackButton
           ? IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: Icon(Icons.arrow_back_ios_new),
               onPressed: () {
-                context.go(backLocation); // go_router를 사용하여 이전 페이지로 돌아가기
+                // 이전 경로를 알고 있는 경우
+                if (backLocation != null) {
+                  context.go(backLocation); // go_router를 사용하여 이전 페이지로 돌아가기
+                } else {
+                  context.pop(); // 기본적으로 이전 페이지로 돌아가기
+                }
               },
             )
           : null, // 뒤로가기 버튼 숨기기

@@ -118,7 +118,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   customToastMsg("메인으로 가는 버튼");
-                  context.go('/');
+                  context.go('/home');
                 },
                 child: Text(
                   "선택하지않고 넘어갈래요.",

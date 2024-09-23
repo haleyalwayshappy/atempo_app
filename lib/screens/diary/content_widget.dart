@@ -63,9 +63,9 @@ class _ContentWidgetState extends State<ContentWidget> {
             Text(
               widget.labelText,
               style: TextStyle(
-                fontFamily: 'Pretendard',
+                fontFamily: 'Santteut',
                 fontWeight: FontWeight.w600,
-                fontSize: 18,
+                fontSize: 16,
                 color: mFontDarkColor,
                 letterSpacing: -0.88,
               ),
@@ -78,15 +78,17 @@ class _ContentWidgetState extends State<ContentWidget> {
               keyboardType: widget.keyboardType, // 키보드 타입 설정
               cursorColor: mPrimaryColor, // 커서 색상
               style: TextStyle(
+                fontFamily: 'Santteut',
                 fontWeight: FontWeight.w400,
-                fontSize: 16,
+                fontSize: 14,
                 letterSpacing: -0.4,
               ),
               decoration: InputDecoration(
                 hintText: widget.hintText,
                 hintStyle: TextStyle(
+                  fontFamily: 'Santteut',
                   fontWeight: FontWeight.w400,
-                  fontSize: 16,
+                  fontSize: 14,
                   letterSpacing: -0.4,
                   color: mGrey1Color,
                 ),
@@ -99,31 +101,3 @@ class _ContentWidgetState extends State<ContentWidget> {
     );
   }
 }
-
-//TextField(
-//             autocorrect: false, // 자동 수정기능 비활성화
-//             enableSuggestions: false, // 제안기능 비활성화
-//             maxLength: widget.maxLength, // 글자수 제한
-//             keyboardType: widget.keyboardType, // 키보드 타입 설정
-//             cursorColor: mPrimaryColor, // 커서 색상
-//             style: TextStyle(
-//               fontWeight: FontWeight.w400,
-//               fontSize: 16,
-//               letterSpacing: -0.4,
-//             ),
-//             decoration: InputDecoration(
-//               hintText: widget.hintText,
-//               hintStyle: TextStyle(
-//                 fontWeight: FontWeight.w400,
-//                 fontSize: 16,
-//                 letterSpacing: -0.4,
-//                 color: mGrey2Color,
-//               ),
-//               focusedBorder: UnderlineInputBorder(
-//                 borderSide: BorderSide(color: mDarkGreenColor, width: 1.4),
-//               ),
-//               enabledBorder: UnderlineInputBorder(
-//                 borderSide: BorderSide(color: Colors.black, width: 1),
-//               ),
-//             ),
-//           ),

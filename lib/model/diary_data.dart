@@ -10,7 +10,7 @@ class DiaryDummyData {
   String? content3; // 일기 내용3
   String? content4; // 일기 내용4
   String? content5; // 일기 내용5
-  String dateTime; // 날짜
+  DateTime dateTime; // 날짜
 
   DiaryDummyData({
     required this.indexNumber,
@@ -35,7 +35,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: '기분이 좋아졌어요',
     content4: '피곤했을것 같아요',
     content5: '만날 수 있는 친구들이있어서 감사할것 같아요.',
-    dateTime: '2024-09-01',
+    dateTime: DateTime(2024, 9, 1),
   ),
   DiaryDummyData(
     indexNumber: 2,
@@ -46,7 +46,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-02',
+    dateTime: DateTime(2024, 9, 2),
   ),
   DiaryDummyData(
     indexNumber: 3,
@@ -57,7 +57,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-03',
+    dateTime: DateTime(2024, 9, 3),
   ),
   DiaryDummyData(
     indexNumber: 4,
@@ -68,7 +68,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-04',
+    dateTime: DateTime(2024, 9, 4),
   ),
   DiaryDummyData(
     indexNumber: 5,
@@ -79,7 +79,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-05',
+    dateTime: DateTime(2024, 9, 5),
   ),
   DiaryDummyData(
     indexNumber: 6,
@@ -90,7 +90,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-06',
+    dateTime: DateTime(2024, 9, 6),
   ),
   DiaryDummyData(
     indexNumber: 7,
@@ -101,7 +101,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-07',
+    dateTime: DateTime(2024, 9, 7),
   ),
   DiaryDummyData(
     indexNumber: 8,
@@ -112,7 +112,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-08',
+    dateTime: DateTime(2024, 9, 8),
   ),
   DiaryDummyData(
     indexNumber: 9,
@@ -123,7 +123,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-09',
+    dateTime: DateTime(2024, 9, 9),
   ),
   DiaryDummyData(
     indexNumber: 10,
@@ -134,7 +134,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-10',
+    dateTime: DateTime(2024, 9, 10),
   ),
   DiaryDummyData(
     indexNumber: 11,
@@ -145,7 +145,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-11',
+    dateTime: DateTime(2024, 9, 11),
   ),
   DiaryDummyData(
     indexNumber: 12,
@@ -156,7 +156,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-12',
+    dateTime: DateTime(2024, 9, 12),
   ),
   DiaryDummyData(
     indexNumber: 13,
@@ -167,7 +167,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-13',
+    dateTime: DateTime(2024, 9, 13),
   ),
   DiaryDummyData(
     indexNumber: 14,
@@ -178,7 +178,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-14',
+    dateTime: DateTime(2024, 9, 14),
   ),
   DiaryDummyData(
     indexNumber: 15,
@@ -189,7 +189,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-15',
+    dateTime: DateTime(2024, 9, 15),
   ),
   DiaryDummyData(
     indexNumber: 16,
@@ -200,7 +200,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-16',
+    dateTime: DateTime(2024, 9, 16),
   ),
   DiaryDummyData(
     indexNumber: 17,
@@ -211,7 +211,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-17',
+    dateTime: DateTime(2024, 9, 17),
   ),
   DiaryDummyData(
     indexNumber: 18,
@@ -222,7 +222,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-18',
+    dateTime: DateTime(2024, 9, 18),
   ),
   // DiaryDummyData(
   //   indexNumber: 19,
@@ -244,7 +244,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content3: null,
     content4: null,
     content5: null,
-    dateTime: '2024-09-20',
+    dateTime: DateTime(2024, 9, 20),
   ),
   // DiaryDummyData(
   //   indexNumber: 21,

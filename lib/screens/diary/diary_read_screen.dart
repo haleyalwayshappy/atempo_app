@@ -14,15 +14,16 @@ class DiaryReadScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // 선택된 인덱스에 해당하는 데이터 가져오기
     DiaryDummyData selectedDiary = dummyDiaryData[selectedIndex];
-    String dateTime = selectedDiary.dateTime;
-
+    DateTime dateTime = selectedDiary.dateTime;
+    String dateFormatted =
+        "${dateTime.year}년 ${dateTime.month.toString().padLeft(2, '0')}월 ${dateTime.day.toString().padLeft(2, '0')}일"; // 날짜 포맷
     print("선택된 일기 인덱스값 : ${dummyDiaryData.indexOf(selectedDiary)}");
 
     return Scaffold(
       appBar: CustomAppBar(
-        titleText: dateTime,
+        titleText: dateFormatted,
         showBackButton: true,
-        backLocation: '/',
+        backLocation: '/home',
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -31,7 +32,7 @@ class DiaryReadScreen extends StatelessWidget {
             children: [
               EmotionPopupWidget(),
               // Text(dateTime),
-              SizedBox(height: 16), // 간격 추가
+              SizedBox(height: 20), // 간격 추가
               Column(
                 children: [
                   ContentWidget(

@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 /* 색상 */
 // const Color mBackgroundColor = Color(0xff21004A);
 
-const Color mBackgroundColor = Color(0xffFCFEFC);
-// const Color mBackgroundColor = Color(0xfff4f9f3);
+// const Color mBackgroundColor = Color(0xffFCFEFC);
+const Color mBackgroundColor = Color(0xfff4f9f3);
 
 const Color mPrimaryColor = Color(0xff61B15A);
 const Color mSecondaryColor = Color(0xffAFD8AC);

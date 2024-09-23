@@ -27,8 +27,9 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
     String formattedDate = date.toIso8601String().split('T').first;
 
     for (var entry in dummyDiaryData) {
-      // entry.dateTime이 YYYY-MM-DD 형식인지 확인하고 비교
-      if (entry.dateTime == formattedDate) {
+      if (entry.dateTime.year == date.year &&
+          entry.dateTime.month == date.month &&
+          entry.dateTime.day == date.day) {
         return entry; // 일기 데이터 반환
       }
     }
@@ -129,7 +130,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
                   print('Diary Entry: ${diaryEntry?.dateTime}');
 
                   if (diaryEntry != null) {
-                    context.go('/diary/${diaryEntry.indexNumber}');
+                    context.go('/read/${diaryEntry.indexNumber}');
                   } else {
                     customToastMsg("작성된 내용이 없습니다.");
                   }

@@ -37,14 +37,16 @@ class _DiaryListWidgetState extends State<DiaryListWidget> {
               imagePath = emotions[4].imageUrl;
               break; // break 추가
           }
+          var date = dummyDiaryData[index].dateTime;
           return GestureDetector(
             onTap: () {
+              print(date);
               // CustomListWidget 클릭 시 DiaryReadScreen으로 이동
               context.go(
-                  '/diary/${dummyDiaryData[index].indexNumber}'); // go_router를 사용하여 이동
+                  '/read/${dummyDiaryData[index].indexNumber}'); // go_router를 사용하여 이동
             },
             child: CustomListWidget(
-              dateTime: dummyDiaryData[index].dateTime,
+              dateTime: date,
               imagePath: imagePath,
               index: index,
             ),

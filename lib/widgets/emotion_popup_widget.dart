@@ -15,40 +15,42 @@ class EmotionPopupWidget extends StatelessWidget {
         context.go('/choice_emotion');
       },
       child: Container(
-        // color: Colors.blue,
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 28),
-          padding: EdgeInsets.symmetric(vertical: 4, horizontal: 20),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            // color: mSecondaryColor,
-            border: Border.all(color: mSecondaryColor, width: 2),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: EdgeInsets.only(right: 20),
-                child: SizedBox(
-                  width: 40,
-                  child: Image.asset('assets/images/icon/icon_joy_y.png'),
+        height: 60,
+        margin: EdgeInsets.symmetric(horizontal: 28),
+        padding: EdgeInsets.symmetric(vertical: 4, horizontal: 20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          // color: mSecondaryColor,
+          border: Border.all(color: mSecondaryColor, width: 2),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              // color: Colors.blue,
+              // alignment: Alignment.center,
+              padding: EdgeInsets.only(left: 20),
+              child: SizedBox(
+                width: 40,
+                child: Image.asset('assets/images/icon/icon_peaceful.png'),
+              ),
+            ),
+            Expanded(
+              child: Text(
+                textAlign: TextAlign.center,
+                "행복해져라~ 얍!",
+                style: TextStyle(
+                  // backgroundColor: Colors.green,
+                  color: mFontDarkColor,
+                  fontFamily: 'Santteut',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16.0,
+                  overflow: TextOverflow.visible,
+                  letterSpacing: 1.1,
                 ),
               ),
-              Expanded(
-                child: Text(
-                  "당신의 하루가 행복했으면 좋겠어요.",
-                  style: TextStyle(
-                    color: mFontDarkColor,
-                    fontFamily: 'Santteut',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12.0,
-                    overflow: TextOverflow.visible,
-                    letterSpacing: 1.1,
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

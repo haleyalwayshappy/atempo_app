@@ -14,7 +14,7 @@ class DiaryGridWidget extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         crossAxisSpacing: 10, // 간격
         mainAxisSpacing: 10, // 간격
-        crossAxisCount: 5, // 한줄에 5개 (여기서 갯수 조정 가능)
+        crossAxisCount: 7, // 한줄에 5개 (여기서 갯수 조정 가능)
         children: List.generate(dummyDiaryData.length, (index) {
           var imagePath; // 이미지 경로
           /// 다이어리 데이터감정이 무엇인지를 판단하여 맞는 아이콘을 화면에 보여준다.
