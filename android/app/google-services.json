@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "525382879421",
+    "project_id": "teamatempo",
+    "storage_bucket": "teamatempo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:525382879421:android:5394d702ec3df441c70fd4",
+        "android_client_info": {
+          "package_name": "com.example.atempo_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxWfS4iz-BCBAfJY0ERu07pgKeG9l6o3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

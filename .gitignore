@@ -46,4 +46,14 @@ ios/Podfile.lock
 *.json
 *.lock
 
+<<<<<<< Updated upstream
 ._*
+=======
+# End of https://www.toptal.com/developers/gitignore/api/flutter
+._*
+
+#find ./ -name ._\* -delete   아이맥에서 작업하면 이거 하고 시작하셈 ._파일 지워주는 명령어
+.idea/workspace.xml
+ios/Flutter/Generated.xcconfig
+.idea/workspace.xml
+>>>>>>> Stashed changes
