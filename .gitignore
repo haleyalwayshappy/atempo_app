@@ -72,4 +72,8 @@ lib/generated_plugin_registrant.dart
 .idea/workspace.xml
 ios/Flutter/Generated.xcconfig
 ios/Flutter/flutter_export_environment.sh
+/ios/Flutter
+.idea/workspace.xml
 ios/Flutter/flutter_export_environment.sh
+ios/Flutter/Generated.xcconfig
+ios/Podfile.lock
