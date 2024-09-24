@@ -1,7 +1,3 @@
-import 'package:atempo_app/model/diary_data.dart';
-import 'package:atempo_app/model/emotionData.dart';
-import 'package:atempo_app/utils/constants.dart';
-import 'package:atempo_app/widgets/toast.dart';
 import 'package:flutter/material.dart';
 
 class DiaryListScreen extends StatefulWidget {
