@@ -70,3 +70,6 @@ lib/generated_plugin_registrant.dart
 
 #find ./ -name ._\* -delete   아이맥에서 작업하면 이거 하고 시작하셈 ._파일 지워주는 명령어
 .idea/workspace.xml
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Flutter/flutter_export_environment.sh
