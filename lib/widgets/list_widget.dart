@@ -27,7 +27,7 @@ class CustomListWidget extends StatelessWidget {
     int indexN = dummyDiaryData[index].indexNumber;
     return GestureDetector(
       onTap: () {
-        context.go('/read/$indexN');
+        context.go('/diary/read/$indexN');
       },
       child: Container(
         height: MediaQuery.of(context).size.height *

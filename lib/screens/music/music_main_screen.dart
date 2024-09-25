@@ -1,89 +1,140 @@
-import 'package:atempo_app/screens/music/music_play_screen.dart';
+import 'package:atempo_app/screens/music/music_theme_title.dart';
 import 'package:atempo_app/utils/constants.dart';
-import 'package:atempo_app/widgets/toast.dart';
+import 'package:atempo_app/widgets/custom_app_bar.dart';
+import 'package:atempo_app/widgets/recommend_box.dart';
 import 'package:flutter/material.dart';
 
-import 'music_list_screen.dart';
-
-class MusicMainScreen extends StatefulWidget {
+class MusicMainScreen extends StatelessWidget {
   const MusicMainScreen({super.key});
-/* stateful 로 변경한 이유는 콜백함수를 위해서임, 버튼을 누를때 화면 상태가 변경되기 때문 */
-
-  @override
-  State<MusicMainScreen> createState() => _MusicMainScreenState();
-}
-
-/// 음악 메인화면 (내부 화면 이동 처리
-class _MusicMainScreenState extends State<MusicMainScreen> {
-  int _currentScreenIndex = 0; // 현재 페이지 위치
-
-  /// 화면 상태 변경 함수 (내부에서만 사용됨)
-  void _navigateTo(int index) {
-    setState(() {
-      _currentScreenIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
+    // final double screenWidth = MediaQuery.of(context).size.width;
+    // final double itemHeight = screenWidth * 0.2; // Make the height proportional
+
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: mBackgroundColor,
-        titleTextStyle: TextStyle(
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
-          fontSize: 24.0,
-        ),
-        title: GestureDetector(
-          onTap: () {
-            _navigateTo(0);
-          },
-          child: const Text(
-            "음악",
-            style: TextStyle(
-              color: Colors.black,
-            ),
+      appBar: CustomAppBar(titleText: "음악"),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              MusicThemeTitle(
+                musicTitle: '테마 음악',
+                top: 0.0,
+              ),
+              // SingleChildScrollView(
+              //   scrollDirection: Axis.horizontal, // 수평 스크롤 설정
+              //   child: Row(
+              //     children: [
+              //       for (var i = 0; i < 5; i++) // i 초기화
+              //         MusicRowWidget(
+              //           // 중괄호 제거
+              //           width: 340,
+              //           height: 200,
+              //           titleText: "큰 타이틀 제목${i + 1}",
+              //           subTitleText: "부제목 또는 설명",
+              //         ),
+              //     ],
+              //   ),
+              // ),
+
+              // 기쁨
+              MusicThemeTitle(
+                musicTitle: '춤추고 싶을때',
+              ),
+              Container(
+                margin: EdgeInsets.only(left: 10),
+                child: RecommendBox(),
+              ),
+
+              // // 리스트 예제
+              // MusicThemeTitle(
+              //   musicTitle: '리스트 예제',
+              //   bottom: 0,
+              // ),
+              // MusicListWidget1(),
+
+
+
+            ],
           ),
         ),
-        elevation: 1.0,
-        actions: [
-          IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.person,
-              ))
-        ],
       ),
-      body: IndexedStack(
-        // TODO indexedStack 공부 하기
-        index: _currentScreenIndex,
+    );
+  }
+}
+
+class MusicListWidget1 extends StatelessWidget {
+  const MusicListWidget1({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
         children: [
-          MusicHomeScreen(
-            // 뮤직 메인스크린 화면
-            onNavigateToPlay: () {
-              customToastMsg("화면 이동합니다.");
-              _navigateTo(1); // MusicPlayScreen으로 이동
-            },
-            onNavigateToList: () {
-              _navigateTo(2); // MusicListScreen으로 이동
-            },
-          ),
-          MusicPlayScreen(
-            onNavigateBack: () {
-              _navigateTo(0); // MusicHomeScreen으로 이동
-            },
-            onNavigateToList: () {
-              customToastMsg("화면 이동합니다.");
-              _navigateTo(2); // MusicListScreen으로 이동
-            },
-          ),
-          MusicListScreen(
-            onNavigateBack: () {
-              _navigateTo(0); // MusicHomeScreen으로 이동
-            },
-            onNavigateToPlay: () {
-              _navigateTo(1); // MusicPlayScreen으로 이동
-            },
+          Container(
+            margin: EdgeInsets.all(15),
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  // 컨테이너 안에 데코레이션 박스에 이미지 넣음
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/maru1.jpeg'),
+                      fit: BoxFit.cover,
+                      alignment: Alignment.center,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    // color: Colors.blue,
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '맛있는 음식을 먹은 마루',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: mPrimaryColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Text(
+                          '기분 좋을때 듣는 음악',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: mSecondaryColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(right: 10),
+                  child: Text(
+                    '3:40',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: mPrimaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -91,30 +142,90 @@ class _MusicMainScreenState extends State<MusicMainScreen> {
   }
 }
 
-class MusicHomeScreen extends StatelessWidget {
-  final VoidCallback onNavigateToPlay;
-  final VoidCallback onNavigateToList;
+class MusicRowWidget extends StatelessWidget {
+  final double width;
+  final double height;
+  final String titleText;
+  final String subTitleText;
 
-  /// 뮤직메인스크린 화면
-  const MusicHomeScreen({
-    required this.onNavigateToPlay,
-    required this.onNavigateToList,
-    super.key,
-  });
+  const MusicRowWidget(
+      {super.key,
+      required this.width,
+      required this.height,
+      required this.titleText,
+      required this.subTitleText});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ElevatedButton(
-          onPressed: onNavigateToPlay,
-          child: Text("재생화면으로 이동"),
-        ),
-        ElevatedButton(
-          onPressed: onNavigateToList,
-          child: Text("목록 화면으로 이동 "),
-        ),
-      ],
+    return Container(
+      margin: EdgeInsets.all( 20),
+      width: width,
+      height: height,
+      child: Stack(
+        children: [
+          // 이미지 컨테이너
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image: AssetImage('assets/images/day6_bg2.jpeg'),
+                fit: BoxFit.cover,
+                alignment: Alignment.center,
+              ),
+            ),
+          ),
+          // 반투명 배경 컨테이너
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              gradient: LinearGradient(
+                colors: [
+                  Colors.black, // 시작 색상
+                  Colors.transparent, // 끝 색상
+                ],
+                end: Alignment.topCenter, // 그라데이션 시작 위치
+                begin: Alignment.bottomCenter, // 그라데이션 끝 위치
+              ),
+            ),
+          ),
+
+          // 첫 번째 텍스트 (크기 24)
+          Positioned(
+            bottom: 40, // 아래에서 40픽셀
+            right: 10, // 오른쪽에서 10픽셀
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              // color: Colors.black54, // 반투명 배경
+              child: Text(
+                titleText, // 원하는 텍스트
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24, // 크기 24
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          // 두 번째 텍스트 (크기 16)
+          Positioned(
+            bottom: 14, // 아래에서 10픽셀
+            right: 10, // 오른쪽에서 10픽셀
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              // color: Colors.black54, // 반투명 배경
+              child: Text(
+                subTitleText, // 원하는 텍스트
+                style: TextStyle(
+                  fontFamily: 'Pretendard',
+                  color: Colors.white,
+                  fontSize: 16, // 크기 16
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

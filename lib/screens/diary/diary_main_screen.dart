@@ -25,7 +25,7 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         titleText: '일기',
-        showBackButton: false,
+        // showBackButton: false,
       ),
       body: SafeArea(
         child: Column(

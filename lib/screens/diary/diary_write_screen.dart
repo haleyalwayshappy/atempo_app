@@ -20,7 +20,7 @@ class _DiaryWriteScreenState extends State<DiaryWriteScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         titleText: '오늘 하루를 작성해주세요',
-        showBackButton: true,
+        // showBackButton: true,
         backLocation: '/diary',
       ),
       body: SafeArea(

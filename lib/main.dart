@@ -2,7 +2,7 @@ import 'package:atempo_app/firebase_options.dart';
 import 'package:atempo_app/utils/constants.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:atempo_app/model/router.dart';
+import 'package:atempo_app/service/router.dart';
 
 void main() {
   runApp(MainScreenApp());

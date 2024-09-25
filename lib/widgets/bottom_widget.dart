@@ -12,11 +12,11 @@ class BottomWidget extends StatefulWidget {
 }
 
 class _BottomWidget extends State<BottomWidget> {
-  int _selectedIndex = 1; // 0 : 음악 , 1: 홈 , 2 : 일기
+  int _selectedIndex = 0; // 0 : 음악 , 1: 홈 , 2 : 일기
 
   void onDestinationSelected(int index) {
     setState(() {
-      // _selectedIndex = index;
+      _selectedIndex = index;
     });
 
     switch (index) {
@@ -47,14 +47,14 @@ class _BottomWidget extends State<BottomWidget> {
 
         onTap: (index) {
           onDestinationSelected(index);
-          switch (index) {
-            case 0:
-              context.go('/music');
-            case 1:
-              context.go('/home');
-            case 2:
-              context.go('/diary');
-          }
+          // switch (index) {
+          //   case 0:
+          //     context.go('/music');
+          //   case 1:
+          //     context.go('/home');
+          //   case 2:
+          //     context.go('/diary');
+          // }
         },
         items: const [
           BottomNavigationBarItem(
@@ -74,7 +74,7 @@ class _BottomWidget extends State<BottomWidget> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // 새로운 일기 작성 페이지로 이동
-          context.go('/write'); // 새로운 일기 작성 경로로 이동
+          context.go('/diary/write'); // 새로운 일기 작성 경로로 이동
         }, // 플로팅 버튼 아이콘
         backgroundColor: mPrimaryColor,
         shape: CircleBorder(), // 동그라미 모양으로 설정

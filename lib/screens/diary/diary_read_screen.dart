@@ -22,7 +22,7 @@ class DiaryReadScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         titleText: dateFormatted,
-        showBackButton: true,
+        // showBackButton: true,
         backLocation: '/home',
       ),
       body: SafeArea(

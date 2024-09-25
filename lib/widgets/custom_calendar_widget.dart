@@ -130,7 +130,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
                   print('Diary Entry: ${diaryEntry?.dateTime}');
 
                   if (diaryEntry != null) {
-                    context.go('/read/${diaryEntry.indexNumber}');
+                    context.go('/diary/read/${diaryEntry.indexNumber}');
                   } else {
                     customToastMsg("작성된 내용이 없습니다.");
                   }
