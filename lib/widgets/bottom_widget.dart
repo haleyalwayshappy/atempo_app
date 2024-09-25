@@ -16,7 +16,7 @@ class _BottomWidget extends State<BottomWidget> {
 
   void onDestinationSelected(int index) {
     setState(() {
-      _selectedIndex = index;
+      // _selectedIndex = index;
     });
 
     switch (index) {
@@ -38,11 +38,6 @@ class _BottomWidget extends State<BottomWidget> {
       // body: _buildCurrentScreen(), // 화면 변경
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
-        // backgroundColor: mBackgroundColor,
-        // indicatorColor: mPrimaryColor,
-        // selectedIndex: _selectedIndex,
-        // onDestinationSelected: onDestinationSelected,
-
         /// 바텀위젯 꾸미는 코드
         showSelectedLabels: false, // 선택된 란 텍스트 비활성화
         showUnselectedLabels: false, // 선택되지 않은 란 텍스트 비활성화
@@ -75,26 +70,6 @@ class _BottomWidget extends State<BottomWidget> {
             label: '일기',
           ),
         ],
-
-        // destinations: const [
-        //   NavigationDestination(
-        //     icon: Icon(Icons.headphones, size: 26),
-        //     label: '',
-        //   ),
-        //   NavigationDestination(
-        //     icon: Icon(
-        //       Icons.home,
-        //       size: 26,
-        //     ),
-        //     label: '',
-        //   ),
-        //   NavigationDestination(
-        //       icon: Icon(
-        //         Icons.calendar_month,
-        //         size: 26,
-        //       ),
-        //       label: ''),
-        // ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -115,3 +90,7 @@ class _BottomWidget extends State<BottomWidget> {
     );
   }
 }
+
+/*
+*
+* */

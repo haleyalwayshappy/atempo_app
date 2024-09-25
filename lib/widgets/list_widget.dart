@@ -30,7 +30,8 @@ class CustomListWidget extends StatelessWidget {
         context.go('/read/$indexN');
       },
       child: Container(
-        height: MediaQuery.of(context).size.height * 0.085, // 전체사이즈의 0.09
+        height: MediaQuery.of(context).size.height *
+            0.085, // 전체사이즈의 0.09는 너무 큼 그래서 0.085 로...
         decoration: BoxDecoration(
           border: Border(
               // 밑줄

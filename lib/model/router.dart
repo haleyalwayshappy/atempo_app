@@ -6,7 +6,6 @@ import 'package:atempo_app/screens/diary/diary_read_screen.dart';
 import 'package:atempo_app/screens/diary/diary_write_screen.dart';
 import 'package:atempo_app/screens/home/choice_emotion_screen.dart';
 import 'package:atempo_app/screens/home/home_screen.dart';
-import 'package:atempo_app/screens/home/splash_screen.dart';
 import 'package:atempo_app/screens/music/music_main_screen.dart';
 import 'package:atempo_app/widgets/bottom_widget.dart';
 import 'package:go_router/go_router.dart';
@@ -14,8 +13,13 @@ import 'package:go_router/go_router.dart';
 final GoRouter router = GoRouter(
   initialLocation: '/home', // 초기 경로 설정
   routes: [
+    /* 바텀네비게이션 영역
+    * StatefulShellRoute.indexedStack 에는 builder와 branches가 존재해야한다.
+    * branches안에는 'StatefulShellBranch'로 루트를 작성해줘야한다.  */
     StatefulShellRoute.indexedStack(
-      builder: (context, state, child) => BottomWidget(child: child),
+      builder: (context, state, child) => BottomWidget(
+        navigationShell: child,
+      ),
       branches: [
         StatefulShellBranch(
           routes: [
@@ -43,7 +47,8 @@ final GoRouter router = GoRouter(
         ),
       ],
     ),
-    // 스플래쉬 페이지
+
+    /* 바텀네비게이션과 같은 레벨단 */
     // 감정 선택 화면
     GoRoute(
       path: '/choice_emotion',
