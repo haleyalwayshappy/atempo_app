@@ -1,3 +1,4 @@
+import 'package:atempo_app/model/content_dummydata..dart';
 import 'package:atempo_app/screens/music/music_theme_title.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/custom_app_bar.dart';
@@ -12,7 +13,6 @@ class MusicMainScreen extends StatelessWidget {
     // final double screenWidth = MediaQuery.of(context).size.width;
     // final double itemHeight = screenWidth * 0.2; // Make the height proportional
 
-
     return Scaffold(
       appBar: CustomAppBar(titleText: "음악"),
       body: SafeArea(
@@ -26,21 +26,23 @@ class MusicMainScreen extends StatelessWidget {
                 musicTitle: '테마 음악',
                 top: 0.0,
               ),
-              // SingleChildScrollView(
-              //   scrollDirection: Axis.horizontal, // 수평 스크롤 설정
-              //   child: Row(
-              //     children: [
-              //       for (var i = 0; i < 5; i++) // i 초기화
-              //         MusicRowWidget(
-              //           // 중괄호 제거
-              //           width: 340,
-              //           height: 200,
-              //           titleText: "큰 타이틀 제목${i + 1}",
-              //           subTitleText: "부제목 또는 설명",
-              //         ),
-              //     ],
-              //   ),
-              // ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal, // 수평 스크롤 설정
+                child: Row(
+                  children: [
+                 for(var content in dummyContentData)
+                   MusicRowWidget(
+                     // 중괄호 제거
+                     width: 340,
+                     height: 200,
+                     titleText: content.titleText,
+                     subTitleText: content.subTitleText,
+                     imageUrl: content.imageUrl,
+                   ),
+
+                  ],
+                ),
+              ),
 
               // 기쁨
               MusicThemeTitle(
@@ -51,12 +53,12 @@ class MusicMainScreen extends StatelessWidget {
                 child: RecommendBox(),
               ),
 
-              // // 리스트 예제
-              // MusicThemeTitle(
-              //   musicTitle: '리스트 예제',
-              //   bottom: 0,
-              // ),
-              // MusicListWidget1(),
+              // 리스트 예제
+              MusicThemeTitle(
+                musicTitle: '리스트 예제',
+                bottom: 0,
+              ),
+              MusicListWidget1(),
 
 
 
@@ -147,28 +149,29 @@ class MusicRowWidget extends StatelessWidget {
   final double height;
   final String titleText;
   final String subTitleText;
+  final String imageUrl;
 
   const MusicRowWidget(
       {super.key,
       required this.width,
       required this.height,
       required this.titleText,
-      required this.subTitleText});
+      required this.subTitleText, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all( 20),
+      margin: EdgeInsets.all(10),
       width: width,
       height: height,
       child: Stack(
         children: [
-          // 이미지 컨테이너
+          // 배경화면 컨테이너
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                image: AssetImage('assets/images/day6_bg2.jpeg'),
+                image: AssetImage('assets/images/${imageUrl}'),
                 fit: BoxFit.cover,
                 alignment: Alignment.center,
               ),
@@ -189,38 +192,29 @@ class MusicRowWidget extends StatelessWidget {
             ),
           ),
 
-          // 첫 번째 텍스트 (크기 24)
+          // 타이틀 내용
           Positioned(
-            bottom: 40, // 아래에서 40픽셀
-            right: 10, // 오른쪽에서 10픽셀
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              // color: Colors.black54, // 반투명 배경
-              child: Text(
-                titleText, // 원하는 텍스트
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24, // 크기 24
-                  fontWeight: FontWeight.bold,
-                ),
+            bottom: 44, // 아래부터 40픽셀
+            right: 18, // 오른쪽분터 10픽셀
+            child: Text(
+              titleText,
+              style: TextStyle(
+                color: mFontLightColor,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          // 두 번째 텍스트 (크기 16)
+          // 설명
           Positioned(
-            bottom: 14, // 아래에서 10픽셀
-            right: 10, // 오른쪽에서 10픽셀
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              // color: Colors.black54, // 반투명 배경
-              child: Text(
-                subTitleText, // 원하는 텍스트
-                style: TextStyle(
-                  fontFamily: 'Pretendard',
-                  color: Colors.white,
-                  fontSize: 16, // 크기 16
-                  fontWeight: FontWeight.normal,
-                ),
+            bottom: 18, // 아래부터 10픽셀
+            right: 18, // 오른쪽부터 10픽셀
+            child: Text(
+              subTitleText,
+              style: TextStyle(
+                color: mFontLightColor,
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
               ),
             ),
           ),

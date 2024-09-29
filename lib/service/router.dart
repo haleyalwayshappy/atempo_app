@@ -24,7 +24,7 @@ final GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: '/music',
-              builder: (context, state) => AudiobookScreen(),
+              builder: (context, state) => MusicMainScreen(),
             ),
           ],
         ),

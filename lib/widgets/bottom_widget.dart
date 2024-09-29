@@ -44,6 +44,7 @@ class _BottomWidget extends State<BottomWidget> {
         unselectedItemColor: mDisabledColor,
         selectedItemColor: mEnabledColor,
         currentIndex: _selectedIndex,
+        backgroundColor: mBackgroundColor,
 
         onTap: (index) {
           onDestinationSelected(index);

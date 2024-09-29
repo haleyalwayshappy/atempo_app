@@ -1,7 +1,7 @@
 import 'package:atempo_app/model/emotion_data.dart';
 
 /// 일기에 대한 더미 데이터다.
-class DiaryDummyData {
+class DiaryEntry {
   int indexNumber; // 인덱스 번호
   EmotionType mainEmotion; // 대표감정
   String? subEmotion; // 상세감정
@@ -12,7 +12,7 @@ class DiaryDummyData {
   String? content5; // 일기 내용5
   DateTime dateTime; // 날짜
 
-  DiaryDummyData({
+  DiaryEntry({
     required this.indexNumber,
     required this.mainEmotion,
     required this.subEmotion,
@@ -25,8 +25,8 @@ class DiaryDummyData {
   });
 }
 
-List<DiaryDummyData> dummyDiaryData = [
-  DiaryDummyData(
+List<DiaryEntry> dummyDiaryData = [
+  DiaryEntry(
     indexNumber: 1,
     mainEmotion: EmotionType.joy,
     subEmotion: '신나요',
@@ -37,7 +37,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: '만날 수 있는 친구들이있어서 감사할것 같아요.',
     dateTime: DateTime(2024, 9, 1),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 2,
     mainEmotion: EmotionType.sad,
     subEmotion: '우울해요',
@@ -48,7 +48,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 2),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 3,
     mainEmotion: EmotionType.anger,
     subEmotion: '화나는',
@@ -59,7 +59,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 3),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 4,
     mainEmotion: EmotionType.peace,
     subEmotion: '평화롭다',
@@ -70,7 +70,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 4),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 5,
     mainEmotion: EmotionType.confused,
     subEmotion: '질투하는',
@@ -81,7 +81,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 5),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 6,
     mainEmotion: EmotionType.joy,
     subEmotion: '행복해요',
@@ -92,7 +92,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 6),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 7,
     mainEmotion: EmotionType.sad,
     subEmotion: '외로워요',
@@ -103,7 +103,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 7),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 8,
     mainEmotion: EmotionType.anger,
     subEmotion: '짜증나는',
@@ -114,7 +114,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 8),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 9,
     mainEmotion: EmotionType.peace,
     subEmotion: '안정되다',
@@ -125,7 +125,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 9),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 10,
     mainEmotion: EmotionType.confused,
     subEmotion: '무서운',
@@ -136,7 +136,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 10),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 11,
     mainEmotion: EmotionType.joy,
     subEmotion: '뿌듯해요',
@@ -147,7 +147,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 11),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 12,
     mainEmotion: EmotionType.sad,
     subEmotion: '좌절하다',
@@ -158,7 +158,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 12),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 13,
     mainEmotion: EmotionType.anger,
     subEmotion: '억울한',
@@ -169,7 +169,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 13),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 14,
     mainEmotion: EmotionType.peace,
     subEmotion: '홀가분하다',
@@ -180,7 +180,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 14),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 15,
     mainEmotion: EmotionType.confused,
     subEmotion: '창피한',
@@ -191,7 +191,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 15),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 16,
     mainEmotion: EmotionType.joy,
     subEmotion: '기대되요',
@@ -202,7 +202,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 16),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 17,
     mainEmotion: EmotionType.sad,
     subEmotion: '서러운',
@@ -213,7 +213,7 @@ List<DiaryDummyData> dummyDiaryData = [
     content5: null,
     dateTime: DateTime(2024, 9, 17),
   ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 18,
     mainEmotion: EmotionType.anger,
     subEmotion: '답답한',
@@ -235,7 +235,7 @@ List<DiaryDummyData> dummyDiaryData = [
   //   content5: null,
   //   dateTime: '2024-09-19',
   // ),
-  DiaryDummyData(
+  DiaryEntry(
     indexNumber: 20,
     mainEmotion: EmotionType.confused,
     subEmotion: '황당한',

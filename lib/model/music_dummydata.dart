@@ -1,9 +1,10 @@
-class MusicDummyData {
+/// 음악 컨텐츠에 들어갈 내용
+class MusicEntry {
   int index;
   String musicImgUrl;
   String musicTitle;
   List<String>? musicUrl;
-  MusicDummyData({
+  MusicEntry({
     required this.index,
     required this.musicImgUrl,
     required this.musicTitle,
@@ -11,28 +12,28 @@ class MusicDummyData {
   });
 }
 
-final List<MusicDummyData> musicItems = [
-  MusicDummyData(
+final List<MusicEntry> musicItems = [
+  MusicEntry(
     index: 1,
     musicImgUrl: 'assets/images/maru1.jpeg',
     musicTitle: '음악1',
   ),
-  MusicDummyData(
+  MusicEntry(
     index: 2,
     musicImgUrl: 'assets/images/maru2.jpeg',
     musicTitle: '음악2',
   ),
-  MusicDummyData(
+  MusicEntry(
     index: 3,
     musicImgUrl: 'assets/images/maru3.jpeg',
     musicTitle: '음악3',
   ),
-  MusicDummyData(
+  MusicEntry(
     index: 4,
     musicImgUrl: 'assets/images/maru4.jpeg',
     musicTitle: '음악4',
   ),
-  MusicDummyData(
+  MusicEntry(
     index: 5,
     musicImgUrl: 'assets/images/maru1.jpeg',
     musicTitle: '음악5',

@@ -22,7 +22,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
   DateTime focusedDay = DateTime.now();
 
 // 선택된 날짜에 해당하는 일기 데이터를 가져오는 메서드
-  DiaryDummyData? getDiaryEntryForSelectedDate(DateTime date) {
+  DiaryEntry? getDiaryEntryForSelectedDate(DateTime date) {
     // 선택된 날짜를 YYYY-MM-DD 형식으로 변환
     String formattedDate = date.toIso8601String().split('T').first;
 

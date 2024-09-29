@@ -13,7 +13,7 @@ class DiaryReadScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // 선택된 인덱스에 해당하는 데이터 가져오기
-    DiaryDummyData selectedDiary = dummyDiaryData[selectedIndex];
+    DiaryEntry selectedDiary = dummyDiaryData[selectedIndex];
     DateTime dateTime = selectedDiary.dateTime;
     String dateFormatted =
         "${dateTime.year}년 ${dateTime.month.toString().padLeft(2, '0')}월 ${dateTime.day.toString().padLeft(2, '0')}일"; // 날짜 포맷

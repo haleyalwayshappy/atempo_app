@@ -9,6 +9,9 @@ import 'package:atempo_app/widgets/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
+const int listViewIndex = 0;
+const int gridViewIndex = 1;
+
 /// 일기 홈 화면
 class DiaryMainScreen extends StatefulWidget {
   const DiaryMainScreen({super.key});
@@ -18,7 +21,7 @@ class DiaryMainScreen extends StatefulWidget {
 }
 
 class _DiaryMainScreenState extends State<DiaryMainScreen> {
-  bool isGridView = true; // State variable to track view type
+  bool isGridView = false; // State variable to track view type
 
   @override
   Widget build(BuildContext context) {
@@ -58,22 +61,23 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
                     ],
                   ),
                   AnimatedToggleSwitch<int>.rolling(
-                    current: isGridView ? 1 : 0, // isGridView에 따라 0 또는 1 설정
-                    values: const [0, 1], // 0: 리스트 뷰, 1: 그리드 뷰
-                    height: 38,
+                    current: isGridView ? gridViewIndex : listViewIndex, // isGridView에 따라 0 또는 1 설정
+                    values: const [listViewIndex, gridViewIndex], // 0: 리스트 뷰, 1: 그리드 뷰
+                    height: 38, // 높이값
                     style: ToggleStyle(
                       indicatorColor: mSecondaryColor,
-                      backgroundColor: Colors.transparent,
+                      // backgroundColor: Colors.pink,
                       borderColor: Colors.transparent,
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(50),
+                    indicatorBorderRadius: BorderRadius.circular(50),
                     ),
-                    onChanged: (i) {
+                    onChanged:(index){
                       setState(() {
-                        isGridView = i == 1; // 1일 경우 그리드 뷰로 설정
+                        isGridView = index == gridViewIndex; // index == values 값
                       });
                     },
-
                     iconBuilder: (value, foreground) {
+                      // print('foreground ${foreground}');
                       return rollingIconBuilder(value, foreground); // 아이콘 빌더 호출
                     },
                   ),
@@ -90,6 +94,8 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
       ),
     );
   }
+
+
 }
 
 Widget rollingIconBuilder(int? value, bool foreground) {
@@ -104,45 +110,3 @@ IconData iconDataByViewType(int? value) => switch (value) {
       // TODO: Handle this case.
       null => throw UnimplementedError(),
     };
-
-/*
-*              Switch(
-                    value: isGridView,
-                    onChanged: (value) {
-                      setState(() {
-                        isGridView = value; // Update view type
-                      });
-                    },
-                    activeColor: mPrimaryColor,
-                    inactiveThumbColor: mGrey3Color,
-                    // inactiveTrackColor: Colors.yellow,
-                  ),*/
-
-/*
-*                   Expanded(
-                    child: LiteRollingSwitch(
-                      value: isGridView,
-                      textOn: '그리드',
-                      textOff: '리스트',
-                      colorOn: Colors.green,
-                      colorOff: Colors.red,
-                      iconOn: Icons.grid_view_rounded,
-                      iconOff: Icons.list_outlined,
-                      textSize: 12.0,
-                      onTap: () {
-                        print('Current State of SWITCH IS: $isGridView');
-                      },
-                      onDoubleTap: () {
-                        customToastMsg("더블탭");
-                      },
-                      onSwipe: () {
-                        customToastMsg("스와이프");
-                      },
-                      onChanged: (value) {
-                        setState(() {
-                          isGridView = value; // Update view type
-                        });
-                      },
-                    ),
-                  ),
-*/

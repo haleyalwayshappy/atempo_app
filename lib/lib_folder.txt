@@ -1,0 +1,53 @@
+.
+├── main.dart
+├── model
+│ ├── content_dummydata..dart
+│ ├── diary_data.dart
+│ ├── emotion_data.dart
+│ └── music_dummydata.dart
+├── models
+├── screens
+│ ├── account
+│ │ ├── create_account_screen.dart
+│ │ ├── find_id_screen.dart
+│ │ ├── login_email_screen.dart
+│ │ └── login_screen.dart
+│ ├── diary
+│ │ ├── content_widget.dart
+│ │ ├── diary_grid_widget.dart
+│ │ ├── diary_list_widget.dart
+│ │ ├── diary_main_screen.dart
+│ │ ├── diary_read_screen.dart
+│ │ └── diary_write_screen.dart
+│ ├── home
+│ │ ├── choice_emotion_screen.dart
+│ │ ├── home_screen.dart
+│ │ └── splash_screen.dart
+│ ├── music
+│ │ ├── audiobook_screen.dart
+│ │ ├── music_list_screen.dart
+│ │ ├── music_main_screen.dart
+│ │ ├── music_play_screen.dart
+│ │ ├── music_theme_title.dart
+│ │ └── table_screen.dart
+│ └── settings
+│     ├── mypage_screen.dart
+│     └── settings_screen.dart
+├── service
+│ └── router.dart
+├── utils
+│ └── constants.dart
+└── widgets
+    ├── bottom_widget.dart
+    ├── container.dart
+    ├── custom_app_bar.dart
+    ├── custom_button.dart
+    ├── custom_calendar_widget.dart
+    ├── emotion_popup_widget.dart
+    ├── list_widget.dart
+    ├── recommend_box.dart
+    ├── switch_widget.dart
+    ├── textfield_with_title.dart
+    └── toast.dart
+
+13 directories, 42 files

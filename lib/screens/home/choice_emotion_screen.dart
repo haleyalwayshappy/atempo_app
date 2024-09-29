@@ -116,6 +116,12 @@ class ChoiceEmotionScreen extends StatelessWidget {
                 height: 20,
               ),
               ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Colors.transparent),
+                  // 배경을 투명하게 설정
+                  elevation: MaterialStateProperty.all(0), // 그림자 제거 (선택 사항)
+                ),
                 onPressed: () {
                   customToastMsg("메인으로 가는 버튼");
                   context.go('/home');

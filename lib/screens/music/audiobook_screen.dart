@@ -19,7 +19,9 @@ class AudiobookScreen extends StatelessWidget {
                   width: 400,
                   height: 0,
                   titleText: "이것만큼은 맹세할게",
-                  subTitleText: "내 전부를 다 바칠게"),
+                  subTitleText: "내 전부를 다 바칠게",
+                  imageUrl: 'day6_bg2.jpeg',),
+
             ),
             Expanded(
               flex: 2,
