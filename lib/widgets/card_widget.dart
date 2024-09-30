@@ -7,12 +7,12 @@ import 'package:go_router/go_router.dart';
 /// 오버라이드 위에   final indexN = dummyDiaryData[index].indexNumber; 값을 넣으면 안되고
 /// 오버라이드 안에 넣으면 된다.
 
-class CustomListWidget extends StatelessWidget {
+class CustomCardWidget extends StatelessWidget {
   final DateTime dateTime; // 날짜
   final String imagePath; // 아이콘 이미지
   final int index; // 인덱스 값
 
-  const CustomListWidget({
+  const CustomCardWidget({
     super.key,
     required this.dateTime,
     required this.imagePath,

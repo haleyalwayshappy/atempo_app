@@ -1,5 +1,6 @@
 import 'package:atempo_app/model/content_dummydata..dart';
-import 'package:atempo_app/screens/music/music_theme_title.dart';
+import 'package:atempo_app/screens/music/widget/music_title_text.dart';
+import 'package:atempo_app/screens/music/widget/music_box_widget.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/custom_app_bar.dart';
 import 'package:atempo_app/widgets/recommend_box.dart';
@@ -13,54 +14,49 @@ class MusicMainScreen extends StatelessWidget {
     // final double screenWidth = MediaQuery.of(context).size.width;
     // final double itemHeight = screenWidth * 0.2; // Make the height proportional
 
-    return Scaffold(
-      appBar: CustomAppBar(titleText: "음악"),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              MusicThemeTitle(
-                musicTitle: '테마 음악',
-                top: 0.0,
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal, // 수평 스크롤 설정
-                child: Row(
-                  children: [
-                    for (var content in dummyContentData)
-                      MusicRowWidget(
-                        // 중괄호 제거
-                        width: 340,
-                        height: 200,
-                        titleText: content.titleText,
-                        subTitleText: content.subTitleText,
-                        imageUrl: content.imageUrl,
-                      ),
-                  ],
-                ),
-              ),
-
-              // 기쁨
-              MusicThemeTitle(
-                musicTitle: '춤추고 싶을때',
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 10),
-                child: RecommendBox(),
-              ),
-
-              // 리스트 예제
-              MusicThemeTitle(
-                musicTitle: '리스트 예제',
-                bottom: 0,
-              ),
-              MusicListWidget1(),
-            ],
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          MusicTitleText(
+            musicTitle: '테마 음악',
+            bottom: 0,
           ),
-        ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal, // 수평 스크롤 설정
+            child: Row(
+              children: [
+                for (var content in dummyContentData)
+                  MusicRowWidget(
+                    // 중괄호 제거
+                    width: 340,
+                    height: 200,
+                    titleText: content.titleText,
+                    subTitleText: content.subTitleText,
+                    imageUrl: content.imageUrl,
+                  ),
+              ],
+            ),
+          ),
+
+          // 기쁨
+          MusicTitleText(
+            musicTitle: '춤추고 싶을때',
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 10),
+            child: RecommendBox(),
+          ),
+
+          // 리스트 예제
+          MusicTitleText(
+            musicTitle: '리스트 예제',
+            bottom: 0,
+          ),
+          MusicListWidget1(),
+        ],
       ),
     );
   }
@@ -75,65 +71,26 @@ class MusicListWidget1 extends StatelessWidget {
       scrollDirection: Axis.vertical,
       child: Column(
         children: [
-          Container(
-            margin: EdgeInsets.all(15),
-            child: Row(
-              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  // 컨테이너 안에 데코레이션 박스에 이미지 넣음
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/image_back2.jpg'),
-                      fit: BoxFit.cover,
-                      alignment: Alignment.center,
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    // color: Colors.blue,
-                    padding: const EdgeInsets.only(left: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '맛있는 음식을 먹은 마루',
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: mPrimaryColor,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        Text(
-                          '기분 좋을때 듣는 음악',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: mSecondaryColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(right: 10),
-                  child: Text(
-                    '3:40',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: mPrimaryColor,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          MusicBoxWidget(
+              musicTitle: "드라이브하다가 만난 염소",
+              musicSubTitle: '기분 좋을때 듣는 음악',
+              musicImage: 'image_back2.jpg',
+              musicTimeStamp: '2:30'),
+          MusicBoxWidget(
+              musicTitle: "드라이브하다가 만난 염소",
+              musicSubTitle: '기분 좋을때 듣는 음악',
+              musicImage: 'image_back2.jpg',
+              musicTimeStamp: '2:30'),
+          MusicBoxWidget(
+              musicTitle: "드라이브하다가 만난 염소",
+              musicSubTitle: '기분 좋을때 듣는 음악',
+              musicImage: 'image_back2.jpg',
+              musicTimeStamp: '2:30'),
+          MusicBoxWidget(
+              musicTitle: "드라이브하다가 만난 염소",
+              musicSubTitle: '기분 좋을때 듣는 음악',
+              musicImage: 'image_back2.jpg',
+              musicTimeStamp: '2:30'),
         ],
       ),
     );

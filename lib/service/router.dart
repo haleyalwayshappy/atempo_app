@@ -8,6 +8,7 @@ import 'package:atempo_app/screens/home/choice_emotion_screen.dart';
 import 'package:atempo_app/screens/home/home_screen.dart';
 import 'package:atempo_app/screens/music/audiobook_screen.dart';
 import 'package:atempo_app/screens/music/music_main_screen.dart';
+import 'package:atempo_app/screens/music/music_tab_screen.dart';
 import 'package:atempo_app/widgets/bottom_widget.dart';
 import 'package:go_router/go_router.dart';
 
@@ -25,7 +26,7 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: '/music',
               // builder: (context, state) => AudiobookScreen(),
-              builder: (context, state) => MusicMainScreen(),
+              builder: (context, state) => MusicTabScreen(),
             ),
           ],
         ),

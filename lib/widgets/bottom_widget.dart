@@ -1,4 +1,5 @@
 import 'package:atempo_app/utils/constants.dart';
+import 'package:atempo_app/widgets/custom_floating_button.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -38,8 +39,10 @@ class _BottomWidget extends State<BottomWidget> {
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
         /// 바텀위젯 꾸미는 코드
-        showSelectedLabels: false, // 선택된 란 텍스트 비활성화
-        showUnselectedLabels: false, // 선택되지 않은 란 텍스트 비활성화
+        showSelectedLabels: false,
+        // 선택된 란 텍스트 비활성화
+        showUnselectedLabels: false,
+        // 선택되지 않은 란 텍스트 비활성화
         unselectedItemColor: mDisabledColor,
         selectedItemColor: mEnabledColor,
         currentIndex: _selectedIndex,
@@ -63,22 +66,10 @@ class _BottomWidget extends State<BottomWidget> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // 새로운 일기 작성 페이지로 이동
-          context.go('/diary/write'); // 새로운 일기 작성 경로로 이동
-        }, // 플로팅 버튼 아이콘
-        backgroundColor: mPrimaryColor,
-        shape: CircleBorder(), // 동그라미 모양으로 설정
-        elevation: 2.4,
-        child: Icon(
-          Icons.add,
-          color: mEnabledColor,
-          size: 40,
-        ), // 플로팅 버튼 배경색
-      ),
-      floatingActionButtonLocation:
-          FloatingActionButtonLocation.endFloat, // 플로팅 버튼 위치 설정
+      floatingActionButton: (_selectedIndex == 1 || _selectedIndex == 2)
+          ? CustomFloatingActionButton()
+          : null, // _selectedIndex가 1이나 2가 아닐 때는 버튼을 표시하지 않음
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }

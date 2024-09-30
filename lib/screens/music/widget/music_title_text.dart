@@ -1,14 +1,14 @@
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-class MusicThemeTitle extends StatelessWidget {
+class MusicTitleText extends StatelessWidget {
   final String musicTitle;
   final double? top;
   final double? bottom;
   final double? left;
   final double? right;
 
-  const MusicThemeTitle({
+  const MusicTitleText({
     super.key,
     required this.musicTitle,
     this.top = 20.0,

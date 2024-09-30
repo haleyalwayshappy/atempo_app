@@ -10,42 +10,45 @@ class DiaryGridWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: GridView.count(
-        primary: false,
-        padding: const EdgeInsets.all(8),
-        crossAxisSpacing: 10,
-        // 간격
-        mainAxisSpacing: 10,
-        // 간격
-        crossAxisCount: 6,
-        // 한줄에 5개 (여기서 갯수 조정 가능)
-        children: List.generate(dummyDiaryData.length, (index) {
-          var imagePath; // 이미지 경로
-          /// 다이어리 데이터감정이 무엇인지를 판단하여 맞는 아이콘을 화면에 보여준다.
-          switch (dummyDiaryData[index].mainEmotion) {
-            case EmotionType.joy:
-              imagePath = emotions[0].imageUrl;
-              break; // break 추가
-            case EmotionType.sad:
-              imagePath = emotions[1].imageUrl;
-              break; // break 추가
-            case EmotionType.anger:
-              imagePath = emotions[2].imageUrl;
-              break; // break 추가
-            case EmotionType.peace:
-              imagePath = emotions[3].imageUrl;
-              break; // break 추가
-            case EmotionType.confused:
-              imagePath = emotions[4].imageUrl;
-              break; // break 추가
-          }
-
-          return GestureDetector(
-              onTap: () {
-                context.go('/diary/read/${index + 1}');
-              },
-              child: Image.asset(imagePath)); // 이미지 반환
-        }),
+      child: Container(
+        padding: EdgeInsets.all(20.0),
+        child: GridView.count(
+          primary: false,
+          padding: const EdgeInsets.all(8),
+          crossAxisSpacing: 10,
+          // 간격
+          mainAxisSpacing: 10,
+          // 간격
+          crossAxisCount: 6,
+          // 한줄에 5개 (여기서 갯수 조정 가능)
+          children: List.generate(dummyDiaryData.length, (index) {
+            var imagePath; // 이미지 경로
+            /// 다이어리 데이터감정이 무엇인지를 판단하여 맞는 아이콘을 화면에 보여준다.
+            switch (dummyDiaryData[index].mainEmotion) {
+              case EmotionType.joy:
+                imagePath = emotions[0].imageUrl;
+                break; // break 추가
+              case EmotionType.sad:
+                imagePath = emotions[1].imageUrl;
+                break; // break 추가
+              case EmotionType.anger:
+                imagePath = emotions[2].imageUrl;
+                break; // break 추가
+              case EmotionType.peace:
+                imagePath = emotions[3].imageUrl;
+                break; // break 추가
+              case EmotionType.confused:
+                imagePath = emotions[4].imageUrl;
+                break; // break 추가
+            }
+        
+            return GestureDetector(
+                onTap: () {
+                  context.go('/diary/read/${index + 1}');
+                },
+                child: Image.asset(imagePath)); // 이미지 반환
+          }),
+        ),
       ),
     );
   }

@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            EmotionPopupWidget(),
+            // EmotionPopupWidget(),
             // 음악 가로 위젯
             Container(
               // color: Colors.blue,

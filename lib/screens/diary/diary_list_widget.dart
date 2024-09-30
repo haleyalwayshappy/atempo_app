@@ -1,6 +1,6 @@
 import 'package:atempo_app/model/diary_data.dart';
 import 'package:atempo_app/model/emotion_data.dart';
-import 'package:atempo_app/widgets/list_widget.dart';
+import 'package:atempo_app/widgets/card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -38,7 +38,7 @@ class _DiaryListWidgetState extends State<DiaryListWidget> {
               break; // break 추가
           }
           var date = dummyDiaryData[index].dateTime;
-          return CustomListWidget(
+          return CustomCardWidget(
             dateTime: date,
             imagePath: imagePath,
             index: index,

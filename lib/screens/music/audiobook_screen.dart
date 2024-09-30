@@ -1,5 +1,7 @@
 import 'package:atempo_app/model/music_dummydata.dart';
 import 'package:atempo_app/screens/music/music_main_screen.dart';
+import 'package:atempo_app/screens/music/widget/music_title_text.dart';
+import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -8,43 +10,109 @@ class AudiobookScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(titleText: "오디오북"),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              flex: 1,
-              child: MusicRowWidget(
-                width: 400,
-                height: 0,
-                titleText: "Title1",
-                subTitleText: "subtitle",
-                imageUrl: 'image_back3.jpg',
-              ),
+    final screenWidth = MediaQuery.of(context).size.width;
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          MusicTitleText(musicTitle: "추천 오디오 북 리스트",bottom: 0,left: 12.0,),
+          Center(
+            child: MusicRowWidget(
+              // 중괄호 제거
+              width: screenWidth,
+              height: 200,
+              titleText: "하루를 다스리는 법",
+              subTitleText: "마음이 평화로워지는 보이스",
+              imageUrl: 'image_back2.jpg',
             ),
-            Expanded(
-              flex: 2,
-              child: GridView.count(
-                primary: false,
-                crossAxisCount: 2,
-                childAspectRatio: 1.5 / 1,
-                // crossAxisSpacing: 10,
-                // 간격
-                // mainAxisSpacing: 10,
-                // 간격
-                // 한줄에 5개 (여기서 갯수 조정 가능)
-                children: List.generate(
-                  8,
-                  (index) {
-                    return GridToAudioWidget();
-                  },
+          ),
+          MusicTitleText(musicTitle: "Best 오디오 북",top:10,bottom: 0,left: 12.0,),
+
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // 그리드 열의 수
+                crossAxisSpacing: 10, // 항목 간의 가로 간격
+                childAspectRatio: 1 / 1.2, // 항목의 가로/세로 비율
+              ),
+              physics: NeverScrollableScrollPhysics(), // GridView 자체 스크롤 비활성화
+              shrinkWrap: true, // 스크롤이 가능한 영역만큼 크기를 맞춤
+              itemCount: 8, // 그리드 항목의 개수
+              itemBuilder: (context, index) {
+                // 더미 데이터
+                return CustomGridItem(
+                  imageUrl: 'assets/images/image_back4.jpg',
+                  title: '계곡 따라 떠나는 산책길',
+                  subtitle: '짧지만 달콤한 오후의 단잠',
+                  hashtags: ['우울', '행복'],
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+class CustomGridItem extends StatelessWidget {
+  final String imageUrl;
+  final String title;
+  final String subtitle;
+  final List<String> hashtags;
+
+  const CustomGridItem({
+    super.key,
+    required this.imageUrl,
+    required this.title,
+    required this.subtitle,
+    required this.hashtags,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          height: 150, // 이미지의 높이를 설정합니다.
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            image: DecorationImage(
+              image: AssetImage(imageUrl),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        const SizedBox(height: 8), // 이미지와 텍스트 사이의 간격
+        // 해시태그 표시
+        Row(
+          children: hashtags
+              .map(
+                (tag) => Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Text(
+                '#$tag',
+                style: TextStyle(
+                  color: Colors.grey,
+                  fontSize: 12,
                 ),
               ),
             ),
-          ],
+          )
+              .toList(),
         ),
-      ),
+        // 제목 텍스트
+        Text(
+          title,
+          style: TextStyle(
+            color: mFontDarkColor,
+            fontSize: 14,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -55,15 +123,16 @@ class GridToAudioWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
-      // width: width,
+      margin: EdgeInsets.only(top: 10, bottom: 5, left: 5, right: 5),
+      padding: EdgeInsets.only(left: 5),
+      width: 100,
       height: 100,
       child: Stack(
         children: [
           // 이미지 컨테이너
           Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              // borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
                 image: AssetImage('assets/images/day6_bg2.jpeg'),
                 fit: BoxFit.cover,
@@ -74,7 +143,7 @@ class GridToAudioWidget extends StatelessWidget {
           // 반투명 배경 컨테이너
           Container(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
+              // borderRadius: BorderRadius.circular(10),
               gradient: LinearGradient(
                 colors: [
                   Colors.black, // 시작 색상
@@ -97,7 +166,7 @@ class GridToAudioWidget extends StatelessWidget {
                 "May I be happy?", // 원하는 텍스트
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18, // 크기 24
+                  fontSize: 14, // 크기 24
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -114,7 +183,7 @@ class GridToAudioWidget extends StatelessWidget {
                 "happy", // 원하는 텍스트
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 14, // 크기 16
+                  fontSize: 12, // 크기 16
                   fontWeight: FontWeight.normal,
                 ),
               ),

@@ -126,8 +126,8 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
               return GestureDetector(
                 onTap: () {
                   final diaryEntry = getDiaryEntryForSelectedDate(date);
-                  print('Selected Date: ${date.toIso8601String()}');
-                  print('Diary Entry: ${diaryEntry?.dateTime}');
+                  // print('Selected Date: ${date.toIso8601String()}');
+                  // print('Diary Entry: ${diaryEntry?.dateTime}');
 
                   if (diaryEntry != null) {
                     context.go('/diary/read/${diaryEntry.indexNumber}');

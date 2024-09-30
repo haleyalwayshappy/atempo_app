@@ -78,3 +78,4 @@ ios/Podfile.lock
 # rm -rf /Volumes/T7/development/atempo_app/linux/flutter/ephemeral  >>  Flutter clean 할때 수동으로 지워야함
 /.idea
 /ios/Flutter
+.idea/workspace.xml
