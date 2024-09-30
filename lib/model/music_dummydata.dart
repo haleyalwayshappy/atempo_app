@@ -15,27 +15,27 @@ class MusicEntry {
 final List<MusicEntry> musicItems = [
   MusicEntry(
     index: 1,
-    musicImgUrl: 'assets/images/maru1.jpeg',
+    musicImgUrl: 'assets/images/image_back2.jpg',
     musicTitle: '음악1',
   ),
   MusicEntry(
     index: 2,
-    musicImgUrl: 'assets/images/maru2.jpeg',
+    musicImgUrl: 'assets/images/image_back3.jpg',
     musicTitle: '음악2',
   ),
   MusicEntry(
     index: 3,
-    musicImgUrl: 'assets/images/maru3.jpeg',
+    musicImgUrl: 'assets/images/image_back4.jpg',
     musicTitle: '음악3',
   ),
   MusicEntry(
     index: 4,
-    musicImgUrl: 'assets/images/maru4.jpeg',
+    musicImgUrl: 'assets/images/image_back.jpg',
     musicTitle: '음악4',
   ),
   MusicEntry(
     index: 5,
-    musicImgUrl: 'assets/images/maru1.jpeg',
+    musicImgUrl: 'assets/images/image_back3.jpg',
     musicTitle: '음악5',
   ),
 ];

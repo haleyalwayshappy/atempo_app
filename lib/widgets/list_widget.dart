@@ -1,5 +1,4 @@
 import 'package:atempo_app/model/diary_data.dart';
-import 'package:atempo_app/screens/diary/diary_read_screen.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -7,8 +6,6 @@ import 'package:go_router/go_router.dart';
 /// TODO : 타이밍 이슈
 /// 오버라이드 위에   final indexN = dummyDiaryData[index].indexNumber; 값을 넣으면 안되고
 /// 오버라이드 안에 넣으면 된다.
-///
-///
 
 class CustomListWidget extends StatelessWidget {
   final DateTime dateTime; // 날짜
@@ -49,7 +46,8 @@ class CustomListWidget extends StatelessWidget {
             Text(
               "${dateTime.year}년 ${dateTime.month.toString().padLeft(2, '0')}월 ${dateTime.day.toString().padLeft(2, '0')}일", // 날짜 포맷
               style: TextStyle(
-                fontWeight: FontWeight.w600,
+                fontFamily: 'Santteut',
+                fontWeight: FontWeight.w400,
                 fontSize: 16,
                 color: mFontDarkColor,
               ),

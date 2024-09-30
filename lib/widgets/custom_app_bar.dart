@@ -43,7 +43,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
           icon: Icon(Icons.person),
           onPressed: () {
-            //  TODO 마이페이지
+            context.go('/login');
           },
         ),
       ],

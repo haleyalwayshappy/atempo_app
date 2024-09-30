@@ -37,7 +37,7 @@ class RecommendBox extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    musicItems[index].musicTitle!,
+                    musicItems[index].musicTitle,
                     style: TextStyle(
                       fontSize: 12,
                       color: mSecondaryColor,

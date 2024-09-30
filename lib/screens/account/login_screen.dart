@@ -1,5 +1,6 @@
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 /// 최초 로그인 화면 (카카오톡, 애플, 이메일 로그인)
 class LoginScreen extends StatelessWidget {
@@ -32,7 +33,9 @@ class LoginScreen extends StatelessWidget {
                   IconButton(
                     padding: EdgeInsets.symmetric(vertical: 8),
                     // visualDensity: VisualDensity.compact,
-                    onPressed: () {},
+                    onPressed: () {
+                      context.go('/home');
+                    },
                     icon: Image.asset(
                       'assets/images/button/kakao_login_btn.png',
                       width: 240,

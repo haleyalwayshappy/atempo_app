@@ -30,16 +30,15 @@ class MusicMainScreen extends StatelessWidget {
                 scrollDirection: Axis.horizontal, // 수평 스크롤 설정
                 child: Row(
                   children: [
-                 for(var content in dummyContentData)
-                   MusicRowWidget(
-                     // 중괄호 제거
-                     width: 340,
-                     height: 200,
-                     titleText: content.titleText,
-                     subTitleText: content.subTitleText,
-                     imageUrl: content.imageUrl,
-                   ),
-
+                    for (var content in dummyContentData)
+                      MusicRowWidget(
+                        // 중괄호 제거
+                        width: 340,
+                        height: 200,
+                        titleText: content.titleText,
+                        subTitleText: content.subTitleText,
+                        imageUrl: content.imageUrl,
+                      ),
                   ],
                 ),
               ),
@@ -59,9 +58,6 @@ class MusicMainScreen extends StatelessWidget {
                 bottom: 0,
               ),
               MusicListWidget1(),
-
-
-
             ],
           ),
         ),
@@ -91,7 +87,7 @@ class MusicListWidget1 extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                      image: AssetImage('assets/images/maru1.jpeg'),
+                      image: AssetImage('assets/images/image_back2.jpg'),
                       fit: BoxFit.cover,
                       alignment: Alignment.center,
                     ),
@@ -144,6 +140,7 @@ class MusicListWidget1 extends StatelessWidget {
   }
 }
 
+/// 음악 컴포넌트
 class MusicRowWidget extends StatelessWidget {
   final double width;
   final double height;
@@ -156,7 +153,8 @@ class MusicRowWidget extends StatelessWidget {
       required this.width,
       required this.height,
       required this.titleText,
-      required this.subTitleText, required this.imageUrl});
+      required this.subTitleText,
+      required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {

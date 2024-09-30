@@ -16,25 +16,27 @@ class AudiobookScreen extends StatelessWidget {
             Expanded(
               flex: 1,
               child: MusicRowWidget(
-                  width: 400,
-                  height: 0,
-                  titleText: "이것만큼은 맹세할게",
-                  subTitleText: "내 전부를 다 바칠게",
-                  imageUrl: 'day6_bg2.jpeg',),
-
+                width: 400,
+                height: 0,
+                titleText: "Title1",
+                subTitleText: "subtitle",
+                imageUrl: 'image_back3.jpg',
+              ),
             ),
             Expanded(
               flex: 2,
               child: GridView.count(
                 primary: false,
                 crossAxisCount: 2,
-                childAspectRatio: 1.5/1,
+                childAspectRatio: 1.5 / 1,
                 // crossAxisSpacing: 10,
                 // 간격
                 // mainAxisSpacing: 10,
                 // 간격
                 // 한줄에 5개 (여기서 갯수 조정 가능)
-                children: List.generate(8,(index) {
+                children: List.generate(
+                  8,
+                  (index) {
                     return GridToAudioWidget();
                   },
                 ),
@@ -63,8 +65,7 @@ class GridToAudioWidget extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                image: AssetImage(
-                    'assets/images/day6_bg2.jpeg'),
+                image: AssetImage('assets/images/day6_bg2.jpeg'),
                 fit: BoxFit.cover,
                 alignment: Alignment.center,
               ),
@@ -90,8 +91,7 @@ class GridToAudioWidget extends StatelessWidget {
             bottom: 30, // 아래에서 40픽셀
             right: 2, // 오른쪽에서 10픽셀
             child: Container(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 8, vertical: 4),
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               // color: Colors.black54, // 반투명 배경
               child: Text(
                 "May I be happy?", // 원하는 텍스트
@@ -108,8 +108,7 @@ class GridToAudioWidget extends StatelessWidget {
             bottom: 10, // 아래에서 10픽셀
             right: 5, // 오른쪽에서 10픽셀
             child: Container(
-              padding: EdgeInsets.symmetric(
-                  horizontal: 8, vertical: 4),
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               // color: Colors.black54, // 반투명 배경
               child: Text(
                 "happy", // 원하는 텍스트

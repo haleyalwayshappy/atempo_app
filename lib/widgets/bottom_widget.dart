@@ -14,11 +14,7 @@ class BottomWidget extends StatefulWidget {
 class _BottomWidget extends State<BottomWidget> {
   int _selectedIndex = 0; // 0 : 음악 , 1: 홈 , 2 : 일기
 
-  void onDestinationSelected(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-
+  void onChangedNavigation(int index) {
     switch (index) {
       case 0: // 뮤직탭
         context.go('/music');
@@ -30,12 +26,15 @@ class _BottomWidget extends State<BottomWidget> {
         context.go('/diary');
         break;
     }
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    print(widget.child);
     return Scaffold(
-      // body: _buildCurrentScreen(), // 화면 변경
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
         /// 바텀위젯 꾸미는 코드
@@ -47,15 +46,7 @@ class _BottomWidget extends State<BottomWidget> {
         backgroundColor: mBackgroundColor,
 
         onTap: (index) {
-          onDestinationSelected(index);
-          // switch (index) {
-          //   case 0:
-          //     context.go('/music');
-          //   case 1:
-          //     context.go('/home');
-          //   case 2:
-          //     context.go('/diary');
-          // }
+          onChangedNavigation(index);
         },
         items: const [
           BottomNavigationBarItem(

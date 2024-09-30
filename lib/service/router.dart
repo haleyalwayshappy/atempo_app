@@ -24,6 +24,7 @@ final GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: '/music',
+              // builder: (context, state) => AudiobookScreen(),
               builder: (context, state) => MusicMainScreen(),
             ),
           ],
@@ -46,10 +47,13 @@ final GoRouter router = GoRouter(
                 GoRoute(
                   path: 'read/:index', // URL 파라미터로 인덱스를 받음
                   builder: (context, state) {
-                    var index = int.parse(state.pathParameters['index']!); // URL에서 인덱스 추출
-                    print('Original Index from URL: $index'); // URL에서 추출한 인덱스 출력
+                    var index = int.parse(
+                        state.pathParameters['index']!); // URL에서 인덱스 추출
+                    print(
+                        'Original Index from URL: $index'); // URL에서 추출한 인덱스 출력
                     index = index - 1;
-                    return DiaryReadScreen(selectedIndex: index); // 해당 인덱스에 대한 화면 반환
+                    return DiaryReadScreen(
+                        selectedIndex: index); // 해당 인덱스에 대한 화면 반환
                   },
                 ),
                 // 일기 쓰기 화면
@@ -70,8 +74,6 @@ final GoRouter router = GoRouter(
       path: '/choice_emotion',
       builder: (context, state) => ChoiceEmotionScreen(),
     ),
-
-
 
     // 로그인 화면
     GoRoute(

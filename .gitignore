@@ -76,3 +76,5 @@ ios/Podfile.lock
 .DS_Store
 # find ./ -name ._\* -delete   아이맥에서 작업하면 이거 하고 시작하셈 ._파일 지워주는 명령어
 # rm -rf /Volumes/T7/development/atempo_app/linux/flutter/ephemeral  >>  Flutter clean 할때 수동으로 지워야함
+/.idea
+/ios/Flutter

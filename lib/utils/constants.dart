@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 
 /* 색상 */
-// const Color mBackgroundColor = Color(0xff21004A);
+import 'package:flutter/material.dart';
 
-// const Color mBackgroundColor = Color(0xffFCFEFC);
-const Color mBackgroundColor = Color(0xfff4f9f3);
+const Color mBackgroundColor = Color(0xffFCFEFC); // 배경화면
 
-const Color mPrimaryColor = Color(0xff61B15A);
-const Color mSecondaryColor = Color(0xffAFD8AC);
+const Color mPrimaryColor = Color(0xff61B15A); // 메인 색상
+const Color mSecondaryColor = Color(0xffAFD8AC); // 서브 색상(메인색상보다 조금 밝음)
 
 const Color mFontDarkColor = Color(0xff0D1A0C);
-// const Color mFontDarkColor = Color(0xfff4faf4);
 const Color mFontLightColor = Color(0xffF4FAF4);
 
 const Color mButtonColor = Color(0xff498E43);
@@ -40,12 +38,10 @@ const Color mAngryColor = Color(0xffFF8571);
 const Color mPeacefulColor = Color(0xff78FF95);
 const Color mConfusedColor = Color(0xff9F78FF);
 
-/* */
-
 // 왼쪽오른쪽 여백 값 고정
 const double outlinedDouble = 16.0;
 
-/* */
+/* 일기 내용 관련 스타일 */
 const mDiaryStyle = TextStyle(
   color: mFontDarkColor,
   fontFamily: 'Santteut',
@@ -53,15 +49,6 @@ const mDiaryStyle = TextStyle(
   fontSize: 16.0,
   letterSpacing: 1.1,
 );
-
-const kSearchEditHintStyle = TextStyle(
-  color: Colors.grey,
-  fontWeight: FontWeight.w700,
-  fontSize: 15.0,
-  height: 1.2,
-);
-
-
 
 /* 전역 리스트*/
 
@@ -81,3 +68,10 @@ const List<String> emailSiteList = [
   'daum.net',
   'hanmail.net'
 ];
+
+// const kSearchEditHintStyle = TextStyle(
+//   color: Colors.grey,
+//   fontWeight: FontWeight.w700,
+//   fontSize: 15.0,
+//   height: 1.2,
+// );
