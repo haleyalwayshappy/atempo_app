@@ -22,7 +22,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
   DateTime focusedDay = DateTime.now();
 
 // 선택된 날짜에 해당하는 일기 데이터를 가져오는 메서드
-  DiaryEntry? getDiaryEntryForSelectedDate(DateTime date) {
+  Diary? getDiaryEntryForSelectedDate(DateTime date) {
     // 선택된 날짜를 YYYY-MM-DD 형식으로 변환
     String formattedDate = date.toIso8601String().split('T').first;
 
@@ -37,9 +37,9 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
   }
 
   // 선택된 감정에 맞는 이미지를 가져오는 메서드
-  String? getImageForEmotion(EmotionType emotionType) {
+  String? getImageForEmotion(MainEmotion mainEmotion) {
     for (var emotion in emotions) {
-      if (emotion.mainEmotion == emotionType) {
+      if (emotion.mainEmotion == mainEmotion) {
         return emotion.imageUrl;
       }
     }
@@ -130,7 +130,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
                   // print('Diary Entry: ${diaryEntry?.dateTime}');
 
                   if (diaryEntry != null) {
-                    context.go('/diary/read/${diaryEntry.indexNumber}');
+                    context.go('/diary/read/${diaryEntry.diaryId}');
                   } else {
                     customToastMsg("작성된 내용이 없습니다.");
                   }

@@ -1,5 +1,5 @@
-import 'package:atempo_app/model/music_dummydata.dart';
-import 'package:atempo_app/screens/music/music_main_screen.dart';
+import 'package:atempo_app/model/music_data.dart';
+import 'package:atempo_app/screens/music/music_screen.dart';
 import 'package:atempo_app/screens/music/widget/music_title_text.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/custom_app_bar.dart';
@@ -17,7 +17,11 @@ class AudiobookScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          MusicTitleText(musicTitle: "추천 오디오 북 리스트",bottom: 0,left: 12.0,),
+          MusicTitleText(
+            musicTitle: "추천 오디오 북 리스트",
+            bottom: 0,
+            left: 12.0,
+          ),
           Center(
             child: MusicRowWidget(
               // 중괄호 제거
@@ -28,8 +32,12 @@ class AudiobookScreen extends StatelessWidget {
               imageUrl: 'image_back2.jpg',
             ),
           ),
-          MusicTitleText(musicTitle: "Best 오디오 북",top:10,bottom: 0,left: 12.0,),
-
+          MusicTitleText(
+            musicTitle: "Best 오디오 북",
+            top: 10,
+            bottom: 0,
+            left: 12.0,
+          ),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: GridView.builder(
@@ -57,6 +65,7 @@ class AudiobookScreen extends StatelessWidget {
     );
   }
 }
+
 class CustomGridItem extends StatelessWidget {
   final String imageUrl;
   final String title;
@@ -92,16 +101,16 @@ class CustomGridItem extends StatelessWidget {
           children: hashtags
               .map(
                 (tag) => Padding(
-              padding: const EdgeInsets.only(right: 8.0),
-              child: Text(
-                '#$tag',
-                style: TextStyle(
-                  color: Colors.grey,
-                  fontSize: 12,
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: Text(
+                    '#$tag',
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          )
+              )
               .toList(),
         ),
         // 제목 텍스트

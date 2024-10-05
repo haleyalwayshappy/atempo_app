@@ -1,5 +1,5 @@
 import 'package:atempo_app/screens/music/audiobook_screen.dart';
-import 'package:atempo_app/screens/music/music_main_screen.dart';
+import 'package:atempo_app/screens/music/music_screen.dart';
 import 'package:atempo_app/screens/music/widget/music_statusbar.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/custom_app_bar.dart';
@@ -25,7 +25,7 @@ class _MusicTabScreenState extends State<MusicTabScreen> {
             Expanded(
               child: TabBarView(
                 children: const [
-                  MusicMainScreen(),
+                  MusicScreen(),
                   AudiobookScreen(),
                 ],
               ),
@@ -63,7 +63,7 @@ class _MusicTabScreenState extends State<MusicTabScreen> {
     return Expanded(
       child: TabBarView(
         children: const [
-          MusicMainScreen(),
+          MusicScreen(),
           AudiobookScreen(),
         ],
       ),

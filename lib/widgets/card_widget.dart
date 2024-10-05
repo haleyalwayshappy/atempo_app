@@ -21,7 +21,7 @@ class CustomCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int indexN = dummyDiaryData[index].indexNumber;
+    Diary indexN = dummyDiaryData[index];
     return GestureDetector(
       onTap: () {
         context.go('/diary/read/$indexN');

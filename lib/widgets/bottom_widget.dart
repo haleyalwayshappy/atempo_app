@@ -34,37 +34,33 @@ class _BottomWidget extends State<BottomWidget> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.child);
     return Scaffold(
       body: widget.child,
-      bottomNavigationBar: BottomNavigationBar(
-        /// 바텀위젯 꾸미는 코드
-        showSelectedLabels: false,
-        // 선택된 란 텍스트 비활성화
-        showUnselectedLabels: false,
-        // 선택되지 않은 란 텍스트 비활성화
-        unselectedItemColor: mDisabledColor,
-        selectedItemColor: mEnabledColor,
-        currentIndex: _selectedIndex,
-        backgroundColor: mBackgroundColor,
-
-        onTap: (index) {
-          onChangedNavigation(index);
-        },
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.headphones),
-            label: '음악',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '홈',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
-            label: '일기',
-          ),
-        ],
+      bottomNavigationBar: Container(
+        height: 90, // 높이 조정
+        child: NavigationBar(
+          selectedIndex: _selectedIndex,
+          backgroundColor: mBackgroundColor, // 배경 색상 설정
+          labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
+          onDestinationSelected: (int index) {
+            onChangedNavigation(index);
+          },
+          destinations: const [
+            NavigationDestination(
+              icon: Icon(Icons.headphones),
+              label: '',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.home),
+              label: '',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.calendar_month),
+              label: '',
+            ),
+          ],
+          indicatorColor: Colors.transparent, // 선택된 탭의 배경색 비활성화
+        ),
       ),
       floatingActionButton: (_selectedIndex == 1 || _selectedIndex == 2)
           ? CustomFloatingActionButton()

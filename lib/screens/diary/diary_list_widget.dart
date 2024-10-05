@@ -21,19 +21,19 @@ class _DiaryListWidgetState extends State<DiaryListWidget> {
         itemBuilder: (context, index) {
           var imagePath;
           switch (dummyDiaryData[index].mainEmotion) {
-            case EmotionType.joy:
+            case MainEmotion.joy:
               imagePath = emotions[0].imageUrl;
               break; // break 추가
-            case EmotionType.sad:
+            case MainEmotion.sad:
               imagePath = emotions[1].imageUrl;
               break; // break 추가
-            case EmotionType.anger:
+            case MainEmotion.anger:
               imagePath = emotions[2].imageUrl;
               break; // break 추가
-            case EmotionType.peace:
+            case MainEmotion.peace:
               imagePath = emotions[3].imageUrl;
               break; // break 추가
-            case EmotionType.confused:
+            case MainEmotion.confused:
               imagePath = emotions[4].imageUrl;
               break; // break 추가
           }

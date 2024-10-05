@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 /* 색상 */
-import 'package:flutter/material.dart';
-
 const Color mBackgroundColor = Color(0xffFCFEFC); // 배경화면
 
 const Color mPrimaryColor = Color(0xff61B15A); // 메인 색상

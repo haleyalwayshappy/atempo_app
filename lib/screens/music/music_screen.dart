@@ -1,4 +1,4 @@
-import 'package:atempo_app/model/content_dummydata..dart';
+import 'package:atempo_app/model/playlist_data.dart' as music_screen;
 import 'package:atempo_app/screens/music/widget/music_title_text.dart';
 import 'package:atempo_app/screens/music/widget/music_box_widget.dart';
 import 'package:atempo_app/utils/constants.dart';
@@ -6,8 +6,8 @@ import 'package:atempo_app/widgets/custom_app_bar.dart';
 import 'package:atempo_app/widgets/recommend_box.dart';
 import 'package:flutter/material.dart';
 
-class MusicMainScreen extends StatelessWidget {
-  const MusicMainScreen({super.key});
+class MusicScreen extends StatelessWidget {
+  const MusicScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,18 +25,19 @@ class MusicMainScreen extends StatelessWidget {
             bottom: 0,
           ),
           SingleChildScrollView(
+            // bestbox card
             scrollDirection: Axis.horizontal, // 수평 스크롤 설정
             child: Row(
               children: [
-                for (var content in dummyContentData)
-                  MusicRowWidget(
-                    // 중괄호 제거
-                    width: 340,
-                    height: 200,
-                    titleText: content.titleText,
-                    subTitleText: content.subTitleText,
-                    imageUrl: content.imageUrl,
-                  ),
+                // for (var content in music_screen.Playlist)
+                MusicRowWidget(
+                  // 중괄호 제거
+                  width: 340,
+                  height: 200,
+                  titleText: "titleText",
+                  subTitleText: "content.subTitleText",
+                  imageUrl: "image_back2.jpg",
+                ),
               ],
             ),
           ),
@@ -47,7 +48,7 @@ class MusicMainScreen extends StatelessWidget {
           ),
           Container(
             margin: EdgeInsets.only(left: 10),
-            child: RecommendBox(),
+            child: RecommendBox(), // recommendBoxCard
           ),
 
           // 리스트 예제
@@ -55,7 +56,7 @@ class MusicMainScreen extends StatelessWidget {
             musicTitle: '리스트 예제',
             bottom: 0,
           ),
-          MusicListWidget1(),
+          MusicListWidget1(), // musi
         ],
       ),
     );
@@ -72,6 +73,7 @@ class MusicListWidget1 extends StatelessWidget {
       child: Column(
         children: [
           MusicBoxWidget(
+              // music List Tile
               musicTitle: "드라이브하다가 만난 염소",
               musicSubTitle: '기분 좋을때 듣는 음악',
               musicImage: 'image_back2.jpg',

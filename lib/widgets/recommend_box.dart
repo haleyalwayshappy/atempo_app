@@ -1,4 +1,4 @@
-import 'package:atempo_app/model/music_dummydata.dart';
+import 'package:atempo_app/model/music_data.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,7 @@ class RecommendBox extends StatelessWidget {
       child: Row(
         // 가로
         children: List.generate(
-          musicItems.length,
+          4,
           (index) {
             return Container(
               margin: EdgeInsets.only(right: 16),
@@ -30,14 +30,14 @@ class RecommendBox extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
-                        image: AssetImage(musicItems[index].musicImgUrl),
+                        image: AssetImage('assets/images/day6_bg2.jpeg'),
                         fit: BoxFit.cover,
                         alignment: Alignment.center,
                       ),
                     ),
                   ),
                   Text(
-                    musicItems[index].musicTitle,
+                    "음악 타이틀",
                     style: TextStyle(
                       fontSize: 12,
                       color: mSecondaryColor,
