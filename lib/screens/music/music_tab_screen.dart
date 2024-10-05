@@ -53,7 +53,7 @@ class _MusicTabScreenState extends State<MusicTabScreen> {
         // 비활성화된 탭 글씨 색상
         indicatorColor: mPrimaryColor,
         indicatorWeight: 0.1,
-        // indicatorSize: TabBarIndicatorSize.label, // 텍스트 길이에 맞추기
+        indicatorSize: TabBarIndicatorSize.label, // 텍스트 길이에 맞추기
       ),
     );
   }
