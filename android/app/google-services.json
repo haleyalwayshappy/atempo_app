@@ -12,7 +12,12 @@
           "package_name": "com.example.atempo_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "525382879421-fuj6m4qa0btuapn4snjcrehlfk5qmj49.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAxWfS4iz-BCBAfJY0ERu07pgKeG9l6o3c"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "525382879421-fuj6m4qa0btuapn4snjcrehlfk5qmj49.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "525382879421-jnvs0uis8jidd68fq1de7m5ptrkarh9j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.atempoApp"
+              }
+            }
+          ]
         }
       }
     }

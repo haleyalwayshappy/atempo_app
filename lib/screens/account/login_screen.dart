@@ -1,6 +1,8 @@
 import 'package:atempo_app/utils/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 /// 최초 로그인 화면 (카카오톡, 애플, 이메일 로그인)
 class LoginScreen extends StatelessWidget {
@@ -54,7 +56,9 @@ class LoginScreen extends StatelessWidget {
                   ),
                   IconButton(
                     padding: EdgeInsets.symmetric(vertical: 8),
-                    onPressed: () {},
+                    onPressed: () {
+                      signInWithGoogle();
+                    },
                     icon: Image.asset(
                       'assets/images/button/email_login_btn.png',
                       width: 240,
@@ -98,4 +102,28 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+// Future<UserCredential> signInWithGoogle() async {
+void signInWithGoogle() async {
+  // Trigger the authentication flow
+  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+  // Obtain the auth details from the request
+  final GoogleSignInAuthentication? googleAuth =
+      await googleUser?.authentication;
+
+  // Create a new credential
+  final credential = GoogleAuthProvider.credential(
+    accessToken: googleAuth?.accessToken,
+    idToken: googleAuth?.idToken,
+  );
+
+  // Once signed in, return the UserCredential
+  await FirebaseAuth.instance.signInWithCredential(credential).then((value) {
+    print("User Login Successful");
+    print(value.user?.email);
+  }).onError((error, stackTrace) {
+    print("error $error");
+  });
 }

@@ -85,4 +85,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'teamatempo.appspot.com',
     measurementId: 'G-LRDYP9S5VZ',
   );
+
 }
