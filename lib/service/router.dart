@@ -6,6 +6,7 @@ import 'package:atempo_app/screens/diary/diary_read_screen.dart';
 import 'package:atempo_app/screens/diary/diary_write_screen.dart';
 import 'package:atempo_app/screens/home/choice_emotion_screen.dart';
 import 'package:atempo_app/screens/home/home_screen.dart';
+import 'package:atempo_app/screens/home/splash_screen.dart';
 import 'package:atempo_app/screens/music/audiobook_screen.dart';
 import 'package:atempo_app/screens/music/music_screen.dart';
 import 'package:atempo_app/screens/music/music_tab_screen.dart';
@@ -13,7 +14,7 @@ import 'package:atempo_app/widgets/bottom_widget.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/music', // 초기 경로 설정
+  initialLocation: '/splash', // 초기 경로 설정
   routes: [
     /* 바텀네비게이션 영역
     * StatefulShellRoute.indexedStack 에는 builder와 branches가 존재해야한다.
@@ -96,6 +97,12 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/login_email',
       builder: (context, state) => LoginEmailScreen(),
+    ),
+
+    // 스플래쉬 화면
+    GoRoute(
+      path: '/splash',
+      builder: (context, state) => SplashScreen(),
     ),
   ],
 );

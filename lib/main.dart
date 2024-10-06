@@ -6,27 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:atempo_app/service/router.dart';
 import 'package:get/get.dart';
 
-// void main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp(
-//     options: DefaultFirebaseOptions.currentPlatform, // Firebase 초기화
-//   );
-//   runApp(MyApp());
-// }
-//
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return GetMaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'Diary App with GetX',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       home: GetxTestDiary(), // 초기 화면을 DiaryScreen으로 설정
-//     );
-//   }
-// }
 
 
  Future<void> main() async {

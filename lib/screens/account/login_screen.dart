@@ -104,8 +104,8 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-// Future<UserCredential> signInWithGoogle() async {
-void signInWithGoogle() async {
+Future<UserCredential> signInWithGoogle() async {
+// void signInWithGoogle() async {
   // Trigger the authentication flow
   final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -120,10 +120,5 @@ void signInWithGoogle() async {
   );
 
   // Once signed in, return the UserCredential
-  await FirebaseAuth.instance.signInWithCredential(credential).then((value) {
-    print("User Login Successful");
-    print(value.user?.email);
-  }).onError((error, stackTrace) {
-    print("error $error");
-  });
+  return await FirebaseAuth.instance.signInWithCredential(credential);
 }
