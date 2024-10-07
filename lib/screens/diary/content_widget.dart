@@ -47,16 +47,16 @@ class _ContentWidgetState extends State<ContentWidget> {
       },
       child: Container(
         padding: const EdgeInsets.all(outlinedDouble),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: focusNode.hasFocus
-              ? mLightGreenColor
-              : Colors.transparent, // Blue background when focused
-          border: focusNode.hasFocus
-              ? null
-              : Border.all(
-                  color: mPrimaryColor), // Border only when not focused
-        ),
+        // decoration: BoxDecoration(
+        //   // borderRadius: BorderRadius.circular(15),
+        //   color: focusNode.hasFocus
+        //       ? mLightGreenColor
+        //       : Colors.transparent, // Blue background when focused
+        //   border: focusNode.hasFocus
+        //       ? null
+        //       : Border.all(
+        //           color: mPrimaryColor), // Border only when not focused
+        // ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

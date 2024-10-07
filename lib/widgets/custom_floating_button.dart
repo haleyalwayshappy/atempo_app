@@ -1,3 +1,4 @@
+import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,7 +10,7 @@ class CustomFloatingActionButton extends StatelessWidget {
 
   // 생성자에서 필요한 값을 전달받음
   CustomFloatingActionButton({
-    this.backgroundColor = Colors.blue,
+    this.backgroundColor = mPrimaryColor,
     this.iconColor = Colors.white,
     this.icon = Icons.add,
     this.iconSize = 40.0,
@@ -23,6 +24,7 @@ class CustomFloatingActionButton extends StatelessWidget {
         context.go('/diary/write');
       },
       // 전달받은 onPressed 함수
+
       backgroundColor: backgroundColor,
       shape: CircleBorder(),
       elevation: 2.4,

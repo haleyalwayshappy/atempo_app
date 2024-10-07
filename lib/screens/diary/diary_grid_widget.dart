@@ -22,7 +22,7 @@ class DiaryGridWidget extends StatelessWidget {
           crossAxisCount: 6,
           // 한줄에 5개 (여기서 갯수 조정 가능)
           children: List.generate(dummyDiaryData.length, (index) {
-            var diary = dummyDiaryData[index];
+            var diary = dummyDiaryData[index].mainEmotion;
             var imagePath; // 감정에 따른 이미지 경로
             switch (diary) {
               case MainEmotion.joy:

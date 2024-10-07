@@ -1,18 +1,34 @@
+import 'package:atempo_app/screens/account/login_screen.dart';
 import 'package:atempo_app/screens/music/audiobook_screen.dart';
 import 'package:atempo_app/screens/music/music_screen.dart';
 import 'package:atempo_app/screens/music/widget/music_statusbar.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MusicTabScreen extends StatefulWidget {
-  const MusicTabScreen({super.key});
+  final Widget child;
+  const MusicTabScreen({super.key, required this.child});
 
   @override
   State<MusicTabScreen> createState() => _MusicTabScreenState();
 }
 
 class _MusicTabScreenState extends State<MusicTabScreen> {
+  int _selectedIndex = 1; // 0 : 뮤직  1:오디오북
+
+  void onChangedNavigation(int index) {
+    switch (index) {
+      case 0: // 뮤직
+        context.go('/home/music');
+        break;
+      case 1: // 오디오북
+        context.go('/home/audiobook');
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,15 +41,14 @@ class _MusicTabScreenState extends State<MusicTabScreen> {
             Expanded(
               child: TabBarView(
                 children: const [
-                  MusicScreen(),
                   AudiobookScreen(),
+                  MusicScreen(),
                 ],
               ),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: MusicStatusBar(),
     );
   }
 
@@ -54,18 +69,6 @@ class _MusicTabScreenState extends State<MusicTabScreen> {
         indicatorColor: mPrimaryColor,
         indicatorWeight: 0.1,
         indicatorSize: TabBarIndicatorSize.label, // 텍스트 길이에 맞추기
-      ),
-    );
-  }
-
-  // TabBarView 빌드 메소드
-  Widget _buildTabBarView() {
-    return Expanded(
-      child: TabBarView(
-        children: const [
-          MusicScreen(),
-          AudiobookScreen(),
-        ],
       ),
     );
   }

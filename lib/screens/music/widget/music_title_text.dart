@@ -7,6 +7,7 @@ class MusicTitleText extends StatelessWidget {
   final double? bottom;
   final double? left;
   final double? right;
+  final double? fontSize;
 
   const MusicTitleText({
     super.key,
@@ -14,7 +15,8 @@ class MusicTitleText extends StatelessWidget {
     this.top = 20.0,
     this.bottom = 8.0,
     this.left = 20.0,
-    this.right = 0.0, // double 타입에 맞춰 0.0으로 변경
+    this.right = 0.0,
+    this.fontSize = 16.0, // double 타입에 맞춰 0.0으로 변경
   });
 
   @override
@@ -29,7 +31,7 @@ class MusicTitleText extends StatelessWidget {
       child: Text(
         musicTitle,
         style: TextStyle(
-          fontSize: 16,
+          fontSize: fontSize,
           color: mPrimaryColor,
           fontWeight: FontWeight.w600,
         ),

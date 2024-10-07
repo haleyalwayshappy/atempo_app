@@ -1,6 +1,7 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:atempo_app/screens/diary/diary_grid_widget.dart';
 import 'package:atempo_app/screens/diary/diary_list_widget.dart';
+import 'package:atempo_app/screens/music/widget/music_statusbar.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/custom_app_bar.dart';
 import 'package:atempo_app/widgets/emotion_popup_widget.dart';
@@ -61,19 +62,25 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
                     ],
                   ),
                   AnimatedToggleSwitch<int>.rolling(
-                    current: isGridView ? gridViewIndex : listViewIndex, // isGridView에 따라 0 또는 1 설정
-                    values: const [listViewIndex, gridViewIndex], // 0: 리스트 뷰, 1: 그리드 뷰
+                    current: isGridView
+                        ? gridViewIndex
+                        : listViewIndex, // isGridView에 따라 0 또는 1 설정
+                    values: const [
+                      listViewIndex,
+                      gridViewIndex
+                    ], // 0: 리스트 뷰, 1: 그리드 뷰
                     height: 38, // 높이값
                     style: ToggleStyle(
                       indicatorColor: mSecondaryColor,
                       // backgroundColor: Colors.pink,
                       borderColor: Colors.transparent,
                       borderRadius: BorderRadius.circular(50),
-                    indicatorBorderRadius: BorderRadius.circular(50),
+                      indicatorBorderRadius: BorderRadius.circular(50),
                     ),
-                    onChanged:(index){
+                    onChanged: (index) {
                       setState(() {
-                        isGridView = index == gridViewIndex; // index == values 값
+                        isGridView =
+                            index == gridViewIndex; // index == values 값
                       });
                     },
                     iconBuilder: (value, foreground) {
@@ -94,8 +101,6 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
       ),
     );
   }
-
-
 }
 
 Widget rollingIconBuilder(int? value, bool foreground) {

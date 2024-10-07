@@ -108,12 +108,16 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
                 margin: EdgeInsets.all(6.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50.0),
-                  border: Border.all(color: mConfusedColor, width: 2),
+                  border: Border.all(color: mPrimaryColor, width: 2),
                 ),
                 child: Center(
                   child: Text(
                     '${date.day}',
-                    style: TextStyle(color: mConfusedColor), // 오늘 날짜 텍스트 색상
+                    style: TextStyle(
+                      color: mPrimaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ), // 오늘 날짜 텍스트 색상
                   ),
                 ),
               );
@@ -138,7 +142,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
                 child: Container(
                   margin: EdgeInsets.all(6.0),
                   decoration: BoxDecoration(
-                    color: mBlueColor, // 선택된 날짜 배경색
+                    color: mPrimaryColor, // 선택된 날짜 배경색
                     borderRadius: BorderRadius.circular(50.0),
                   ),
                   child: Center(

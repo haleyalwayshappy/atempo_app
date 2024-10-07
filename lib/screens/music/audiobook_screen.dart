@@ -1,15 +1,20 @@
 import 'package:atempo_app/model/music_data.dart';
 import 'package:atempo_app/screens/music/music_screen.dart';
+import 'package:atempo_app/screens/music/widget/best_box_card.dart';
 import 'package:atempo_app/screens/music/widget/music_title_text.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/custom_app_bar.dart';
+import 'package:atempo_app/widgets/toast.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class AudiobookScreen extends StatelessWidget {
   const AudiobookScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    int listNum;
+    const String pathName = "audiobook";
     final screenWidth = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
@@ -23,13 +28,16 @@ class AudiobookScreen extends StatelessWidget {
             left: 12.0,
           ),
           Center(
-            child: MusicRowWidget(
+            child: BestBoxCard(
               // 중괄호 제거
               width: screenWidth,
               height: 200,
               titleText: "하루를 다스리는 법",
               subTitleText: "마음이 평화로워지는 보이스",
               imageUrl: 'image_back2.jpg',
+              onTap: () {
+                customToastMsg("오디오북 재생목록");
+              },
             ),
           ),
           MusicTitleText(

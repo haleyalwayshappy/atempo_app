@@ -1,3 +1,4 @@
+import 'package:atempo_app/screens/music/widget/music_statusbar.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/custom_floating_button.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class BottomWidget extends StatefulWidget {
 }
 
 class _BottomWidget extends State<BottomWidget> {
-  int _selectedIndex = 0; // 0 : 음악 , 1: 홈 , 2 : 일기
+  int _selectedIndex = 1; // 0 : 음악 , 1: 홈 , 2 : 일기
 
   void onChangedNavigation(int index) {
     switch (index) {
@@ -35,7 +36,14 @@ class _BottomWidget extends State<BottomWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: widget.child,
+      body: Column(
+        children: [
+          Expanded(
+            child: widget.child,
+          ),
+          MusicStatusBar(),
+        ],
+      ),
       bottomNavigationBar: Container(
         height: 90, // 높이 조정
         child: NavigationBar(
@@ -45,6 +53,7 @@ class _BottomWidget extends State<BottomWidget> {
           onDestinationSelected: (int index) {
             onChangedNavigation(index);
           },
+
           destinations: const [
             NavigationDestination(
               icon: Icon(Icons.headphones),
@@ -59,12 +68,13 @@ class _BottomWidget extends State<BottomWidget> {
               label: '',
             ),
           ],
-          indicatorColor: Colors.transparent, // 선택된 탭의 배경색 비활성화
+          indicatorColor: mSecondaryColor, // 선택된 탭의 배경색 비활성화
         ),
       ),
-      floatingActionButton: (_selectedIndex == 1 || _selectedIndex == 2)
-          ? CustomFloatingActionButton()
-          : null, // _selectedIndex가 1이나 2가 아닐 때는 버튼을 표시하지 않음
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 60),
+        child: CustomFloatingActionButton(),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }

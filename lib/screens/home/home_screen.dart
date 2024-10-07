@@ -1,3 +1,4 @@
+import 'package:atempo_app/screens/music/widget/music_statusbar.dart';
 import 'package:atempo_app/widgets/custom_calendar_widget.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/emotion_popup_widget.dart';
@@ -57,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 18),
+              margin: EdgeInsets.only(left: 18, bottom: 16),
               child: RecommendBox(),
             ),
 
