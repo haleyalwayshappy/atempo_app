@@ -41,8 +41,8 @@ class _MusicTabScreenState extends State<MusicTabScreen> {
             Expanded(
               child: TabBarView(
                 children: const [
-                  AudiobookScreen(),
                   MusicScreen(),
+                  AudiobookScreen(),
                 ],
               ),
             ),

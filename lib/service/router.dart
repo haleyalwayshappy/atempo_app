@@ -15,24 +15,40 @@ import 'package:atempo_app/widgets/bottom_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 
-final GlobalKey<NavigatorState> _rootNavigatiorKey =
+final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
+final GlobalKey<NavigatorState> _homeNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'home');
+final GlobalKey<NavigatorState> _musicNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'music');
+final GlobalKey<NavigatorState> _musicTabNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'musicTab');
+final GlobalKey<NavigatorState> _audioTabNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'audioTab');
+final GlobalKey<NavigatorState> _diaryNavigatorKey =
+    GlobalKey<NavigatorState>(debugLabel: 'diary');
 
 final GoRouter router = GoRouter(
+  debugLogDiagnostics: true,
+  navigatorKey: _rootNavigatorKey,
   initialLocation: '/home', // 초기 경로 설정
   routes: [
     /* 바텀네비게이션 영역
     * StatefulShellRoute.indexedStack 에는 builder와 branches가 존재해야한다.
     * branches안에는 'StatefulShellBranch'로 루트를 작성해줘야한다.  */
     StatefulShellRoute.indexedStack(
+      parentNavigatorKey: _rootNavigatorKey,
       builder: (context, state, child) => BottomWidget(child: child),
       branches: [
         StatefulShellBranch(
+          navigatorKey: _musicNavigatorKey,
           routes: [
             StatefulShellRoute.indexedStack(
+              parentNavigatorKey: _musicNavigatorKey,
               builder: (context, state, child) => MusicTabScreen(child: child),
               branches: [
                 StatefulShellBranch(
+                  navigatorKey: _musicTabNavigatorKey,
                   routes: [
                     GoRoute(
                       path: '/music',
@@ -42,6 +58,7 @@ final GoRouter router = GoRouter(
                         GoRoute(
                           path: 'list/:pathName',
                           builder: (context, state) {
+                            print('aaa');
                             // 'pathName' 매개변수 값 가져오기
                             final String pathName =
                                 state.pathParameters['pathName']!;
@@ -50,9 +67,14 @@ final GoRouter router = GoRouter(
                         ),
                       ],
                     ),
+                  ],
+                ),
+                StatefulShellBranch(
+                  navigatorKey: _audioTabNavigatorKey,
+                  routes: [
                     GoRoute(
-                      path: 'audiobook',
-                      builder: (context, state) => const AudiobookScreen(),
+                      path: '/audiobook',
+                      builder: (context, state) => AudiobookScreen(),
                     ),
                   ],
                 ),
@@ -61,6 +83,7 @@ final GoRouter router = GoRouter(
           ],
         ),
         StatefulShellBranch(
+          navigatorKey: _homeNavigatorKey,
           routes: [
             GoRoute(
               path: '/home',
@@ -69,6 +92,7 @@ final GoRouter router = GoRouter(
           ],
         ),
         StatefulShellBranch(
+          navigatorKey: _diaryNavigatorKey,
           routes: [
             GoRoute(
               path: '/diary',

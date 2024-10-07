@@ -6,6 +6,7 @@ import 'package:atempo_app/screens/music/widget/music_box_widget.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:atempo_app/widgets/custom_app_bar.dart';
 import 'package:atempo_app/widgets/recommend_box.dart';
+import 'package:atempo_app/widgets/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -44,8 +45,9 @@ class MusicScreen extends StatelessWidget {
                   subTitleText: "content.subTitleText",
                   imageUrl: "image_back2.jpg",
                   onTap: () {
+                    customToastMsg("버튼 클릭함");
                     listNum = 1;
-                    context.go('/home/music/list/${pathName}${listNum}');
+                    context.go('/music/list/music1');
                   },
                 ),
               ],
