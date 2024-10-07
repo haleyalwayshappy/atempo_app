@@ -1,12 +1,7 @@
-import 'package:atempo_app/model/playlist_data.dart' as music_screen;
 import 'package:atempo_app/screens/music/widget/best_box_card.dart';
-import 'package:atempo_app/screens/music/widget/music_list_tile.dart';
 import 'package:atempo_app/screens/music/widget/music_title_text.dart';
-import 'package:atempo_app/screens/music/widget/music_box_widget.dart';
-import 'package:atempo_app/utils/constants.dart';
-import 'package:atempo_app/widgets/custom_app_bar.dart';
-import 'package:atempo_app/widgets/recommend_box.dart';
-import 'package:atempo_app/widgets/toast.dart';
+import 'package:atempo_app/screens/widgets/recommend_box.dart';
+import 'package:atempo_app/screens/widgets/toast.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

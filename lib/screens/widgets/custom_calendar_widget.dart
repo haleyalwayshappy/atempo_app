@@ -1,7 +1,7 @@
 import 'package:atempo_app/model/diary_data.dart';
 import 'package:atempo_app/model/emotion_data.dart';
+import 'package:atempo_app/screens/widgets/toast.dart';
 import 'package:atempo_app/utils/constants.dart';
-import 'package:atempo_app/widgets/toast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

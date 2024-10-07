@@ -2,6 +2,7 @@ import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
+/// 현재 안쓰는 위젯
 class CustomToggleSwitch extends StatelessWidget {
   final bool isGridView; // 현재 뷰 타입
   final ValueChanged<bool> onToggle; // 상태 변경 콜백

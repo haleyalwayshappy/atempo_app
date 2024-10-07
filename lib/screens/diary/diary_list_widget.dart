@@ -1,6 +1,6 @@
 import 'package:atempo_app/model/diary_data.dart';
 import 'package:atempo_app/model/emotion_data.dart';
-import 'package:atempo_app/widgets/card_widget.dart';
+import 'package:atempo_app/screens/diary/widget/card_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

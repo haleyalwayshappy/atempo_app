@@ -9,10 +9,12 @@ import 'package:atempo_app/screens/home/home_screen.dart';
 import 'package:atempo_app/screens/home/splash_screen.dart';
 import 'package:atempo_app/screens/music/audiobook_screen.dart';
 import 'package:atempo_app/screens/music/music_list_screen.dart';
+import 'package:atempo_app/screens/music/music_play_screen.dart';
 import 'package:atempo_app/screens/music/music_screen.dart';
 import 'package:atempo_app/screens/music/music_tab_screen.dart';
-import 'package:atempo_app/widgets/bottom_widget.dart';
+import 'package:atempo_app/screens/widgets/bottom_widget.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
@@ -31,90 +33,92 @@ final GlobalKey<NavigatorState> _diaryNavigatorKey =
 final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/home', // 초기 경로 설정
+  initialLocation: '/home',
   routes: [
-    /* 바텀네비게이션 영역
-    * StatefulShellRoute.indexedStack 에는 builder와 branches가 존재해야한다.
-    * branches안에는 'StatefulShellBranch'로 루트를 작성해줘야한다.  */
     StatefulShellRoute.indexedStack(
       parentNavigatorKey: _rootNavigatorKey,
       builder: (context, state, child) => BottomWidget(child: child),
       branches: [
+        // Music 탭
         StatefulShellBranch(
           navigatorKey: _musicNavigatorKey,
           routes: [
-            StatefulShellRoute.indexedStack(
-              parentNavigatorKey: _musicNavigatorKey,
-              builder: (context, state, child) => MusicTabScreen(child: child),
-              branches: [
-                StatefulShellBranch(
-                  navigatorKey: _musicTabNavigatorKey,
-                  routes: [
-                    GoRoute(
-                      path: '/music',
-                      // builder: (context, state) => AudiobookScreen(),
-                      builder: (context, state) => MusicScreen(),
-                      routes: [
-                        GoRoute(
-                          path: 'list/:pathName',
-                          builder: (context, state) {
-                            print('aaa');
-                            // 'pathName' 매개변수 값 가져오기
-                            final String pathName =
-                                state.pathParameters['pathName']!;
-                            return MusicListScreen(pathName: pathName);
-                          },
-                        ),
-                      ],
-                    ),
-                  ],
+            GoRoute(
+              path: '/music',
+              builder: (context, state) {
+                final FabController fabController = Get.find();
+                fabController.showFab(); // DiaryWriteScreen에서는 FAB를 표시
+                return MusicTabScreen();
+              }, // MusicTabScreen에서 TabBar 관리
+              routes: [
+                GoRoute(
+                  path: 'list/:pathName',
+                  builder: (context, state) {
+                    final FabController fabController = Get.find();
+                    fabController.showFab(); // DiaryWriteScreen에서는 FAB를 표시
+                    final String pathName = state.pathParameters['pathName']!;
+                    return MusicListScreen(pathName: pathName);
+                  },
                 ),
-                StatefulShellBranch(
-                  navigatorKey: _audioTabNavigatorKey,
-                  routes: [
-                    GoRoute(
-                      path: '/audiobook',
-                      builder: (context, state) => AudiobookScreen(),
-                    ),
-                  ],
+                GoRoute(
+                  path: 'player',
+                  builder: (context, state) {
+                    final FabController fabController = Get.find();
+
+                    // 빌드 완료 후에 hideFab을 호출
+                    WidgetsBinding.instance.addPostFrameCallback((_) {
+                      fabController.hideFab(); // 기본적으로 FAB 숨김
+                    });
+
+                    return MusicPlayScreen();
+                  },
                 ),
               ],
             ),
           ],
         ),
+        // Home 탭
         StatefulShellBranch(
           navigatorKey: _homeNavigatorKey,
           routes: [
             GoRoute(
               path: '/home',
-              builder: (context, state) => HomeScreen(),
+              builder: (context, state) {
+                final FabController fabController = Get.find();
+                fabController.showFab(); // DiaryWriteScreen에서는 FAB를 표시
+                return HomeScreen();
+              },
             ),
           ],
         ),
+        // Diary 탭
         StatefulShellBranch(
           navigatorKey: _diaryNavigatorKey,
           routes: [
             GoRoute(
               path: '/diary',
-              builder: (context, state) => DiaryMainScreen(),
+              builder: (context, state) {
+                final FabController fabController = Get.find();
+                fabController.showFab(); // DiaryWriteScreen에서는 FAB를 표시
+                return DiaryMainScreen();
+              },
               routes: [
-                // 일기 상세페이지 화면
                 GoRoute(
-                  path: 'read/:index', // URL 파라미터로 인덱스를 받음
+                  path: 'read/:index',
                   builder: (context, state) {
-                    var index = int.parse(
-                        state.pathParameters['index']!); // URL에서 인덱스 추출
-                    print(
-                        'Original Index from URL: $index'); // URL에서 추출한 인덱스 출력
-                    index = index - 1;
-                    return DiaryReadScreen(
-                        selectedIndex: index); // 해당 인덱스에 대한 화면 반환
+                    final FabController fabController = Get.find();
+                    fabController.hideFab(); // 기본적으로 FAB 숨김
+                    var index = int.parse(state.pathParameters['index']!);
+                    return DiaryReadScreen(selectedIndex: index - 1);
                   },
                 ),
-                // 일기 쓰기 화면
                 GoRoute(
                   path: 'write',
-                  builder: (context, state) => DiaryWriteScreen(),
+                  builder: (context, state) {
+                    final FabController fabController = Get.find();
+                    fabController.hideFab(); // 기본적으로 FAB 숨김
+                    return DiaryWriteScreen();
+                  },
                 ),
               ],
             ),
@@ -122,27 +126,15 @@ final GoRouter router = GoRouter(
         ),
       ],
     ),
-
-    /* 바텀네비게이션과 같은 레벨단 */
-    // 감정 선택 화면
-    GoRoute(
-      path: '/choice_emotion',
-      builder: (context, state) => ChoiceEmotionScreen(),
-    ),
-
-    // 로그인 화면
+    // 로그인, 스플래시, 기타 화면
     GoRoute(
       path: '/login',
       builder: (context, state) => LoginScreen(),
     ),
-
-    // 이메일 로그인 화면
     GoRoute(
       path: '/login_email',
       builder: (context, state) => LoginEmailScreen(),
     ),
-
-    // 스플래쉬 화면
     GoRoute(
       path: '/splash',
       builder: (context, state) => SplashScreen(),

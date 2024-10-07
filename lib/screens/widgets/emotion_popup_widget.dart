@@ -1,8 +1,7 @@
-import 'package:atempo_app/widgets/toast.dart';
+import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../utils/constants.dart';
 
 class EmotionPopupWidget extends StatelessWidget {
   const EmotionPopupWidget({super.key});

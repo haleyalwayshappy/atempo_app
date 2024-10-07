@@ -1,14 +1,10 @@
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
-import 'package:atempo_app/screens/diary/diary_grid_widget.dart';
+import 'package:atempo_app/screens/diary/widget/diary_grid_widget.dart';
 import 'package:atempo_app/screens/diary/diary_list_widget.dart';
-import 'package:atempo_app/screens/music/widget/music_statusbar.dart';
+import 'package:atempo_app/screens/widgets/custom_app_bar.dart';
+import 'package:atempo_app/screens/widgets/emotion_popup_widget.dart';
 import 'package:atempo_app/utils/constants.dart';
-import 'package:atempo_app/widgets/custom_app_bar.dart';
-import 'package:atempo_app/widgets/emotion_popup_widget.dart';
-import 'package:atempo_app/widgets/switch_widget.dart';
-import 'package:atempo_app/widgets/toast.dart';
 import 'package:flutter/material.dart';
-import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 
 const int listViewIndex = 0;
 const int gridViewIndex = 1;

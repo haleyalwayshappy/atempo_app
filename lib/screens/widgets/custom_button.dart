@@ -1,6 +1,6 @@
+import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../utils/constants.dart';
 
 class CustomButton extends StatelessWidget {
   final String buttonText; // 버튼 텍스트

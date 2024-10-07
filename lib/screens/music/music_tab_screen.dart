@@ -1,15 +1,13 @@
-import 'package:atempo_app/screens/account/login_screen.dart';
 import 'package:atempo_app/screens/music/audiobook_screen.dart';
 import 'package:atempo_app/screens/music/music_screen.dart';
-import 'package:atempo_app/screens/music/widget/music_statusbar.dart';
+import 'package:atempo_app/screens/widgets/custom_app_bar.dart';
 import 'package:atempo_app/utils/constants.dart';
-import 'package:atempo_app/widgets/custom_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class MusicTabScreen extends StatefulWidget {
-  final Widget child;
-  const MusicTabScreen({super.key, required this.child});
+  // final Widget child;
+  const MusicTabScreen({super.key,/* required this.child*/});
 
   @override
   State<MusicTabScreen> createState() => _MusicTabScreenState();
@@ -33,20 +31,22 @@ class _MusicTabScreenState extends State<MusicTabScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(titleText: '음악'),
-      body: DefaultTabController(
-        length: 2, // Tab의 개수
-        child: Column(
-          children: <Widget>[
-            _buildTabBar(),
-            Expanded(
-              child: TabBarView(
-                children: const [
-                  MusicScreen(),
-                  AudiobookScreen(),
-                ],
+      body: SafeArea(
+        child: DefaultTabController(
+          length: 2, // Tab의 개수
+          child: Column(
+            children: <Widget>[
+              _buildTabBar(),
+              Expanded(
+                child: TabBarView(
+                  children: const [
+                    MusicScreen(),
+                    AudiobookScreen(),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

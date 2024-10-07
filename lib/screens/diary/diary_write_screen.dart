@@ -1,10 +1,10 @@
 import 'package:atempo_app/model/diary_data.dart';
-import 'package:atempo_app/screens/diary/content_widget.dart';
+import 'package:atempo_app/screens/diary/widget/content_widget.dart';
+import 'package:atempo_app/screens/widgets/custom_app_bar.dart';
+import 'package:atempo_app/screens/widgets/custom_button.dart';
+import 'package:atempo_app/screens/widgets/emotion_popup_widget.dart';
+import 'package:atempo_app/screens/widgets/toast.dart';
 import 'package:atempo_app/utils/constants.dart';
-import 'package:atempo_app/widgets/custom_app_bar.dart';
-import 'package:atempo_app/widgets/custom_button.dart';
-import 'package:atempo_app/widgets/emotion_popup_widget.dart';
-import 'package:atempo_app/widgets/toast.dart';
 import 'package:flutter/material.dart';
 
 class DiaryWriteScreen extends StatefulWidget {

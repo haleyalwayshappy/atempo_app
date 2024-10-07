@@ -1,8 +1,6 @@
-import 'package:atempo_app/screens/music/widget/music_statusbar.dart';
-import 'package:atempo_app/widgets/custom_calendar_widget.dart';
+import 'package:atempo_app/screens/widgets/custom_calendar_widget.dart';
+import 'package:atempo_app/screens/widgets/recommend_box.dart';
 import 'package:atempo_app/utils/constants.dart';
-import 'package:atempo_app/widgets/emotion_popup_widget.dart';
-import 'package:atempo_app/widgets/recommend_box.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
