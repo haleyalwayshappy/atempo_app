@@ -1,3 +1,8 @@
+import 'package:atempo_app/screens/home/widget/animated_angry_Image.dart';
+import 'package:atempo_app/screens/home/widget/animated_confused_Image.dart';
+import 'package:atempo_app/screens/home/widget/animated_joy_Image.dart';
+import 'package:atempo_app/screens/home/widget/animated_peace_Image.dart';
+import 'package:atempo_app/screens/home/widget/animated_sad_Image.dart';
 import 'package:atempo_app/screens/widgets/custom_button.dart';
 import 'package:atempo_app/screens/widgets/toast.dart';
 import 'package:atempo_app/utils/constants.dart';
@@ -43,10 +48,9 @@ class ChoiceEmotionScreen extends StatelessWidget {
                         onTap: () {
                           customToastMsg("버튼누름!");
                         },
-                        child: Image.asset(
-                          'assets/images/icon/icon_sadness.png',
-                          width: 120,
-                        ),
+                        child: AnimatedSadImage(
+                            image: 'assets/images/icon/icon_sadness.png',
+                            width: 120),
                       ),
                     ),
                     Positioned(
@@ -54,8 +58,8 @@ class ChoiceEmotionScreen extends StatelessWidget {
                       top: 197,
                       child: GestureDetector(
                         onTap: () {},
-                        child: Image.asset(
-                          'assets/images/icon/icon_joy_y.png',
+                        child: AnimatedJoyImage(
+                          image: 'assets/images/icon/icon_joy_y.png',
                           width: 120,
                         ),
                       ),
@@ -65,8 +69,8 @@ class ChoiceEmotionScreen extends StatelessWidget {
                       bottom: 15,
                       child: GestureDetector(
                         onTap: () {},
-                        child: Image.asset(
-                          'assets/images/icon/icon_peaceful.png',
+                        child: AnimatedPeaceImage(
+                          image: 'assets/images/icon/icon_peaceful.png',
                           width: 120,
                         ),
                       ),
@@ -76,8 +80,8 @@ class ChoiceEmotionScreen extends StatelessWidget {
                       top: 55,
                       child: GestureDetector(
                         onTap: () {},
-                        child: Image.asset(
-                          'assets/images/icon/icon_angry.png',
+                        child: AnimatedAngryImage(
+                          image: 'assets/images/icon/icon_angry.png',
                           width: 120,
                         ),
                       ),
@@ -87,8 +91,8 @@ class ChoiceEmotionScreen extends StatelessWidget {
                       top: 183,
                       child: GestureDetector(
                         onTap: () {},
-                        child: Image.asset(
-                          'assets/images/icon/icon_confuse.png',
+                        child: AnimatedConfusedImage(
+                          image: 'assets/images/icon/icon_confuse.png',
                           width: 120,
                         ),
                       ),
@@ -127,7 +131,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
                   context.go('/home');
                 },
                 child: Text(
-                  "선택하지않고 넘어갈래요.",
+                  "선택하지않고 넘어갈래요",
                   style: TextStyle(
                     color: mGrey3Color,
                   ),

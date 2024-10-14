@@ -42,7 +42,7 @@ class _TextFieldWithTitleState extends State<TextFieldWithTitle> {
             fontSize: 18,
             color: mFontDarkColor,
             // letterSpacing: -0.45,
-            letterSpacing: -0.88,
+            // letterSpacing: -0.88,
           ),
         ),
         TextField(
@@ -68,7 +68,7 @@ class _TextFieldWithTitleState extends State<TextFieldWithTitle> {
               borderSide: BorderSide(color: mDarkGreenColor, width: 1.4),
             ),
             enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.black, width: 1),
+              borderSide: BorderSide(color: mGrey4Color, width: 1),
             ),
           ),
         ),

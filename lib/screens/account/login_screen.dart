@@ -1,3 +1,4 @@
+import 'package:atempo_app/screens/widgets/proceed_without_actionbutton.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -75,7 +76,9 @@ class LoginScreen extends StatelessWidget {
                             style:
                                 TextStyle(fontSize: 16, color: mFontDarkColor),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            context.go('/create_account');
+                          },
                         ),
                       ),
                       Text(
@@ -93,6 +96,12 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ],
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  ProceedWithoutActionButton(
+                    text: "다음에 로그인 할래요",
                   ),
                 ],
               ),

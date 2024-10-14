@@ -1,10 +1,9 @@
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-
 class CustomButton extends StatelessWidget {
   final String buttonText; // 버튼 텍스트
-  final VoidCallback onPressed; // 클릭 이벤트
+  final VoidCallback? onPressed; // 클릭 이벤트
 
   const CustomButton({
     Key? key,
@@ -25,7 +24,7 @@ class CustomButton extends StatelessWidget {
       ),
       onPressed: onPressed,
       child: Padding(
-        padding: const EdgeInsets.only(top: 4.0),
+        padding: const EdgeInsets.all(12),
         child: Text(
           buttonText,
           style: TextStyle(
@@ -33,7 +32,7 @@ class CustomButton extends StatelessWidget {
             fontFamily: "Pretendard",
             fontSize: 18,
             fontWeight: FontWeight.bold,
-            letterSpacing: 1.4,
+            letterSpacing: 1.2,
           ),
         ),
       ),
@@ -41,33 +40,6 @@ class CustomButton extends StatelessWidget {
   }
 }
 
-// return GestureDetector(
-//   onTap: onPressed,
-//   child: Stack(
-//     alignment: Alignment.center, // 텍스트를 중앙에 배치
-//     children: [
-//       Container(
-//         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-//         decoration: BoxDecoration(
-//           image: DecorationImage(
-//             image: AssetImage('assets/images/button_green_short.png'),
-//             fit: BoxFit.cover,
-//           ),
-//           // borderRadius: BorderRadius.circular(10),
-//         ),
-//         child: Text(
-//           buttonText,
-//           style: TextStyle(
-//             color: Colors.white,
-//             fontSize: 18,
-//             fontWeight: FontWeight.bold,
-//             // backgroundColor: Colors.black54, // 텍스트 배경
-//           ),
-//         ),
-//       ),
-//     ],
-//   ),
-// );
 /// 사용 예시
 /*
 class ImageButtonExample extends StatelessWidget {

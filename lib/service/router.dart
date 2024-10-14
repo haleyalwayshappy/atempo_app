@@ -1,4 +1,5 @@
 // GoRouter 설정
+import 'package:atempo_app/screens/account/create_account_screen.dart';
 import 'package:atempo_app/screens/account/login_email_screen.dart';
 import 'package:atempo_app/screens/account/login_screen.dart';
 import 'package:atempo_app/screens/diary/diary_main_screen.dart';
@@ -33,7 +34,7 @@ final GlobalKey<NavigatorState> _diaryNavigatorKey =
 final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/home',
+  initialLocation: '/create_account',
   routes: [
     StatefulShellRoute.indexedStack(
       parentNavigatorKey: _rootNavigatorKey,
@@ -136,8 +137,16 @@ final GoRouter router = GoRouter(
       builder: (context, state) => LoginEmailScreen(),
     ),
     GoRoute(
+      path: '/create_account',
+      builder: (context, state) => CreateAccountScreen(),
+    ),
+    GoRoute(
       path: '/splash',
       builder: (context, state) => SplashScreen(),
+    ),
+    GoRoute(
+      path: '/choice_emotion',
+      builder: (context, state) => ChoiceEmotionScreen(),
     ),
   ],
 );

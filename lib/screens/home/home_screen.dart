@@ -16,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: mBackgroundColor,
+        backgroundColor: Colors.transparent,
         centerTitle: false,
         title: Image.asset(
           height: 36,
@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             icon: Icon(Icons.person),
             onPressed: () {
-              context.go('/home');
+              context.go('/login');
               //마이페이지 이동
             },
           ),
@@ -41,6 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Container(
+            //   width: double.infinity,
+            //   padding: EdgeInsets.symmetric(vertical: 80),
+            //   child: Image.asset('assets/images/emotions.png'),
+            // ),
+
             // EmotionPopupWidget(),
             // 음악 가로 위젯
             Container(

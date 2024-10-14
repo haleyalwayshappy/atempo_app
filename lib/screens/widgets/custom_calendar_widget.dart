@@ -2,7 +2,6 @@ import 'package:atempo_app/model/diary_data.dart';
 import 'package:atempo_app/model/emotion_data.dart';
 import 'package:atempo_app/screens/widgets/toast.dart';
 import 'package:atempo_app/utils/constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -20,6 +19,23 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
   // 선택된 날짜
   DateTime selectedDate = DateTime.now();
   DateTime focusedDay = DateTime.now();
+
+  // 데이트 피커 호출하는 메서드
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2010, 1), // 선택할 수 있는 가장 이른 날짜
+      lastDate: DateTime(2030, 12), // 선택할 수 있는 가장 늦은 날짜
+    );
+
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        focusedDay = picked;
+      });
+    }
+  }
 
 // 선택된 날짜에 해당하는 일기 데이터를 가져오는 메서드
   Diary? getDiaryEntryForSelectedDate(DateTime date) {
@@ -50,6 +66,14 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // 날짜 선택 버튼 추가
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ElevatedButton(
+            onPressed: () => _selectDate(context), // 버튼 클릭 시 데이트 피커 호출
+            child: Text("날짜 선택하기"),
+          ),
+        ),
         TableCalendar(
           firstDay: DateTime.utc(2010, 10, 16),
           lastDay: DateTime.utc(2030, 3, 14),
