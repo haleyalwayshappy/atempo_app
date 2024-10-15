@@ -8,11 +8,10 @@ import 'package:atempo_app/screens/diary/diary_write_screen.dart';
 import 'package:atempo_app/screens/home/choice_emotion_screen.dart';
 import 'package:atempo_app/screens/home/home_screen.dart';
 import 'package:atempo_app/screens/home/splash_screen.dart';
-import 'package:atempo_app/screens/music/audiobook_screen.dart';
 import 'package:atempo_app/screens/music/music_list_screen.dart';
 import 'package:atempo_app/screens/music/music_play_screen.dart';
-import 'package:atempo_app/screens/music/music_screen.dart';
 import 'package:atempo_app/screens/music/music_tab_screen.dart';
+import 'package:atempo_app/screens/settings/mypage_screen.dart';
 import 'package:atempo_app/screens/widgets/bottom_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -24,17 +23,13 @@ final GlobalKey<NavigatorState> _homeNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'home');
 final GlobalKey<NavigatorState> _musicNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'music');
-final GlobalKey<NavigatorState> _musicTabNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'musicTab');
-final GlobalKey<NavigatorState> _audioTabNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'audioTab');
 final GlobalKey<NavigatorState> _diaryNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'diary');
 
 final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/create_account',
+  initialLocation: '/home',
   routes: [
     StatefulShellRoute.indexedStack(
       parentNavigatorKey: _rootNavigatorKey,
@@ -147,6 +142,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/choice_emotion',
       builder: (context, state) => ChoiceEmotionScreen(),
+    ),
+    GoRoute(
+      path: '/my_page',
+      builder: (context, state) => MyPageScreen(),
     ),
   ],
 );

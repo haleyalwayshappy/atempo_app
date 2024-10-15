@@ -30,7 +30,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         IconButton(
           icon: Icon(Icons.person),
           onPressed: () {
-            context.go('/login');
+            context.go('/my_page');
           },
         ),
       ],

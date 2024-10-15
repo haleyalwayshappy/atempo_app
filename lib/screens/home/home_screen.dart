@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             icon: Icon(Icons.person),
             onPressed: () {
-              context.go('/login');
+              context.go('/my_page');
               //마이페이지 이동
             },
           ),
