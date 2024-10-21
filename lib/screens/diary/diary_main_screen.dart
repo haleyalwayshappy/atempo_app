@@ -1,10 +1,10 @@
-import 'package:animated_toggle_switch/animated_toggle_switch.dart';
-import 'package:atempo_app/screens/diary/widget/diary_grid_widget.dart';
-import 'package:atempo_app/screens/diary/diary_list_widget.dart';
+import 'package:flutter/material.dart';
 import 'package:atempo_app/screens/widgets/custom_app_bar.dart';
 import 'package:atempo_app/screens/widgets/emotion_popup_widget.dart';
+import 'package:atempo_app/screens/diary/widget/diary_grid_widget.dart';
+import 'package:atempo_app/screens/diary/diary_list_widget.dart';
+import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:atempo_app/utils/constants.dart';
-import 'package:flutter/material.dart';
 
 const int listViewIndex = 0;
 const int gridViewIndex = 1;
@@ -18,14 +18,30 @@ class DiaryMainScreen extends StatefulWidget {
 }
 
 class _DiaryMainScreenState extends State<DiaryMainScreen> {
-  bool isGridView = false; // State variable to track view type
+  bool isGridView = false;
+  DateTime _selectedDate = DateTime.now(); // Store selected date
+
+  // 데이트 피커 호출하는 메서드
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate,
+      firstDate: DateTime(2010, 1), // 선택할 수 있는 가장 이른 날짜
+      lastDate: DateTime(2030, 12), // 선택할 수 있는 가장 늦은 날짜
+    );
+
+    if (picked != null && picked != _selectedDate) {
+      setState(() {
+        _selectedDate = picked; // Update selected date
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
         titleText: '일기',
-        // showBackButton: false,
       ),
       body: SafeArea(
         child: Column(
@@ -38,24 +54,16 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.arrow_back_ios_new_outlined)),
-                      Text(
-                        "2024년 10월",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          color: mFontDarkColor,
-                        ),
+                  GestureDetector(
+                    onTap: () => _selectDate(context), // 버튼 클릭 시 데이트 피커 호출
+                    child: Text(
+                      "${_selectedDate.year}-${_selectedDate.month.toString().padLeft(2, '0')}",
+                      style: TextStyle(
+                        color: mPrimaryColor,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
                       ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.arrow_forward_ios_outlined)),
-                    ],
+                    ),
                   ),
                   AnimatedToggleSwitch<int>.rolling(
                     current: isGridView
@@ -65,32 +73,29 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
                       listViewIndex,
                       gridViewIndex
                     ], // 0: 리스트 뷰, 1: 그리드 뷰
-                    height: 38, // 높이값
+                    height: 38,
                     style: ToggleStyle(
                       indicatorColor: mSecondaryColor,
-                      // backgroundColor: Colors.pink,
                       borderColor: Colors.transparent,
                       borderRadius: BorderRadius.circular(50),
                       indicatorBorderRadius: BorderRadius.circular(50),
                     ),
                     onChanged: (index) {
                       setState(() {
-                        isGridView =
-                            index == gridViewIndex; // index == values 값
+                        isGridView = index == gridViewIndex; // index에 따라 상태 설정
                       });
                     },
                     iconBuilder: (value, foreground) {
-                      // print('foreground ${foreground}');
-                      return rollingIconBuilder(value, foreground); // 아이콘 빌더 호출
+                      return rollingIconBuilder(value, foreground);
                     },
                   ),
                 ],
               ),
             ),
-            Container(
+            Expanded(
               child: isGridView
                   ? DiaryGridWidget() // Render Grid View
-                  : DiaryListWidget(),
+                  : DiaryListWidget(), // Render List View
             ),
           ],
         ),
@@ -100,14 +105,12 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
 }
 
 Widget rollingIconBuilder(int? value, bool foreground) {
-  return Icon(iconDataByViewType(value)); // value에 따라 아이콘 반환
+  return Icon(iconDataByViewType(value),
+      color: foreground ? mPrimaryColor : Colors.grey);
 }
 
 IconData iconDataByViewType(int? value) => switch (value) {
       0 => Icons.list, // 리스트 뷰 아이콘
       1 => Icons.grid_view, // 그리드 뷰 아이콘
-      // TODO: Handle this case.
-      int() => throw UnimplementedError(),
-      // TODO: Handle this case.
-      null => throw UnimplementedError(),
+      _ => Icons.error,
     };

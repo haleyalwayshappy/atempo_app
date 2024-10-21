@@ -2,6 +2,7 @@
 import 'package:atempo_app/screens/account/create_account_screen.dart';
 import 'package:atempo_app/screens/account/login_email_screen.dart';
 import 'package:atempo_app/screens/account/login_screen.dart';
+import 'package:atempo_app/screens/account/login_screen.dart';
 import 'package:atempo_app/screens/diary/diary_main_screen.dart';
 import 'package:atempo_app/screens/diary/diary_read_screen.dart';
 import 'package:atempo_app/screens/diary/diary_write_screen.dart';
@@ -13,7 +14,7 @@ import 'package:atempo_app/screens/music/music_play_screen.dart';
 import 'package:atempo_app/screens/music/music_tab_screen.dart';
 import 'package:atempo_app/screens/settings/mypage_screen.dart';
 import 'package:atempo_app/screens/widgets/bottom_widget.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
@@ -29,7 +30,7 @@ final GlobalKey<NavigatorState> _diaryNavigatorKey =
 final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/home',
+  initialLocation: '/login',
   routes: [
     StatefulShellRoute.indexedStack(
       parentNavigatorKey: _rootNavigatorKey,
@@ -80,8 +81,6 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: '/home',
               builder: (context, state) {
-                final FabController fabController = Get.find();
-                fabController.showFab(); // DiaryWriteScreen에서는 FAB를 표시
                 return HomeScreen();
               },
             ),
@@ -94,25 +93,20 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: '/diary',
               builder: (context, state) {
-                final FabController fabController = Get.find();
-                fabController.showFab(); // DiaryWriteScreen에서는 FAB를 표시
                 return DiaryMainScreen();
               },
               routes: [
                 GoRoute(
-                  path: 'read/:index',
+                  path: 'read/:diaryId', // diaryId를 경로 파라미터로 전달
                   builder: (context, state) {
-                    final FabController fabController = Get.find();
-                    fabController.hideFab(); // 기본적으로 FAB 숨김
-                    var index = int.parse(state.pathParameters['index']!);
-                    return DiaryReadScreen(selectedIndex: index - 1);
+                    final diaryId =
+                        state.pathParameters['diaryId']!; // 경로에서 diaryId 추출
+                    return DiaryReadScreen(diaryId: diaryId); // diaryId를 전달
                   },
                 ),
                 GoRoute(
                   path: 'write',
                   builder: (context, state) {
-                    final FabController fabController = Get.find();
-                    fabController.hideFab(); // 기본적으로 FAB 숨김
                     return DiaryWriteScreen();
                   },
                 ),
@@ -125,6 +119,7 @@ final GoRouter router = GoRouter(
     // 로그인, 스플래시, 기타 화면
     GoRoute(
       path: '/login',
+      // builder: (context, state) => LoginScreen(),
       builder: (context, state) => LoginScreen(),
     ),
     GoRoute(

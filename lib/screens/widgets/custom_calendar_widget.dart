@@ -20,29 +20,10 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
   DateTime selectedDate = DateTime.now();
   DateTime focusedDay = DateTime.now();
 
-  // 데이트 피커 호출하는 메서드
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: selectedDate,
-      firstDate: DateTime(2010, 1), // 선택할 수 있는 가장 이른 날짜
-      lastDate: DateTime(2030, 12), // 선택할 수 있는 가장 늦은 날짜
-    );
-
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-        focusedDay = picked;
-      });
-    }
-  }
-
-// 선택된 날짜에 해당하는 일기 데이터를 가져오는 메서드
+  // 선택된 날짜에 해당하는 일기 데이터를 가져오는 메서드
   Diary? getDiaryEntryForSelectedDate(DateTime date) {
-    // 선택된 날짜를 YYYY-MM-DD 형식으로 변환
-    String formattedDate = date.toIso8601String().split('T').first;
-
     for (var entry in dummyDiaryData) {
+      // print("날짜 쳌 ${entry.dateTime}");
       if (entry.dateTime.year == date.year &&
           entry.dateTime.month == date.month &&
           entry.dateTime.day == date.day) {
@@ -56,24 +37,17 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
   String? getImageForEmotion(MainEmotion mainEmotion) {
     for (var emotion in emotions) {
       if (emotion.mainEmotion == mainEmotion) {
-        return emotion.imageUrl;
+        return emotion.gridImageUrl; // 감정에 맞는 이미지 경로 반환
+        // return emotion.imageUrl; // 감정에 맞는 이미지 경로 반환
       }
     }
-    return null; // 감정이 없을 경우 null 반환
+    return null; // 감정에 맞는 이미지가 없을 경우 null 반환
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // 날짜 선택 버튼 추가
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ElevatedButton(
-            onPressed: () => _selectDate(context), // 버튼 클릭 시 데이트 피커 호출
-            child: Text("날짜 선택하기"),
-          ),
-        ),
         TableCalendar(
           firstDay: DateTime.utc(2010, 10, 16),
           lastDay: DateTime.utc(2030, 3, 14),
@@ -118,7 +92,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
                         bottom: 4,
                         child: Image.asset(
                           imageUrl,
-                          width: 32, // 아이콘 크기 조정
+                          width: 36, // 아이콘 크기 조정
                         ),
                       ),
                   ],
@@ -126,7 +100,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
               );
             },
 
-            // today 커스텀
+            // 오늘 날짜 커스텀
             todayBuilder: (context, date, focusedDay) {
               return Container(
                 margin: EdgeInsets.all(6.0),
@@ -153,10 +127,6 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
 
               return GestureDetector(
                 onTap: () {
-                  final diaryEntry = getDiaryEntryForSelectedDate(date);
-                  // print('Selected Date: ${date.toIso8601String()}');
-                  // print('Diary Entry: ${diaryEntry?.dateTime}');
-
                   if (diaryEntry != null) {
                     context.go('/diary/read/${diaryEntry.diaryId}');
                   } else {
@@ -189,50 +159,3 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
     );
   }
 }
-
-/*
-class TableCalendarExam extends StatefulWidget {
-  const TableCalendarExam({super.key});
-
-  @override
-  State<TableCalendarExam> createState() => _TableCalendarExamState();
-}
-
-class _TableCalendarExamState extends State<TableCalendarExam> {
-  // 달력 보여주는 형식
-  CalendarFormat calendarFormat = CalendarFormat.month;
-  // 선택된 날짜
-  DateTime selectedDate = DateTime.now();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      // height: 300,
-      child: TableCalendar(
-        firstDay: DateTime.utc(2010, 10, 16),
-        lastDay: DateTime.utc(2030, 3, 14),
-        focusedDay: selectedDate,
-        calendarStyle: CalendarStyle(
-          // today 색상
-          todayTextStyle: TextStyle(color: Colors.transparent),
-          todayDecoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/icon/icon_joy_y.png'),
-            ),
-            // color: Colors.green,
-            shape: BoxShape.circle,
-          ),
-        ),
-        selectedDayPredicate: (day) {
-          return isSameDay(selectedDate, day);
-        },
-        onDaySelected: (_, focusedDay) {
-          setState(() {
-            selectedDate = focusedDay;
-          });
-        },
-      ),
-    );
-  }
-}
-*/

@@ -15,36 +15,34 @@ class DiaryListWidget extends StatefulWidget {
 class _DiaryListWidgetState extends State<DiaryListWidget> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: ListView.builder(
-        itemCount: dummyDiaryData.length,
-        itemBuilder: (context, index) {
-          var imagePath;
-          switch (dummyDiaryData[index].mainEmotion) {
-            case MainEmotion.joy:
-              imagePath = emotions[0].imageUrl;
-              break; // break 추가
-            case MainEmotion.sad:
-              imagePath = emotions[1].imageUrl;
-              break; // break 추가
-            case MainEmotion.anger:
-              imagePath = emotions[2].imageUrl;
-              break; // break 추가
-            case MainEmotion.peace:
-              imagePath = emotions[3].imageUrl;
-              break; // break 추가
-            case MainEmotion.confused:
-              imagePath = emotions[4].imageUrl;
-              break; // break 추가
-          }
-          var date = dummyDiaryData[index].dateTime;
-          return CustomCardWidget(
-            dateTime: date,
-            imagePath: imagePath,
-            index: index,
-          );
-        },
-      ),
+    return ListView.builder(
+      itemCount: dummyDiaryData.length,
+      itemBuilder: (context, index) {
+        var imagePath;
+        switch (dummyDiaryData[index].mainEmotion) {
+          case MainEmotion.joy:
+            imagePath = emotions[0].imageUrl;
+            break; // break 추가
+          case MainEmotion.sad:
+            imagePath = emotions[1].imageUrl;
+            break; // break 추가
+          case MainEmotion.angry:
+            imagePath = emotions[2].imageUrl;
+            break; // break 추가
+          case MainEmotion.peace:
+            imagePath = emotions[3].imageUrl;
+            break; // break 추가
+          case MainEmotion.confused:
+            imagePath = emotions[4].imageUrl;
+            break; // break 추가
+        }
+        var date = dummyDiaryData[index].dateTime;
+        return CustomCardWidget(
+          dateTime: date,
+          imagePath: imagePath,
+          index: index,
+        );
+      },
     );
   }
 }

@@ -14,6 +14,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    print("화면 구성 쳌");
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,

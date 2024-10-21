@@ -36,7 +36,7 @@ List<Playlist> dummyContentData = [
     titleText: "화가 난 날",
     subTitleText: "짜증나는 일이 많았던 날",
     imageUrl: "image_back2.jpg",
-    emotionType: MainEmotion.anger,
+    emotionType: MainEmotion.angry,
   ),
   Playlist(
     titleText: "평화로운 날",

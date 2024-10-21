@@ -1,32 +1,52 @@
 import 'package:atempo_app/screens/widgets/custom_app_bar.dart';
-import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:atempo_app/utils/constants.dart'; // Assuming you have constants for colors, etc.
 
 class MyPageScreen extends StatelessWidget {
-  const MyPageScreen({super.key});
+  final bool isLogin = false;
+  const MyPageScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    // If not logged in, navigate to login or show a login prompt
+    // if (!isLogin) {
+    //   return Scaffold(
+    //     backgroundColor: mBackgroundColor,
+    //     body: Center(
+    //       child: Column(
+    //         mainAxisAlignment: MainAxisAlignment.center,
+    //         children: [
+    //           Text(
+    //             "로그인이 필요합니다.",
+    //             style: TextStyle(
+    //               fontSize: 20,
+    //               color: mFontDarkColor,
+    //               fontWeight: FontWeight.w600,
+    //               fontFamily: 'Pretendard',
+    //             ),
+    //           ),
+    //           SizedBox(height: 20),
+    //           ElevatedButton(
+    //             onPressed: () {
+    //               context.go('/login'); // Navigate to login screen
+    //             },
+    //             child: Text('로그인 하러가기'),
+    //           ),
+    //         ],
+    //       ),
+    //     ),
+    //   );
+    // }
+
+    // If logged in, show the MyPage screen
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: mBackgroundColor,
-        centerTitle: false,
-        title: Text(
-          "마이페이지",
-          style: TextStyle(
-            color: mFontDarkColor,
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-            letterSpacing: 1.2,
-          ),
-        ),
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new, color: mFontDarkColor),
-          onPressed: () {
-            context.go('/home');
-          },
-        ),
+      appBar: CustomAppBar(
+        titleText: "마이페이지",
+        isMyPage: true,
+        showBackButton: true,
       ),
       backgroundColor: mBackgroundColor,
       body: SafeArea(
@@ -36,7 +56,6 @@ class MyPageScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 40),
-
               Row(
                 children: [
                   // 프로필 사진
@@ -80,7 +99,6 @@ class MyPageScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(width: 12),
-
                   // 닉네임
                   Text(
                     "롱롱",
@@ -92,7 +110,6 @@ class MyPageScreen extends StatelessWidget {
                       letterSpacing: -0.5,
                     ),
                   ),
-
                   // 닉네임 수정
                   IconButton(
                     onPressed: () {},
@@ -101,14 +118,12 @@ class MyPageScreen extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 40),
-
               // 구분선
               Container(
                 height: 1,
                 color: mGrey2Color,
               ),
               SizedBox(height: 40),
-
               // MY
               Text(
                 'MY',
@@ -121,12 +136,11 @@ class MyPageScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-
-              // 펫추가
+              // 일기 보관
               GestureDetector(
                 onTap: () {},
                 child: Text(
-                  '일기 히스토리',
+                  '보관된 일기',
                   style: TextStyle(
                     fontFamily: 'Pretendard',
                     fontWeight: FontWeight.w400,
@@ -137,12 +151,10 @@ class MyPageScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 14),
-
-              // 획득한 메달
               GestureDetector(
                 onTap: () {},
                 child: Text(
-                  '획득한 메달',
+                  '뮤직 히스토리',
                   style: TextStyle(
                     fontFamily: 'Pretendard',
                     fontWeight: FontWeight.w400,
@@ -153,46 +165,12 @@ class MyPageScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 14),
-
-              // 공개한 성장일기
-              GestureDetector(
-                onTap: () {},
-                child: Text(
-                  '공개한 성장일기',
-                  style: TextStyle(
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 20,
-                    color: mFontDarkColor,
-                    letterSpacing: -0.5,
-                  ),
-                ),
-              ),
-              SizedBox(height: 14),
-
-              // 공감한 성장일기
-              GestureDetector(
-                onTap: () {},
-                child: Text(
-                  '좋아요한 성장일기',
-                  style: TextStyle(
-                    fontFamily: 'Pretendard',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 20,
-                    color: mFontDarkColor,
-                    letterSpacing: -0.5,
-                  ),
-                ),
-              ),
-              SizedBox(height: 40),
-
               // 구분선
               Container(
                 height: 1,
                 color: mGrey2Color,
               ),
               SizedBox(height: 40),
-
               // 계정
               Text(
                 '계정',
@@ -205,7 +183,6 @@ class MyPageScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-
               // 로그아웃
               GestureDetector(
                 onTap: () {},
@@ -214,14 +191,13 @@ class MyPageScreen extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: 'Pretendard',
                     fontWeight: FontWeight.w400,
-                    fontSize: 20,
+                    fontSize: 18,
                     color: mFontDarkColor,
                     letterSpacing: -0.5,
                   ),
                 ),
               ),
               SizedBox(height: 14),
-
               // 회원탈퇴
               GestureDetector(
                 onTap: () {},
@@ -230,9 +206,12 @@ class MyPageScreen extends StatelessWidget {
                   style: TextStyle(
                     fontFamily: 'Pretendard',
                     fontWeight: FontWeight.w400,
-                    fontSize: 20,
-                    color: mFontDarkColor,
+                    fontSize: 14,
+                    color: mGrey3Color,
                     letterSpacing: -0.5,
+                    decoration: TextDecoration.underline, // 밑줄 추가
+                    decorationColor: mGrey3Color, // 밑줄 색상 설정
+                    decorationThickness: 2.0, // 밑줄 두께 설정
                   ),
                 ),
               ),

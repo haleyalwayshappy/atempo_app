@@ -1,4 +1,4 @@
-package com.example.atempo_app
+package com.hong.atempo
 
 import io.flutter.embedding.android.FlutterActivity
 

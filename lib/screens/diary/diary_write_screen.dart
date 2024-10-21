@@ -1,4 +1,5 @@
 import 'package:atempo_app/model/diary_data.dart';
+import 'package:atempo_app/model/emotion_data.dart';
 import 'package:atempo_app/screens/diary/widget/content_widget.dart';
 import 'package:atempo_app/screens/widgets/custom_app_bar.dart';
 import 'package:atempo_app/screens/widgets/custom_button.dart';
@@ -15,6 +16,15 @@ class DiaryWriteScreen extends StatefulWidget {
 }
 
 class _DiaryWriteScreenState extends State<DiaryWriteScreen> {
+  String content1 = "";
+  String content2 = "";
+  String content3 = "";
+  String content4 = "";
+  String content5 = "";
+
+  MainEmotion? selectedMainEmotion;
+  SubEmotion? selectedSubEmotion;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

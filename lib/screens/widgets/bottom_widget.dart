@@ -3,12 +3,11 @@ import 'package:atempo_app/screens/widgets/custom_floating_button.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:go_router/go_router.dart';
 
 class BottomWidget extends StatefulWidget {
-  final Widget child;
+  // final Widget child;
+  final StatefulNavigationShell child;
 
   const BottomWidget({super.key, required this.child});
 
@@ -17,7 +16,7 @@ class BottomWidget extends StatefulWidget {
 }
 
 class _BottomWidget extends State<BottomWidget> {
-  int _selectedIndex = 1; // 0 : 음악 , 1: 홈 , 2 : 일기
+  late int _selectedIndex = 1; // 0 : 음악 , 1: 홈 , 2 : 일기
 
   void onChangedNavigation(int index) {
     switch (index) {
@@ -36,9 +35,25 @@ class _BottomWidget extends State<BottomWidget> {
     });
   }
 
+  Widget? fabJh() {
+    var currentLocation = widget.child.shellRouteContext.routerState.location;
+    print("cureentLocation -> ${currentLocation}");
+    // 플로팅 버튼을 숨길 경로를 확인
+    if (currentLocation == '/diary/write' ||
+        currentLocation.startsWith('/diary/read/')) {
+      return null; // 해당 경로에서는 플로팅 버튼 숨기기
+    }
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 65),
+      child: CustomFloatingActionButton(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final FabController fabController = Get.put(FabController());
+    final FabController fabController =
+        Get.put(FabController()); //todo: build에서 put은 하면 안됨. JH
 
     return Scaffold(
       body: Column(
@@ -77,14 +92,15 @@ class _BottomWidget extends State<BottomWidget> {
           indicatorColor: mSecondaryColor, // 선택된 탭의 배경색 비활성화
         ),
       ),
-      floatingActionButton: Obx(() {
-        return fabController.isFabVisible.value
-            ? Padding(
-                padding: const EdgeInsets.only(bottom: 65),
-                child: CustomFloatingActionButton(),
-              )
-            : SizedBox.shrink(); // FAB가 숨겨진 경우 아무것도 표시하지 않음
-      }),
+      // floatingActionButton: Obx(() {
+      //   return fabController.isFabVisible.value
+      //       ? Padding(
+      //           padding: const EdgeInsets.only(bottom: 65),
+      //           child: CustomFloatingActionButton(),
+      //         )
+      //       : SizedBox.shrink(); // FAB가 숨겨진 경우 아무것도 표시하지 않음
+      // }),
+      floatingActionButton: fabJh(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }

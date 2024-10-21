@@ -5,44 +5,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd123e6d-599b-4fe0-be62-f634cdf7667d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/screens/home/not_found_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/service/music/music_player_controller.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/button/google_login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/button/kakao_login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/button/naver_login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/service/diary/diary_write_controller.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/temp.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/kotlin/com/example/atempo_app/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/GeneratedPluginRegistrant.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/account/login_email_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/login_email_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/diary/content_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/widget/content_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_grid_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/widget/diary_grid_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/diary_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/diary_data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/emotion_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/emotion_data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/playlist_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/playlist_data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/account/create_account_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/create_account_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_list_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_list_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_main_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_main_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_read_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_read_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_write_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_write_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/home/choice_emotion_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/choice_emotion_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/diary/widget/card_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/widget/card_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/diary/widget/diary_grid_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/widget/diary_grid_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/music/audiobook_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/audiobook_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/music/music_list_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_list_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/music/music_play_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_play_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/music/music_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/music/music_tab_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_tab_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/music/widget/music_statusbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/widget/music_statusbar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/settings/mypage_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/settings/mypage_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/bottom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/bottom_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/custom_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_app_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/custom_calendar_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_calendar_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/textfield_with_title.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/textfield_with_title.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/service/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/service/router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/bottom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/bottom_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/card_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/widget/card_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/container.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/container.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_app_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_button.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_calendar_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_calendar_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/custom_floating_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_floating_button.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/emotion_popup_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/emotion_popup_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/recommend_box.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/recommend_box.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/switch_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_toggle_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/textfield_with_title.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/textfield_with_title.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/widgets/toast.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/toast.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,18 +96,21 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/hongeunlee/Documents/GitHub/atempo_app&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/hongeunlee/Documents/GitHub/atempo_app/lib/screens/home/widget&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/screens/home/widget" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/images/button" />
       <recent name="$PROJECT_DIR$/lib/screens/music/widget" />
       <recent name="$PROJECT_DIR$/lib/screens/diary/widget" />
       <recent name="$PROJECT_DIR$/lib/screens/diary" />
       <recent name="$PROJECT_DIR$/lib/screens" />
-      <recent name="$PROJECT_DIR$/lib" />
     </key>
   </component>
   <component name="RunManager" selected="Flutter.main.dart">
@@ -147,6 +148,21 @@
           <url>file://$PROJECT_DIR$/lib/create_dummy_to_firebase.dart</url>
           <line>74</line>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/music/music_list_screen.dart</url>
+          <line>16</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/widgets/custom_calendar_widget.dart</url>
+          <line>18</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/diary/diary_main_screen.dart</url>
+          <line>25</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

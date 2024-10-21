@@ -4,12 +4,15 @@ import 'package:go_router/go_router.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String titleText;
-  // final bool showBackButton;
+  final bool showBackButton;
+  final bool isMyPage;
   final String backLocation;
 
   CustomAppBar(
-      {required this.titleText,
-      // this.showBackButton = false,
+      {super.key,
+      required this.titleText,
+      this.showBackButton = false,
+      this.isMyPage = false,
       this.backLocation = '/home'});
 
   @override
@@ -17,6 +20,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: mBackgroundColor,
       centerTitle: false,
+      elevation: 0,
+      scrolledUnderElevation: 0,
       title: Text(
         titleText,
         style: TextStyle(
@@ -27,13 +32,23 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       actions: [
-        IconButton(
-          icon: Icon(Icons.person),
-          onPressed: () {
-            context.go('/my_page');
-          },
-        ),
+        if (!isMyPage)
+          IconButton(
+            icon: Icon(Icons.person),
+            onPressed: () {
+              context.go('/my_page');
+              // index = 0;
+            },
+          ),
       ],
+      leading: showBackButton
+          ? IconButton(
+              icon: Icon(Icons.arrow_back_ios_new, color: mFontDarkColor),
+              onPressed: () {
+                context.go(backLocation);
+              },
+            )
+          : null,
     );
   }
 

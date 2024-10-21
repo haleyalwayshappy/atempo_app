@@ -28,85 +28,171 @@ class Diary {
   }) : diaryId = diaryId ?? Uuid().v4();
 }
 
+// 더미 일기 데이터 목록 생성
 List<Diary> dummyDiaryData = [
   Diary(
-    userId: "user1",
+    userId: "user1", // 모든 다이어리의 userId가 동일
+    mainEmotion: MainEmotion.peace,
+    subEmotion: MainEmotion.peace.subEmotions[0],
+    dateTime: DateTime(2024, 10, 12), // 2024년 10월 23일
+    content1: "오늘은 매우 기뻤다.",
+    content2: "오래된 친구를 만났기 때문이다.",
+    content3: "그와 함께 즐거운 시간을 보냈다.",
+    content4: "1년 전의 나는 아마도 더 내성적이었을 것이다.",
+    content5: "1년 후 나는 더 활발해질 것이다.",
+  ),
+  Diary(
+    userId: "user1", // 모든 다이어리의 userId가 동일
     mainEmotion: MainEmotion.joy,
     subEmotion: MainEmotion.joy.subEmotions[0],
-    dateTime: DateTime.now().subtract(Duration(days: 1)),
-    content1: "오늘은 정말 기뻤다. 새로운 프로젝트를 시작했다.",
-    content2: "프로젝트가 잘 진행되었으면 좋겠다.",
+    dateTime: DateTime(2024, 10, 13), // 2024년 10월 23일
+    content1: "오늘은 매우 기뻤다.",
+    content2: "오래된 친구를 만났기 때문이다.",
+    content3: "그와 함께 즐거운 시간을 보냈다.",
+    content4: "1년 전의 나는 아마도 더 내성적이었을 것이다.",
+    content5: "1년 후 나는 더 활발해질 것이다.",
   ),
   Diary(
-    userId: "user2",
-    mainEmotion: MainEmotion.sad,
-    subEmotion: MainEmotion.sad.subEmotions[1],
-    dateTime: DateTime.now().subtract(Duration(days: 2)),
-    content1: "오늘은 기분이 우울하다.",
-    content2: "밖에 나가고 싶지 않았다.",
-  ),
-  Diary(
-    userId: "user3",
-    mainEmotion: MainEmotion.anger,
-    subEmotion: MainEmotion.anger.subEmotions[0],
-    dateTime: DateTime.now().subtract(Duration(days: 3)),
-    content1: "화가 나는 일이 있었다.",
-    content2: "상대방이 나를 이해하지 못해서 답답했다.",
-  ),
-  Diary(
-    userId: "user4",
-    mainEmotion: MainEmotion.peace,
-    subEmotion: MainEmotion.peace.subEmotions[0],
-    dateTime: DateTime.now().subtract(Duration(days: 4)),
-    content1: "오늘은 편안한 하루였다.",
-    content2: "집에서 책을 읽으며 여유를 즐겼다.",
-  ),
-  Diary(
-    userId: "user5",
-    mainEmotion: MainEmotion.confused,
-    subEmotion: MainEmotion.confused.subEmotions[0],
-    dateTime: DateTime.now().subtract(Duration(days: 5)),
-    content1: "오늘은 혼란스러운 하루였다.",
-    content2: "무슨 일을 해야 할지 몰라 방황했다.",
-  ),
-  Diary(
-    userId: "user6",
-    mainEmotion: MainEmotion.joy,
-    subEmotion: MainEmotion.joy.subEmotions[1],
-    dateTime: DateTime.now().subtract(Duration(days: 6)),
-    content1: "오늘은 기쁜 일이 많았다.",
-    content2: "오랜만에 친구를 만났다.",
-  ),
-  Diary(
-    userId: "user7",
+    userId: "user1", // 동일한 userId
     mainEmotion: MainEmotion.sad,
     subEmotion: MainEmotion.sad.subEmotions[0],
-    dateTime: DateTime.now().subtract(Duration(days: 7)),
-    content1: "슬픈 소식을 들었다.",
-    content2: "마음이 많이 아프다.",
+    dateTime: DateTime(2024, 10, 14),
+    content1: "오늘은 슬펐다.",
+    content2: "직장에서 실수를 했다.",
+    content3: "그 문제를 해결하기 위해 많이 노력했다.",
+    content4: "1년 전의 나는 이런 상황을 더 힘들게 여겼을 것이다.",
+    content5: "1년 후 나는 더 잘 대처할 수 있을 것이다.",
   ),
   Diary(
-    userId: "user8",
-    mainEmotion: MainEmotion.anger,
-    subEmotion: MainEmotion.anger.subEmotions[0],
-    dateTime: DateTime.now().subtract(Duration(days: 8)),
-    content1: "오늘은 정말 화가 나는 일이 있었다.",
-    content2: "이성적으로 대처하지 못해 아쉬웠다.",
+    userId: "user1", // 동일한 userId
+    mainEmotion: MainEmotion.angry,
+    subEmotion: MainEmotion.angry.subEmotions[0],
+    dateTime: DateTime(2024, 10, 15),
+    content1: "오늘은 매우 화가 났다.",
+    content2: "교통 체증이 심각했기 때문이다.",
+    content3: "참으려고 했지만 결국 폭발하고 말았다.",
+    content4: "1년 전의 나는 더 화를 냈을 것이다.",
+    content5: "1년 후 나는 더 침착할 수 있을 것이다.",
   ),
   Diary(
-    userId: "user9",
-    mainEmotion: MainEmotion.peace,
-    subEmotion: MainEmotion.peace.subEmotions[0],
-    dateTime: DateTime.now().subtract(Duration(days: 9)),
-    content1: "오늘은 평온한 하루였다.",
-    content2: "산책을 하면서 마음의 안정을 찾았다.",
-  ),
-  Diary(
-    userId: "user10",
+    userId: "user1", // 동일한 userId
     mainEmotion: MainEmotion.confused,
     subEmotion: MainEmotion.confused.subEmotions[0],
-    dateTime: DateTime.now().subtract(Duration(days: 10)),
-    content1: "오늘은 머릿속이 복잡했다.",
-    content2: "무슨 결정을 내려야 할지 모르겠다.",
+    dateTime: DateTime(2024, 10, 16),
+    content1: "오늘은 혼란스러웠다.",
+    content2: "무슨 결정을 내려야 할지 몰랐다.",
+    content3: "문제를 해결하려고 노력했지만 확신이 서지 않았다.",
+    content4: "1년 전의 나는 더 많이 고민했을 것이다.",
+    content5: "1년 후 나는 결정을 더 잘 내릴 수 있을 것이다.",
+  ),
+  Diary(
+    userId: "user1", // 동일한 userId
+    mainEmotion: MainEmotion.confused,
+    subEmotion: MainEmotion.confused.subEmotions[0],
+    dateTime: DateTime(2024, 10, 17),
+    content1: "오늘은 깜짝 놀랐다.",
+    content2: "갑자기 좋은 소식을 들었기 때문이다.",
+    content3: "믿기지 않을 정도로 기뻤다.",
+    content4: "1년 전의 나는 이런 소식을 상상조차 못 했을 것이다.",
+    content5: "1년 후 나는 더 많은 좋은 소식을 기대하고 있을 것이다.",
+  ),
+  Diary(
+    userId: "user1", // 모든 다이어리의 userId가 동일
+    mainEmotion: MainEmotion.joy,
+    subEmotion: MainEmotion.joy.subEmotions[0],
+    dateTime: DateTime(2024, 10, 19), // 2024년 10월 23일
+    content1: "오늘은 매우 기뻤다.",
+    content2: "오래된 친구를 만났기 때문이다.",
+    content3: "그와 함께 즐거운 시간을 보냈다.",
+    content4: "1년 전의 나는 아마도 더 내성적이었을 것이다.",
+    content5: "1년 후 나는 더 활발해질 것이다.",
+  ),
+  Diary(
+    userId: "user1", // 모든 다이어리의 userId가 동일
+    mainEmotion: MainEmotion.peace,
+    subEmotion: MainEmotion.peace.subEmotions[0],
+    dateTime: DateTime(2024, 10, 20), // 2024년 10월 23일
+    content1: "오늘은 매우 기뻤다.",
+    content2: "오래된 친구를 만났기 때문이다.",
+    content3: "그와 함께 즐거운 시간을 보냈다.",
+    content4: "1년 전의 나는 아마도 더 내성적이었을 것이다.",
+    content5: "1년 후 나는 더 활발해질 것이다.",
+  ),
+  Diary(
+    userId: "user1", // 모든 다이어리의 userId가 동일
+    mainEmotion: MainEmotion.joy,
+    subEmotion: MainEmotion.joy.subEmotions[0],
+    dateTime: DateTime(2024, 10, 21), // 2024년 10월 23일
+    content1: "오늘은 매우 기뻤다.",
+    content2: "오래된 친구를 만났기 때문이다.",
+    content3: "그와 함께 즐거운 시간을 보냈다.",
+    content4: "1년 전의 나는 아마도 더 내성적이었을 것이다.",
+    content5: "1년 후 나는 더 활발해질 것이다.",
+  ),
+  Diary(
+    userId: "user1", // 모든 다이어리의 userId가 동일
+    mainEmotion: MainEmotion.peace,
+    subEmotion: MainEmotion.peace.subEmotions[0],
+    dateTime: DateTime(2024, 10, 22), // 2024년 10월 23일
+    content1: "오늘은 매우 기뻤다.",
+    content2: "오래된 친구를 만났기 때문이다.",
+    content3: "그와 함께 즐거운 시간을 보냈다.",
+    content4: "1년 전의 나는 아마도 더 내성적이었을 것이다.",
+    content5: "1년 후 나는 더 활발해질 것이다.",
+  ),
+  Diary(
+    userId: "user1", // 모든 다이어리의 userId가 동일
+    mainEmotion: MainEmotion.joy,
+    subEmotion: MainEmotion.joy.subEmotions[0],
+    dateTime: DateTime(2024, 10, 23), // 2024년 10월 23일
+    content1: "오늘은 매우 기뻤다.",
+    content2: "오래된 친구를 만났기 때문이다.",
+    content3: "그와 함께 즐거운 시간을 보냈다.",
+    content4: "1년 전의 나는 아마도 더 내성적이었을 것이다.",
+    content5: "1년 후 나는 더 활발해질 것이다.",
+  ),
+  Diary(
+    userId: "user1", // 동일한 userId
+    mainEmotion: MainEmotion.sad,
+    subEmotion: MainEmotion.sad.subEmotions[0],
+    dateTime: DateTime(2024, 10, 24),
+    content1: "오늘은 슬펐다.",
+    content2: "직장에서 실수를 했다.",
+    content3: "그 문제를 해결하기 위해 많이 노력했다.",
+    content4: "1년 전의 나는 이런 상황을 더 힘들게 여겼을 것이다.",
+    content5: "1년 후 나는 더 잘 대처할 수 있을 것이다.",
+  ),
+  Diary(
+    userId: "user1", // 동일한 userId
+    mainEmotion: MainEmotion.angry,
+    subEmotion: MainEmotion.angry.subEmotions[0],
+    dateTime: DateTime(2024, 10, 25),
+    content1: "오늘은 매우 화가 났다.",
+    content2: "교통 체증이 심각했기 때문이다.",
+    content3: "참으려고 했지만 결국 폭발하고 말았다.",
+    content4: "1년 전의 나는 더 화를 냈을 것이다.",
+    content5: "1년 후 나는 더 침착할 수 있을 것이다.",
+  ),
+  Diary(
+    userId: "user1", // 동일한 userId
+    mainEmotion: MainEmotion.confused,
+    subEmotion: MainEmotion.confused.subEmotions[0],
+    dateTime: DateTime(2024, 10, 26),
+    content1: "오늘은 혼란스러웠다.",
+    content2: "무슨 결정을 내려야 할지 몰랐다.",
+    content3: "문제를 해결하려고 노력했지만 확신이 서지 않았다.",
+    content4: "1년 전의 나는 더 많이 고민했을 것이다.",
+    content5: "1년 후 나는 결정을 더 잘 내릴 수 있을 것이다.",
+  ),
+  Diary(
+    userId: "user1", // 동일한 userId
+    mainEmotion: MainEmotion.confused,
+    subEmotion: MainEmotion.confused.subEmotions[0],
+    dateTime: DateTime(2024, 10, 27),
+    content1: "오늘은 깜짝 놀랐다.",
+    content2: "갑자기 좋은 소식을 들었기 때문이다.",
+    content3: "믿기지 않을 정도로 기뻤다.",
+    content4: "1년 전의 나는 이런 소식을 상상조차 못 했을 것이다.",
+    content5: "1년 후 나는 더 많은 좋은 소식을 기대하고 있을 것이다.",
   ),
 ];

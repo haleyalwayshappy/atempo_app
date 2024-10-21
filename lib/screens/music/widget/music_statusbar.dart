@@ -1,3 +1,4 @@
+import 'package:atempo_app/screens/music/music_play_screen.dart';
 import 'package:atempo_app/service/music/music_player_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,7 +15,17 @@ class MusicStatusBar extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         // 플레이어 페이지로 이동
-        context.go('/music/player');
+        // context.go('/music_player');
+        showModalBottomSheet(
+          isScrollControlled: true,
+          context: context,
+          builder: (context) {
+            return FractionallySizedBox(
+              heightFactor: 0.94, // 화면의 80% 높이로 설정
+              child: MusicPlayScreen(),
+            );
+          },
+        );
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -40,7 +51,8 @@ class MusicStatusBar extends StatelessWidget {
               child: Slider(
                 value:
                     MusicPlayerController().position.value.inSeconds.toDouble(),
-                max: MusicPlayerController().duration.value.inSeconds.toDouble(),
+                max:
+                    MusicPlayerController().duration.value.inSeconds.toDouble(),
                 min: 0,
                 onChanged: (value) {
                   MusicPlayerController()
@@ -74,8 +86,12 @@ class MusicStatusBar extends StatelessWidget {
                   children: [
                     // 이전 곡 버튼 (크기 축소)
                     IconButton(
-                      icon: Icon(Icons.skip_previous, color: mFontLightColor,), padding: EdgeInsets.zero,  // 기본 패딩 제거
-                      constraints: BoxConstraints(),  // 기본 제약 조건 제거
+                      icon: Icon(
+                        Icons.skip_previous,
+                        color: mFontLightColor,
+                      ),
+                      padding: EdgeInsets.zero, // 기본 패딩 제거
+                      constraints: BoxConstraints(), // 기본 제약 조건 제거
                       onPressed: () {
                         MusicPlayerController().previousSong(); // 이전 곡 기능
                       },
@@ -88,8 +104,9 @@ class MusicStatusBar extends StatelessWidget {
                               ? Icons.pause
                               : Icons.play_arrow,
                           color: mFontLightColor,
-                        ), padding: EdgeInsets.zero,  // 기본 패딩 제거
-                        constraints: BoxConstraints(),  // 기본 제약 조건 제거
+                        ),
+                        padding: EdgeInsets.zero, // 기본 패딩 제거
+                        constraints: BoxConstraints(), // 기본 제약 조건 제거
                         onPressed: () {
                           MusicPlayerController().playPause(); // 재생/일시정지 기능
                         },
@@ -100,9 +117,9 @@ class MusicStatusBar extends StatelessWidget {
                       icon: Icon(
                         Icons.skip_next,
                         color: mFontLightColor,
-
-                      ), padding: EdgeInsets.zero,  // 기본 패딩 제거
-                      constraints: BoxConstraints(),  // 기본 제약 조건 제거
+                      ),
+                      padding: EdgeInsets.zero, // 기본 패딩 제거
+                      constraints: BoxConstraints(), // 기본 제약 조건 제거
                       onPressed: () {
                         MusicPlayerController().nextSong(); // 다음 곡 기능
                       },
