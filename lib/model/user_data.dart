@@ -1,11 +1,35 @@
-class User {
-  /*
-  * pk 값 (고유 프라이머리 키)  UID -> non -nullable로 만들면됨 (파이어베이스에서 자동생성됨) (UUID로 하지않음)
-  * 이름
-  * 이메일(아이디)
-  * 회원가입 경로 ( 0.카카오, 1.애플, 2.구글, 3.네이버)
-  *
-  * */
+class AppUser {
+  final String uid;
+  final String name;
+  final String email;
+  final int signUpMethod;
+
+  AppUser({
+    required this.uid,
+    required this.name,
+    required this.email,
+    required this.signUpMethod,
+  });
+
+  // Firestore에 저장할 데이터를 Map으로 변환
+  Map<String, dynamic> toMap() {
+    return {
+      'uid': uid,
+      'name': name,
+      'email': email,
+      'signUpMethod': signUpMethod,
+    };
+  }
+
+  // Firestore에서 가져온 데이터를 AppUser 객체로 변환
+  factory AppUser.fromMap(Map<String, dynamic> map, String uid) {
+    return AppUser(
+      uid: uid,
+      name: map['name'] ?? 'Unknown',
+      email: map['email'] ?? 'Unknown',
+      signUpMethod: map['signUpMethod'] ?? 0,
+    );
+  }
 }
 
 /*

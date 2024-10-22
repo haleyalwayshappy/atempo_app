@@ -14,6 +14,7 @@ import 'package:atempo_app/screens/music/music_play_screen.dart';
 import 'package:atempo_app/screens/music/music_tab_screen.dart';
 import 'package:atempo_app/screens/settings/mypage_screen.dart';
 import 'package:atempo_app/screens/widgets/bottom_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -31,6 +32,27 @@ final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
   initialLocation: '/login',
+  redirect: (context, state) {
+    final user = FirebaseAuth.instance.currentUser;
+    final loggingIn = state.location == '/login';
+
+    // 회원가입과 계정 찾기 경로 예외 처리
+    final creatingAccount = state.location == '/create_account';
+    final findingAccount = state.location == '/find_account';
+
+    // 로그인되지 않았고, 로그인 페이지가 아니며, 회원가입/계정찾기 경로가 아닌 경우
+    if (user == null && !loggingIn && !creatingAccount && !findingAccount) {
+      return '/login';
+    }
+
+    // 로그인된 상태에서 로그인 페이지에 접근하려는 경우 홈으로 리디렉션
+    if (user != null && loggingIn) {
+      return '/home';
+    }
+
+    // 다른 경우에는 경로 그대로 유지
+    return null;
+  },
   routes: [
     StatefulShellRoute.indexedStack(
       parentNavigatorKey: _rootNavigatorKey,

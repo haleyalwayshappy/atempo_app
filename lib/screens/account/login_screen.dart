@@ -1,11 +1,11 @@
-import 'package:atempo_app/screens/widgets/toast.dart';
+import 'package:atempo_app/service/account/account_service.dart';
+import 'package:atempo_app/service/account/login_auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:atempo_app/screens/widgets/proceed_without_actionbutton.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:form_model/form_model.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,39 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-// 로그인 인증 함수
-  Future<void> _loginWithEmailPassword() async {
-    try {
-      print(_emailController.text);
-      print(_passwordController.text);
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: _emailController.text,
-        password: _passwordController.text,
-      );
-
-      // 인증 메일 클릭 여부
-      bool isVerified = userCredential.user!.emailVerified;
-      print("isVerified  : $isVerified");
-      if (!isVerified) {
-        // await userCredential.user!.sendEmailVerification();
-        await _auth.signOut();
-        customToastMsg("인증이 완료되지 않았습니다.이메일 인증을 해주세요.");
-      } else {
-        // 로그인 성공 시 홈 화면으로 이동
-        if (userCredential.user != null) {
-          context.go('/home');
-        }
-      }
-    } catch (e) {
-      // 로그인 실패 시 에러 메시지 표시
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('로그인 실패: ${e.toString()}'),
-        ),
-      );
-    }
-  }
+  AccountService accountService = AccountService();
 
   @override
   Widget build(BuildContext context) {
@@ -117,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ],
                         ),
                       ),
-                      // 로그인 버튼
+                      //이메일 로그인 버튼
                       GestureDetector(
                         child: Image.asset(
                           'assets/images/button/email_login_btn.png',
@@ -126,7 +94,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         onTap: () async {
                           // customToastMsg("이메일 로그인 버튼 눌렀땅!");
-                          await _loginWithEmailPassword();
+                          String email = _emailController.text;
+                          String password = _passwordController.text;
+
+                          accountService.loginWithEmailPassword(
+                              email, password, context);
 
                           //TODO : 이메일값이랑 비밀번호 값 담아서 파이어베이스에서 로그인 연동
                         },
@@ -137,6 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            // 네이버  로그인 버튼
                             GestureDetector(
                               child: Image.asset(
                                 'assets/images/button/naver_login.png',
@@ -146,22 +119,25 @@ class _LoginScreenState extends State<LoginScreen> {
                               },
                             ),
                             SizedBox(width: 40),
+                            // 카카오 로그인 버튼
                             GestureDetector(
                               child: Image.asset(
                                 'assets/images/button/kakao_login.png',
                               ),
                               onTap: () {
                                 //TODO : 카카오 로그인
+                                accountService.signInWithKakao(context);
                               },
                             ),
                             SizedBox(width: 40),
+                            // 구글 로그인 버튼
                             GestureDetector(
                               child: Image.asset(
                                 'assets/images/button/google_login.png',
                               ),
                               onTap: () {
                                 // TODO : 구글 로그인
-                                signInWithGoogle();
+                                accountService.signInWithGoogle(context);
                               },
                             ),
                           ],
@@ -218,23 +194,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-}
-
-Future<UserCredential> signInWithGoogle() async {
-// void signInWithGoogle() async {
-  // Trigger the authentication flow
-  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-  // Obtain the auth details from the request
-  final GoogleSignInAuthentication? googleAuth =
-      await googleUser?.authentication;
-
-  // Create a new credential
-  final credential = GoogleAuthProvider.credential(
-    accessToken: googleAuth?.accessToken,
-    idToken: googleAuth?.idToken,
-  );
-
-  // Once signed in, return the UserCredential
-  return await FirebaseAuth.instance.signInWithCredential(credential);
 }
