@@ -33,7 +33,7 @@ const Color mLightGreenColor = Color(0xff82C17C);
 const Color mJoyColor = Color(0xffFFDD50);
 const Color mSadColor = Color(0xff76A7FF);
 const Color mAngryColor = Color(0xffFF8571);
-const Color mPeacefulColor = Color(0xff78FF95);
+const Color mPeacefulColor = Color(0xff82C17C);
 const Color mConfusedColor = Color(0xff9F78FF);
 
 // 왼쪽오른쪽 여백 값 고정

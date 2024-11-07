@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:525382879421:android:5394d702ec3df441c70fd4",
+        "mobilesdk_app_id": "1:525382879421:android:5dd63f10560028a2c70fd4",
         "android_client_info": {
-          "package_name": "com.example.atempo_app"
+          "package_name": "com.hong.atempo"
         }
       },
       "oauth_client": [

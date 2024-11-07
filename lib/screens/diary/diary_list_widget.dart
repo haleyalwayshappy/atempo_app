@@ -2,7 +2,6 @@ import 'package:atempo_app/model/diary_data.dart';
 import 'package:atempo_app/model/emotion_data.dart';
 import 'package:atempo_app/screens/diary/widget/card_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 /// 일기 내용(아이콘 - 날짜) 보여주는 리스트 뷰
 class DiaryListWidget extends StatefulWidget {
@@ -18,22 +17,22 @@ class _DiaryListWidgetState extends State<DiaryListWidget> {
     return ListView.builder(
       itemCount: dummyDiaryData.length,
       itemBuilder: (context, index) {
-        var imagePath;
+        String imagePath;
         switch (dummyDiaryData[index].mainEmotion) {
           case MainEmotion.joy:
-            imagePath = emotions[0].imageUrl;
+            imagePath = mainEmotions[0].imageUrl;
             break; // break 추가
           case MainEmotion.sad:
-            imagePath = emotions[1].imageUrl;
+            imagePath = mainEmotions[1].imageUrl;
             break; // break 추가
           case MainEmotion.angry:
-            imagePath = emotions[2].imageUrl;
+            imagePath = mainEmotions[2].imageUrl;
             break; // break 추가
-          case MainEmotion.peace:
-            imagePath = emotions[3].imageUrl;
+          case MainEmotion.peaceful:
+            imagePath = mainEmotions[3].imageUrl;
             break; // break 추가
           case MainEmotion.confused:
-            imagePath = emotions[4].imageUrl;
+            imagePath = mainEmotions[4].imageUrl;
             break; // break 추가
         }
         var date = dummyDiaryData[index].dateTime;

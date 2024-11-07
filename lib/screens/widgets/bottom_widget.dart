@@ -37,7 +37,7 @@ class _BottomWidget extends State<BottomWidget> {
 
   Widget? fabJh() {
     var currentLocation = widget.child.shellRouteContext.routerState.location;
-    print("cureentLocation -> ${currentLocation}");
+    print("cureentLocation -> $currentLocation");
     // 플로팅 버튼을 숨길 경로를 확인
     if (currentLocation == '/diary/write' ||
         currentLocation.startsWith('/diary/read/')) {
@@ -52,8 +52,9 @@ class _BottomWidget extends State<BottomWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final FabController fabController =
-        Get.put(FabController()); //todo: build에서 put은 하면 안됨. JH
+    final FabController fabController = Get.put(FabController());
+
+    /// todo: build에서 put은 하면 안됨. JH
 
     return Scaffold(
       body: Column(
@@ -64,7 +65,7 @@ class _BottomWidget extends State<BottomWidget> {
           MusicStatusBar(),
         ],
       ),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
         height: 90, // 높이 조정
         child: NavigationBar(
           selectedIndex: _selectedIndex,

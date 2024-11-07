@@ -45,7 +45,7 @@ class MusicListScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            SizedBox(
               width: double.infinity,
               height: 250,
               child: Stack(

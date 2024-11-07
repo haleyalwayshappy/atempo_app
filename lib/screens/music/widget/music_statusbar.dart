@@ -1,11 +1,12 @@
 import 'package:atempo_app/screens/music/music_play_screen.dart';
-import 'package:atempo_app/service/music/music_player_controller.dart';
+import 'package:atempo_app/controller/music/music_player_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 import 'package:atempo_app/utils/constants.dart'; // 상수 불러오기
 
 class MusicStatusBar extends StatelessWidget {
+  const MusicStatusBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     // MusicPlayerController를 찾음

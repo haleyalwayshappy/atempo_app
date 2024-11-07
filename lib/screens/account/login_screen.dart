@@ -1,5 +1,4 @@
 import 'package:atempo_app/service/account/account_service.dart';
-import 'package:atempo_app/service/account/login_auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -97,9 +96,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           String email = _emailController.text;
                           String password = _passwordController.text;
 
-                          accountService.loginWithEmailPassword(
-                              email, password, context);
-
+                          try {
+                            accountService.loginWithEmailPassword(
+                                email, password, context);
+                          } catch (e) {
+                            print('로그인 실패: ${e.toString()}');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text('로그인에 실패했습니다.'),
+                              ),
+                            );
+                          }
                           //TODO : 이메일값이랑 비밀번호 값 담아서 파이어베이스에서 로그인 연동
                         },
                       ),

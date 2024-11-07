@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

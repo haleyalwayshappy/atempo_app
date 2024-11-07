@@ -32,7 +32,7 @@ class BestBoxCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
-                  image: AssetImage('assets/images/${imageUrl}'),
+                  image: AssetImage('assets/images/$imageUrl'),
                   fit: BoxFit.cover,
                   alignment: Alignment.center,
                 ),

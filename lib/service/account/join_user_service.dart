@@ -1,6 +1,4 @@
-import 'package:atempo_app/model/user_data.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 class JoinUserService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;

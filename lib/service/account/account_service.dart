@@ -1,8 +1,10 @@
 import 'package:atempo_app/model/user_data.dart';
+import 'package:atempo_app/controller/account/app_user_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
@@ -10,6 +12,7 @@ import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 class AccountService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final AppUserController userController = Get.put(AppUserController());
 
   // 이메일/비밀번호 회원가입
   Future<void> signUpWithEmailPassword(
@@ -45,17 +48,15 @@ class AccountService {
           ),
         );
       } else {
-        String uid = userCredential.user!.uid;
-        getUserFromFirestore(uid);
+        // 사용자 정보 가져오기 + 앱유저에 값 담기
+        await userController.fetchUserData();
         context.go('/home');
       }
     } catch (e) {
-      print('로그인 실패: ${e.toString()}');
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('로그인에 실패했습니다.'),
-        ),
-      );
+      /// TODO :  throw Exception(e); 로 변경해서 처리해야함
+      /// TODO : 서비스 로직에서 화면 로직을 변경 해야함
+
+      throw Exception(e);
     }
   }
 
@@ -96,8 +97,9 @@ class AccountService {
         1, // 구글 가입: 1
       );
 
-      String uid = userCredential.user!.uid;
-      getUserFromFirestore(uid);
+      // 사용자 정보 가져오기 + 앱유저에 값 담기
+      await userController.fetchUserData();
+
       context.go('/home');
     } catch (e) {
       print('구글 로그인 실패: $e');
@@ -150,8 +152,9 @@ class AccountService {
         2, // 카카오 가입: 2
       );
 
-      String uid = userCredential.user!.uid;
-      getUserFromFirestore(uid);
+      // 사용자 정보 가져오기 + 앱유저에 값 담기
+      await userController.fetchUserData();
+
       context.go('/home');
     } catch (error) {
       print('카카오 로그인 실패: $error');
@@ -186,25 +189,25 @@ class AccountService {
     await _firestore.collection("users").doc(newUser.uid).set(newUser.toMap());
   }
 
-  // 파이어 스토어에서 사용자 정보 가져오기
-  Future<AppUser?> getUserFromFirestore(String uid) async {
-    try {
-      DocumentSnapshot<Map<String, dynamic>> doc =
-          await _firestore.collection("users").doc(uid).get();
-
-      // 데이터가 존재하는 경우
-      if (doc.exists && doc.data() != null) {
-        final data = doc.data()!; // Map<String, dynamic> 형식의 데이터
-        return AppUser.fromMap(data, uid);
-      } else {
-        print("사용자 정보를 찾을 수 없습니다.");
-        return null;
-      }
-    } catch (e) {
-      print("Firestore에서 사용자 정보 가져오기 실패: $e");
-      return null;
-    }
-  }
+  // // 파이어 스토어에서 사용자 정보 가져오기
+  // Future<AppUser?> getUserFromFirestore(String uid) async {
+  //   try {
+  //     DocumentSnapshot<Map<String, dynamic>> doc =
+  //         await _firestore.collection("users").doc(uid).get();
+  //
+  //     // 데이터가 존재하는 경우
+  //     if (doc.exists && doc.data() != null) {
+  //       final data = doc.data()!; // Map<String, dynamic> 형식의 데이터
+  //       return AppUser.fromMap(data, uid);
+  //     } else {
+  //       print("사용자 정보를 찾을 수 없습니다.");
+  //       return null;
+  //     }
+  //   } catch (e) {
+  //     print("Firestore에서 사용자 정보 가져오기 실패: $e");
+  //     return null;
+  //   }
+  // }
 
   // 이름 유효성 검사 함수
   String? validateName(String? value) {

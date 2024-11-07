@@ -2,10 +2,14 @@
 import 'package:atempo_app/screens/account/create_account_screen.dart';
 import 'package:atempo_app/screens/account/login_email_screen.dart';
 import 'package:atempo_app/screens/account/login_screen.dart';
-import 'package:atempo_app/screens/account/login_screen.dart';
+import 'package:atempo_app/screens/diary/choose_emotion_screen.dart';
 import 'package:atempo_app/screens/diary/diary_main_screen.dart';
 import 'package:atempo_app/screens/diary/diary_read_screen.dart';
 import 'package:atempo_app/screens/diary/diary_write_screen.dart';
+import 'package:atempo_app/screens/diary/widget/choose_sub_emotion.dart';
+import 'package:atempo_app/screens/diary/widget/diary_write_screen_2.dart';
+import 'package:atempo_app/screens/diary/widget/diary_write_screen_3.dart';
+import 'package:atempo_app/screens/diary/widget/diary_write_screen_4.dart';
 import 'package:atempo_app/screens/home/choice_emotion_screen.dart';
 import 'package:atempo_app/screens/home/home_screen.dart';
 import 'package:atempo_app/screens/home/splash_screen.dart';
@@ -31,7 +35,8 @@ final GlobalKey<NavigatorState> _diaryNavigatorKey =
 final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/login',
+  initialLocation: '/test',
+  // initialLocation: '/login',
   redirect: (context, state) {
     final user = FirebaseAuth.instance.currentUser;
     final loggingIn = state.location == '/login';
@@ -128,9 +133,7 @@ final GoRouter router = GoRouter(
                 ),
                 GoRoute(
                   path: 'write',
-                  builder: (context, state) {
-                    return DiaryWriteScreen();
-                  },
+                  builder: (context, state) => DiaryWriteScreen(),
                 ),
               ],
             ),
@@ -163,6 +166,14 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/my_page',
       builder: (context, state) => MyPageScreen(),
+    ),
+    GoRoute(
+      path: '/subEmotion',
+      builder: (context, state) => ChooseEmotionScreen(),
+    ),
+    GoRoute(
+      path: '/test',
+      builder: (context, state) => DiaryWriteScreen4(),
     ),
   ],
 );

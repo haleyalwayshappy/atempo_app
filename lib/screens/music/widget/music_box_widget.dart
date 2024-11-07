@@ -23,7 +23,7 @@ class MusicBoxWidget extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                image: AssetImage('assets/images/${musicImage}'),
+                image: AssetImage('assets/images/$musicImage'),
                 fit: BoxFit.cover,
                 alignment: Alignment.center,
               ),

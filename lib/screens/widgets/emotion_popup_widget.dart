@@ -2,7 +2,6 @@ import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
 class EmotionPopupWidget extends StatelessWidget {
   const EmotionPopupWidget({super.key});
 
@@ -31,7 +30,8 @@ class EmotionPopupWidget extends StatelessWidget {
               padding: EdgeInsets.only(left: 20),
               child: SizedBox(
                 width: 40,
-                child: Image.asset('assets/images/icon/icon_peaceful.png'),
+                child:
+                    Image.asset('assets/images/main_emotion/icon_peaceful.png'),
               ),
             ),
             Expanded(
@@ -55,7 +55,6 @@ class EmotionPopupWidget extends StatelessWidget {
     );
   }
 }
-
 
 /*
 * import 'package:atempo_app/widgets/toast.dart';
@@ -92,7 +91,7 @@ class EmotionPopupWidget extends StatelessWidget {
               padding: EdgeInsets.only(left: 20),
               child: SizedBox(
                 width: 40,
-                child: Image.asset('assets/images/icon/icon_joy_y.png'),
+                child: Image.asset('assets/images/main_emotion/icon_joy_y.png'),
               ),
             ),
             Expanded(

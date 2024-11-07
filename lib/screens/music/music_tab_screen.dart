@@ -14,7 +14,7 @@ class MusicTabScreen extends StatefulWidget {
 }
 
 class _MusicTabScreenState extends State<MusicTabScreen> {
-  int _selectedIndex = 1; // 0 : 뮤직  1:오디오북
+  final int _selectedIndex = 1; // 0 : 뮤직  1:오디오북
 
   void onChangedNavigation(int index) {
     switch (index) {

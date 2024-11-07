@@ -1,10 +1,7 @@
 import 'package:atempo_app/screens/widgets/custom_app_bar.dart';
 import 'package:atempo_app/screens/widgets/custom_button.dart';
 import 'package:atempo_app/service/account/account_service.dart';
-import 'package:atempo_app/service/account/join_user_service.dart';
-import 'package:atempo_app/service/account/login_auth_service.dart';
 import 'package:atempo_app/utils/constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';

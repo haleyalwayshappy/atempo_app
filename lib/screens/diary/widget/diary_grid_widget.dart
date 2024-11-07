@@ -22,22 +22,22 @@ class DiaryGridWidget extends StatelessWidget {
         // 한줄에 5개 (여기서 갯수 조정 가능)
         children: List.generate(dummyDiaryData.length, (index) {
           var diary = dummyDiaryData[index].mainEmotion;
-          var imagePath; // 감정에 따른 이미지 경로
+          String? imagePath; // 감정에 따른 이미지 경로
           switch (diary) {
             case MainEmotion.joy:
-              imagePath = emotions[0].gridImageUrl;
+              imagePath = mainEmotions[0].gridImageUrl;
               break; // break 추가
             case MainEmotion.sad:
-              imagePath = emotions[1].gridImageUrl;
+              imagePath = mainEmotions[1].gridImageUrl;
               break; // break 추가
             case MainEmotion.angry:
-              imagePath = emotions[2].gridImageUrl;
+              imagePath = mainEmotions[2].gridImageUrl;
               break; // break 추가
-            case MainEmotion.peace:
-              imagePath = emotions[3].gridImageUrl;
+            case MainEmotion.peaceful:
+              imagePath = mainEmotions[3].gridImageUrl;
               break; // break 추가
             case MainEmotion.confused:
-              imagePath = emotions[4].gridImageUrl;
+              imagePath = mainEmotions[4].gridImageUrl;
               break; // break 추가
           }
 
@@ -46,7 +46,7 @@ class DiaryGridWidget extends StatelessWidget {
                 var diaryId = dummyDiaryData[index].diaryId;
                 context.go('/diary/read/$diaryId');
               },
-              child: Image.asset(imagePath)); // 이미지 반환
+              child: Image.asset(imagePath!)); // 이미지 반환
         }),
       ),
     );

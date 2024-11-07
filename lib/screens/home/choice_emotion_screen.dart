@@ -22,7 +22,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 height: 80,
               ),
               Text(
@@ -49,7 +49,8 @@ class ChoiceEmotionScreen extends StatelessWidget {
                           customToastMsg("버튼누름!");
                         },
                         child: AnimatedSadImage(
-                            image: 'assets/images/icon/icon_sadness.png',
+                            image:
+                                'assets/images/main_emotion/icon_sadness.png',
                             width: 120),
                       ),
                     ),
@@ -59,7 +60,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
                       child: GestureDetector(
                         onTap: () {},
                         child: AnimatedJoyImage(
-                          image: 'assets/images/icon/icon_joy_y.png',
+                          image: 'assets/images/main_emotion/icon_joy_y.png',
                           width: 120,
                         ),
                       ),
@@ -70,7 +71,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
                       child: GestureDetector(
                         onTap: () {},
                         child: AnimatedPeaceImage(
-                          image: 'assets/images/icon/icon_peaceful.png',
+                          image: 'assets/images/main_emotion/icon_peaceful.png',
                           width: 120,
                         ),
                       ),
@@ -81,7 +82,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
                       child: GestureDetector(
                         onTap: () {},
                         child: AnimatedAngryImage(
-                          image: 'assets/images/icon/icon_angry.png',
+                          image: 'assets/images/main_emotion/icon_angry.png',
                           width: 120,
                         ),
                       ),
@@ -92,7 +93,7 @@ class ChoiceEmotionScreen extends StatelessWidget {
                       child: GestureDetector(
                         onTap: () {},
                         child: AnimatedConfusedImage(
-                          image: 'assets/images/icon/icon_confuse.png',
+                          image: 'assets/images/main_emotion/icon_confuse.png',
                           width: 120,
                         ),
                       ),
@@ -121,10 +122,9 @@ class ChoiceEmotionScreen extends StatelessWidget {
               ),
               ElevatedButton(
                 style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all(Colors.transparent),
+                  backgroundColor: WidgetStateProperty.all(Colors.transparent),
                   // 배경을 투명하게 설정
-                  elevation: MaterialStateProperty.all(0), // 그림자 제거 (선택 사항)
+                  elevation: WidgetStateProperty.all(0), // 그림자 제거 (선택 사항)
                 ),
                 onPressed: () {
                   customToastMsg("메인으로 가는 버튼");

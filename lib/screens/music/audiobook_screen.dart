@@ -10,6 +10,8 @@ class AudiobookScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int listNum;
+
+    List randomImg = ['', '', ''];
     const String pathName = "audiobook";
     final screenWidth = MediaQuery.of(context).size.width;
     return SingleChildScrollView(

@@ -1,11 +1,12 @@
 import 'package:atempo_app/screens/music/widget/music_title_text.dart';
-import 'package:atempo_app/screens/widgets/custom_app_bar.dart';
-import 'package:atempo_app/service/music/music_player_controller.dart';
+import 'package:atempo_app/controller/music/music_player_controller.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class MusicPlayScreen extends StatelessWidget {
+  const MusicPlayScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     // Controller를 GetX로 주입
@@ -113,10 +114,10 @@ class MusicPlayScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '${_formatDuration(controller.position.value)}',
+                      _formatDuration(controller.position.value),
                     ),
                     Text(
-                      '${_formatDuration(controller.duration.value)}',
+                      _formatDuration(controller.duration.value),
                     ),
                   ],
                 ),

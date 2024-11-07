@@ -42,7 +42,7 @@ List<Playlist> dummyContentData = [
     titleText: "평화로운 날",
     subTitleText: "아주 평온했던 하루",
     imageUrl: "image_back3.jpg",
-    emotionType: MainEmotion.peace,
+    emotionType: MainEmotion.peaceful,
   ),
   Playlist(
     titleText: "혼란스러운 날",

@@ -8,7 +8,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isMyPage;
   final String backLocation;
 
-  CustomAppBar(
+  const CustomAppBar(
       {super.key,
       required this.titleText,
       this.showBackButton = false,

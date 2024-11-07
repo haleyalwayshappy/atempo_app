@@ -1,1 +1,1 @@
-final String happyText1 = "";
+const String happyText1 = "";

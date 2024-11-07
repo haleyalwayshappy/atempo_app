@@ -42,17 +42,17 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyDK6Mvrpl5RP5TF7mgHtc0xxAgy-OdMFqg',
-    appId: '1:525382879421:web:560a5eb0773f7a82c70fd4',
+    appId: '1:525382879421:web:34111271252a57fdc70fd4',
     messagingSenderId: '525382879421',
     projectId: 'teamatempo',
     authDomain: 'teamatempo.firebaseapp.com',
     storageBucket: 'teamatempo.appspot.com',
-    measurementId: 'G-GE2K79MHRM',
+    measurementId: 'G-2KBZZJFN4L',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAxWfS4iz-BCBAfJY0ERu07pgKeG9l6o3c',
-    appId: '1:525382879421:android:5394d702ec3df441c70fd4',
+    appId: '1:525382879421:android:5dd63f10560028a2c70fd4',
     messagingSenderId: '525382879421',
     projectId: 'teamatempo',
     storageBucket: 'teamatempo.appspot.com',
@@ -60,30 +60,32 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCdguzCmhbjSF0jj36U8taMfLCb-P5hQ2M',
-    appId: '1:525382879421:ios:5c02cc94b88a26adc70fd4',
+    appId: '1:525382879421:ios:b84c15c6d62d5c9bc70fd4',
     messagingSenderId: '525382879421',
     projectId: 'teamatempo',
     storageBucket: 'teamatempo.appspot.com',
-    iosBundleId: 'com.example.atempoApp',
+    iosClientId: '525382879421-svbi3cqht6r5us7qt2qfem2ku1os9vcs.apps.googleusercontent.com',
+    iosBundleId: 'com.hong.atempo',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyCdguzCmhbjSF0jj36U8taMfLCb-P5hQ2M',
-    appId: '1:525382879421:ios:5c02cc94b88a26adc70fd4',
+    appId: '1:525382879421:ios:ff441b51c4ee3fc2c70fd4',
     messagingSenderId: '525382879421',
     projectId: 'teamatempo',
     storageBucket: 'teamatempo.appspot.com',
+    iosClientId: '525382879421-jnvs0uis8jidd68fq1de7m5ptrkarh9j.apps.googleusercontent.com',
     iosBundleId: 'com.example.atempoApp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyDK6Mvrpl5RP5TF7mgHtc0xxAgy-OdMFqg',
-    appId: '1:525382879421:web:81912d19eabe2a91c70fd4',
+    appId: '1:525382879421:web:0b99c7c9326d8f7cc70fd4',
     messagingSenderId: '525382879421',
     projectId: 'teamatempo',
     authDomain: 'teamatempo.firebaseapp.com',
     storageBucket: 'teamatempo.appspot.com',
-    measurementId: 'G-LRDYP9S5VZ',
+    measurementId: 'G-2B145JRLSR',
   );
 
 }

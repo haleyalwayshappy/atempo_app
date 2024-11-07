@@ -71,6 +71,8 @@ class _ContentWidgetState extends State<ContentWidget> {
               ),
             ),
             TextField(
+              minLines: 1,
+              maxLines: null,
               focusNode: focusNode, // FocusNode 연결
               autocorrect: false, // 자동 수정기능 비활성화
               enableSuggestions: false, // 제안기능 비활성화
@@ -93,7 +95,9 @@ class _ContentWidgetState extends State<ContentWidget> {
                   color: mGrey1Color,
                 ),
                 border: InputBorder.none, // 기본 보더 제거
+                // border: OutlineInputBorder(), // 기본 보더 제거
               ),
+              onChanged: widget.onChanged, // 여기에서 widget.onChanged 콜백 연결
             ),
           ],
         ),

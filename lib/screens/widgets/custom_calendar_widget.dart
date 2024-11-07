@@ -35,7 +35,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
 
   // 선택된 감정에 맞는 이미지를 가져오는 메서드
   String? getImageForEmotion(MainEmotion mainEmotion) {
-    for (var emotion in emotions) {
+    for (var emotion in mainEmotions) {
       if (emotion.mainEmotion == mainEmotion) {
         return emotion.gridImageUrl; // 감정에 맞는 이미지 경로 반환
         // return emotion.imageUrl; // 감정에 맞는 이미지 경로 반환
