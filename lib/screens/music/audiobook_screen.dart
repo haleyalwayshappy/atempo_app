@@ -32,7 +32,7 @@ class AudiobookScreen extends StatelessWidget {
               height: 200,
               titleText: "하루를 다스리는 법",
               subTitleText: "마음이 평화로워지는 보이스",
-              imageUrl: 'image_back2.jpg',
+              imageUrl: 'music_bg2.png',
               onTap: () {
                 customToastMsg("오디오북 재생목록");
               },
@@ -58,7 +58,7 @@ class AudiobookScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 // 더미 데이터
                 return CustomGridItem(
-                  imageUrl: 'assets/images/image_back4.jpg',
+                  imageUrl: 'assets/images/music_bg3.png',
                   title: '계곡 따라 떠나는 산책길',
                   subtitle: '짧지만 달콤한 오후의 단잠',
                   hashtags: ['우울', '행복'],

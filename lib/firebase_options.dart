@@ -52,7 +52,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAxWfS4iz-BCBAfJY0ERu07pgKeG9l6o3c',
-    appId: '1:525382879421:android:5dd63f10560028a2c70fd4',
+    appId: '1:525382879421:android:b678e69a9fa9acedc70fd4',
     messagingSenderId: '525382879421',
     projectId: 'teamatempo',
     storageBucket: 'teamatempo.appspot.com',
@@ -60,12 +60,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCdguzCmhbjSF0jj36U8taMfLCb-P5hQ2M',
-    appId: '1:525382879421:ios:b84c15c6d62d5c9bc70fd4',
+    appId: '1:525382879421:ios:f8121a012fcefd16c70fd4',
     messagingSenderId: '525382879421',
     projectId: 'teamatempo',
     storageBucket: 'teamatempo.appspot.com',
-    iosClientId: '525382879421-svbi3cqht6r5us7qt2qfem2ku1os9vcs.apps.googleusercontent.com',
-    iosBundleId: 'com.hong.atempo',
+    iosClientId: '525382879421-i34brdpinog4odsmmbbd5tcvl5mndap8.apps.googleusercontent.com',
+    iosBundleId: 'com.hongniest.atempo',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -74,8 +74,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '525382879421',
     projectId: 'teamatempo',
     storageBucket: 'teamatempo.appspot.com',
-    iosClientId: '525382879421-jnvs0uis8jidd68fq1de7m5ptrkarh9j.apps.googleusercontent.com',
-    iosBundleId: 'com.example.atempoApp',
+    iosClientId:
+        '525382879421-jnvs0uis8jidd68fq1de7m5ptrkarh9j.apps.googleusercontent.com',
+    iosBundleId: 'com.hongniest.atempo',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
@@ -87,5 +88,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'teamatempo.appspot.com',
     measurementId: 'G-2B145JRLSR',
   );
-
 }

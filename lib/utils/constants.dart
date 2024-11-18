@@ -38,6 +38,7 @@ const Color mConfusedColor = Color(0xff9F78FF);
 
 // 왼쪽오른쪽 여백 값 고정
 const double outlinedDouble = 16.0;
+const double radiusDouble = 26.0;
 
 /* 일기 내용 관련 스타일 */
 const mDiaryStyle = TextStyle(
@@ -66,6 +67,16 @@ const List<String> emailSiteList = [
   'daum.net',
   'hanmail.net'
 ];
+
+/// 앨범 커버 이미지 리스트
+const Map<dynamic, dynamic> albumContents = {
+  "뉴욕의 길거리": "assets/images/music_bg1.png",
+  "일렁이는 파도": "assets/images/music_bg2.png",
+  "꽃이 필 때": "assets/images/music_bg3.png",
+  "바닷가에서": "assets/images/music_bg4.png",
+  "해지는 노을": "assets/images/music_bg5.png",
+  "집으로 가는 길": "assets/images/music_bg6.png",
+};
 
 // const kSearchEditHintStyle = TextStyle(
 //   color: Colors.grey,

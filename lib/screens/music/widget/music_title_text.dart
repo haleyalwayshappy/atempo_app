@@ -31,6 +31,7 @@ class MusicTitleText extends StatelessWidget {
       child: Text(
         musicTitle,
         style: TextStyle(
+          overflow: TextOverflow.clip,
           fontSize: fontSize,
           color: mPrimaryColor,
           fontWeight: FontWeight.w600,

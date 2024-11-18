@@ -181,6 +181,7 @@ class MyPageScreen extends StatelessWidget {
               // 회원탈퇴
               GestureDetector(
                 onTap: () {
+                  showDeleteAccountDialog(context);
                   // TODO :  회원 탈퇴 시 해당 계정 삭제 + 파이어 스토어에 있는 필드 삭제 (uid 기준)
                 },
                 child: Text(
@@ -199,7 +200,7 @@ class MyPageScreen extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Text(
-                '회원탈퇴',
+                '앱정보',
                 style: TextStyle(
                   fontFamily: 'Pretendard',
                   fontWeight: FontWeight.w400,
@@ -216,6 +217,7 @@ class MyPageScreen extends StatelessWidget {
   }
 }
 
+// 로그아웃 다이얼로그
 void showLogoutDialog(BuildContext context) async {
   showDialog(
       context: context,
@@ -263,6 +265,7 @@ void showLogoutDialog(BuildContext context) async {
 
                 // 다이얼로그 닫기 및 로그인 화면으로 이동
                 Navigator.of(con).pop();
+                print("로그아웃 성공 로그인 이동");
                 context.go('/login');
               },
               child: const Text("확인"),
@@ -274,4 +277,33 @@ void showLogoutDialog(BuildContext context) async {
           ],
         );
       });
+}
+
+// 회원탈퇴
+void showDeleteAccountDialog(BuildContext context) {
+  final AppUserController userController = Get.find<AppUserController>();
+  showDialog(
+    context: context,
+    builder: (BuildContext con) {
+      return AlertDialog(
+        title: const Text("회원탈퇴"),
+        content: const Text("정말 탈퇴를 진행 하시겠습니까?"),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(), // 다이얼로그 닫기
+            child: const Text("취소"),
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              Get.back(); // 다이얼로그 닫기
+              // 로그인 화면으로 이동
+              context.go('/login');
+              await userController.deleteAccount(context); // 회원 탈퇴 실행
+            },
+            child: const Text("확인"),
+          ),
+        ],
+      );
+    },
+  );
 }

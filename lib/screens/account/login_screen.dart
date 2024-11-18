@@ -119,10 +119,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             // 네이버  로그인 버튼
                             GestureDetector(
                               child: Image.asset(
-                                'assets/images/button/naver_login.png',
+                                'assets/images/button/apple_login.png',
                               ),
                               onTap: () {
-                                //TODO : 네이버 로그인
+                                //TODO :애플 로그인
                               },
                             ),
                             SizedBox(width: 40),

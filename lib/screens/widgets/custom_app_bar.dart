@@ -7,18 +7,21 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showBackButton;
   final bool isMyPage;
   final String backLocation;
+  final Color backgroundColor;
 
-  const CustomAppBar(
-      {super.key,
-      required this.titleText,
-      this.showBackButton = false,
-      this.isMyPage = false,
-      this.backLocation = '/home'});
+  const CustomAppBar({
+    super.key,
+    required this.titleText,
+    this.showBackButton = false,
+    this.isMyPage = false,
+    this.backgroundColor = mBackgroundColor,
+    this.backLocation = '/home',
+  });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: mBackgroundColor,
+      backgroundColor: backgroundColor,
       centerTitle: false,
       elevation: 0,
       scrolledUnderElevation: 0,

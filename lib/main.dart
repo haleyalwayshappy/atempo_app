@@ -1,3 +1,5 @@
+import 'package:atempo_app/controller/diary/diary_controller.dart';
+import 'package:atempo_app/controller/music/music_player_controller.dart';
 import 'package:atempo_app/firebase_options.dart';
 import 'package:atempo_app/screens/home/not_found_screen.dart';
 import 'package:atempo_app/controller/account/app_user_controller.dart';
@@ -23,8 +25,12 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // 앱 실행 시 GetX에 AppUserController 등록
+  // MusicPlayerController 초기화 및 데이터 로딩 시작
+  Get.put(MusicPlayerController());
+  // 유저 정보 가져오기
   Get.put(AppUserController());
+  // 다이어리 정보 가져오기
+  Get.put(DiaryController());
 
   runApp(MainScreenApp());
 }
@@ -68,61 +74,3 @@ class MainRouter extends StatelessWidget {
     );
   }
 }
-
-//
-//
-// theme: ThemeData(
-// // appBarTheme: AppBarTheme(
-// //   actionsIconTheme: IconThemeData(
-// //     color: mEnabledColor,
-// //     size: 32,
-// //   ),
-// //   backgroundColor: mBackgroundColor,
-// //   centerTitle: false,
-// //   titleTextStyle: TextStyle(
-// //     color: mFontDarkColor,
-// //     fontSize: 24,
-// //     fontWeight: FontWeight.w800,
-// //     letterSpacing: 4.0,
-// //   ),
-// // ),
-// scaffoldBackgroundColor: mBackgroundColor,
-// ),
-/*
-
-void main() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
-  runApp(MainScreenApp());
-}
-
-class MainScreenApp extends StatelessWidget {
-  MainScreenApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
-      theme: ThemeData(
-        // appBarTheme: AppBarTheme(
-        //   actionsIconTheme: IconThemeData(
-        //     color: mEnabledColor,
-        //     size: 32,
-        //   ),
-        //   backgroundColor: mBackgroundColor,
-        //   centerTitle: false,
-        //   titleTextStyle: TextStyle(
-        //     color: mFontDarkColor,
-        //     fontSize: 24,
-        //     fontWeight: FontWeight.w800,
-        //     letterSpacing: 4.0,
-        //   ),
-        // ),
-        scaffoldBackgroundColor: mBackgroundColor,
-      ),
-    );
-  }
-}
-*/

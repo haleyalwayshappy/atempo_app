@@ -6,15 +6,13 @@ import 'package:atempo_app/screens/diary/choose_emotion_screen.dart';
 import 'package:atempo_app/screens/diary/diary_main_screen.dart';
 import 'package:atempo_app/screens/diary/diary_read_screen.dart';
 import 'package:atempo_app/screens/diary/diary_write_screen.dart';
-import 'package:atempo_app/screens/diary/widget/choose_sub_emotion.dart';
-import 'package:atempo_app/screens/diary/widget/diary_write_screen_2.dart';
-import 'package:atempo_app/screens/diary/widget/diary_write_screen_3.dart';
 import 'package:atempo_app/screens/diary/widget/diary_write_screen_4.dart';
 import 'package:atempo_app/screens/home/choice_emotion_screen.dart';
 import 'package:atempo_app/screens/home/home_screen.dart';
 import 'package:atempo_app/screens/home/splash_screen.dart';
 import 'package:atempo_app/screens/music/music_list_screen.dart';
 import 'package:atempo_app/screens/music/music_play_screen.dart';
+import 'package:atempo_app/screens/music/music_play_screen2.dart';
 import 'package:atempo_app/screens/music/music_tab_screen.dart';
 import 'package:atempo_app/screens/settings/mypage_screen.dart';
 import 'package:atempo_app/screens/widgets/bottom_widget.dart';
@@ -35,7 +33,7 @@ final GlobalKey<NavigatorState> _diaryNavigatorKey =
 final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/test',
+  initialLocation: '/music/player',
   // initialLocation: '/login',
   redirect: (context, state) {
     final user = FirebaseAuth.instance.currentUser;
@@ -94,7 +92,7 @@ final GoRouter router = GoRouter(
                       fabController.hideFab(); // 기본적으로 FAB 숨김
                     });
 
-                    return MusicPlayScreen();
+                    return MusicPlayScreen2();
                   },
                 ),
               ],

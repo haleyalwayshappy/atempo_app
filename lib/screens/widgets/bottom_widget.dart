@@ -66,7 +66,7 @@ class _BottomWidget extends State<BottomWidget> {
         ],
       ),
       bottomNavigationBar: SizedBox(
-        height: 90, // 높이 조정
+        height: 70, // 높이 조정
         child: NavigationBar(
           selectedIndex: _selectedIndex,
           backgroundColor: mBackgroundColor,

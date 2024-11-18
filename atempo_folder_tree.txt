@@ -105,7 +105,7 @@
 │     │ ├── icon_sadness.png
 │     │ └── icon_sadness_g.png
 │     ├── image_back.jpg
-│     ├── image_back2.jpg
+│     ├── music_bg2.png
 │     ├── image_back3.jpg
 │     ├── image_back4.jpg
 │     ├── logo_atempo.png

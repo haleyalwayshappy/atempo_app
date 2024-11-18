@@ -14,7 +14,7 @@ class AccountService {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final AppUserController userController = Get.put(AppUserController());
 
-  // 이메일/비밀번호 회원가입
+  /// 이메일/비밀번호 회원가입
   Future<void> signUpWithEmailPassword(
       String email, String password, String name) async {
     UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
@@ -29,7 +29,7 @@ class AccountService {
     );
   }
 
-// 이메일/비밀번호 로그인
+  /// 이메일/비밀번호 로그인
   Future<void> loginWithEmailPassword(
       String email, String password, BuildContext context) async {
     try {
@@ -53,14 +53,14 @@ class AccountService {
         context.go('/home');
       }
     } catch (e) {
-      /// TODO :  throw Exception(e); 로 변경해서 처리해야함
-      /// TODO : 서비스 로직에서 화면 로직을 변경 해야함
+      // TODO :  throw Exception(e); 로 변경해서 처리해야함
+      // TODO : 서비스 로직에서 화면 로직을 변경 해야함
 
       throw Exception(e);
     }
   }
 
-  // 구글 로그인
+  /// 구글 로그인
   Future<void> signInWithGoogle(BuildContext context) async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -90,14 +90,14 @@ class AccountService {
         );
       }
 
-      // Firestore에 사용자 정보 저장
+      /// Firestore에 사용자 정보 저장
       await _saveUserToFireStore(
         userCredential,
         {'name': name, 'email': googleUser.email},
         1, // 구글 가입: 1
       );
 
-      // 사용자 정보 가져오기 + 앱유저에 값 담기
+      /// 사용자 정보 가져오기 + 앱유저에 값 담기
       await userController.fetchUserData();
 
       context.go('/home');
@@ -106,7 +106,7 @@ class AccountService {
     }
   }
 
-  // 카카오 로그인
+  /// 카카오 로그인
   Future<void> signInWithKakao(BuildContext context) async {
     try {
       // 카카오톡 설치 여부 확인 후 로그인
@@ -161,13 +161,20 @@ class AccountService {
     }
   }
 
-  // 로그아웃
+  /// 애플 로그인
+  Future<void> signInWithApple(BuildContext context) async {
+    try {} catch (error) {
+      print('카카오 로그인 실패: $error');
+    }
+  }
+
+  /// 로그아웃
   Future<void> signOut(BuildContext context) async {
     await _auth.signOut();
     context.go('/home');
   }
 
-  // 파이어 베이스 인증 자격 증명 생성
+  /// 파이어 베이스 인증 자격 증명 생성
   OAuthCredential _createFirebaseCredential(OAuthToken token) {
     var provider = OAuthProvider('oidc.atempo');
     return provider.credential(
@@ -176,7 +183,7 @@ class AccountService {
     );
   }
 
-  // 파이어 스토어에 사용자 정보 저장
+  /// 파이어 스토어에 사용자 정보 저장
   Future<void> _saveUserToFireStore(UserCredential userCredential,
       Map<String, String> userInfo, int signUpMethod) async {
     final newUser = AppUser(

@@ -1,7 +1,8 @@
-import 'package:atempo_app/screens/music/widget/music_box_widget.dart';
-import 'package:atempo_app/screens/music/widget/music_title_text.dart';
-import 'package:atempo_app/screens/widgets/custom_app_bar.dart';
+import 'package:atempo_app/controller/music/music_player_controller.dart';
+import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:atempo_app/screens/music/widget/music_box_widget.dart';
+import 'package:get/get.dart';
 
 class MusicListScreen extends StatelessWidget {
   final String pathName;
@@ -13,12 +14,15 @@ class MusicListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Controller를 GetX로 주입
+    final MusicPlayerController controller = Get.put(MusicPlayerController());
+
     String titleText;
 
     // pathName에 따른 titleText 설정
     switch (pathName) {
       case 'music1':
-        titleText = '기분이 좋을땐 이노랠 들어요';
+        titleText = '기분이 좋을땐 이 노래 들어요';
         break;
       case 'music2':
         titleText = 'Music 2';
@@ -39,83 +43,98 @@ class MusicListScreen extends StatelessWidget {
         titleText = 'Default Title';
         break;
     }
+
     return Scaffold(
-      appBar: CustomAppBar(titleText: ""),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: double.infinity,
-              height: 250,
-              child: Stack(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/images/image_back4.jpg'),
-                        fit: BoxFit.cover,
-                        alignment: Alignment.center,
-                      ),
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+              expandedHeight: 250.0, // 확장될 높이
+              pinned: true, // 스크롤 시 상단에 고정
+              backgroundColor: mPrimaryColor, // 기본 연한 초록색 배경
+              flexibleSpace: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+                  // 스크롤에 따른 색상 변화 비율 계산
+                  final appBarHeight = constraints.biggest.height;
+                  final t = (appBarHeight - kToolbarHeight) / 250.0; // 색상 변화 비율
+                  final appBarColor = ColorTween(
+                    begin: Colors.transparent, // 확장 시 투명
+                    end: mPrimaryColor.withOpacity(0.5), // 축소 시 연한 초록색
+                  ).lerp(1 - t); // 비율을 반대로 적용
+
+                  return FlexibleSpaceBar(
+                    title: Text(
+                      titleText,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontFamily: "Pretendard",
+                          fontSize: 18,
+                          color: Colors.white),
                     ),
-                  ),
-                  // 반투명 배경 컨테이너
-                  Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          Colors.black, // 시작 색상
-                          Colors.transparent, // 끝 색상
-                        ],
-                        end: Alignment.topCenter, // 그라데이션 시작 위치
-                        begin: Alignment.bottomCenter, // 그라데이션 끝 위치
-                      ),
+                    centerTitle: false,
+                    background: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        Image.asset(
+                          'assets/images/music_bg4.png', // 이미지 경로
+                          fit: BoxFit.cover,
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                Colors.black.withOpacity(0.6),
+                                Colors.transparent,
+                              ],
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
+                  );
+                },
               ),
             ),
-            MusicTitleText(
-              musicTitle: titleText,
-              fontSize: 20,
-            ),
-            MusicBoxWidget(
-              musicTitle: "드라이브하다가 만난 염소",
-              musicSubTitle: '기분 좋을때 듣는 음악',
-              musicImage: 'image_back3.jpg',
-              musicTimeStamp: '2:30',
-            ),
-            MusicBoxWidget(
-              musicTitle: "잠자는 고양이의 배를 만졌을 때",
-              musicSubTitle: '기분 좋을때 듣는 음악',
-              musicImage: 'image_back4.jpg',
-              musicTimeStamp: '2:30',
-            ),
-            MusicBoxWidget(
-              musicTitle: "낮잠자고 일어났을 때",
-              musicSubTitle: '기분 좋을때 듣는 음악',
-              musicImage: 'image_back.jpg',
-              musicTimeStamp: '2:30',
-            ),
-            MusicBoxWidget(
-              musicTitle: "할머니가 건네주시는 따듯한 고구마",
-              musicSubTitle: '기분 좋을때 듣는 음악',
-              musicImage: 'image_back2.jpg',
-              musicTimeStamp: '2:30',
-            ),
-            MusicBoxWidget(
-              musicTitle: "말없이 품에 안기는 너",
-              musicSubTitle: '기분 좋을때 듣는 음악',
-              musicImage: 'image_back3.jpg',
-              musicTimeStamp: '2:30',
-            ),
-            MusicBoxWidget(
-              musicTitle: "드라이브하다가 만난 염소",
-              musicSubTitle: '기분 좋을때 듣는 음악',
-              musicImage: 'image_back4.jpg',
-              musicTimeStamp: '2:30',
-            ),
-          ],
+          ];
+        },
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: ListView(
+            children: [
+              MusicBoxWidget(
+                musicTitle: "드라이브하다가 만난 염소",
+                musicSubTitle: '기분 좋을때 듣는 음악',
+                musicImage: 'image_back3.jpg',
+                musicTimeStamp: '2:30',
+              ),
+              MusicBoxWidget(
+                musicTitle: "잠자는 고양이의 배를 만졌을 때",
+                musicSubTitle: '기분 좋을때 듣는 음악',
+                musicImage: 'image_back4.jpg',
+                musicTimeStamp: '2:30',
+              ),
+              MusicBoxWidget(
+                musicTitle: "낮잠자고 일어났을 때",
+                musicSubTitle: '기분 좋을때 듣는 음악',
+                musicImage: 'image_back.jpg',
+                musicTimeStamp: '2:30',
+              ),
+              MusicBoxWidget(
+                musicTitle: "할머니가 건네주시는 따뜻한 고구마",
+                musicSubTitle: '기분 좋을때 듣는 음악',
+                musicImage: 'music_bg2.png',
+                musicTimeStamp: '2:30',
+              ),
+              MusicBoxWidget(
+                musicTitle: "말없이 품에 안기는 너",
+                musicSubTitle: '기분 좋을때 듣는 음악',
+                musicImage: 'image_back3.jpg',
+                musicTimeStamp: '2:30',
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -38,7 +38,7 @@ class MusicScreen extends StatelessWidget {
                   height: 200,
                   titleText: "titleText",
                   subTitleText: "content.subTitleText",
-                  imageUrl: "image_back2.jpg",
+                  imageUrl: "music_bg2.png",
                   onTap: () {
                     customToastMsg("버튼 클릭함");
                     listNum = 1;

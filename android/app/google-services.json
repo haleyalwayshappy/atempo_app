@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:525382879421:android:5dd63f10560028a2c70fd4",
+        "mobilesdk_app_id": "1:525382879421:android:b678e69a9fa9acedc70fd4",
         "android_client_info": {
-          "package_name": "com.hong.atempo"
+          "package_name": "com.hongniest.atempo"
         }
       },
       "oauth_client": [
@@ -31,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "525382879421-jnvs0uis8jidd68fq1de7m5ptrkarh9j.apps.googleusercontent.com",
+              "client_id": "525382879421-i34brdpinog4odsmmbbd5tcvl5mndap8.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.atempoApp"
+                "bundle_id": "com.hongniest.atempo"
               }
             }
           ]
