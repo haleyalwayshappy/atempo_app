@@ -13,7 +13,7 @@ class MusicScreen extends StatelessWidget {
     // final double screenWidth = MediaQuery.of(context).size.width;
     // final double itemHeight = screenWidth * 0.2; // Make the height proportional
 
-    const String pathName = "music";
+    // const String pathName = "music";
     int listNum;
 
     return SingleChildScrollView(

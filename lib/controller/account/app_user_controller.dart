@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 
 class AppUserController extends GetxController {
   var appUser = Rxn<AppUser>(); // 사용자가 널이 될수 있는 상태로 관리

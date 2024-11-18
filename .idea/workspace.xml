@@ -5,75 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd123e6d-599b-4fe0-be62-f634cdf7667d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/android/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/button/apple_login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/music_bg1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/music_bg3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/music_bg4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/music_bg5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/music_bg6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ios/Runner/Runner.entitlements" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/screens/music/music_play_screen2.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/google-services.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/kotlin/com/hong/atempo/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/kotlin/com/hong/atempo/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-hdpi/android12splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-hdpi/android12splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-mdpi/android12splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-mdpi/android12splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-night-hdpi/android12splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-night-hdpi/android12splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-night-mdpi/android12splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-night-mdpi/android12splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-night-xhdpi/android12splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-night-xhdpi/android12splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-night-xxhdpi/android12splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-night-xxhdpi/android12splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-night-xxxhdpi/android12splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-night-xxxhdpi/android12splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-v21/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-v21/launch_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-xhdpi/android12splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-xhdpi/android12splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-xxhdpi/android12splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-xxhdpi/android12splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable-xxxhdpi/android12splash.png" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable-xxxhdpi/android12splash.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/day6_bg2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/image_back.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/image_back2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/image_back3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/image_back4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/maru1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/maru2.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/maru3.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/maru4.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/maru5.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/atempo_folder_tree.txt" beforeDir="false" afterPath="$PROJECT_DIR$/atempo_folder_tree.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/firebase.json" beforeDir="false" afterPath="$PROJECT_DIR$/firebase.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Podfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/GoogleService-Info.plist" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/controller/account/app_user_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controller/account/app_user_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/controller/music/music_player_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controller/music/music_player_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/firebase_options.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/firebase_options.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/music_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/music_data.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/model/playlist_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/playlist_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/music/audiobook_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/audiobook_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/music/music_list_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_list_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/diary/choose_emotion_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/choose_emotion_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/music/music_play_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_play_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/music/music_play_screen2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_play_screen2.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/music/music_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/music/widget/music_statusbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/widget/music_statusbar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/music/widget/music_title_text.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/widget/music_title_text.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/settings/mypage_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/settings/mypage_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/bottom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/bottom_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/custom_app_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_app_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/recommend_box.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/recommend_box.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/service/account/account_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/service/account/account_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/service/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/service/router.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/constants.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linux/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/linux/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Runner/Configs/AppInfo.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Runner/Configs/AppInfo.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/macos/Runner/GoogleService-Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/macos/Runner/GoogleService-Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/custom_datepicker_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_datepicker_dialog.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +66,6 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
-    "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",

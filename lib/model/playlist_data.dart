@@ -1,7 +1,5 @@
 // 테마별 음악 리스트를 위한 클래스
 import 'package:atempo_app/model/emotion_data.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
 import 'music_data.dart';
 

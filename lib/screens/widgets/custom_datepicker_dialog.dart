@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
-import 'package:go_router/go_router.dart';
 
 ///  TODO : 알럿 다이얼로그를 커스텀으로 만들고싶으면 extend를 alertDialog로 만들어야함(stless 같은게 아닌)
 /// 1번 방법( 클래스 처럼 쓸경우) alert dialog extends 하는 방법찾기

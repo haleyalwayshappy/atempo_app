@@ -1,11 +1,4 @@
-import 'package:atempo_app/model/emotion_data.dart';
-import 'package:atempo_app/model/emotions_copy.dart';
-import 'package:atempo_app/screens/account/create_account_screen.dart';
-import 'package:atempo_app/screens/diary/widget/choose_main_emotion.dart';
-import 'package:atempo_app/screens/diary/widget/choose_sub_emotion.dart';
 import 'package:atempo_app/screens/diary/widget/choose_sub_text.dart';
-import 'package:atempo_app/screens/widgets/toast.dart';
-import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class ChooseEmotionScreen extends StatefulWidget {

@@ -1,5 +1,3 @@
-import 'package:atempo_app/generated/assets.dart';
-import 'package:atempo_app/model/music_data.dart';
 import 'package:atempo_app/screens/music/widget/music_title_text.dart';
 import 'package:atempo_app/controller/music/music_player_controller.dart';
 import 'package:atempo_app/utils/constants.dart';

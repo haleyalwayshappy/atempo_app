@@ -1,4 +1,3 @@
-import 'package:atempo_app/generated/assets.dart';
 import 'package:atempo_app/model/music_data.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:firebase_storage/firebase_storage.dart';
