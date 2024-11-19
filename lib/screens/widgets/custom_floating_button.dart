@@ -88,7 +88,7 @@ class _CustomFloatingActionButtonState
             color: mAngryColor,
             margin: 0,
             onTap: () {
-              context.go('/diary/write');
+              context.go('/write');
               // _openDatePickerDialog(context);
               // _showCupertinoDatePicker(context);
             }),
@@ -97,7 +97,7 @@ class _CustomFloatingActionButtonState
             margin: 0,
             color: mSadColor,
             onTap: () {
-              context.go('/test');
+              context.go('/music_player');
             }),
         CircularMenuItem(
             icon: Icons.abc_outlined,

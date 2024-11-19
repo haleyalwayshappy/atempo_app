@@ -33,8 +33,8 @@ final GlobalKey<NavigatorState> _diaryNavigatorKey =
 final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/music/player',
-  // initialLocation: '/login',
+  // initialLocation: '/test',
+  initialLocation: '/login',
   redirect: (context, state) {
     final user = FirebaseAuth.instance.currentUser;
     final loggingIn = state.location == '/login';
@@ -131,7 +131,7 @@ final GoRouter router = GoRouter(
                 ),
                 GoRoute(
                   path: 'write',
-                  builder: (context, state) => DiaryWriteScreen(),
+                  builder: (context, state) => DiaryWriteScreen4(),
                 ),
               ],
             ),
@@ -170,8 +170,12 @@ final GoRouter router = GoRouter(
       builder: (context, state) => ChooseEmotionScreen(),
     ),
     GoRoute(
-      path: '/test',
+      path: '/write',
       builder: (context, state) => DiaryWriteScreen4(),
+    ),
+    GoRoute(
+      path: '/music_player',
+      builder: (context, state) => MusicPlayScreen2(),
     ),
   ],
 );

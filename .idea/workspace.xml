@@ -6,14 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="fd123e6d-599b-4fe0-be62-f634cdf7667d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controller/account/app_user_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controller/account/app_user_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/controller/music/music_player_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controller/music/music_player_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/model/playlist_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/playlist_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/diary/choose_emotion_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/choose_emotion_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/music/music_play_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_play_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/music/music_play_screen2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_play_screen2.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/music/music_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/custom_datepicker_dialog.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_datepicker_dialog.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/music/widget/music_statusbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/widget/music_statusbar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/bottom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/bottom_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/custom_floating_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_floating_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/recommend_box.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/recommend_box.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/service/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/service/router.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +64,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "com.google.services.firebase.aqiPopupShown": "true",
+    "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
@@ -148,6 +147,16 @@
           <url>file://$PROJECT_DIR$/lib/screens/widgets/custom_floating_button.dart</url>
           <line>44</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/service/router.dart</url>
+          <line>66</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/music/widget/music_statusbar.dart</url>
+          <line>51</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

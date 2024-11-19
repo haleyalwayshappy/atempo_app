@@ -1,5 +1,6 @@
 import 'package:atempo_app/controller/music/music_player_controller.dart';
 import 'package:atempo_app/screens/music/music_play_screen.dart';
+import 'package:atempo_app/screens/music/music_play_screen2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:atempo_app/utils/constants.dart';
@@ -24,17 +25,19 @@ class RecommendBox extends StatelessWidget {
                 // 공개 메서드를 호출하여 곡 재생
                 controller.playTrackAtIndex(index);
 
+                context.go('/music_player');
                 // 화면 이동
-                showModalBottomSheet(
-                  isScrollControlled: true,
-                  context: context,
-                  builder: (context) {
-                    return FractionallySizedBox(
-                      heightFactor: 0.95,
-                      child: MusicPlayScreen(),
-                    );
-                  },
-                );
+                // showModalBottomSheet(
+                //   isScrollControlled: true,
+                //   barrierColor: mPrimaryColor,
+                //   context: context,
+                //   builder: (context) {
+                //     return FractionallySizedBox(
+                //       heightFactor: 0.95,
+                //       child: MusicPlayScreen2(),
+                //     );
+                //   },
+                // );
               },
               child: Container(
                 margin: const EdgeInsets.only(right: 16),

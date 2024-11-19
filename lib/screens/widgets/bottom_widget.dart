@@ -40,7 +40,8 @@ class _BottomWidget extends State<BottomWidget> {
     print("cureentLocation -> $currentLocation");
     // 플로팅 버튼을 숨길 경로를 확인
     if (currentLocation == '/diary/write' ||
-        currentLocation.startsWith('/diary/read/')) {
+        currentLocation.startsWith('/diary/read/') ||
+        currentLocation == '/music_player') {
       return null; // 해당 경로에서는 플로팅 버튼 숨기기
     }
 
@@ -62,6 +63,8 @@ class _BottomWidget extends State<BottomWidget> {
           Expanded(
             child: widget.child,
           ),
+
+          /// 음악 재생 화면
           MusicStatusBar(),
         ],
       ),
