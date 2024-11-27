@@ -27,7 +27,16 @@ class MusicPlayScreen2 extends StatelessWidget {
               fontWeight: FontWeight.bold),
         ),
         leading: GestureDetector(
-            onTap: () => context.pop,
+            onTap: () {
+              try {
+                // Get.back();
+                context.pop(); // context.pop() 대신 Navigator 사용
+              } catch (e) {
+                if (e.toString().contains('There is nothing to pop')) {
+                  context.go('/home'); // 홈으로 이동
+                }
+              }
+            },
             child: Icon(Icons.arrow_back_ios_new_rounded, size: 30.0)),
         actions: [
           Padding(
@@ -38,12 +47,21 @@ class MusicPlayScreen2 extends StatelessWidget {
       ),
       body: Obx(() {
         return Container(
+          margin: EdgeInsets.only(top: 10),
           decoration: BoxDecoration(
             color: mBackgroundColor.withOpacity(0.80),
             borderRadius: BorderRadius.vertical(
               top: Radius.circular(26), // top 반경 26
               bottom: Radius.zero, // bottom 반경 0
             ),
+            boxShadow: [
+              BoxShadow(
+                color: mGrey5Color.withOpacity(0.8),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 3),
+              ),
+            ],
           ),
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -58,6 +76,14 @@ class MusicPlayScreen2 extends StatelessWidget {
                   image: DecorationImage(
                       image: AssetImage(controller.currentTrackCoverUrl.value),
                       fit: BoxFit.cover),
+                  boxShadow: [
+                    BoxShadow(
+                      color: mGrey3Color.withOpacity(0.4),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
                   borderRadius: BorderRadius.circular(26),
                 ),
               ),

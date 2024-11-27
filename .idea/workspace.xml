@@ -5,12 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd123e6d-599b-4fe0-be62-f634cdf7667d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/images/landing_image.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/controller/account/nickname_generator.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/sign_up_path_data.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/screens/home/landing_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/controller/account/app_user_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controller/account/app_user_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/controller/diary/diary_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controller/diary/diary_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/controller/music/music_player_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/controller/music/music_player_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/diary_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/diary_data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/emotion_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/emotion_data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/model/user_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/model/user_data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/account/create_account_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/create_account_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/account/login_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_list_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_list_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_main_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_main_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/diary/diary_read_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/diary_read_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/diary/widget/card_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/widget/card_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/diary/widget/content_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/widget/content_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/diary/widget/diary_grid_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/widget/diary_grid_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/diary/widget/diary_write_screen_4.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/diary/widget/diary_write_screen_4.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/home_screen.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/music/music_play_screen2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/music_play_screen2.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/music/widget/music_statusbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/music/widget/music_statusbar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/bottom_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/bottom_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/settings/mypage_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/settings/mypage_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/custom_calendar_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_calendar_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/widgets/custom_floating_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/custom_floating_button.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/widgets/recommend_box.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/widgets/recommend_box.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/service/account/account_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/service/account/account_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/service/diary/diary_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/service/diary/diary_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/service/router.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/service/router.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,6 +80,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Dart Command Line App.nickname_generator.dart.executor": "Run",
     "Flutter Test.tests in getx_test.dart.executor": "Run",
     "Flutter.main.dart.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -68,26 +93,35 @@
     "git-widget-placeholder": "main",
     "io.flutter.reload.alreadyRun": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/hongeunlee/Documents/GitHub/atempo_app/lib/screens/music",
+    "last_opened_file_path": "/Users/hongeunlee/Documents/GitHub/atempo_app/assets/images",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Language Defaults",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/lib/screens/music" />
       <recent name="$PROJECT_DIR$/lib/screens/diary/widget" />
       <recent name="$PROJECT_DIR$/lib/screens/home/widget" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/model" />
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/assets/images/button" />
       <recent name="$PROJECT_DIR$/lib/controller/music" />
       <recent name="$PROJECT_DIR$/lib/controller" />
-      <recent name="$PROJECT_DIR$/lib/controller/account" />
     </key>
   </component>
   <component name="RunManager" selected="Flutter.main.dart">
+    <configuration name="nickname_generator.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/lib/controller/account/nickname_generator.dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter" temporary="true" nameIsGenerated="true">
       <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
       <method v="2" />
@@ -100,6 +134,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Flutter.main.dart" />
+        <item itemvalue="Dart Command Line App.nickname_generator.dart" />
         <item itemvalue="Flutter Test.tests in getx_test.dart" />
       </list>
     </recent_temporary>
@@ -115,6 +150,17 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -122,16 +168,6 @@
           <url>file://$PROJECT_DIR$/lib/create_dummy_to_firebase.dart</url>
           <line>74</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/widgets/custom_calendar_widget.dart</url>
-          <line>18</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/diary/diary_main_screen.dart</url>
-          <line>25</line>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/model/emotion_data.dart</url>
@@ -144,19 +180,24 @@
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/screens/widgets/custom_floating_button.dart</url>
-          <line>44</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/service/router.dart</url>
-          <line>66</line>
+          <line>72</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/screens/music/widget/music_statusbar.dart</url>
           <line>51</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/music/widget/music_statusbar.dart</url>
+          <line>28</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/screens/widgets/custom_floating_button.dart</url>
+          <line>18</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

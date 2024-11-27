@@ -9,6 +9,7 @@ import 'package:atempo_app/screens/diary/diary_write_screen.dart';
 import 'package:atempo_app/screens/diary/widget/diary_write_screen_4.dart';
 import 'package:atempo_app/screens/home/choice_emotion_screen.dart';
 import 'package:atempo_app/screens/home/home_screen.dart';
+import 'package:atempo_app/screens/home/landing_screen.dart';
 import 'package:atempo_app/screens/home/splash_screen.dart';
 import 'package:atempo_app/screens/music/music_list_screen.dart';
 import 'package:atempo_app/screens/music/music_play_screen.dart';
@@ -37,25 +38,30 @@ final GoRouter router = GoRouter(
   initialLocation: '/login',
   redirect: (context, state) {
     final user = FirebaseAuth.instance.currentUser;
-    final loggingIn = state.location == '/login';
 
-    // 회원가입과 계정 찾기 경로 예외 처리
-    final creatingAccount = state.location == '/create_account';
-    final findingAccount = state.location == '/find_account';
+    // 로그인이 안 된 상태
+    if (user == null) {
+      final loggingIn = state.location == '/login' ||
+          state.location == '/create_account' ||
+          state.location == '/find_account';
 
-    // 로그인되지 않았고, 로그인 페이지가 아니며, 회원가입/계정찾기 경로가 아닌 경우
-    if (user == null && !loggingIn && !creatingAccount && !findingAccount) {
-      return '/login';
+      // 로그인 중이 아니라면 로그인 화면으로 리디렉션
+      if (!loggingIn) {
+        print("로그인 화면으로 이동: user가 null입니다.");
+        return '/login';
+      }
     }
 
-    // 로그인된 상태에서 로그인 페이지에 접근하려는 경우 홈으로 리디렉션
-    if (user != null && loggingIn) {
+    // 로그인 상태에서 로그인 페이지에 접근 시 홈 화면으로 이동
+    if (user != null && state.location == '/login') {
+      print("홈 화면으로 이동: user가 로그인 상태입니다.");
       return '/home';
     }
 
-    // 다른 경우에는 경로 그대로 유지
+    // 그대로 유지
     return null;
   },
+
   routes: [
     StatefulShellRoute.indexedStack(
       parentNavigatorKey: _rootNavigatorKey,
@@ -68,8 +74,6 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: '/music',
               builder: (context, state) {
-                final FabController fabController = Get.find();
-                fabController.showFab(); // DiaryWriteScreen에서는 FAB를 표시
                 return MusicTabScreen();
               }, // MusicTabScreen에서 TabBar 관리
               routes: [
@@ -78,7 +82,7 @@ final GoRouter router = GoRouter(
                   builder: (context, state) {
                     final FabController fabController = Get.find();
                     fabController.showFab(); // DiaryWriteScreen에서는 FAB를 표시
-                    final String pathName = state.pathParameters['pathName']!;
+                    final String pathName = state.pathParameters['music1']!;
                     return MusicListScreen(pathName: pathName);
                   },
                 ),
@@ -124,14 +128,20 @@ final GoRouter router = GoRouter(
                 GoRoute(
                   path: 'read/:diaryId', // diaryId를 경로 파라미터로 전달
                   builder: (context, state) {
-                    final diaryId =
-                        state.pathParameters['diaryId']!; // 경로에서 diaryId 추출
-                    return DiaryReadScreen(diaryId: diaryId); // diaryId를 전달
+                    final diaryId = state.pathParameters['diaryId']!;
+                    return DiaryWriteScreen4(
+                      isReadOnly: true,
+                      diaryId: diaryId,
+                    );
                   },
                 ),
                 GoRoute(
                   path: 'write',
-                  builder: (context, state) => DiaryWriteScreen4(),
+                  builder: (context, state) {
+                    return DiaryWriteScreen4(
+                      isReadOnly: false,
+                    );
+                  },
                 ),
               ],
             ),
@@ -144,6 +154,12 @@ final GoRouter router = GoRouter(
       path: '/login',
       // builder: (context, state) => LoginScreen(),
       builder: (context, state) => LoginScreen(),
+    ),
+
+    //landing Page
+    GoRoute(
+      path: '/landing',
+      builder: (context, state) => LandingScreen(),
     ),
     GoRoute(
       path: '/login_email',

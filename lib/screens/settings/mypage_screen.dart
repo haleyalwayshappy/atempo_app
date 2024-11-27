@@ -1,3 +1,4 @@
+import 'package:atempo_app/model/sign_up_path_data.dart';
 import 'package:atempo_app/screens/widgets/custom_app_bar.dart';
 import 'package:atempo_app/controller/account/app_user_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -142,7 +143,7 @@ class MyPageScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              // 로그아웃
+
               GestureDetector(
                 onTap: () async {
                   print("프로필 수정 버튼 클릭");
@@ -220,63 +221,50 @@ class MyPageScreen extends StatelessWidget {
 // 로그아웃 다이얼로그
 void showLogoutDialog(BuildContext context) async {
   showDialog(
-      context: context,
-      builder: (BuildContext con) {
-        return AlertDialog(
-          title: const Text("로그아웃"),
-          content: const Text("로그아웃 하시겠습니까?"),
-          actions: [
-            TextButton(
-              onPressed: () async {
-                try {
-                  // FirebaseAuth의 현재 사용자 정보 가져오기
-                  var user = FirebaseAuth.instance.currentUser;
+    context: context,
+    builder: (BuildContext con) {
+      return AlertDialog(
+        title: const Text("로그아웃"),
+        content: const Text("로그아웃 하시겠습니까?"),
+        actions: [
+          TextButton(
+            onPressed: () async {
+              try {
+                // Firebase 로그아웃
+                await FirebaseAuth.instance.signOut();
+                print(
+                    "로그아웃 수행 후 user 상태 : ${FirebaseAuth.instance.currentUser}");
+                // 사용자 정보 찾기
+                final AppUserController userController =
+                    Get.find<AppUserController>();
 
-                  if (user != null) {
-                    // Firestore에서 로그인 방법 확인
-                    DocumentSnapshot userDoc = await FirebaseFirestore.instance
-                        .collection('users')
-                        .doc(user.uid)
-                        .get();
-
-                    if (userDoc.exists) {
-                      // Firestore에 저장된 로그인 방법 (signUpMethod) 가져오기
-                      int signUpMethod = userDoc['signUpMethod'];
-
-                      // 로그인 방법에 따라 처리
-                      if (signUpMethod == 2) {
-                        // 카카오 로그아웃 처리
-                        try {
-                          await UserApi.instance.logout();
-                          print('카카오 로그아웃 성공');
-                        } catch (error) {
-                          print('카카오 로그아웃 실패: $error');
-                        }
-                      }
-
-                      // Firebase 로그아웃 처리 (모든 로그인 방식에 대해 공통 적용)
-                      await FirebaseAuth.instance.signOut();
-                      print('Firebase 로그아웃 성공');
-                    }
-                  }
-                } catch (error) {
-                  print('로그아웃 실패: $error');
-                }
+                //초기화
+                userController.clearUserInfo();
 
                 // 다이얼로그 닫기 및 로그인 화면으로 이동
                 Navigator.of(con).pop();
-                print("로그아웃 성공 로그인 이동");
+                print("로그아웃 성공, 로그인 화면 이동");
                 context.go('/login');
-              },
-              child: const Text("확인"),
-            ),
-            TextButton(
-              onPressed: () => Navigator.of(con).pop(),
-              child: const Text("취소"),
-            ),
-          ],
-        );
-      });
+              } catch (error) {
+                Navigator.of(con).pop();
+                Get.snackbar(
+                  '로그아웃 실패',
+                  '로그아웃에 실패했습니다.',
+                  snackPosition: SnackPosition.BOTTOM,
+                );
+                print('로그아웃 실패: $error');
+              }
+            },
+            child: const Text("확인"),
+          ),
+          TextButton(
+            onPressed: () => Navigator.of(con).pop(),
+            child: const Text("취소"),
+          ),
+        ],
+      );
+    },
+  );
 }
 
 // 회원탈퇴
@@ -296,9 +284,11 @@ void showDeleteAccountDialog(BuildContext context) {
           ElevatedButton(
             onPressed: () async {
               Get.back(); // 다이얼로그 닫기
+              await userController.deleteAccount(context); // 회원 탈퇴 실행
+              userController.clearUserInfo();
               // 로그인 화면으로 이동
               context.go('/login');
-              await userController.deleteAccount(context); // 회원 탈퇴 실행
+              //초기화
             },
             child: const Text("확인"),
           ),

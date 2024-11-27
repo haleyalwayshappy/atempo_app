@@ -12,7 +12,7 @@ class DiaryService {
 
   // Firestore에 다이어리 저장 메서드
   // Firestore에 다이어리 저장 메서드
-  Future<bool> saveDiaryToFirestore() async {
+  Future<bool> saveDiaryToFirestore(Diary diary) async {
     String? userId = _auth.currentUser?.uid;
 
     if (userId == null) {

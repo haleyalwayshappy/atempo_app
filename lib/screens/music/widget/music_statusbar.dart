@@ -33,11 +33,11 @@ class MusicStatusBar extends StatelessWidget {
       },
       child: Container(
         decoration: BoxDecoration(
-          color: mSadColor,
+          color: mPrimaryColor,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: mSadColor.withOpacity(0.4),
+              color: mPrimaryColor.withOpacity(0.4),
               spreadRadius: 5,
               blurRadius: 7,
               offset: Offset(0, 3),

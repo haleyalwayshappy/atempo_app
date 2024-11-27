@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppUserController extends GetxController {
-  var appUser = Rxn<AppUser>(); // 사용자가 널이 될수 있는 상태로 관리
+  Rx<AppUser?> appUser = Rx<AppUser?>(null); // 사용자가 널이 될수 있는 상태로 관리
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -13,11 +13,18 @@ class AppUserController extends GetxController {
   @override
   onInit() {
     super.onInit();
-    fetchUserData(); // 컨트롤러 초기화시 사용자 데이터 불러오기
+    if (appUser.value == null) {
+      fetchUserData(); // 컨트롤러 초기화시 사용자 데이터 불러오기
+    }
   }
 
   // firestore에서 사용자 정보 가져오기
   Future<void> fetchUserData() async {
+    if (appUser.value != null) {
+      print("이미 데이터가 로드됨");
+      return;
+    }
+    print("fetchUserData 호출");
     try {
       User? firebaseUser = FirebaseAuth.instance.currentUser;
 
@@ -47,10 +54,12 @@ class AppUserController extends GetxController {
   }
 
   /// 유저정보 클리어,  로그아웃 시에
-  void clearUserData() {
+  void clearUserInfo() {
     appUser.value = null;
+    print("사용자 정보 초기화 완료");
   }
 
+  // 회원 탈퇴
   Future<void> deleteAccount(BuildContext context) async {
     try {
       User? user = _auth.currentUser;

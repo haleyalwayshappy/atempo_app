@@ -6,20 +6,17 @@ import 'package:go_router/go_router.dart';
 class CustomCardWidget extends StatelessWidget {
   final DateTime dateTime; // 날짜
   final String imagePath; // 아이콘 이미지
-  final int index; // 인덱스 값
+  final String diaryId; // 일기 id
 
   const CustomCardWidget({
     super.key,
     required this.dateTime,
     required this.imagePath,
-    required this.index,
+    required this.diaryId,
   });
 
   @override
   Widget build(BuildContext context) {
-    // 각 일기의 UUID (diaryId) 값을 가져옴
-    var diaryId = dummyDiaryData[index].diaryId;
-
     return GestureDetector(
       onTap: () {
         // UUID를 URL 파라미터로 사용하여 특정 일기 데이터로 이동

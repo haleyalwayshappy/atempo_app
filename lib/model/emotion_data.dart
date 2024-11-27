@@ -371,3 +371,21 @@ final Map<DetailEmotion, Emotion> detailEmotionInfo = {
     context: "헐...",
   ),
 };
+
+/// MainEmotion에 따른 이미지 경로 반환
+String getMainEmotionImagePath(MainEmotion mainEmotion) {
+  final emotion = mainEmotions.firstWhere(
+    (e) => e.mainEmotion == mainEmotion,
+    orElse: () => mainEmotions.first, // 기본값 설정
+  );
+  return emotion.imageUrl; // emotion에서 imageUrl 반환
+}
+
+/// MainEmotion에 따른 이미지 경로 반환 (네모 이미지)
+String? getMainEmotionGridImagePath(MainEmotion mainEmotion) {
+  final emotion = mainEmotions.firstWhere(
+    (e) => e.mainEmotion == mainEmotion,
+    orElse: () => mainEmotions.first, // 기본값 설정
+  );
+  return emotion.gridImageUrl; // emotion에서 imageUrl 반환
+}

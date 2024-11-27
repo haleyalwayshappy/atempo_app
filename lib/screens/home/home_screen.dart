@@ -1,17 +1,15 @@
+import 'package:atempo_app/controller/diary/diary_controller.dart';
 import 'package:atempo_app/screens/widgets/custom_calendar_widget.dart';
 import 'package:atempo_app/screens/widgets/recommend_box.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  final DiaryController _controller = Get.find<DiaryController>();
+  HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     print("화면 구성 쳌");
@@ -71,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Container(
               // color: Colors.blue,
               margin: EdgeInsets.only(left: 12, right: 12),
-              child: CustomCalendarWidget(),
+              child: CustomCalendarWidget(context),
             ),
           ],
         ),

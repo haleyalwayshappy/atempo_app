@@ -8,31 +8,38 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:atempo_app/service/router.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 
 void main() async {
+  // Flutter 엔진 초기화
   WidgetsFlutterBinding.ensureInitialized();
 
-// kakao sdk 초기화
+  // Kakao SDK 초기화
   KakaoSdk.init(
     nativeAppKey: '6ea9210f514e9ffe855d080b31d79eda',
     javaScriptAppKey: '19636b69f3b752a340cf004d2528d0e8',
   );
 
-  // firebase 초기화
+  // Firebase 초기화
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // MusicPlayerController 초기화 및 데이터 로딩 시작
-  Get.put(MusicPlayerController());
-  // 유저 정보 가져오기
-  Get.put(AppUserController());
-  // 다이어리 정보 가져오기
-  Get.put(DiaryController());
+  // Splash 화면 유지
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  // 컨트롤러 초기화 및 데이터 로드
+  final userController = Get.put(AppUserController());
+  await userController.fetchUserData(); // 사용자 데이터 먼저 로드
 
-  runApp(MainScreenApp());
+  final diaryController = Get.put(DiaryController()); // 이후 다이어리 컨트롤러 초기화
+  await diaryController.fetchAllDiariesFromFirebase();
+
+  FlutterNativeSplash.remove(); // 데이터 로드 완료 후 스플래시 제거
+
+  runApp(const MainScreenApp());
 }
 
 class MainScreenApp extends StatelessWidget {

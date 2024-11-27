@@ -3,50 +3,45 @@ import 'package:atempo_app/model/emotion_data.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-/// 다이어리 아이콘을 그리드로 보여주는 위젯
+String? getMainEmotionGridImagePath(MainEmotion mainEmotion) {
+  final emotion = mainEmotions.firstWhere(
+    (e) => e.mainEmotion == mainEmotion,
+    orElse: () => mainEmotions.first,
+  );
+  return emotion.gridImageUrl;
+}
+
 class DiaryGridWidget extends StatelessWidget {
-  const DiaryGridWidget({super.key});
+  final List<Diary> diaries; // 데이터를 부모에서 전달받음
+
+  const DiaryGridWidget({super.key, required this.diaries});
 
   @override
   Widget build(BuildContext context) {
+    if (diaries.isEmpty) {
+      return Center(child: Text("등록된 일기가 없습니다."));
+    }
+
     return Container(
-      padding: EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(10.0),
       child: GridView.count(
         primary: false,
         padding: const EdgeInsets.all(8),
         crossAxisSpacing: 5,
-        // 간격
         mainAxisSpacing: 5,
-        // 간격
         crossAxisCount: 6,
-        // 한줄에 5개 (여기서 갯수 조정 가능)
-        children: List.generate(dummyDiaryData.length, (index) {
-          var diary = dummyDiaryData[index].mainEmotion;
-          String? imagePath; // 감정에 따른 이미지 경로
-          switch (diary) {
-            case MainEmotion.joy:
-              imagePath = mainEmotions[0].gridImageUrl;
-              break; // break 추가
-            case MainEmotion.sad:
-              imagePath = mainEmotions[1].gridImageUrl;
-              break; // break 추가
-            case MainEmotion.angry:
-              imagePath = mainEmotions[2].gridImageUrl;
-              break; // break 추가
-            case MainEmotion.peaceful:
-              imagePath = mainEmotions[3].gridImageUrl;
-              break; // break 추가
-            case MainEmotion.confused:
-              imagePath = mainEmotions[4].gridImageUrl;
-              break; // break 추가
-          }
+        children: List.generate(diaries.length, (index) {
+          final diary = diaries[index];
+          final diaryId = diary.diaryId;
+          final gridEmotionImageUrl =
+              getMainEmotionGridImagePath(diary.mainEmotion);
 
           return GestureDetector(
-              onTap: () {
-                var diaryId = dummyDiaryData[index].diaryId;
-                context.go('/diary/read/$diaryId');
-              },
-              child: Image.asset(imagePath!)); // 이미지 반환
+            onTap: () {
+              context.go('/diary/read/$diaryId');
+            },
+            child: Image.asset(gridEmotionImageUrl!),
+          );
         }),
       ),
     );

@@ -18,14 +18,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   AccountService accountService = AccountService();
+  bool _obscureText = true; // 비밀번호 가리기 상태
 
   @override
   Widget build(BuildContext context) {
-    final emailModel = FormModel<String>(
-      validators: [RequiredValidator(), EmailValidator()],
-    );
-
     return Scaffold(
+      backgroundColor: mBackgroundColor,
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -56,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           // mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            TextField(
+                            TextFormField(
                               decoration: InputDecoration(
                                 labelText: "이메일",
                                 hintText: "이메일을 입력하세요",
@@ -68,16 +66,30 @@ class _LoginScreenState extends State<LoginScreen> {
                                 // contentPadding: EdgeInsets.all(12.0),
                               ),
                               controller: _emailController,
+                              validator: accountService.validateEmail,
                             ),
                             SizedBox(height: 20),
-                            TextField(
+                            TextFormField(
                               controller: _passwordController,
-                              onTap: () {},
+                              obscureText: _obscureText, // 비밀번호 숨김 여부
                               decoration: InputDecoration(
                                 labelText: "비밀번호",
                                 border: OutlineInputBorder(),
                                 prefixIcon: Icon(Icons.key),
-                                // contentPadding: EdgeInsets.all(12.0),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    _obscureText
+                                        ? Icons.visibility_off
+                                        : Icons.visibility,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      print("눈 가리고 아웅");
+                                      _obscureText =
+                                          !_obscureText; // 가리기/보이기 전환
+                                    });
+                                  },
+                                ),
                               ),
                               style: TextStyle(color: mFontDarkColor),
                             ),
@@ -92,22 +104,24 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 60,
                         ),
                         onTap: () async {
-                          // customToastMsg("이메일 로그인 버튼 눌렀땅!");
                           String email = _emailController.text;
                           String password = _passwordController.text;
 
                           try {
-                            accountService.loginWithEmailPassword(
+                            await accountService.loginWithEmailPassword(
                                 email, password, context);
                           } catch (e) {
                             print('로그인 실패: ${e.toString()}');
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('로그인에 실패했습니다.'),
-                              ),
-                            );
+                            // SnackBar를 실행하기 전에 ScaffoldMessenger의 context를 올바르게 가져옵니다.
+                            if (mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                      '로그인에 실패했습니다.\n아이디 또는 비밀번호를 확인해 주세요.'),
+                                ),
+                              );
+                            }
                           }
-                          //TODO : 이메일값이랑 비밀번호 값 담아서 파이어베이스에서 로그인 연동
                         },
                       ),
                       SizedBox(height: 20),
@@ -123,6 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               onTap: () {
                                 //TODO :애플 로그인
+                                accountService.signInWithApple(context);
                               },
                             ),
                             SizedBox(width: 40),

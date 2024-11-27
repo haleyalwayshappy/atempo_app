@@ -1,3 +1,5 @@
+import 'package:atempo_app/controller/account/nickname_generator.dart';
+import 'package:atempo_app/model/sign_up_path_data.dart';
 import 'package:atempo_app/model/user_data.dart';
 import 'package:atempo_app/controller/account/app_user_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -12,7 +14,8 @@ import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 class AccountService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final AppUserController userController = Get.put(AppUserController());
+  final AppUserController userController = Get.find<AppUserController>();
+  NicknameGenerator generator = NicknameGenerator();
 
   /// 이메일/비밀번호 회원가입
   Future<void> signUpWithEmailPassword(
@@ -25,7 +28,7 @@ class AccountService {
     await _saveUserToFireStore(
       userCredential,
       {'name': name, 'email': email},
-      1, // 구글 가입: 1
+      SignUpPath.email, // 구글 가입: 1
     );
   }
 
@@ -94,7 +97,7 @@ class AccountService {
       await _saveUserToFireStore(
         userCredential,
         {'name': name, 'email': googleUser.email},
-        1, // 구글 가입: 1
+        SignUpPath.google,
       );
 
       /// 사용자 정보 가져오기 + 앱유저에 값 담기
@@ -129,7 +132,8 @@ class AccountService {
       // 사용자 정보 요청
 
       final kakaoUser = await UserApi.instance.me();
-      String? kakaoName = kakaoUser.kakaoAccount?.profile?.nickname;
+      // String? kakaoName = kakaoUser.kakaoAccount?.profile?.nickname;
+      String? kakaoName = generator.generateNickname();
 
       // Firebase 인증 연동
       var credential = _createFirebaseCredential(token);
@@ -146,11 +150,8 @@ class AccountService {
       }
 
       // Firestore에 사용자 정보 저장
-      await _saveUserToFireStore(
-        userCredential,
-        {'name': kakaoName, 'email': 'unknown'},
-        2, // 카카오 가입: 2
-      );
+      await _saveUserToFireStore(userCredential,
+          {'name': kakaoName, 'email': 'unknown'}, SignUpPath.kakao);
 
       // 사용자 정보 가져오기 + 앱유저에 값 담기
       await userController.fetchUserData();
@@ -163,8 +164,37 @@ class AccountService {
 
   /// 애플 로그인
   Future<void> signInWithApple(BuildContext context) async {
-    try {} catch (error) {
-      print('카카오 로그인 실패: $error');
+    try {
+      final appleProvider = AppleAuthProvider();
+
+      // Firebase 인증 처리
+      final UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithProvider(appleProvider);
+
+      // 이름과 이메일 가져오기
+      final String? name = generator.generateNickname();
+      final String? email = userCredential.user?.email;
+
+      // 이름이 없는 경우 기본 이름 설정
+      String finalName = name ?? '사용자';
+
+      // Firestore에 사용자 정보 저장
+      await _saveUserToFireStore(
+        userCredential,
+        {'name': finalName, 'email': email ?? 'unknown'},
+        SignUpPath.apple,
+      );
+
+      // 사용자 정보 가져오기 + 앱유저에 값 담기
+      await userController.fetchUserData();
+
+      // 홈 화면으로 이동
+      context.go('/home');
+    } catch (e) {
+      print('애플 로그인 실패: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('애플 로그인 실패: $e')),
+      );
     }
   }
 
@@ -185,12 +215,12 @@ class AccountService {
 
   /// 파이어 스토어에 사용자 정보 저장
   Future<void> _saveUserToFireStore(UserCredential userCredential,
-      Map<String, String> userInfo, int signUpMethod) async {
+      Map<String, String> userInfo, SignUpPath signUpMethod) async {
     final newUser = AppUser(
       uid: userCredential.user!.uid,
       name: userInfo['name'] ?? 'unKnown',
       email: userInfo['email'] ?? 'unknown',
-      signUpMethod: signUpMethod,
+      signUpMethod: signUpMethod.name, // 문자열로 변환
     );
 
     await _firestore.collection("users").doc(newUser.uid).set(newUser.toMap());
@@ -224,6 +254,23 @@ class AccountService {
     final nameRegex = RegExp(r'^[a-zA-Z가-힣\s]+$');
     if (!nameRegex.hasMatch(value)) {
       return '이름은 특수 문자나 숫자를 포함할 수 없습니다.';
+    }
+    return null;
+  }
+
+  // 이메일 유효성 검사 함수
+  String? validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return '이메일을 입력해주세요.';
+    }
+    if (!value.contains('@') || !value.contains('.')) {
+      return '이메일 주소에는 @와 .이 포함되어야 합니다.';
+    }
+    final emailRegex = RegExp(
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+    );
+    if (!emailRegex.hasMatch(value)) {
+      return '유효한 이메일 주소를 입력해주세요.';
     }
     return null;
   }

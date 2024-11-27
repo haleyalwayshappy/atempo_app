@@ -1,47 +1,42 @@
+import 'package:atempo_app/controller/diary/diary_controller.dart';
 import 'package:atempo_app/model/diary_data.dart';
 import 'package:atempo_app/model/emotion_data.dart';
 import 'package:atempo_app/screens/widgets/toast.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CustomCalendarWidget extends StatefulWidget {
-  const CustomCalendarWidget({super.key});
+  const CustomCalendarWidget(BuildContext context, {super.key});
 
   @override
   State<CustomCalendarWidget> createState() => _CustomCalendarWidgetState();
 }
 
 class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
-  // 달력 보여주는 형식
-  CalendarFormat calendarFormat = CalendarFormat.month;
-  // 선택된 날짜
-  DateTime selectedDate = DateTime.now();
-  DateTime focusedDay = DateTime.now();
+  final DiaryController _controller = Get.find<DiaryController>();
 
-  // 선택된 날짜에 해당하는 일기 데이터를 가져오는 메서드
-  Diary? getDiaryEntryForSelectedDate(DateTime date) {
-    for (var entry in dummyDiaryData) {
-      // print("날짜 쳌 ${entry.dateTime}");
-      if (entry.dateTime.year == date.year &&
-          entry.dateTime.month == date.month &&
-          entry.dateTime.day == date.day) {
-        return entry; // 일기 데이터 반환
-      }
-    }
-    return null; // 일기 데이터가 없을 경우 null 반환
+  CalendarFormat _calendarFormat = CalendarFormat.month;
+  DateTime _selectedDate = DateTime.now();
+  DateTime _focusedDate = DateTime.now();
+
+  /// 선택된 날짜의 첫 번째 일기 데이터를 가져오는 메서드
+  Diary? _getDiaryEntryForDate(DateTime date) {
+    return _controller.diaryList
+        .where((entry) =>
+            entry.dateTime.year == date.year &&
+            entry.dateTime.month == date.month &&
+            entry.dateTime.day == date.day)
+        .firstOrNull; // 조건에 맞는 첫 번째 항목만 반환
   }
 
-  // 선택된 감정에 맞는 이미지를 가져오는 메서드
-  String? getImageForEmotion(MainEmotion mainEmotion) {
-    for (var emotion in mainEmotions) {
-      if (emotion.mainEmotion == mainEmotion) {
-        return emotion.gridImageUrl; // 감정에 맞는 이미지 경로 반환
-        // return emotion.imageUrl; // 감정에 맞는 이미지 경로 반환
-      }
-    }
-    return null; // 감정에 맞는 이미지가 없을 경우 null 반환
+  /// MainEmotion에 맞는 gridImageUrl 가져오기
+  String? _getImageForEmotion(MainEmotion mainEmotion) {
+    return mainEmotions
+        .firstWhereOrNull((emotion) => emotion.mainEmotion == mainEmotion)
+        ?.imageUrl;
   }
 
   @override
@@ -51,59 +46,70 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
         TableCalendar(
           firstDay: DateTime.utc(2010, 10, 16),
           lastDay: DateTime.utc(2030, 3, 14),
-          focusedDay: selectedDate,
-          selectedDayPredicate: (day) {
-            return isSameDay(selectedDate, day);
-          },
+          focusedDay: _focusedDate,
+          selectedDayPredicate: (day) => isSameDay(_selectedDate, day),
+          calendarFormat: _calendarFormat,
           onDaySelected: (selectedDay, focusedDay) {
             setState(() {
-              selectedDate = selectedDay; // 선택된 날짜 업데이트
-              this.focusedDay = focusedDay; // 포커스된 날짜 업데이트
+              _selectedDate = selectedDay; // 선택된 날짜 업데이트
+              _focusedDate = focusedDay; // 포커스된 날짜 업데이트
             });
           },
-
+          onFormatChanged: (format) {
+            setState(() {
+              _calendarFormat = format; // 달력 형식 업데이트
+            });
+          },
+          onPageChanged: (focusedDay) {
+            _focusedDate = focusedDay; // 달력 페이지 변경 시 포커스된 날짜 업데이트
+          },
           headerStyle: HeaderStyle(
-            formatButtonVisible: false, // 형식 버튼 숨기기
-            titleCentered: true, // 제목 중앙 정렬
-            leftChevronIcon: Icon(Icons.chevron_left), // 왼쪽 화살표 아이콘
-            rightChevronIcon: Icon(Icons.chevron_right), // 오른쪽 화살표 아이콘
-            titleTextFormatter: (date, locale) {
-              return '${date.year}년 ${date.month}월'; // 헤더 제목 형식
-            },
+            formatButtonVisible: false,
+            titleCentered: true,
+            leftChevronIcon: const Icon(Icons.chevron_left),
+            rightChevronIcon: const Icon(Icons.chevron_right),
+            titleTextFormatter: (date, locale) =>
+                '${date.year}년 ${date.month}월',
           ),
-
-          // 날짜 셀을 커스터마이즈
           calendarBuilders: CalendarBuilders(
-            // 기본 날짜 세팅
+            // 기본 날짜
             defaultBuilder: (context, date, focusedDay) {
-              final diaryEntry = getDiaryEntryForSelectedDate(date);
-              final imageUrl = diaryEntry != null
-                  ? getImageForEmotion(diaryEntry.mainEmotion)
-                  : null;
+              return Obx(() {
+                final diaryEntry =
+                    _getDiaryEntryForDate(date); // 첫 번째 다이어리 가져오기
+                final imageUrl = diaryEntry != null
+                    ? _getImageForEmotion(diaryEntry.mainEmotion)
+                    : null;
 
-              return Container(
-                margin: EdgeInsets.all(6.0),
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Center(child: Text('${date.day}')),
-                    if (imageUrl != null)
-                      Positioned(
-                        bottom: 4,
-                        child: Image.asset(
-                          imageUrl,
-                          width: 36, // 아이콘 크기 조정
+                return Container(
+                  margin: const EdgeInsets.all(6.0),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Center(
+                        child: Text(
+                          '${date.day}',
+                          style: const TextStyle(fontSize: 14),
                         ),
                       ),
-                  ],
-                ),
-              );
+                      if (imageUrl != null)
+                        Positioned(
+                          bottom: 4,
+                          child: Image.asset(
+                            imageUrl,
+                            width: 36,
+                          ),
+                        ),
+                    ],
+                  ),
+                );
+              });
             },
 
-            // 오늘 날짜 커스텀
+            // 오늘 날짜
             todayBuilder: (context, date, focusedDay) {
               return Container(
-                margin: EdgeInsets.all(6.0),
+                margin: const EdgeInsets.all(6.0),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50.0),
                   border: Border.all(color: mPrimaryColor, width: 2),
@@ -111,11 +117,11 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
                 child: Center(
                   child: Text(
                     '${date.day}',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: mPrimaryColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
-                    ), // 오늘 날짜 텍스트 색상
+                    ),
                   ),
                 ),
               );
@@ -123,7 +129,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
 
             // 선택된 날짜
             selectedBuilder: (context, date, focusedDay) {
-              final diaryEntry = getDiaryEntryForSelectedDate(date);
+              final diaryEntry = _getDiaryEntryForDate(date);
 
               return GestureDetector(
                 onTap: () {
@@ -134,20 +140,19 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
                   }
                 },
                 child: Container(
-                  margin: EdgeInsets.all(6.0),
+                  margin: const EdgeInsets.all(6.0),
                   decoration: BoxDecoration(
-                    color: mPrimaryColor, // 선택된 날짜 배경색
+                    color: mPrimaryColor,
                     borderRadius: BorderRadius.circular(50.0),
                   ),
                   child: Center(
                     child: Text(
                       '${date.day}',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
-                        fontFamily: 'Pretendard',
                         fontWeight: FontWeight.w600,
                         fontSize: 16,
-                      ), // 선택된 날짜 텍스트 색상
+                      ),
                     ),
                   ),
                 ),

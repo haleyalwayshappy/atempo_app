@@ -139,12 +139,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                                     hintText: "이메일을 입력하세요",
                                     prefixIcon: Icon(Icons.email),
                                   ),
-                                  validator: (value) {
-                                    if (value == null || !value.contains('@')) {
-                                      return '유효한 이메일을 입력해주세요.';
-                                    }
-                                    return null;
-                                  },
+                                  validator: accountService.validateEmail,
                                 ),
                                 SizedBox(height: 30),
                                 // 비밀번호 입력 필드

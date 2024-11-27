@@ -1,8 +1,10 @@
+import 'package:atempo_app/model/sign_up_path_data.dart';
+
 class AppUser {
   final String uid;
   final String name;
   final String email;
-  final int signUpMethod;
+  final String signUpMethod;
 
   AppUser({
     required this.uid,

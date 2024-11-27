@@ -21,6 +21,13 @@ class MusicPlayerController extends GetxController {
   final List<Music> likedTracks = []; // 좋아요 한 곡 리스트
   final List<Music> dislikedTracks = []; // 싫어요 한 곡 리스트
 
+  // Firebase 데이터 로딩 여부
+  bool isPlaylistLoaded = false;
+
+  // 기본 제목과 이미지
+  static const defaultTitle = 'Unknown Title';
+  static const defaultImageUrl = 'assets/images/music_bg7.png';
+
   @override
   void onInit() {
     super.onInit();
@@ -50,12 +57,13 @@ class MusicPlayerController extends GetxController {
 
   // Firebase에서 음악 파일 목록을 가져와 재생 목록 설정
   Future<void> loadPlaylistFromFirebase() async {
+    if (isPlaylistLoaded) {
+      print("Playlist already loaded. Skipping re-fetch.");
+      return;
+    }
+
     final storage = FirebaseStorage.instance;
     List<AudioSource> audioSources = [];
-
-    // 기본 제목과 이미지
-    const defaultTitle = 'Unknown Title';
-    const defaultImageUrl = 'assets/images/music_bg7.png';
 
     try {
       final ListResult result = await storage.ref('music').listAll();
@@ -99,6 +107,7 @@ class MusicPlayerController extends GetxController {
       await _audioPlayer
           .setAudioSource(ConcatenatingAudioSource(children: audioSources));
 
+      isPlaylistLoaded = true; // 로드 완료 상태 업데이트
       print("Playlist initialized with ${audioSources.length} tracks.");
     } catch (e) {
       print("Error loading playlist from Firebase: $e");
