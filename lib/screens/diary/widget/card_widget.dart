@@ -20,7 +20,7 @@ class CustomCardWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         // UUID를 URL 파라미터로 사용하여 특정 일기 데이터로 이동
-        context.go('/diary/read/$diaryId');
+        context.go('/read/$diaryId');
       },
       child: Container(
         height: MediaQuery.of(context).size.height * 0.085, // 전체 사이즈 비율 설정

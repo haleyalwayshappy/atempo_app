@@ -4,15 +4,12 @@ import 'package:atempo_app/screens/account/login_email_screen.dart';
 import 'package:atempo_app/screens/account/login_screen.dart';
 import 'package:atempo_app/screens/diary/choose_emotion_screen.dart';
 import 'package:atempo_app/screens/diary/diary_main_screen.dart';
-import 'package:atempo_app/screens/diary/diary_read_screen.dart';
-import 'package:atempo_app/screens/diary/diary_write_screen.dart';
-import 'package:atempo_app/screens/diary/widget/diary_write_screen_4.dart';
+import 'package:atempo_app/screens/diary/diary_write_screen_4.dart';
 import 'package:atempo_app/screens/home/choice_emotion_screen.dart';
 import 'package:atempo_app/screens/home/home_screen.dart';
 import 'package:atempo_app/screens/home/landing_screen.dart';
 import 'package:atempo_app/screens/home/splash_screen.dart';
 import 'package:atempo_app/screens/music/music_list_screen.dart';
-import 'package:atempo_app/screens/music/music_play_screen.dart';
 import 'package:atempo_app/screens/music/music_play_screen2.dart';
 import 'package:atempo_app/screens/music/music_tab_screen.dart';
 import 'package:atempo_app/screens/settings/mypage_screen.dart';
@@ -74,7 +71,8 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: '/music',
               builder: (context, state) {
-                return MusicTabScreen();
+                // return MusicTabScreen();
+                return MusicListScreen(pathName: 'music1');
               }, // MusicTabScreen에서 TabBar 관리
               routes: [
                 GoRoute(
@@ -188,6 +186,16 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/write',
       builder: (context, state) => DiaryWriteScreen4(),
+    ),
+    GoRoute(
+      path: '/read/:diaryId', // diaryId를 경로 파라미터로 전달
+      builder: (context, state) {
+        final diaryId = state.pathParameters['diaryId']!;
+        return DiaryWriteScreen4(
+          isReadOnly: true,
+          diaryId: diaryId,
+        );
+      },
     ),
     GoRoute(
       path: '/music_player',

@@ -5,7 +5,6 @@ import 'package:atempo_app/screens/diary/widget/choose_sub_text.dart';
 import 'package:atempo_app/screens/diary/widget/content_widget.dart';
 import 'package:atempo_app/screens/widgets/choose_main_emotion_icons.dart';
 import 'package:atempo_app/screens/widgets/toast.dart';
-import 'package:atempo_app/service/diary/diary_service.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,7 @@ class DiaryWriteScreen4 extends StatefulWidget {
 }
 
 class _DiaryWriteScreen4State extends State<DiaryWriteScreen4> {
-  final DiaryController diaryController = Get.put(DiaryController());
+  final DiaryController diaryController = Get.find<DiaryController>();
 
   @override
   void initState() {
@@ -117,7 +116,7 @@ class _DiaryWriteScreen4State extends State<DiaryWriteScreen4> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: mFontDarkColor),
           onPressed: () {
-            context.pop();
+            widget.isReadOnly ? context.go('/diary') : context.pop();
           },
         ),
       ),
@@ -248,7 +247,34 @@ class _DiaryWriteScreen4State extends State<DiaryWriteScreen4> {
         ),
       ),
       bottomNavigationBar: widget.isReadOnly
-          ? null
+          ? Container(
+              height: 70,
+              color: mPrimaryColor,
+              child: GestureDetector(
+                onTap: () async {
+                  if (_validateDiary(diaryController)) {
+                    Diary diary = diaryController.getDiary();
+                    bool isSaved = await diaryController.updateDiary(diary);
+
+                    if (isSaved) {
+                      customToastMsg("일기가 수정 되었습니다!");
+                      diaryController.resetDiaryState(); // 상태 초기화
+                      // context.go('/diary'); // 다이어리 목록으로 이동
+                      context.pop();
+                    } else {
+                      customToastMsg("일기 수정에 실패했습니다.");
+                    }
+                  } else {
+                    customToastMsg("모든 질문에 응답해야 저장할 수 있습니다.");
+                  }
+                },
+                child: const Center(
+                  child: Text(
+                    "수정",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                ),
+              ))
           : Container(
               height: 70,
               color: mPrimaryColor,
@@ -256,8 +282,7 @@ class _DiaryWriteScreen4State extends State<DiaryWriteScreen4> {
                 onTap: () async {
                   if (_validateDiary(diaryController)) {
                     Diary diary = diaryController.getDiary();
-                    bool isSaved =
-                        await DiaryService().saveDiaryToFirestore(diary);
+                    bool isSaved = await diaryController.saveDiary(diary);
 
                     if (isSaved) {
                       customToastMsg("일기가 저장되었습니다!");
@@ -315,9 +340,9 @@ class _DiaryWriteScreen4State extends State<DiaryWriteScreen4> {
     final questions = [
       "Q1. 오늘은 어떤 일이 있었나요?",
       "Q2. 그 일이 당신의 기분을 어떻게 만들었나요?",
-      "Q3. 그 감정이 당신에게 도움 또는 방해가 되었나요?",
-      "Q4. 1년 전 나는 오늘 생긴 일에 대해 어떻게 대처했을 것 같나요?",
-      "Q5. 1년 후 나는 오늘 생긴 일에 대해 어떻게 대처할 것 같나요?",
+      "Q3. 그 감정이 당신에게 어떤 영향을 주었나요?",
+      "Q4. 1년 전 나는 오늘 생긴 일에 대해 어떻게 행동 했을까요?",
+      "Q5. 1년 후 나는 오늘 생긴 일에 대해 어떻게 행동 할까요?",
     ];
 
     return List.generate(

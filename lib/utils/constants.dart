@@ -70,12 +70,16 @@ const List<String> emailSiteList = [
 
 /// 앨범 커버 이미지 리스트
 const Map<dynamic, dynamic> albumContents = {
-  "뉴욕의 길거리": "assets/images/music_bg1.png",
-  "일렁이는 파도": "assets/images/music_bg2.png",
-  "꽃이 필 때": "assets/images/music_bg3.png",
-  "바닷가에서": "assets/images/music_bg4.png",
-  "해지는 노을": "assets/images/music_bg5.png",
-  "집으로 가는 길": "assets/images/music_bg6.png",
+  "한가로운 오후": "assets/images/music_bg6.png",
+  "세상의 끝에서": "assets/images/music_bg5.png",
+  "너를 찾으러 갈게": "assets/images/music_bg4.png",
+  "평화로운 숲": "assets/images/music_bg1.png",
+  "잔잔한 파도": "assets/images/music_bg2.png",
+  "동이 트는 초원": "assets/images/music_bg3.png",
+  "뉴욕의 밤": "assets/images/music_bg5.png",
+  "희망의 그림자": "assets/images/music_bg6.png",
+  "성수동의 오후": "assets/images/music_bg2.png",
+  "아무도 없는 도시의 밤": "assets/images/music_bg4.png",
 };
 
 // const kSearchEditHintStyle = TextStyle(

@@ -134,7 +134,7 @@ class _CustomCalendarWidgetState extends State<CustomCalendarWidget> {
               return GestureDetector(
                 onTap: () {
                   if (diaryEntry != null) {
-                    context.go('/diary/read/${diaryEntry.diaryId}');
+                    context.go('/read/${diaryEntry.diaryId}');
                   } else {
                     customToastMsg("작성된 내용이 없습니다.");
                   }

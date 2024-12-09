@@ -1,3 +1,5 @@
+import 'package:atempo_app/model/diary_data.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:atempo_app/controller/diary/diary_controller.dart';
 import 'package:atempo_app/screens/widgets/custom_app_bar.dart';
@@ -19,7 +21,7 @@ class DiaryMainScreen extends StatefulWidget {
 
 class _DiaryMainScreenState extends State<DiaryMainScreen> {
   final DiaryController _controller = Get.find<DiaryController>();
-  bool isGridView = false;
+  bool isGridView = true;
   DateTime _selectedDate = DateTime.now();
 
   @override
@@ -28,37 +30,36 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
     _controller.fetchAllDiariesFromFirebase(); // 데이터 로드
   }
 
-  // 데이트 피커 호출
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: _selectedDate,
-      firstDate: DateTime(2010, 1),
-      lastDate: DateTime(2030, 12),
-    );
-
-    if (picked != null && picked != _selectedDate) {
-      setState(() {
-        _selectedDate = picked;
-      });
-    }
+  // 선택된 달과 isShow가 true인 데이터 필터링
+  List<Diary> _getDiariesForSelectedMonth() {
+    return _controller.diaryList
+        .where((diary) =>
+            diary.dateTime.year == _selectedDate.year &&
+            diary.dateTime.month == _selectedDate.month &&
+            diary.isShow == true) // isShow가 true인 항목만 필터링
+        .toList();
   }
 
   @override
   Widget build(BuildContext context) {
+    final formattedDate = "${_selectedDate.year}년 ${_selectedDate.month}월";
+
     return Scaffold(
       appBar: CustomAppBar(
         titleText: '일기',
       ),
       body: SafeArea(
         child: Obx(() {
+          final filteredDiaries = _getDiariesForSelectedMonth();
           if (_controller.diaryList.isEmpty) {
-            return Center(child: Text("저장된 다이어리가 없습니다."));
+            return const Center(child: Text("저장된 다이어리가 없습니다. \n 일기를 작성해 주세요"));
+          } else if (filteredDiaries.isEmpty) {
+            return const Center(
+              child: Text("해당 월에는 저장된 일기가 없습니다. \n 일기를 작성해 주세요."),
+            );
           }
-
           return Column(
             children: [
-              // 감정 팝업
               const SizedBox(height: 10),
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: outlinedDouble),
@@ -66,13 +67,54 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     GestureDetector(
-                      onTap: () => _selectDate(context),
+                      onTap: () {
+                        // 날짜 선택 모달
+                        DateTime tempDate = _controller.dateTime.value;
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) {
+                            return SafeArea(
+                              child: Container(
+                                color: mBackgroundColor,
+                                height: 350,
+                                child: Column(
+                                  children: [
+                                    Expanded(
+                                      child: CupertinoDatePicker(
+                                        backgroundColor: mBackgroundColor,
+                                        mode: CupertinoDatePickerMode.monthYear,
+                                        initialDateTime:
+                                            _controller.dateTime.value,
+                                        maximumDate: DateTime.now(),
+                                        onDateTimeChanged: (value) {
+                                          tempDate = value;
+                                        },
+                                      ),
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          _selectedDate = tempDate;
+                                          _controller.updateDateTime(tempDate);
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text("확인"),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
                       child: Text(
-                        "${_selectedDate.year}-${_selectedDate.month.toString().padLeft(2, '0')}",
+                        formattedDate,
                         style: const TextStyle(
+                          fontSize: 20,
+                          fontFamily: "Santteut",
+                          fontWeight: FontWeight.normal,
                           color: mPrimaryColor,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
@@ -101,8 +143,8 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
               ),
               Expanded(
                 child: isGridView
-                    ? DiaryGridWidget(diaries: _controller.diaryList.toList())
-                    : DiaryListWidget(diaries: _controller.diaryList.toList()),
+                    ? DiaryGridWidget(diaries: _getDiariesForSelectedMonth())
+                    : DiaryListWidget(diaries: _getDiariesForSelectedMonth()),
               ),
             ],
           );

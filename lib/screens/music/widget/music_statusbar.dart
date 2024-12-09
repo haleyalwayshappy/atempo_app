@@ -1,24 +1,19 @@
+import 'package:animated_music_indicator/animated_music_indicator.dart';
 import 'package:atempo_app/controller/music/music_player_controller.dart';
-import 'package:atempo_app/screens/music/music_play_screen.dart';
 import 'package:atempo_app/screens/music/music_play_screen2.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 
 class MusicStatusBar extends StatelessWidget {
   const MusicStatusBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // MusicPlayerController를 찾음
     final musicPlayerController = Get.find<MusicPlayerController>();
 
     return GestureDetector(
       onTap: () {
-        // context.go("/music_player");
-        // 스테이터스 바  전체를 누르면 음악 재생 화면으로 이동
-
         showModalBottomSheet(
           isScrollControlled: true,
           barrierColor: mPrimaryColor,
@@ -45,25 +40,35 @@ class MusicStatusBar extends StatelessWidget {
           ],
         ),
         height: 60,
-        margin: EdgeInsets.only(left: 16, right: 16, bottom: 8),
+        margin: const EdgeInsets.only(left: 16, right: 16, bottom: 8),
         padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16.0),
         child: Obx(() {
           return Row(
             children: [
-              IconButton(
-                icon: Icon(
-                  Icons.waves,
+              if (musicPlayerController.isPlaying.value)
+                AnimatedMusicIndicator(
+                  numberOfBars: 5,
+                  size: 0.06,
+                  barStyle: BarStyle.circle,
+                  roundBars: false,
+                  colors: const [
+                    mFontLightColor,
+                    mFontLightColor,
+                    mFontLightColor,
+                    mFontLightColor,
+                    mFontLightColor,
+                  ],
+                )
+              else
+                Icon(
+                  Icons.music_note_rounded,
                   color: mFontLightColor,
                 ),
-                padding: EdgeInsets.zero,
-                constraints: BoxConstraints(),
-                onPressed: () {},
-              ),
+              const SizedBox(width: 4),
               Expanded(
-                // 타이틀 제목
                 child: Text(
                   musicPlayerController.currentTrackTitle.value,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: mFontLightColor,
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -73,12 +78,12 @@ class MusicStatusBar extends StatelessWidget {
                 ),
               ),
               IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.skip_previous_rounded,
                   color: mFontLightColor,
                 ),
                 padding: EdgeInsets.zero,
-                constraints: BoxConstraints(),
+                constraints: const BoxConstraints(),
                 onPressed: () {
                   musicPlayerController.previousTrack();
                 },
@@ -91,22 +96,22 @@ class MusicStatusBar extends StatelessWidget {
                   color: mFontLightColor,
                 ),
                 padding: EdgeInsets.zero,
-                constraints: BoxConstraints(),
+                constraints: const BoxConstraints(),
                 onPressed: () {
                   musicPlayerController.playPause();
                 },
               ),
               IconButton(
-                icon: Icon(
+                icon: const Icon(
                   Icons.skip_next_rounded,
                   color: mFontLightColor,
                 ),
                 padding: EdgeInsets.zero,
-                constraints: BoxConstraints(),
+                constraints: const BoxConstraints(),
                 onPressed: () {
                   musicPlayerController.nextTrack();
                 },
-              )
+              ),
             ],
           );
         }),

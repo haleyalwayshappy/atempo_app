@@ -15,6 +15,7 @@ class Diary {
   String? content4; // 일기 내용4
   String? content5; // 일기 내용5
   DateTime dateTime; // 날짜
+  bool isShow; // 보여주기? 보관?
 
   Diary({
     required this.userId,
@@ -28,6 +29,7 @@ class Diary {
     this.content3,
     this.content4,
     this.content5,
+    required this.isShow,
   }) : diaryId =
             diaryId ?? '$userId-${Uuid().v4()}'; // userId + UUID로 diaryId 생성
 
@@ -48,6 +50,7 @@ class Diary {
       'content3': content3,
       'content4': content4,
       'content5': content5,
+      'isShow': isShow,
     };
   }
 
@@ -79,6 +82,7 @@ class Diary {
       content3: map['content3'] ?? '',
       content4: map['content4'] ?? '',
       content5: map['content5'] ?? '',
+      isShow: map['isShow'] ?? true,
     );
   }
 }

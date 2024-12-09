@@ -1,4 +1,4 @@
-import 'package:atempo_app/screens/diary/widget/diary_write_screen_4.dart';
+import 'package:atempo_app/screens/diary/diary_write_screen_4.dart';
 import 'package:atempo_app/screens/widgets/custom_datepicker_dialog.dart';
 import 'package:atempo_app/controller/diary/date_controller.dart';
 import 'package:atempo_app/utils/constants.dart';

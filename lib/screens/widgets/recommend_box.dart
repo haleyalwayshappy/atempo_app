@@ -17,7 +17,7 @@ class RecommendBox extends StatelessWidget {
       scrollDirection: Axis.horizontal, // 수평 스크롤 설정
       child: Obx(() {
         return Row(
-          children: controller.playlist.map((track) {
+          children: controller.playlist.take(5).map((track) {
             return GestureDetector(
               onTap: () {
                 // 해당 곡의 인덱스 가져오기
@@ -26,18 +26,6 @@ class RecommendBox extends StatelessWidget {
                 controller.playTrackAtIndex(index);
 
                 context.go('/music_player');
-                // 화면 이동
-                // showModalBottomSheet(
-                //   isScrollControlled: true,
-                //   barrierColor: mPrimaryColor,
-                //   context: context,
-                //   builder: (context) {
-                //     return FractionallySizedBox(
-                //       heightFactor: 0.95,
-                //       child: MusicPlayScreen2(),
-                //     );
-                //   },
-                // );
               },
               child: Container(
                 margin: const EdgeInsets.only(right: 16),
@@ -58,12 +46,12 @@ class RecommendBox extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 6),
                     // 음악 제목
                     Text(
                       track.musicTitle,
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 14,
                         color: mPrimaryColor,
                         fontWeight: FontWeight.bold,
                       ),
