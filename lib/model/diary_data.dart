@@ -30,8 +30,7 @@ class Diary {
     this.content4,
     this.content5,
     required this.isShow,
-  }) : diaryId =
-            diaryId ?? '$userId-${Uuid().v4()}'; // userId + UUID로 diaryId 생성
+  }) : diaryId = diaryId ?? '$userId-${Uuid().v4()}';
 
   @override
   String toString() {
@@ -42,6 +41,8 @@ class Diary {
   Map<String, dynamic> toMap() {
     return {
       'userId': userId,
+      'diaryId': diaryId,
+      'diaryType': diaryType,
       'dateTime': dateTime.toIso8601String(),
       'mainEmotion': mainEmotion.toString(),
       'subEmotion': subEmotion?.map((e) => e.toString()).toList(),

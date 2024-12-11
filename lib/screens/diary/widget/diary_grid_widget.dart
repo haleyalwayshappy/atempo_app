@@ -38,6 +38,7 @@ class DiaryGridWidget extends StatelessWidget {
 
           return GestureDetector(
             onTap: () {
+              print("diaryId 값  : $diaryId");
               context.go('/read/$diaryId');
             },
             child: Image.asset(gridEmotionImageUrl!),

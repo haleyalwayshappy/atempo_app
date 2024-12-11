@@ -31,12 +31,20 @@ class DiaryListWidget extends StatelessWidget {
         return Dismissible(
           key: ObjectKey(diary.diaryId),
           direction: DismissDirection.endToStart,
-          onDismissed: (DismissDirection direction) {
+          onDismissed: (DismissDirection direction) async {
             diary.isShow = false; // 로컬 데이터 수정
-            _controller.updateDiary(diary); // Firebase에 업데이트
-            _controller.diaryList.refresh(); // RxList 강제 갱신
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text('삭제됨')));
+            final bool success =
+                await _controller.updateIsShow(diaryId, false, diary.userId);
+
+            if (success) {
+              print("isShow successfully updated.");
+              _controller.diaryList.refresh(); // RxList 강제 갱신
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(
+                      '일기가 보관 되었습니다. \n 보관된 일기는 마이페이지 \'보관된일기\'에서 확인 가능합니다.')));
+            } else {
+              print("Failed to update isShow.");
+            }
           },
           child: CustomCardWidget(
             dateTime: date,

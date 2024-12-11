@@ -19,6 +19,7 @@ class CustomCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        print("diaryId 값  : $diaryId");
         // UUID를 URL 파라미터로 사용하여 특정 일기 데이터로 이동
         context.go('/read/$diaryId');
       },

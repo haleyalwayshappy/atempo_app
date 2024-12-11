@@ -72,7 +72,7 @@ const List<String> emailSiteList = [
 const Map<dynamic, dynamic> albumContents = {
   "한가로운 오후": "assets/images/music_bg6.png",
   "세상의 끝에서": "assets/images/music_bg5.png",
-  "너를 찾으러 갈게": "assets/images/music_bg4.png",
+  "waiting for": "assets/images/music_bg4.png",
   "평화로운 숲": "assets/images/music_bg1.png",
   "잔잔한 파도": "assets/images/music_bg2.png",
   "동이 트는 초원": "assets/images/music_bg3.png",

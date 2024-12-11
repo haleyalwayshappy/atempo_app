@@ -114,8 +114,11 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                             decoration: BoxDecoration(
                               color: mBackgroundColor,
                               borderRadius: BorderRadius.circular(10),
-                              border:
-                                  Border.all(width: 2, color: mPrimaryColor),
+                              border: Border.all(
+                                width: 2,
+                                color: mPrimaryColor,
+                                // color: Colors.green.withOpacity(0.3),
+                              ),
                             ),
                             child: Column(
                               children: [

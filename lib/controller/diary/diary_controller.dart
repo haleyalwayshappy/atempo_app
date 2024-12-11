@@ -50,50 +50,14 @@ class DiaryController extends GetxController {
     dateTime.value = DateTime.now();
     mainEmotion.value = MainEmotion.joy;
     subEmotions.clear();
-    setDiaryContents(['', '', '', '', '']);
+    _setDiaryContents(['', '', '', '', '']);
     selectedDiary.value = null;
     showMaxSelectionWarning.value = false;
   }
 
-  // 숨기기 활성화
-  void updateIsShow(bool isShow) {
-    isShow = isShow;
-    print("숨기기 활성화");
-    print(isShow);
-  }
-
-  /// 날짜 업데이트
-  void updateDateTime(DateTime newDate) {
-    dateTime.value = newDate;
-    print("Diary date updated to: $newDate");
-  }
-
-  /// 메인감정 업데이트
-  void updateMainEmotion(MainEmotion newEmotion) {
-    mainEmotion.value = newEmotion;
-  }
-
-  /// 일기 내용 업데이트
-  void updateContent(int index, String newContent) {
-    switch (index) {
-      case 1:
-        content1.value = newContent;
-        break;
-      case 2:
-        content2.value = newContent;
-        break;
-      case 3:
-        content3.value = newContent;
-        break;
-      case 4:
-        content4.value = newContent;
-        break;
-      case 5:
-        content5.value = newContent;
-        break;
-    }
-  }
-
+  /**
+   * 가져오기
+   * */
   /// 메인 감정에 따른 imageUrl 가져오기
   String? getMainEmotionImageUrl(MainEmotion emotion) {
     final matchingEmotion = mainEmotions.firstWhere(
@@ -131,11 +95,12 @@ class DiaryController extends GetxController {
       }).toList();
 
       isDiariesLoaded = true; // 로드 완료
-      print("Fetched ${diaryList.length} diaries.");
+      print(
+          "Fetched all diaries -------- \n ${diaryList.value} \n -----------");
     } catch (e) {
       print("Error fetching diaries: $e");
     } finally {
-      isLoading.value = false; // 로딩 완료
+      isLoading.value = false; // 로딩이 이미 완료되어 있음
     }
   }
 
@@ -151,19 +116,182 @@ class DiaryController extends GetxController {
       updateDateTime(diary.dateTime); // 날짜 업데이트
       mainEmotion.value = diary.mainEmotion;
       subEmotions.assignAll(diary.subEmotion ?? []);
-      setDiaryContents([
+      _setDiaryContents([
         diary.content1 ?? '',
         diary.content2 ?? '',
         diary.content3 ?? '',
         diary.content4 ?? '',
         diary.content5 ?? '',
       ]);
-      print("Loaded diary with ID: $diaryId");
+      print("Loaded diary show? = $isShow");
     } else {
       print("Diary with ID $diaryId not found. Resetting state.");
       resetDiaryState();
     }
   }
+
+  /// Firebase에서 특정 달의 다이어리 가져오기
+  Future<void> fetchDiariesByMonth(int year, int month) async {
+    try {
+      isLoading.value = true; // 로딩 상태 시작
+      String uid = userController.getUserdata().uid;
+
+      // 해당 달의 시작 날짜와 다음 달의 시작 날짜 계산
+      DateTime startOfMonth = DateTime(year, month, 1);
+      DateTime startOfNextMonth = DateTime(year, month + 1, 1);
+
+      // Firestore 쿼리
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(uid)
+          .collection('diaries')
+          .where('dateTime', isGreaterThanOrEqualTo: startOfMonth)
+          .where('dateTime', isLessThan: startOfNextMonth)
+          .orderBy('dateTime', descending: true) // 내림차순 정렬
+          .get();
+
+      // 결과를 diaryList로 저장
+      diaryList.value = querySnapshot.docs.map((doc) {
+        final data = doc.data() as Map<String, dynamic>;
+        return Diary.fromMap(data);
+      }).toList();
+
+      print("isShow value after dismissal: ${isShow}");
+
+      print("Fetched ${diaryList.length} diaries for $year-$month.");
+    } catch (e) {
+      print("Error fetching diaries by month: $e");
+    } finally {
+      isLoading.value = false; // 로딩 상태 종료
+    }
+  }
+
+  /**
+   *  업데이트
+   * */
+  /// 날짜 변경
+  void updateDateTime(DateTime newDate) {
+    dateTime.value = newDate;
+    print("Diary date updated to: $newDate");
+  }
+
+  /// 메인감정 업데이트
+  void updateMainEmotion(MainEmotion newEmotion) {
+    mainEmotion.value = newEmotion;
+  }
+
+  /// 일기 내용 업데이트
+  void updateContent(int index, String newContent) {
+    switch (index) {
+      case 1:
+        content1.value = newContent;
+        break;
+      case 2:
+        content2.value = newContent;
+        break;
+      case 3:
+        content3.value = newContent;
+        break;
+      case 4:
+        content4.value = newContent;
+        break;
+      case 5:
+        content5.value = newContent;
+        break;
+    }
+  }
+
+  /// 감정 선택 토글
+  void toggleChipSelection(Emotion emotion) {
+    final detailEmotion = emotion.detailEmotion;
+    if (subEmotions.contains(detailEmotion)) {
+      subEmotions.remove(detailEmotion);
+    } else {
+      if (subEmotions.length < 5) {
+        subEmotions.add(detailEmotion!);
+        showMaxSelectionWarning.value = false;
+      } else {
+        showMaxSelectionWarning.value = true;
+      }
+    }
+  }
+
+  // 일기 수정
+  Future<bool> updateDiary(Diary updatedDiary) async {
+    String? userId = FirebaseAuth.instance.currentUser?.uid;
+
+    if (userId == null) {
+      customToastMsg("로그인이 필요합니다.");
+      return false; // 실패 반환
+    }
+
+    if (updatedDiary.diaryId == null || updatedDiary.diaryId!.isEmpty) {
+      print("Diary ID가 없습니다. 업데이트할 수 없습니다.");
+      return false; // 실패 반환
+    }
+
+    try {
+      // Firestore 문서가 존재하는지 확인
+      DocumentSnapshot doc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .collection('diaries')
+          .doc(updatedDiary.diaryId)
+          .get();
+
+      if (!doc.exists) {
+        print("Document not found: ${updatedDiary.diaryId}");
+        return false; // 문서가 없는 경우 처리
+      }
+
+      // 다이어리 데이터를 Firestore에 업데이트
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .collection('diaries')
+          .doc(updatedDiary.diaryId) // 업데이트할 다이어리 ID
+          .update(updatedDiary.toMap());
+
+      print("Diary updated successfully with ID: ${updatedDiary.diaryId}");
+
+      // 목록을 다시 로드
+      isDiariesLoaded = false;
+      await fetchAllDiariesFromFirebase();
+
+      return true; // 성공 반환
+    } catch (e) {
+      customToastMsg("일기 수정에 실패했습니다: $e");
+      print("일기 수정 실패: $e");
+      return false; // 실패 반환
+    }
+  }
+
+  // 숨기기 활성화
+  Future<bool> updateIsShow(String diaryId, bool isShow, String userId) async {
+    try {
+      // Firestore에서 isShow 필드만 업데이트
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .collection('diaries')
+          .doc(diaryId)
+          .update({'isShow': isShow}); // isShow 값만 업데이트
+
+      print("isShow updated successfully for Diary ID: $diaryId");
+      return true; // 성공 반환
+    } catch (e) {
+      if (e is FirebaseException && e.code == 'not-found') {
+        print("Diary not found for ID: $diaryId");
+      } else {
+        print("Failed to update isShow: $e");
+      }
+      return false; // 실패 반환
+    }
+  }
+
+/**
+ * 저장
+ * */
 
   /// Diary 데이터 저장 메서드
   Diary getDiary() {
@@ -181,7 +309,7 @@ class DiaryController extends GetxController {
     );
   }
 
-  // 일기 저장
+  /// 일기 저장
   Future<bool> saveDiary(Diary diary) async {
     String? userId = FirebaseAuth.instance.currentUser?.uid;
 
@@ -236,7 +364,8 @@ class DiaryController extends GetxController {
         content5.value ?? '',
       ];
 
-  void setDiaryContents(List<String> contents) {
+  // ?
+  void _setDiaryContents(List<String> contents) {
     if (contents.length != 5) {
       print("Invalid diary contents length. Expected 5 items.");
       return;
@@ -246,105 +375,5 @@ class DiaryController extends GetxController {
     content3.value = contents[2];
     content4.value = contents[3];
     content5.value = contents[4];
-  }
-
-  /// 감정 선택 토글
-  void toggleChipSelection(Emotion emotion) {
-    final detailEmotion = emotion.detailEmotion;
-    if (subEmotions.contains(detailEmotion)) {
-      subEmotions.remove(detailEmotion);
-    } else {
-      if (subEmotions.length < 5) {
-        subEmotions.add(detailEmotion!);
-        showMaxSelectionWarning.value = false;
-      } else {
-        showMaxSelectionWarning.value = true;
-      }
-    }
-  }
-
-  Future<bool> updateDiary(Diary updatedDiary) async {
-    String? userId = FirebaseAuth.instance.currentUser?.uid;
-
-    if (userId == null) {
-      customToastMsg("로그인이 필요합니다.");
-      return false; // 실패 반환
-    }
-
-    if (updatedDiary.diaryId == null || updatedDiary.diaryId!.isEmpty) {
-      print("Diary ID가 없습니다. 업데이트할 수 없습니다.");
-      return false; // 실패 반환
-    }
-
-    try {
-      // Firestore 문서가 존재하는지 확인
-      DocumentSnapshot doc = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userId)
-          .collection('diaries')
-          .doc(updatedDiary.diaryId)
-          .get();
-
-      if (!doc.exists) {
-        print("Document not found: ${updatedDiary.diaryId}");
-        return false; // 문서가 없는 경우 처리
-      }
-
-      // 다이어리 데이터를 Firestore에 업데이트
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userId)
-          .collection('diaries')
-          .doc(updatedDiary.diaryId) // 업데이트할 다이어리 ID
-          .update(updatedDiary.toMap());
-
-      print("Diary updated successfully with ID: ${updatedDiary.diaryId}");
-
-      // 목록을 다시 로드
-      isDiariesLoaded = false;
-      await fetchAllDiariesFromFirebase();
-
-      return true; // 성공 반환
-    } catch (e) {
-      customToastMsg("일기 수정에 실패했습니다: $e");
-      print("일기 수정 실패: $e");
-      return false; // 실패 반환
-    }
-  }
-
-  /// Firebase에서 특정 달의 다이어리 가져오기
-  Future<void> fetchDiariesByMonth(int year, int month) async {
-    try {
-      isLoading.value = true; // 로딩 상태 시작
-      String uid = userController.getUserdata().uid;
-
-      // 해당 달의 시작 날짜와 다음 달의 시작 날짜 계산
-      DateTime startOfMonth = DateTime(year, month, 1);
-      DateTime startOfNextMonth = DateTime(year, month + 1, 1);
-
-      // Firestore 쿼리
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(uid)
-          .collection('diaries')
-          .where('dateTime', isGreaterThanOrEqualTo: startOfMonth)
-          .where('dateTime', isLessThan: startOfNextMonth)
-          .orderBy('dateTime', descending: true) // 내림차순 정렬
-          .get();
-
-      // 결과를 diaryList로 저장
-      diaryList.value = querySnapshot.docs.map((doc) {
-        final data = doc.data() as Map<String, dynamic>;
-        return Diary.fromMap(data);
-      }).toList();
-
-      print("isShow value after dismissal: ${isShow}");
-
-      print("Fetched ${diaryList.length} diaries for $year-$month.");
-    } catch (e) {
-      print("Error fetching diaries by month: $e");
-    } finally {
-      isLoading.value = false; // 로딩 상태 종료
-    }
   }
 }
