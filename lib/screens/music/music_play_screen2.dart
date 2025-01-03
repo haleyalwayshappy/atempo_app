@@ -41,7 +41,7 @@ class MusicPlayScreen2 extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Icon(Icons.dehaze_rounded, size: 30.0),
+            // child: Icon(Icons.dehaze_rounded, size: 30.0),
           ),
         ],
       ),

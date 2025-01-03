@@ -63,6 +63,7 @@ dependencies:
   flutter_expanded_tile: ^0.4.0
   font_awesome_flutter: ^10.8.0
   animated_music_indicator: ^0.0.6
+  package_info_plus: ^8.1.2
 
 flutter_native_splash:
   color: "#FFFFFF"

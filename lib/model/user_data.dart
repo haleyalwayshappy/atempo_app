@@ -3,12 +3,14 @@ import 'package:atempo_app/model/sign_up_path_data.dart';
 class AppUser {
   final String uid;
   final String name;
+  final String nickName;
   final String email;
   final String signUpMethod;
 
   AppUser({
     required this.uid,
     required this.name,
+    required this.nickName,
     required this.email,
     required this.signUpMethod,
   });
@@ -18,6 +20,7 @@ class AppUser {
     return {
       'uid': uid,
       'name': name,
+      'nickName': nickName,
       'email': email,
       'signUpMethod': signUpMethod,
     };
@@ -28,6 +31,7 @@ class AppUser {
     return AppUser(
       uid: uid,
       name: map['name'] ?? 'Unknown',
+      nickName: map['nickName'] ?? 'Unknown',
       email: map['email'] ?? 'Unknown',
       signUpMethod: map['signUpMethod'] ?? 0,
     );

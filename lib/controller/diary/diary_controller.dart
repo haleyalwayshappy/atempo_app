@@ -123,7 +123,6 @@ class DiaryController extends GetxController {
         diary.content4 ?? '',
         diary.content5 ?? '',
       ]);
-      print("Loaded diary show? = $isShow");
     } else {
       print("Diary with ID $diaryId not found. Resetting state.");
       resetDiaryState();
@@ -296,6 +295,7 @@ class DiaryController extends GetxController {
   /// Diary 데이터 저장 메서드
   Diary getDiary() {
     return Diary(
+      diaryId: selectedDiary.value?.diaryId, // 기존 Diary ID 유지
       userId: userController.getUserdata().uid,
       diaryType: diaryType.value,
       dateTime: dateTime.value,
@@ -303,6 +303,7 @@ class DiaryController extends GetxController {
       subEmotion: subEmotions,
       content1: content1.value,
       content2: content2.value,
+      content3: content3.value,
       content4: content4.value,
       content5: content5.value,
       isShow: isShow.value,
@@ -329,7 +330,8 @@ class DiaryController extends GetxController {
             .doc(userId)
             .collection('diaries')
             .add(diaryData); // 새 문서 추가 및 ID 생성
-        diary.diaryId = docRef.id; // 생성된 ID를 Diary 객체에 반영
+        diary.diaryId = docRef.id; // 생성된 ID를 Diary 객체에 반영'
+        docRef.update({'diaryId': docRef.id});
       } else {
         // 다이어리 ID가 있으면 해당 문서 업데이트
         await FirebaseFirestore.instance

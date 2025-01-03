@@ -95,7 +95,10 @@ class CustomFloatingActionButton extends StatelessWidget {
           builder: (context) {
             return FractionallySizedBox(
               heightFactor: 0.95,
-              child: DiaryWriteScreen4(),
+              child: DiaryWriteScreen4(
+                // isNew: true,
+                isReadOnly: false,
+              ),
             );
           },
         );

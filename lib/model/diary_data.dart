@@ -30,7 +30,7 @@ class Diary {
     this.content4,
     this.content5,
     required this.isShow,
-  }) : diaryId = diaryId ?? '$userId-${Uuid().v4()}';
+  }) : diaryId = diaryId ?? Uuid().v4();
 
   @override
   String toString() {

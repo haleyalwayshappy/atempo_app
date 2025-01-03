@@ -12,13 +12,15 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 class DiaryWriteScreen4 extends StatefulWidget {
-  bool isReadOnly;
   final String? diaryId;
+  bool isReadOnly;
+  // bool isNew;
 
   DiaryWriteScreen4({
     super.key,
-    this.isReadOnly = false,
     this.diaryId,
+    this.isReadOnly = true,
+    // this.isNew = true,
   });
 
   @override
@@ -27,16 +29,20 @@ class DiaryWriteScreen4 extends StatefulWidget {
 
 class _DiaryWriteScreen4State extends State<DiaryWriteScreen4> {
   final DiaryController diaryController = Get.find<DiaryController>();
-
+  // late bool isReadOnly;
   @override
   void initState() {
     super.initState();
 
+    // isReadOnly = widget.isReadOnly;
+    print("일기 읽기 상태는? ${widget.isReadOnly}");
+    // print("일기는 새거? 고친거? ${widget.isNew}");
+
     if (widget.isReadOnly && widget.diaryId != null) {
-      // 읽기 모드에서 일기 로드
+      print("읽기 모드로 일기 로드: diaryId=${widget.diaryId}");
       diaryController.loadDiary(widget.diaryId!);
     } else if (!widget.isReadOnly) {
-      // 작성 모드에서 상태 초기화
+      print("작성 모드로 상태 초기화");
       diaryController.resetDiaryState();
     }
   }
@@ -116,7 +122,9 @@ class _DiaryWriteScreen4State extends State<DiaryWriteScreen4> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new, color: mFontDarkColor),
           onPressed: () {
+            // context.go('/diary');
             widget.isReadOnly ? context.go('/diary') : context.pop();
+            // Get.back();
           },
         ),
       ),
@@ -254,13 +262,16 @@ class _DiaryWriteScreen4State extends State<DiaryWriteScreen4> {
                 onTap: () async {
                   if (_validateDiary(diaryController)) {
                     Diary diary = diaryController.getDiary();
+
+                    print("수정할 diaryID : ${diary.diaryId}");
+                    print("수정할 다이어리 내용  : ${diary.toMap()}");
+
                     bool isSaved = await diaryController.updateDiary(diary);
 
                     if (isSaved) {
                       customToastMsg("일기가 수정 되었습니다!");
                       diaryController.resetDiaryState(); // 상태 초기화
-                      // context.go('/diary'); // 다이어리 목록으로 이동
-                      context.pop();
+                      context.go('/diary'); // 다이어리 목록으로 이동
                     } else {
                       customToastMsg("일기 수정에 실패했습니다.");
                     }
@@ -275,34 +286,34 @@ class _DiaryWriteScreen4State extends State<DiaryWriteScreen4> {
                   ),
                 ),
               ))
-          : Container(
-              height: 70,
-              color: mPrimaryColor,
-              child: GestureDetector(
-                onTap: () async {
-                  if (_validateDiary(diaryController)) {
-                    Diary diary = diaryController.getDiary();
-                    bool isSaved = await diaryController.saveDiary(diary);
+          : GestureDetector(
+              onTap: () async {
+                if (_validateDiary(diaryController)) {
+                  Diary diary = diaryController.getDiary();
+                  print("새로 저장할 Diary 내용: ${diary.toMap()}");
+                  bool isSaved = await diaryController.saveDiary(diary);
 
-                    if (isSaved) {
-                      customToastMsg("일기가 저장되었습니다!");
-                      diaryController.resetDiaryState(); // 상태 초기화
-                      // context.go('/diary'); // 다이어리 목록으로 이동
-                      context.pop();
-                    } else {
-                      customToastMsg("일기 저장에 실패했습니다.");
-                    }
+                  if (isSaved) {
+                    customToastMsg("일기가 저장되었습니다!");
+                    diaryController.resetDiaryState(); // 상태 초기화
+                    context.go('/diary'); // 다이어리 목록으로 이동
                   } else {
-                    customToastMsg("모든 질문에 응답해야 저장할 수 있습니다.");
+                    customToastMsg("일기 저장에 실패했습니다.");
                   }
-                },
-                child: const Center(
-                  child: Text(
-                    "저장",
-                    style: TextStyle(color: Colors.white, fontSize: 18),
-                  ),
-                ),
-              )),
+                } else {
+                  customToastMsg("모든 질문에 응답해야 저장할 수 있습니다.");
+                }
+              },
+              child: Container(
+                  height: 70,
+                  color: mPrimaryColor,
+                  child: const Center(
+                    child: Text(
+                      "저장",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  )),
+            ),
     );
   }
 
@@ -323,10 +334,10 @@ class _DiaryWriteScreen4State extends State<DiaryWriteScreen4> {
             ),
             TextButton(
               onPressed: () {
-                Navigator.pop(context); // 다이얼로그 닫기
                 setState(() {
                   widget.isReadOnly = false;
                 });
+                Navigator.pop(context); // 다이얼로그 닫기
               },
               child: const Text("수정하기"),
             ),
@@ -349,12 +360,25 @@ class _DiaryWriteScreen4State extends State<DiaryWriteScreen4> {
       5,
       (index) => Column(
         children: [
-          ContentWidget(
-            labelText: questions[index], // 질문 텍스트 적용
-            hintText: "당신의 마음을 표현해주세요.", // 힌트 텍스트
-            initialValue: diaryController.diaryContents[index], // 기존 데이터 표시
-            onChanged: (value) => diaryController.updateContent(
-                index + 1, value ?? ''), // 값 변경 처리
+          GestureDetector(
+            onTap: isReadOnly
+                ? () {
+                    // 읽기 전용 모드에서 수정 다이얼로그 표시
+                    _showEditDialog(context);
+                  }
+                : null, // 수정 모드에서는 아무 작업도 하지 않음
+            child: AbsorbPointer(
+              absorbing: isReadOnly, // 읽기 전용 모드에서 입력 비활성화
+              child: ContentWidget(
+                labelText: questions[index],
+                hintText: "당신의 마음을 표현해주세요.",
+                initialValue: diaryController.diaryContents[index],
+                onChanged: (value) => diaryController.updateContent(
+                  index + 1,
+                  value ?? '',
+                ),
+              ),
+            ),
           ),
           const SizedBox(height: 12),
         ],

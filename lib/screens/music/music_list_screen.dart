@@ -79,7 +79,7 @@ class MusicListScreen extends StatelessWidget {
                       fit: StackFit.expand,
                       children: [
                         Image.asset(
-                          'assets/images/music_bg4.png', // 이미지 경로
+                          'assets/images/cover_image.png', // 이미지 경로
                           fit: BoxFit.cover,
                         ),
                         Container(
@@ -166,7 +166,10 @@ class MusicListScreen extends StatelessWidget {
                                 ),
                                 SizedBox(width: 20),
                                 Text(
-                                  _formatDuration(controller.duration.value),
+                                  track.runtimeType == Duration.zero
+                                      ? "로드 중..." // 로딩 중인 경우
+                                      : _formatDuration(
+                                          track.runningTime!), // 로드된 경우 형식 적용
                                   style: TextStyle(
                                     // backgroundColor: Colors.blue,
                                     fontSize: 14,

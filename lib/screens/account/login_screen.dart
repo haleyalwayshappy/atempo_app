@@ -193,6 +193,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 style: TextStyle(fontSize: 16),
                               ),
                               onTap: () {
+                                print("계정찾기");
                                 //TODO : 계정찾기 창 만들기
                               },
                             ),

@@ -49,6 +49,7 @@ class AppUserController extends GetxController {
     return AppUser(
         uid: appUser.value!.uid,
         name: appUser.value!.name,
+        nickName: appUser.value!.nickName,
         email: appUser.value!.email,
         signUpMethod: appUser.value!.signUpMethod);
   }
@@ -63,13 +64,16 @@ class AppUserController extends GetxController {
   Future<void> deleteAccount(BuildContext context) async {
     try {
       User? user = _auth.currentUser;
-      print("유저 정보 확인 ${user}");
+      // print("유저 정보 확인 ${user}");
       if (user != null) {
         // Firestore에서 사용자 데이터 삭제
         await _firestore.collection('users').doc(user.uid).delete();
 
         // Firebase Auth에서 계정 삭제
         await user.delete();
+
+        // 사용자 정보 초기화
+        clearUserInfo();
 
         // 성공 메시지
         Get.snackbar(

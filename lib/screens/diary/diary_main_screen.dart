@@ -8,12 +8,18 @@ import 'package:atempo_app/screens/diary/diary_list_widget.dart';
 import 'package:animated_toggle_switch/animated_toggle_switch.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 const int listViewIndex = 0;
 const int gridViewIndex = 1;
 
 class DiaryMainScreen extends StatefulWidget {
-  const DiaryMainScreen({super.key});
+  bool isHide;
+
+  DiaryMainScreen({
+    super.key,
+    this.isHide = false,
+  });
 
   @override
   State<DiaryMainScreen> createState() => _DiaryMainScreenState();
@@ -40,17 +46,31 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
         .toList();
   }
 
+  List<Diary> _getHideDiariesForSelectedMonth() {
+    return _controller.diaryList
+        .where((diary) =>
+            diary.dateTime.year == _selectedDate.year &&
+            diary.dateTime.month == _selectedDate.month &&
+            diary.isShow == false) // isShow가 true인 항목만 필터링
+        .toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     final formattedDate = "${_selectedDate.year}년 ${_selectedDate.month}월";
 
     return Scaffold(
       appBar: CustomAppBar(
-        titleText: '일기',
+        titleText: widget.isHide ? '숨겨진 일기' : '일기',
+        showBackButton: widget.isHide,
+        backLocation: '/my_page',
       ),
       body: SafeArea(
         child: Obx(() {
-          final filteredDiaries = _getDiariesForSelectedMonth();
+          final filteredDiaries = widget.isHide
+              ? _getHideDiariesForSelectedMonth()
+              : _getDiariesForSelectedMonth();
+
           if (_controller.diaryList.isEmpty) {
             return const Center(child: Text("저장된 다이어리가 없습니다. \n 일기를 작성해 주세요"));
           } else if (filteredDiaries.isEmpty) {
@@ -143,8 +163,8 @@ class _DiaryMainScreenState extends State<DiaryMainScreen> {
               ),
               Expanded(
                 child: isGridView
-                    ? DiaryGridWidget(diaries: _getDiariesForSelectedMonth())
-                    : DiaryListWidget(diaries: _getDiariesForSelectedMonth()),
+                    ? DiaryGridWidget(diaries: filteredDiaries)
+                    : DiaryListWidget(diaries: filteredDiaries),
               ),
             ],
           );

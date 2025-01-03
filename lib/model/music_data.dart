@@ -23,7 +23,7 @@ class Music {
     required this.musicImgUrl,
     required this.musicTitle,
     required this.musicUrl,
-    this.runningTime,
+    required this.runningTime,
     this.favoriteStatus = FavoriteStatus.none, // 기본값은 none
   }) : musicId = musicId ?? Uuid().v4();
 

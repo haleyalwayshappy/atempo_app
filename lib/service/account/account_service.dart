@@ -19,7 +19,7 @@ class AccountService {
 
   /// 이메일/비밀번호 회원가입
   Future<void> signUpWithEmailPassword(
-      String email, String password, String name) async {
+      String email, String password, String name, String nickName) async {
     UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
         email: email, password: password);
 
@@ -27,7 +27,7 @@ class AccountService {
 
     await _saveUserToFireStore(
       userCredential,
-      {'name': name, 'email': email},
+      {'name': name, 'email': email, 'nickName': nickName},
       SignUpPath.email, // 구글 가입: 1
     );
   }
@@ -109,6 +109,25 @@ class AccountService {
     }
   }
 
+  /// 사용자 정보 업데이트
+  Future<void> updateUserInformation({
+    required String uid,
+    required String name,
+    required String nickname,
+    required String email,
+  }) async {
+    try {
+      await _firestore.collection('users').doc(uid).update({
+        'name': name,
+        'nickName': nickname,
+        'email': email,
+      });
+    } catch (error) {
+      print("Firestore 업데이트 실패: $error");
+      throw Exception("Firestore 업데이트에 실패했습니다.");
+    }
+  }
+
   /// 카카오 로그인
   Future<void> signInWithKakao(BuildContext context) async {
     try {
@@ -129,34 +148,41 @@ class AccountService {
       token ??= await UserApi.instance.loginWithKakaoAccount();
       print('카카오 계정으로 로그인 성공');
 
-      // 사용자 정보 요청
-
-      final kakaoUser = await UserApi.instance.me();
-      // String? kakaoName = kakaoUser.kakaoAccount?.profile?.nickname;
-      String? kakaoName = generator.generateNickname();
-
+      // String kakaoName = token.
       // Firebase 인증 연동
       var credential = _createFirebaseCredential(token);
+      // String? kakaoName = kakaoUser.kakaoAccount?.profile?.nickname;
 
       UserCredential userCredential =
           await _auth.signInWithCredential(credential);
 
-      if (kakaoName == null) {
-        print('이름 정보가 없습니다.');
-        throw FirebaseAuthException(
-          code: 'name-null',
-          message: '이름 정보가 null입니다. 회원가입에 실패했습니다.',
-        );
-      }
+      // Firestore에서 사용자 정보 확인
+      var userDoc = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userCredential.user?.uid)
+          .get();
 
-      // Firestore에 사용자 정보 저장
-      await _saveUserToFireStore(userCredential,
-          {'name': kakaoName, 'email': 'unknown'}, SignUpPath.kakao);
+      if (!userDoc.exists) {
+        // 새 사용자라면 이름 입력 화면으로 이동
+        // 사용자 정보 요청
+        var user = await UserApi.instance.me();
+        // 이메일
+        // String? email = user.kakaoAccount?.email;
+        // Firestore에 사용자 정보 저장
+        await _saveUserToFireStore(
+            userCredential, {'nickName': '', 'email': ''}, SignUpPath.kakao);
+
+        // Firestore 저장 후 추가 정보 화면으로 이동하며 uid 전달
+        final String uid = userCredential.user!.uid;
+        context.go('/add_information', extra: {'uid': uid});
+      } else {
+        // 기존 사용자라면 홈 화면으로 이동
+        await userController.fetchUserData(); // 사용자 정보 가져오기
+        context.go('/home');
+      }
 
       // 사용자 정보 가져오기 + 앱유저에 값 담기
       await userController.fetchUserData();
-
-      context.go('/home');
     } catch (error) {
       print('카카오 로그인 실패: $error');
     }
@@ -219,6 +245,7 @@ class AccountService {
     final newUser = AppUser(
       uid: userCredential.user!.uid,
       name: userInfo['name'] ?? 'unKnown',
+      nickName: userInfo['nickName'] ?? 'unknown',
       email: userInfo['email'] ?? 'unknown',
       signUpMethod: signUpMethod.name, // 문자열로 변환
     );
@@ -245,6 +272,18 @@ class AccountService {
   //     return null;
   //   }
   // }
+
+  // 이름 유효성 검사 함수
+  String? validateNickName(String? value) {
+    if (value == null || value.isEmpty) {
+      return '닉네임을 입력해주세요.';
+    }
+    final nameRegex = RegExp(r'^[a-zA-Z가-힣0-9\s]+$'); // 숫자 허용
+    if (!nameRegex.hasMatch(value)) {
+      return '닉네임은 특수 문자를 포함할 수 없습니다.';
+    }
+    return null;
+  }
 
   // 이름 유효성 검사 함수
   String? validateName(String? value) {

@@ -1,4 +1,5 @@
 // GoRouter 설정
+import 'package:atempo_app/screens/account/add_information.dart';
 import 'package:atempo_app/screens/account/create_account_screen.dart';
 import 'package:atempo_app/screens/account/login_email_screen.dart';
 import 'package:atempo_app/screens/account/login_screen.dart';
@@ -31,7 +32,7 @@ final GlobalKey<NavigatorState> _diaryNavigatorKey =
 final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   navigatorKey: _rootNavigatorKey,
-  // initialLocation: '/test',
+  // initialLocation: '/add_information',
   initialLocation: '/login',
   redirect: (context, state) {
     final user = FirebaseAuth.instance.currentUser;
@@ -120,7 +121,9 @@ final GoRouter router = GoRouter(
             GoRoute(
               path: '/diary',
               builder: (context, state) {
-                return DiaryMainScreen();
+                return DiaryMainScreen(
+                  isHide: false,
+                );
               },
               routes: [
                 GoRoute(
@@ -168,6 +171,15 @@ final GoRouter router = GoRouter(
       builder: (context, state) => CreateAccountScreen(),
     ),
     GoRoute(
+      path: '/add_information',
+      builder: (context, state) {
+        final extra = state.extra as Map<String, dynamic>;
+        final String uid = extra['uid']; // 전달받은 uid
+        return AddInformation(uid: uid);
+      },
+    ),
+
+    GoRoute(
       path: '/splash',
       builder: (context, state) => SplashScreen(),
     ),
@@ -185,7 +197,10 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: '/write',
-      builder: (context, state) => DiaryWriteScreen4(),
+      builder: (context, state) => DiaryWriteScreen4(
+        // isNew: true,
+        isReadOnly: false,
+      ),
     ),
     GoRoute(
       path: '/read/:diaryId', // diaryId를 경로 파라미터로 전달
@@ -193,9 +208,15 @@ final GoRouter router = GoRouter(
         final diaryId = state.pathParameters['diaryId']!;
         return DiaryWriteScreen4(
           isReadOnly: true,
+          // isNew: false,
           diaryId: diaryId,
         );
       },
+    ),
+
+    GoRoute(
+      path: '/hide_diary',
+      builder: (context, state) => DiaryMainScreen(isHide: true),
     ),
     GoRoute(
       path: '/music_player',

@@ -70,16 +70,16 @@ const List<String> emailSiteList = [
 
 /// 앨범 커버 이미지 리스트
 const Map<dynamic, dynamic> albumContents = {
-  "한가로운 오후": "assets/images/music_bg6.png",
-  "세상의 끝에서": "assets/images/music_bg5.png",
-  "waiting for": "assets/images/music_bg4.png",
-  "평화로운 숲": "assets/images/music_bg1.png",
-  "잔잔한 파도": "assets/images/music_bg2.png",
-  "동이 트는 초원": "assets/images/music_bg3.png",
-  "뉴욕의 밤": "assets/images/music_bg5.png",
-  "희망의 그림자": "assets/images/music_bg6.png",
-  "성수동의 오후": "assets/images/music_bg2.png",
-  "아무도 없는 도시의 밤": "assets/images/music_bg4.png",
+  "도시의 낮잠": "assets/images/music_cover1.png",
+  "숲의 속삭임": "assets/images/music_cover2.png",
+  "바람의 화음": "assets/images/music_cover3.png",
+  "고요의 물결": "assets/images/music_cover4.png",
+  "하늘의 메아리": "assets/images/music_cover5.png",
+  "Dawning Serenity": "assets/images/music_cover6.png",
+  "도시의 신기루": "assets/images/music_cover7.png",
+  "새벽의 절규": "assets/images/music_cover8.png",
+  "Whispering Winds": "assets/images/music_cover9.png",
+  "여명의 멜로디": "assets/images/music_cover10.png",
 };
 
 // const kSearchEditHintStyle = TextStyle(
