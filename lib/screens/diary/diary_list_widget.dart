@@ -33,8 +33,7 @@ class DiaryListWidget extends StatelessWidget {
           direction: DismissDirection.endToStart,
           onDismissed: (DismissDirection direction) async {
             diary.isShow = false; // 로컬 데이터 수정
-            final bool success =
-                await _controller.updateIsShow(diaryId, false, diary.userId);
+            final bool success = await _controller.updateIsShow(diaryId, false);
 
             if (success) {
               print("isShow successfully updated.");

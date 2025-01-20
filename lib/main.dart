@@ -3,6 +3,7 @@ import 'package:atempo_app/controller/music/music_player_controller.dart';
 import 'package:atempo_app/firebase_options.dart';
 import 'package:atempo_app/screens/home/not_found_screen.dart';
 import 'package:atempo_app/controller/account/app_user_controller.dart';
+import 'package:atempo_app/service/firestore_service.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
+
+//todo: data를 한번 fetch해서 계속 client에 남겨둔 상태로 활용하는 방안고민.
+//todo: controller : view 연결관계 정리
+//todo: 안쓰는 함수와 파일 정리
 
 void main() async {
   // Flutter 엔진 초기화
@@ -34,7 +39,8 @@ void main() async {
   final userController = Get.put(AppUserController());
   await userController.fetchUserData(); // 사용자 데이터 먼저 로드
 
-  final diaryController = Get.put(DiaryController()); // 이후 다이어리 컨트롤러 초기화
+  final diaryController =
+      Get.put(DiaryController(FirestoreService())); // 이후 다이어리 컨트롤러 초기화
   await diaryController.fetchAllDiariesFromFirebase();
 
   FlutterNativeSplash.remove(); // 데이터 로드 완료 후 스플래시 제거

@@ -11,6 +11,11 @@ import 'package:go_router/go_router.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
 
+import '../../jh_exception_handler.dart';
+
+//todo: service파일에서 context사용 금지. context는 view에서만.. widget, screen 등에서만 활용.
+//todo: error는 throw로 전달, success는 return 으로 전달.
+//todo: 전체 메소드 점검 필요.
 class AccountService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -64,7 +69,7 @@ class AccountService {
   }
 
   /// 구글 로그인
-  Future<void> signInWithGoogle(BuildContext context) async {
+  Future<void> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -87,6 +92,7 @@ class AccountService {
 
       if (name == null) {
         print('이름 정보가 없습니다.');
+
         throw FirebaseAuthException(
           code: 'name-null',
           message: '이름 정보가 null입니다. 회원가입에 실패했습니다.',
@@ -103,9 +109,10 @@ class AccountService {
       /// 사용자 정보 가져오기 + 앱유저에 값 담기
       await userController.fetchUserData();
 
-      context.go('/home');
+      // context.go('/home');//todo: screen에서 route처리
     } catch (e) {
       print('구글 로그인 실패: $e');
+      throw Exception('google sigin in error:$e');
     }
   }
 
@@ -218,6 +225,7 @@ class AccountService {
       context.go('/home');
     } catch (e) {
       print('애플 로그인 실패: $e');
+      //todo: scaffoldMessenger를 screen에서 수행
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('애플 로그인 실패: $e')),
       );

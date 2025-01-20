@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
+
+//todo: 우선순위는 낮지만, 언젠가 화면 정리 필요, read,edit,view를 한 화면에서 하면 어떨까?
 class DiaryWriteScreen4 extends StatefulWidget {
   final String? diaryId;
   bool isReadOnly;

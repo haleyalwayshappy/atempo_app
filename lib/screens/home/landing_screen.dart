@@ -40,7 +40,7 @@ class _LandingScreenState extends State<LandingScreen>
     try {
       // 초기 데이터 가져오기
       Get.put(AppUserController());
-      Get.put(DiaryController());
+      //Get.put(DiaryController());
       Get.put(MusicPlayerController());
       FlutterNativeSplash.remove();
       // 데이터 로딩 딜레이 (예: 네트워크 호출)

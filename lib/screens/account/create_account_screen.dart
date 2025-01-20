@@ -52,8 +52,6 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
 
         accountService.signOut(context); // 회원가입과 동시에 로그인이 되기 때문에 로그아웃 (메일 인증 전)
 
-        // TODO  : 2024.10.23 회원가입 성공시 로그아웃 후 로그인 화면으로 이동해야함
-
         // 회원가입 성공 시 홈 화면으로 이동
         context.go('/login');
       } catch (e) {

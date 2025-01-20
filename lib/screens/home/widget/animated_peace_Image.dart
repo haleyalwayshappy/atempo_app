@@ -20,7 +20,6 @@ class _AnimatedPeaceImageState extends State<AnimatedPeaceImage>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _controller = AnimationController(
       vsync: this,

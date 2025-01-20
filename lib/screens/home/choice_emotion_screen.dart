@@ -9,8 +9,6 @@ import 'package:atempo_app/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-/// TODO :  감정선택시 텍스트 필드의 값 바뀌기 > 상수에 'emotionText'사용할것.
-
 class ChoiceEmotionScreen extends StatelessWidget {
   const ChoiceEmotionScreen({super.key});
 

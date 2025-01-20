@@ -2,17 +2,15 @@ import 'package:atempo_app/model/diary_data.dart';
 import 'package:atempo_app/model/emotion_data.dart';
 import 'package:atempo_app/controller/account/app_user_controller.dart';
 import 'package:atempo_app/screens/widgets/toast.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
+import '../../service/firestore_service.dart';
+
 class DiaryController extends GetxController {
-  @override
-  void onInit() {
-    print("일기 정보 로딩중");
-    super.onInit();
-    fetchAllDiariesFromFirebase(); // 다이어리 데이터 로드
-  }
+  final fsService;
+
+  DiaryController(this.fsService);
 
   final AppUserController userController = Get.find<AppUserController>();
 
@@ -55,9 +53,40 @@ class DiaryController extends GetxController {
     showMaxSelectionWarning.value = false;
   }
 
-  /**
-   * 가져오기
-   * */
+  @override
+  void onInit() {
+    print("일기 정보 로딩중");
+    super.onInit();
+    fetchAllDiariesFromFirebase(); // 다이어리 데이터 로드
+  }
+  /** 가져오기 */
+
+  /// 다이어리 전체 정보 가져오기
+  Future<void> fetchAllDiariesFromFirebase() async {
+    // 일기 값이 이미 로드 되었다면
+    if (isDiariesLoaded) {
+      print("다이어리가 이미 로드 됨. 리패치를 스킵한다.");
+      return;
+    } else {
+      try {
+        isLoading.value = true; // 로딩 시작
+        String uid = userController.getUserdata().uid; // 사용자 UID
+
+        //resultMap에 다이어리 값 담기
+        List<Map<String, dynamic>> resultMap =
+            await fsService.fetchAllDiariesFromFirebase(uid);
+        diaryList.value =
+            resultMap.map((value) => Diary.fromMap(value)).toList();
+        isDiariesLoaded = true; // 로드 완료
+      } catch (e) {
+        print("Error fetching all diaries from firebase : $e");
+        throw Exception("Error fetching all diaries from firebase : $e");
+      } finally {
+        isLoading.value = false;
+      }
+    }
+  }
+
   /// 메인 감정에 따른 imageUrl 가져오기
   String? getMainEmotionImageUrl(MainEmotion emotion) {
     final matchingEmotion = mainEmotions.firstWhere(
@@ -65,43 +94,6 @@ class DiaryController extends GetxController {
       orElse: () => mainEmotions.first,
     );
     return matchingEmotion.imageUrl;
-  }
-
-  /// Firebase에서 모든 다이어리 가져오기
-  Future<void> fetchAllDiariesFromFirebase() async {
-    if (isDiariesLoaded) {
-      print("다이어리가 이미 로드 됨. 리패치를 스킵한다.");
-      print("${isShow}");
-      return;
-    }
-
-    try {
-      isLoading.value = true; // 로딩 시작
-      String uid = userController.getUserdata().uid; // 사용자 UID
-      print("Fetching diaries for userId: $uid");
-
-      // Firestore에서 다이어리 데이터 가져오기
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(uid)
-          .collection('diaries')
-          .orderBy('dateTime', descending: true) // 날짜 기준 내림차순 정렬
-          .get();
-
-      // 쿼리 결과를 Diary 객체로 변환
-      diaryList.value = querySnapshot.docs.map((doc) {
-        final data = doc.data() as Map<String, dynamic>;
-        return Diary.fromMap(data); // Diary.fromMap 사용
-      }).toList();
-
-      isDiariesLoaded = true; // 로드 완료
-      print(
-          "Fetched all diaries -------- \n ${diaryList.value} \n -----------");
-    } catch (e) {
-      print("Error fetching diaries: $e");
-    } finally {
-      isLoading.value = false; // 로딩이 이미 완료되어 있음
-    }
   }
 
   /// Diary ID로 특정 다이어리 로드
@@ -134,30 +126,13 @@ class DiaryController extends GetxController {
     try {
       isLoading.value = true; // 로딩 상태 시작
       String uid = userController.getUserdata().uid;
-
-      // 해당 달의 시작 날짜와 다음 달의 시작 날짜 계산
-      DateTime startOfMonth = DateTime(year, month, 1);
-      DateTime startOfNextMonth = DateTime(year, month + 1, 1);
-
-      // Firestore 쿼리
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(uid)
-          .collection('diaries')
-          .where('dateTime', isGreaterThanOrEqualTo: startOfMonth)
-          .where('dateTime', isLessThan: startOfNextMonth)
-          .orderBy('dateTime', descending: true) // 내림차순 정렬
-          .get();
-
-      // 결과를 diaryList로 저장
-      diaryList.value = querySnapshot.docs.map((doc) {
-        final data = doc.data() as Map<String, dynamic>;
-        return Diary.fromMap(data);
-      }).toList();
-
-      print("isShow value after dismissal: ${isShow}");
-
-      print("Fetched ${diaryList.length} diaries for $year-$month.");
+      List<Map<String, dynamic>> resultMap =
+          await fsService.fetchDiariesByMonth(
+        year: year,
+        month: month,
+        uid: uid,
+      );
+      diaryList.value = resultMap.map((value) => Diary.fromMap(value)).toList();
     } catch (e) {
       print("Error fetching diaries by month: $e");
     } finally {
@@ -224,40 +199,20 @@ class DiaryController extends GetxController {
       return false; // 실패 반환
     }
 
-    if (updatedDiary.diaryId == null || updatedDiary.diaryId!.isEmpty) {
-      print("Diary ID가 없습니다. 업데이트할 수 없습니다.");
-      return false; // 실패 반환
-    }
-
     try {
-      // Firestore 문서가 존재하는지 확인
-      DocumentSnapshot doc = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userId)
-          .collection('diaries')
-          .doc(updatedDiary.diaryId)
-          .get();
+      bool isSuccess = await fsService.updateDiary(
+        userId: userId,
+        diaryId: diaryId,
+        updatedDiary: updatedDiary,
+      );
 
-      if (!doc.exists) {
-        print("Document not found: ${updatedDiary.diaryId}");
-        return false; // 문서가 없는 경우 처리
+      if (isSuccess) {
+        // 목록을 다시 로드
+        isDiariesLoaded = false;
+        await fetchAllDiariesFromFirebase();
       }
 
-      // 다이어리 데이터를 Firestore에 업데이트
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userId)
-          .collection('diaries')
-          .doc(updatedDiary.diaryId) // 업데이트할 다이어리 ID
-          .update(updatedDiary.toMap());
-
-      print("Diary updated successfully with ID: ${updatedDiary.diaryId}");
-
-      // 목록을 다시 로드
-      isDiariesLoaded = false;
-      await fetchAllDiariesFromFirebase();
-
-      return true; // 성공 반환
+      return isSuccess; // 성공 반환
     } catch (e) {
       customToastMsg("일기 수정에 실패했습니다: $e");
       print("일기 수정 실패: $e");
@@ -265,26 +220,26 @@ class DiaryController extends GetxController {
     }
   }
 
-  // 숨기기 활성화
-  Future<bool> updateIsShow(String diaryId, bool isShow, String userId) async {
-    try {
-      // Firestore에서 isShow 필드만 업데이트
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userId)
-          .collection('diaries')
-          .doc(diaryId)
-          .update({'isShow': isShow}); // isShow 값만 업데이트
+  /// isShow 업데이트 호출
+  Future<bool> updateIsShow(String diaryId, bool isShow) async {
+    String? userId = FirebaseAuth.instance.currentUser?.uid;
 
-      print("isShow updated successfully for Diary ID: $diaryId");
-      return true; // 성공 반환
-    } catch (e) {
-      if (e is FirebaseException && e.code == 'not-found') {
-        print("Diary not found for ID: $diaryId");
-      } else {
-        print("Failed to update isShow: $e");
+    if (userId == null) {
+      customToastMsg("로그인이 필요합니다.");
+      return false;
+    }
+
+    try {
+      bool success = await fsService.updateIsShow(userId, diaryId, isShow);
+
+      if (success) {
+        print("Diary visibility updated successfully.");
       }
-      return false; // 실패 반환
+
+      return success;
+    } catch (e) {
+      customToastMsg("isShow 업데이트에 실패했습니다: $e");
+      return false;
     }
   }
 
@@ -292,6 +247,7 @@ class DiaryController extends GetxController {
  * 저장
  * */
 
+  ///TODO Diary frommap
   /// Diary 데이터 저장 메서드
   Diary getDiary() {
     return Diary(
@@ -316,45 +272,23 @@ class DiaryController extends GetxController {
 
     if (userId == null) {
       customToastMsg("로그인이 필요합니다.");
-      return false; // 실패 반환
+      return false;
     }
 
     try {
-      // 다이어리 데이터 변환
-      Map<String, dynamic> diaryData = diary.toMap();
+      bool success = await fsService.saveDiary(userId, diary);
 
-      // 다이어리 ID가 없으면 자동 생성 (Firestore에서 문서 ID를 생성)
-      if (diary.diaryId == null) {
-        DocumentReference docRef = await FirebaseFirestore.instance
-            .collection('users')
-            .doc(userId)
-            .collection('diaries')
-            .add(diaryData); // 새 문서 추가 및 ID 생성
-        diary.diaryId = docRef.id; // 생성된 ID를 Diary 객체에 반영'
-        docRef.update({'diaryId': docRef.id});
-      } else {
-        // 다이어리 ID가 있으면 해당 문서 업데이트
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(userId)
-            .collection('diaries')
-            .doc(diary.diaryId)
-            .set(diaryData); // 기존 문서에 데이터 저장
+      if (success) {
+        isDiariesLoaded = false; // 목록 로드 상태 초기화
+        await fetchAllDiariesFromFirebase(); // 목록 갱신
       }
 
-      print("Diary saved successfully with ID: ${diary.diaryId}");
-
-      isDiariesLoaded = false; // 다이어리 로드값을 false(로드 이전) 로 변경해준다.
-      // 저장 후 다이어리 목록 갱신
-      await fetchAllDiariesFromFirebase();
-
-      return true; // 성공 반환
+      return success;
     } catch (e) {
       customToastMsg("일기 저장에 실패했습니다: $e");
-      print("일기 저장 실패: $e");
-      return false; // 실패 반환
+      return false;
     } finally {
-      isDiariesLoaded = true; // 값을 로드 완료 상태로 변경
+      isDiariesLoaded = true; // 작업 종료 후 항상 로드 완료 상태로 변경
     }
   }
 

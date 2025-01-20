@@ -60,12 +60,13 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
+            /* 추천 컨테이너 */
             Container(
               margin: EdgeInsets.only(left: 18, bottom: 16),
               child: RecommendBox(),
             ),
 
-            // TODO 달력 구현하기
+            /* 달력 화면 */
             Container(
               // color: Colors.blue,
               margin: EdgeInsets.only(left: 12, right: 12),

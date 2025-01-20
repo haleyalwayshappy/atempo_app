@@ -20,7 +20,6 @@ class _AnimatedConfusedImageState extends State<AnimatedConfusedImage>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _controller = AnimationController(
       vsync: this,
@@ -54,7 +53,6 @@ class _AnimatedConfusedImageState extends State<AnimatedConfusedImage>
   @override
   void dispose() {
     _controller.dispose();
-    // TODO: implement dispose
     super.dispose();
   }
 

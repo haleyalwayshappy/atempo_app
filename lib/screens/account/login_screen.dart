@@ -6,6 +6,8 @@ import 'package:atempo_app/screens/widgets/proceed_without_actionbutton.dart';
 import 'package:atempo_app/utils/constants.dart';
 import 'package:form_model/form_model.dart';
 
+import '../../jh_exception_handler.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -42,12 +44,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Spacer(),
                       Container(
-                        padding: EdgeInsets.only(bottom: 60),
+                        padding: EdgeInsets.only(
+                            bottom: 60), //todo: padding 다른 것으로 대체하는게 좋겠음
                         child: Image.asset(
                           'assets/images/logo_atempo.png',
                           height: 80,
                         ),
                       ),
+
                       Container(
                         padding: EdgeInsets.all(16),
                         child: Column(
@@ -55,6 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             TextFormField(
+                              controller: _emailController,
+                              validator: accountService.validateEmail,
                               decoration: InputDecoration(
                                 labelText: "이메일",
                                 hintText: "이메일을 입력하세요",
@@ -65,8 +71,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 border: OutlineInputBorder(),
                                 // contentPadding: EdgeInsets.all(12.0),
                               ),
-                              controller: _emailController,
-                              validator: accountService.validateEmail,
                             ),
                             SizedBox(height: 20),
                             TextFormField(
@@ -106,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onTap: () async {
                           String email = _emailController.text;
                           String password = _passwordController.text;
-
+                          //todo: Form 추가후 validation 추가, onSave
                           try {
                             await accountService.loginWithEmailPassword(
                                 email, password, context);
@@ -130,13 +134,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // 네이버  로그인 버튼
+                            /* 애플 로그인 */
                             GestureDetector(
                               child: Image.asset(
                                 'assets/images/button/apple_login.png',
                               ),
                               onTap: () {
-                                //TODO :애플 로그인
+                                //try/catch 등을 이용하여 error처리
                                 accountService.signInWithApple(context);
                               },
                             ),
@@ -147,7 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 'assets/images/button/kakao_login.png',
                               ),
                               onTap: () {
-                                //TODO : 카카오 로그인
+                                /* 카카오 로그인 */
                                 accountService.signInWithKakao(context);
                               },
                             ),
@@ -157,9 +161,18 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: Image.asset(
                                 'assets/images/button/google_login.png',
                               ),
-                              onTap: () {
-                                // TODO : 구글 로그인
-                                accountService.signInWithGoogle(context);
+                              onTap: () async {
+                                /* 구글 로그인 */
+                                try {
+                                  await accountService.signInWithGoogle();
+                                  context.go('/home');
+                                } on FirebaseAuthException catch (e) {
+                                } on AuthPasswordException catch (e) {
+                                } catch (e) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text('구글 로그인 실패: $e')),
+                                  );
+                                }
                               },
                             ),
                           ],
@@ -202,9 +215,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       SizedBox(
                         height: 10,
-                      ),
-                      ProceedWithoutActionButton(
-                        text: "다음에 로그인 할래요",
                       ),
                       Spacer(),
                     ],
